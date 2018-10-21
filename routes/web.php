@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Admin'], function() {
 
-    CRUD::resource('users', 'UserCrudController');
+    CRUD::resource('users', 'UsersController');
+    CRUD::resource('categories', 'CategoriesController');
+    CRUD::resource('products', 'ProductsController');
+    CRUD::resource('activities', 'ActivitiesController');
 
 });

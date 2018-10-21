@@ -5,15 +5,15 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\UserRequest as StoreRequest;
-use App\Http\Requests\UserRequest as UpdateRequest;
+use App\Http\Requests\CategoryRequest as StoreRequest;
+use App\Http\Requests\CategoryRequest as UpdateRequest;
 
 /**
- * Class UserCrudController
+ * Class ActivityCategoryCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class UserCrudController extends CrudController
+class CategoriesController extends CrudController
 {
     public function setup()
     {
@@ -22,9 +22,9 @@ class UserCrudController extends CrudController
         | CrudPanel Basic Information
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\User');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/users');
-        $this->crud->setEntityNameStrings('user', 'users');
+        $this->crud->setModel('App\Models\Category');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/categories');
+        $this->crud->setEntityNameStrings('category', 'categories');
 
         /*
         |--------------------------------------------------------------------------
@@ -32,10 +32,26 @@ class UserCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
+        $this->crud->addColumn('image')->afterColumn('name');
+        $this->crud->modifyColumn('image', [
+            'type' => 'image',
+            'height' => '50px'
+        ]);
+
+
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
 
-        // add asterisk for fields that are required in UserRequest
+        $this->crud->addField('image')->afterField('name');
+        $this->crud->modifyField('image', [
+            'label' => "Image",
+            'name' => "image",
+            'type' => 'image',
+            'upload' => true,
+            'aspect_ratio' => 1
+        ]);
+
+        // add asterisk for fields that are required in ActivityCategoryRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }

@@ -14,9 +14,15 @@ class UsersTableSeeder extends Seeder
     {
         factory(User::class)->create([
             'login' => 'root',
-            'name' => 'Root',
+            'name' => 'Mikhail Garmashov',
             'email' => 'mikhail.garmashov@gmail.com',
             'password' => \Illuminate\Support\Facades\Hash::make('moscow')
+        ]);
+
+        factory(User::class)->create([
+            'login' => 'jon',
+            'name' => 'Jon Fisher',
+            'password' => \Illuminate\Support\Facades\Hash::make('jon')
         ]);
     }
 }
