@@ -35,7 +35,7 @@ class CategoriesController extends CrudController
         $this->crud->addColumn('image')->afterColumn('name');
         $this->crud->modifyColumn('image', [
             'type' => 'image',
-            'height' => '50px'
+            'height' => '100px'
         ]);
 
 

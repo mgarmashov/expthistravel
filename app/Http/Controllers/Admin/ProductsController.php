@@ -46,13 +46,14 @@ class ProductsController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->addColumn('name');
-
-        $this->crud->addColumn('image', [
+        $this->crud->addColumn([
             'name' => 'image',
             'type' => 'image',
-            'height' => '50px'
+            'height' => '100px'
         ]);
+        $this->crud->addColumn('name');
+
+
         $this->crud->addColumn('country');
         $this->crud->addColumn('description_short');
 
