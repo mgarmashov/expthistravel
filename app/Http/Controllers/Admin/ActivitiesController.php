@@ -23,7 +23,7 @@ class ActivitiesController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\Models\Activity');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/activity');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/activities');
         $this->crud->setEntityNameStrings('activity', 'activities');
 
         /*
@@ -32,8 +32,48 @@ class ActivitiesController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        // TODO: remove setFromDb() and manually define Fields and Columns
-        $this->crud->setFromDb();
+        $this->crud->addColumn([
+            'name' => 'image',
+            'type' => 'image',
+            'height' => '100px'
+        ]);
+        $this->crud->addColumn('name');
+        $this->crud->addColumn('description');
+
+
+
+        /**
+         * fields
+         */
+
+        $this->crud->addField([
+            'label' => "Name",
+            'name' => "name",
+            'type' => 'text',
+            'tab' => 'Description'
+
+        ]);
+        $this->crud->addField([
+            'label' => "Image",
+            'name' => "image",
+            'type' => 'image',
+            'aspect_ratio' => 1,
+            'tab' => 'Description'
+        ]);
+        $this->crud->addField([
+            'name' => 'description',
+            'label' => 'Description',
+            'type' => 'textarea',
+            'tab' => 'Description'
+        ]);
+
+        $this->crud->addField([
+            'name' => 'scores',
+            'label' => "Scores",
+            'type' => 'scores',
+            'tab' => 'Scores of categories'
+        ]);
+
 
         // add asterisk for fields that are required in ActivityRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
@@ -46,6 +86,7 @@ class ActivitiesController extends CrudController
         $redirect_location = parent::storeCrud($request);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
+        $this->saveScores($request, $this->data['entry']);
         return $redirect_location;
     }
 
@@ -55,6 +96,24 @@ class ActivitiesController extends CrudController
         $redirect_location = parent::updateCrud($request);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
+        $this->saveScores($request, $this->data['entry']);
         return $redirect_location;
+    }
+
+    protected function saveScores($request, $model) {
+        $scores = [];
+
+        foreach ($request->input() as $key => $value) {
+
+            $categoryId = explode("category-", $key)[1] ?? false;
+
+            if($categoryId) {
+                $scores[$categoryId] = $value;
+            }
+
+        }
+        $model->scores = $scores;
+        $model->save();
+
     }
 }

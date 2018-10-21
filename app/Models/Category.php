@@ -61,13 +61,11 @@ class Category extends Model
     public function setImageAttribute($value)
     {
         $attribute_name = "image";
-//        $disk = "public_folder";
-        $disk = "public";
         $destination_path = "categories";
 
         // if the image was erased
         if ($value==null) {
-            \Storage::disk($disk)->delete($this->{$attribute_name});
+            \Storage::disk("public")->delete($this->{$attribute_name});
             $this->attributes[$attribute_name] = null;
         }
 
@@ -76,7 +74,7 @@ class Category extends Model
         {
             $image = \Image::make($value);
             $filename = md5($value.time()).'.jpg';
-            \Storage::disk($disk)->put($destination_path.'/'.$filename, $image->stream());
+            \Storage::disk("public")->put($destination_path.'/'.$filename, $image->stream());
             $this->attributes[$attribute_name] = 'storage/'.$destination_path.'/'.$filename;
         }
     }

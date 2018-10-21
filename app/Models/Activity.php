@@ -19,9 +19,17 @@ class Activity extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'description',
+        'image',
+        'index'
+    ];
     // protected $hidden = [];
     // protected $dates = [];
+    protected $casts = [
+        'scores' => 'array'
+    ];
 
     /*
     |--------------------------------------------------------------------------
@@ -52,4 +60,23 @@ class Activity extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+    public function setImageAttribute($value)
+    {
+        $attribute_name = "image";
+        $destination_path = "activities";
+
+        // if the image was erased
+        if ($value==null) {
+            \Storage::disk("public")->delete($this->{$attribute_name});
+            $this->attributes[$attribute_name] = null;
+        }
+
+        // if a base64 was sent, store it in the db
+        if (starts_with($value, 'data:image')) {
+            $image = \Image::make($value);
+            $filename = md5($value.time()).'.jpg';
+            \Storage::disk("public")->put($destination_path.'/'.$filename, $image->stream());
+            $this->attributes[$attribute_name] = 'storage/'.$destination_path.'/'.$filename;
+        }
+    }
 }

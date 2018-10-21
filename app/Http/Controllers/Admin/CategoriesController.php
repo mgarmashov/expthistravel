@@ -32,23 +32,37 @@ class CategoriesController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->addColumn('image')->afterColumn('name');
-        $this->crud->modifyColumn('image', [
+
+        $this->crud->addColumn([
+            'name' => 'image',
             'type' => 'image',
             'height' => '100px'
         ]);
+        $this->crud->addColumn('name');
+        $this->crud->addColumn('description');
 
 
-        // TODO: remove setFromDb() and manually define Fields and Columns
-        $this->crud->setFromDb();
 
-        $this->crud->addField('image')->afterField('name');
-        $this->crud->modifyField('image', [
+        /**
+         * fields
+         */
+
+        $this->crud->addField([
+            'label' => "Name",
+            'name' => "name",
+            'type' => 'text'
+
+        ]);
+        $this->crud->addField([
             'label' => "Image",
             'name' => "image",
             'type' => 'image',
-            'upload' => true,
             'aspect_ratio' => 1
+        ]);
+        $this->crud->addField([
+            'name' => 'description',
+            'label' => 'Description',
+            'type' => 'textarea'
         ]);
 
         // add asterisk for fields that are required in ActivityCategoryRequest
