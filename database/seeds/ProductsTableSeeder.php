@@ -32,13 +32,13 @@ class ProductsTableSeeder extends Seeder
             $categoriesId[$cat] = \App\Models\Category::where('name', $cat)->first()->id;
         }
 
-        $prod = factory(Product::class)->create([
+        factory(Product::class)->create([
             'name' => 'Thai Boxing Training Camp',
             'description_short' => 'Master the art of Muay Thai',
             'description_long' => 'Take on the challenge of a Muay Thai training camp in Thailand. Learn a martial art, stay fit and keep active, and immerse in a Thai culture.',
             'months' => [0],
             'country' => 'Thailand',
-            'img' => $this->getFile('examples', 'products', 'muay_thai_1.jpg'),
+            'image' => $this->getFile('examples', 'muay_thai_1.jpg'),
             'scores' => [
                 $categoriesId['Sight seeing'] => 1,
                 $categoriesId['Nature'] => 1,
@@ -62,7 +62,7 @@ class ProductsTableSeeder extends Seeder
             'description_long' => 'Surf’s up! This is the ideal introduction to surfing. Book a surf camp to catch some waves and enjoy blissful beaches of Sri Lanka.',
             'months' => [11,12,1,2,3],
             'country' => 'Sri Lanka',
-            'img' => $this->getFile('examples', 'products', 'Surf 3.jpg'),
+            'image' => $this->getFile('examples', 'Surf 3.jpg'),
             'scores' => [
                 $categoriesId['Sight seeing'] => 5,
                 $categoriesId['Nature'] => 5,
@@ -86,7 +86,7 @@ class ProductsTableSeeder extends Seeder
             'description_long' => 'Famous for its delicious food, discover the art of Thai cuisine and create renowned dishes in a hands-on cooking class.',
             'months' => [0],
             'country' => 'Thailand',
-            'img' => $this->getFile('examples', 'products', 'Cooking class 3.jpg'),
+            'image' => $this->getFile('examples', 'Cooking class 3.jpg'),
             'scores' => [
                 $categoriesId['Sight seeing'] => 1,
                 $categoriesId['Nature'] => 1,
@@ -108,15 +108,10 @@ class ProductsTableSeeder extends Seeder
     }
 
 
-    public function getFile($source, $to, $name)
+    public function getFile($source, $name)
     {
-        if (!Storage::disk('public')->exists($to)) {
-            Storage::disk('public')->makeDirectory($to);
-        }
+        $image = base64_encode(file_get_contents(public_path("$source/$name")));
 
-        $filename = md5($name.time()).'.jpg';
-        copy(public_path("$source/$name"), Storage::disk('public')->path("$to/$filename"));
-
-        return 'storage/'.$to.'/'.$filename;
+        return 'data:image/jpeg;base64,'.$image;
     }
 }

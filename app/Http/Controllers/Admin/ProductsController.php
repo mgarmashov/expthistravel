@@ -47,7 +47,7 @@ class ProductsController extends CrudController
         */
 
         $this->crud->addColumn([
-            'name' => 'img',
+            'name' => 'image',
             'type' => 'image',
             'height' => '100px'
         ]);
@@ -71,9 +71,9 @@ class ProductsController extends CrudController
         ]);
         $this->crud->addField([
             'label' => "Image",
-            'name' => "img",
+            'name' => "image",
             'type' => 'image',
-            'upload' => true,
+            'upload' => false,
             'aspect_ratio' => 1,
             'tab' => 'Description'
         ]);
@@ -127,7 +127,6 @@ class ProductsController extends CrudController
     public function update(UpdateRequest $request)
     {
         // your additional operations before save here
-//        dd($request);
         $redirect_location = parent::updateCrud($request);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry

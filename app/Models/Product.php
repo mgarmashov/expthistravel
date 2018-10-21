@@ -26,7 +26,7 @@ class Product extends Model
         'months',
         'country',
         'city',
-        'img',
+        'image',
         'index',
         'scores'
         ];
@@ -35,6 +35,7 @@ class Product extends Model
     protected $casts = [
         'months' => 'array',
         'scores' => 'array'
+//        'img' =>
     ];
 
     /*
@@ -66,9 +67,9 @@ class Product extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
-    public function setImageAttribute($value)
+    public function setImgAttribute($value)
     {
-        $attribute_name = "img";
+        $attribute_name = "image";
         $disk = "public";
         $destination_path = "products";
 

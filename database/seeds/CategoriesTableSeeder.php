@@ -29,25 +29,20 @@ class CategoriesTableSeeder extends Seeder
 
         foreach ($arr as $key => $value) {
 
-            $img = $value ? $this->getFile('examples', 'categories', $value) : null;
+            $img = $value ? $this->getFile('examples', $value) : null;
             factory(Category::class)->create([
                 'name' => $key,
-                'img' => $img,
+                'image' => $img,
 
             ]);
         }
 
     }
 
-    public function getFile($source, $to, $name)
+    public function getFile($source, $name)
     {
-        if (!Storage::disk('public')->exists($to)) {
-            Storage::disk('public')->makeDirectory($to);
-        }
+        $image = base64_encode(file_get_contents(public_path("$source/$name")));
 
-        $filename = md5($name.time()).'.jpg';
-        copy(public_path("$source/$name"), Storage::disk('public')->path("$to/$filename"));
-
-        return 'storage/'.$to.'/'.$filename;
+        return 'data:image/jpeg;base64,'.$image;
     }
 }

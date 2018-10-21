@@ -32,8 +32,8 @@ class CategoriesController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->addColumn('img')->afterColumn('name');
-        $this->crud->modifyColumn('img', [
+        $this->crud->addColumn('image')->afterColumn('name');
+        $this->crud->modifyColumn('image', [
             'type' => 'image',
             'height' => '100px'
         ]);
@@ -42,8 +42,8 @@ class CategoriesController extends CrudController
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
 
-        $this->crud->addField('img')->afterField('name');
-        $this->crud->modifyField('img', [
+        $this->crud->addField('image')->afterField('name');
+        $this->crud->modifyField('image', [
             'label' => "Image",
             'name' => "image",
             'type' => 'image',

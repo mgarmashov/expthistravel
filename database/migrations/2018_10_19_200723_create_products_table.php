@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->text('months')->nullable();
             $table->text('country')->nullable();
             $table->text('city')->nullable();
-            $table->text('img')->nullable();
+            $table->string('image')->nullable();
             $table->text('scores')->nullable();
             $table->tinyInteger('index')->nullable();
             $table->timestamps();
