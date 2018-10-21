@@ -67,7 +67,7 @@ class Product extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
-    public function setImgAttribute($value)
+    public function setImageAttribute($value)
     {
         $attribute_name = "image";
         $disk = "public";
