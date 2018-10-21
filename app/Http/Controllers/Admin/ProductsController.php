@@ -54,7 +54,15 @@ class ProductsController extends CrudController
         $this->crud->addColumn('name');
 
 
-        $this->crud->addColumn('country');
+        $this->crud->addColumn([
+//            'label' => 'Countries',
+            'type' => "select_multiple",
+            'name' => 'countries',
+            'entity' => 'countries',
+            'attribute' => "name",
+            'model' => "App\Models\Countries"
+
+        ]);
         $this->crud->addColumn('description_short');
 
 
@@ -87,6 +95,21 @@ class ProductsController extends CrudController
             'name' => 'description_long',
             'label' => 'Long description',
             'type' => 'wysiwyg',
+            'tab' => 'Description'
+        ]);
+        $this->crud->addField([
+            'name' => 'countries',
+            'entity' => 'countries',
+            'label' => "Countries",
+            'type' => 'select2_multiple',
+            'attribute' => 'name',
+            'pivot' => true,
+            'tab' => 'Description'
+        ]);
+        $this->crud->addField([
+            'name' => 'city',
+            'label' => "City",
+            'type' => 'text',
             'tab' => 'Description'
         ]);
         $this->crud->addField([

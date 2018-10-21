@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Product extends Model
+class Country extends Model
 {
     use CrudTrait;
 
@@ -15,7 +15,7 @@ class Product extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'products';
+    protected $table = 'countries';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
@@ -23,20 +23,11 @@ class Product extends Model
         'name',
         'description_short',
         'description_long',
-        'months',
-        'country',
-        'city',
         'image',
-        'index',
-        'scores'
-        ];
+        'index'
+    ];
     // protected $hidden = [];
     // protected $dates = [];
-    protected $casts = [
-        'months' => 'array',
-        'scores' => 'array'
-//        'img' =>
-    ];
 
     /*
     |--------------------------------------------------------------------------
@@ -49,9 +40,6 @@ class Product extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function countries() {
-        return $this->belongsToMany('App\Models\Country', 'countries_products');
-    }
 
     /*
     |--------------------------------------------------------------------------
@@ -70,15 +58,15 @@ class Product extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+
     public function setImageAttribute($value)
     {
         $attribute_name = "image";
-        $disk = "public";
-        $destination_path = "products";
+        $destination_path = "countries";
 
         // if the image was erased
         if ($value==null) {
-            \Storage::disk($disk)->delete($this->{$attribute_name});
+            \Storage::disk("public")->delete($this->{$attribute_name});
             $this->attributes[$attribute_name] = null;
         }
 
@@ -87,7 +75,7 @@ class Product extends Model
         {
             $image = \Image::make($value);
             $filename = md5($value.time()).'.jpg';
-            \Storage::disk($disk)->put($destination_path.'/'.$filename, $image->stream());
+            \Storage::disk("public")->put($destination_path.'/'.$filename, $image->stream());
             $this->attributes[$attribute_name] = 'storage/'.$destination_path.'/'.$filename;
         }
     }

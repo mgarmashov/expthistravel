@@ -37,7 +37,7 @@ class ProductsTableSeeder extends Seeder
             'description_short' => 'Master the art of Muay Thai',
             'description_long' => 'Take on the challenge of a Muay Thai training camp in Thailand. Learn a martial art, stay fit and keep active, and immerse in a Thai culture.',
             'months' => [0],
-            'country' => 'Thailand',
+//            'country' => 'Thailand',
             'image' => $this->getFile('examples', 'muay_thai_1.jpg'),
             'scores' => [
                 $categoriesId['Sight seeing'] => 1,
@@ -61,7 +61,7 @@ class ProductsTableSeeder extends Seeder
             'description_short' => 'Learn to Surf in Stunning Sri Lanka',
             'description_long' => 'Surf’s up! This is the ideal introduction to surfing. Book a surf camp to catch some waves and enjoy blissful beaches of Sri Lanka.',
             'months' => [11,12,1,2,3],
-            'country' => 'Sri Lanka',
+//            'country' => 'Sri Lanka',
             'image' => $this->getFile('examples', 'Surf 3.jpg'),
             'scores' => [
                 $categoriesId['Sight seeing'] => 5,
@@ -85,7 +85,7 @@ class ProductsTableSeeder extends Seeder
             'description_short' => 'Learn to Cook Authentic Thai Food',
             'description_long' => 'Famous for its delicious food, discover the art of Thai cuisine and create renowned dishes in a hands-on cooking class.',
             'months' => [0],
-            'country' => 'Thailand',
+//            'country' => 'Thailand',
             'image' => $this->getFile('examples', 'Cooking class 3.jpg'),
             'scores' => [
                 $categoriesId['Sight seeing'] => 1,
