@@ -47,7 +47,7 @@ class ProductsController extends CrudController
         */
 
         $this->crud->addColumn([
-            'name' => 'image',
+            'name' => 'img',
             'type' => 'image',
             'height' => '100px'
         ]);
@@ -71,7 +71,7 @@ class ProductsController extends CrudController
         ]);
         $this->crud->addField([
             'label' => "Image",
-            'name' => "image",
+            'name' => "img",
             'type' => 'image',
             'upload' => true,
             'aspect_ratio' => 1,

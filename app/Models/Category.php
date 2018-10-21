@@ -22,7 +22,7 @@ class Category extends Model
     protected $fillable = [
         'name',
         'description',
-        'image',
+        'img',
         'index'
     ];
     // protected $hidden = [];
@@ -60,7 +60,7 @@ class Category extends Model
 
     public function setImageAttribute($value)
     {
-        $attribute_name = "image";
+        $attribute_name = "img";
 //        $disk = "public_folder";
         $disk = "public";
         $destination_path = "categories";

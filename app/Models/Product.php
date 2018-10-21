@@ -26,7 +26,7 @@ class Product extends Model
         'months',
         'country',
         'city',
-        'image',
+        'img',
         'index',
         'scores'
         ];
@@ -68,7 +68,7 @@ class Product extends Model
     */
     public function setImageAttribute($value)
     {
-        $attribute_name = "image";
+        $attribute_name = "img";
         $disk = "public";
         $destination_path = "products";
 
