@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Admin'], function() {
 
     CRUD::resource('users', 'UsersController');
@@ -23,4 +19,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
     CRUD::resource('activities', 'ActivitiesController');
     CRUD::resource('countries', 'CountriesController');
 
+});
+
+Route::group(['middleware' => ['web']], function() {
+
+    Route::get('/', 'HomepageController@showPage')->name('index');
 });
