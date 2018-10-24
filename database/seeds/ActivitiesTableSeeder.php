@@ -27,75 +27,23 @@ class ActivitiesTableSeeder extends Seeder
             'Culture'
         ];
 
-        $categoriesId = [];
-        foreach ($categories as $cat) {
-            $categoriesId[$cat] = \App\Models\Category::where('name', $cat)->first()->id;
+        $data = config('activities');
+
+        foreach ($data as $activity) {
+            $scores = [];
+            foreach ($categories as $cat) {
+                $categoryId = \App\Models\Category::where('name', $cat)->first()->id;
+                $scores[$categoryId] = $activity[$cat];
+
+            }
+
+            $p1 = factory(Activity::class)->create([
+                'name' => $activity['name'],
+                'image' => $this->getFile('examples', $activity['image']),
+                'scores' => $scores
+            ]);
+
         }
-
-        factory(Activity::class)->create([
-            'name' => 'Activity 1',
-            'description' => 'lorem',
-            'image' => $this->getFile('examples', 'Muay Thai 4.jpg'),
-            'scores' => [
-                $categoriesId['Sight seeing'] => 0,
-                $categoriesId['Nature'] => 1,
-                $categoriesId['Wildlife'] => 0,
-                $categoriesId['Watersports'] => 1,
-                $categoriesId['Exercise / sport'] => 1,
-                $categoriesId['Relaxation'] => 0,
-                $categoriesId['Food and Drink'] => 0,
-                $categoriesId['Learn'] => 0,
-                $categoriesId['Volunteer'] => 1,
-                $categoriesId['Challenge'] => 0,
-                $categoriesId['Events /festivals'] => 1,
-                $categoriesId['Culture'] => 0,
-
-            ]
-        ]);
-
-        factory(Activity::class)->create([
-            'name' => 'Activity 2',
-            'description' => 'lorem',
-            'image' => $this->getFile('examples', 'Surf 4.jpg'),
-            'scores' => [
-                $categoriesId['Sight seeing'] => 0,
-                $categoriesId['Nature'] => 0,
-                $categoriesId['Wildlife'] => 1,
-                $categoriesId['Watersports'] => 1,
-                $categoriesId['Exercise / sport'] => 1,
-                $categoriesId['Relaxation'] => 1,
-                $categoriesId['Food and Drink'] => 0,
-                $categoriesId['Learn'] => 1,
-                $categoriesId['Volunteer'] => 1,
-                $categoriesId['Challenge'] => 1,
-                $categoriesId['Events /festivals'] => 1,
-                $categoriesId['Culture'] => 1,
-
-            ]
-        ]);
-
-        factory(Activity::class)->create([
-            'name' => 'Activity 3',
-            'description' => 'lorem',
-            'image' => $this->getFile('examples', 'Cooking class 1.jpg'),
-            'scores' => [
-                $categoriesId['Sight seeing'] => 1,
-                $categoriesId['Nature'] => 1,
-                $categoriesId['Wildlife'] => 1,
-                $categoriesId['Watersports'] => 1,
-                $categoriesId['Exercise / sport'] => 1,
-                $categoriesId['Relaxation'] => 0,
-                $categoriesId['Food and Drink'] => 00,
-                $categoriesId['Learn'] => 00,
-                $categoriesId['Volunteer'] => 1,
-                $categoriesId['Challenge'] => 1,
-                $categoriesId['Events /festivals'] => 1,
-                $categoriesId['Culture'] => 0,
-
-            ]
-        ]);
-
-
     }
 
 

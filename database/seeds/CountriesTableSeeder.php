@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Country;
+use App\Models\Region;
 
 class CountriesTableSeeder extends Seeder
 {
@@ -12,23 +13,27 @@ class CountriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $arr = [
-            'Thailand',
-            'Sri lanka',
-            'France',
-            'United States',
-            'Spain',
-            'China',
-            'Italy',
-            'Turkey',
-            'United Kingdom',
-            'Germany',
-            'Mexico'
+        $regions = [
+            'Asia'
         ];
 
-        foreach ($arr as $item) {
-            factory(Country::class)->create([
+        $countries = [
+            'Thailand',
+            'Sri lanka',
+            'Malaysia',
+            'Vietnam'
+        ];
+
+        foreach ($regions as $item) {
+            factory(Region::class)->create([
                 'name' => $item
+            ]);
+        }
+
+        foreach ($countries as $item) {
+            factory(Country::class)->create([
+                'name' => $item,
+                'region' => Region::where('name', 'Asia')->first()->id
             ]);
         }
 

@@ -24,4 +24,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
 Route::group(['middleware' => ['web']], function() {
 
     Route::get('/', 'HomepageController@showPage')->name('index');
+    Route::get('/quiz', 'TestpageController@showPage')->name('test');
 });

@@ -13,12 +13,8 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Models\Product::class, function (Faker $faker) {
-//    dd(base64_encode(file_get_contents($faker->imageUrl(640, 480))));
-//    dd($faker->realText(100));
+$factory->define(App\Models\Region::class, function (Faker $faker) {
     return [
-        'description_short' => $faker->realText(100),
-        'description_long' => $faker->realText(400),
-        'image' => 'data:image/jpeg;base64,'.base64_encode(file_get_contents($faker->imageUrl())),
+
     ];
 });

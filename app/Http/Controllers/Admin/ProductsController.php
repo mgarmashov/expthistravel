@@ -113,6 +113,20 @@ class ProductsController extends CrudController
             'tab' => 'Description'
         ]);
         $this->crud->addField([
+            'name' => 'minDuration',
+            'label' => 'Minumim duration (days)',
+            'type' => 'number',
+            'tab' => 'Description'
+        ]);
+
+        $this->crud->addField([
+            'name' => 'maxDuration',
+            'label' => 'Maximum duration (days)',
+            'type' => 'number',
+            'tab' => 'Description'
+        ]);
+
+        $this->crud->addField([
             'name' => 'months',
             'label' => "Months",
             'type' => 'select2_from_array',

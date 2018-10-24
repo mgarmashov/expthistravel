@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Product extends Model
+class Region extends Model
 {
     use CrudTrait;
 
@@ -15,30 +15,18 @@ class Product extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'products';
+    protected $table = 'regions';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
     protected $fillable = [
         'name',
         'description_short',
-        'description_long',
-        'months',
-        'country',
-        'city',
         'image',
-        'index',
-        'scores',
-        'minDuration',
-        'maxDuration'
-        ];
+        'index'
+    ];
     // protected $hidden = [];
     // protected $dates = [];
-    protected $casts = [
-        'months' => 'array',
-        'scores' => 'array'
-//        'img' =>
-    ];
 
     /*
     |--------------------------------------------------------------------------
@@ -51,9 +39,6 @@ class Product extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function countries() {
-        return $this->belongsToMany('App\Models\Country', 'countries_products');
-    }
 
     /*
     |--------------------------------------------------------------------------
@@ -72,10 +57,11 @@ class Product extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+
     public function setImageAttribute($value)
     {
         $attribute_name = "image";
-        $destination_path = "products";
+        $destination_path = "regions";
 
         // if the image was erased
         if ($value==null) {
