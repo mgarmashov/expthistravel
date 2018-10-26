@@ -33,7 +33,8 @@ class ActivitiesTableSeeder extends Seeder
             $scores = [];
             foreach ($categories as $cat) {
                 $categoryId = \App\Models\Category::where('name', $cat)->first()->id;
-                $scores[$categoryId] = $activity[$cat];
+//                $scores[$categoryId] = $activity[$cat];
+                $scores[$categoryId] = rand(0,10);
 
             }
 
