@@ -16,7 +16,7 @@ class TestpageController extends Controller
     }
 
 
-    public function getQuestion(Request $request)
+    public function getQuestion()
     {
         $this->writeQuizHistory();
 
@@ -49,6 +49,10 @@ class TestpageController extends Controller
         ;
         $activity = Activity::query()->whereNotIn('id', $excludeList)->inRandomOrder()->first();
 
+        if ( count($activity) == 0 ) {
+            return response()->json(['redirect'=>'part2']);
+        }
+
         $response = [
             'id' => $activity->id,
             'image' => asset(cropImage($activity->image, 700, 400)),
@@ -56,5 +60,11 @@ class TestpageController extends Controller
         ];
 
         return response()->json($response);
+    }
+
+
+    public function showPart2()
+    {
+        return view('frontend.pages.test-part2');
     }
 }

@@ -60,10 +60,13 @@
         let buttons = document.getElementsByClassName('btn-quiz');
         let counter = document.getElementById('counter');
         let answers = {};
+        let step = parseInt(counter.dataset.number);
+        let container = document.getElementById('activity-container');
+
         for ( let button of buttons ) {
             button.onclick = function() {
                 event.preventDefault();
-                let step = parseInt(counter.dataset.number);
+
                 let activityId = parseInt(document.getElementById('activity-item').dataset.activity);
                 let answer = (this.dataset.kind == 'like') ? 'like' : (this.dataset.kind == 'dislike') ? 'dislike' : 'missed';
 
@@ -74,21 +77,13 @@
 
                 getQuestion(answers);
 
-                //update counter on page
-                step++;
-                counter.innerText = step+'/{{$totalCounter}}';
-                counter.dataset.number = step;
-
-                if (step == {{ $totalCounter }}+1 ) {
-                    for ( let el of document.getElementsByClassName('btn-quiz')) {
-                        el.hidden = true;
-                    }
-                }
             }
         }
 
         function getQuestion(answers) {
-            let container = document.getElementById('activity-container');
+
+
+
             $.ajax({
                 type: "post",
                 headers: {
@@ -105,9 +100,26 @@
 
                 success: function(data)
                 {
-                    document.getElementById('activity-item').dataset.activity = data.id;
-                    container.getElementsByTagName('img')[0].src = data.image;
-                    container.getElementsByTagName('h4')[0].innerText = data.name;
+                    if (step == {{ $totalCounter }} || data.redirect) {
+                        for ( let el of document.getElementsByClassName('btn-quiz')) {
+                            el.hidden = true;
+                        }
+                        $('#status').fadeIn();
+                        $('#preloader').delay(350).fadeIn('slow', function () {
+                            return window.location = "{{route('test-part2')}}";
+                        });
+
+                    }
+
+                        document.getElementById('activity-item').dataset.activity = data.id;
+                        container.getElementsByTagName('img')[0].src = data.image;
+                        container.getElementsByTagName('h4')[0].innerText = data.name;
+
+                        step++;
+                        counter.innerText = step+'/{{$totalCounter}}';
+                        counter.dataset.number = step;
+
+
                 },
 
             })
