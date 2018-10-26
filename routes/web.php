@@ -25,4 +25,5 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::get('/', 'HomepageController@showPage')->name('index');
     Route::get('/quiz', 'TestpageController@showPage')->name('test');
+    Route::post('/quiz/get-question', 'TestpageController@getQuestion')->name('getQuestion');
 });
