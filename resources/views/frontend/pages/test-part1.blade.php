@@ -29,7 +29,7 @@
                             <div id="activity-container">
                                 <div class="avtivity-item" id="activity-item" data-activity="{{ $activity->id }}">
                                     <div class="v_place_img">
-                                        <img src="{{ asset(cropImage($activity->image, 700, 400)) }}" alt="" />
+                                        <img src="{{ asset(cropImage($activity->image, 700, 400)) }}" alt="{{ $activity->name }}" />
                                     </div>
                                     <div class="b_pack rows text-center">
                                         <div class="col-md-8 col-md-offset-2">
@@ -113,6 +113,7 @@
 
                         document.getElementById('activity-item').dataset.activity = data.id;
                         container.getElementsByTagName('img')[0].src = data.image;
+                        container.getElementsByTagName('img')[0].alt = data.name;
                         container.getElementsByTagName('h4')[0].innerText = data.name;
 
                         step++;

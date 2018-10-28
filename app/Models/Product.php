@@ -51,7 +51,8 @@ class Product extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function countries() {
+    public function countries()
+    {
         return $this->belongsToMany('App\Models\Country', 'countries_products');
     }
 

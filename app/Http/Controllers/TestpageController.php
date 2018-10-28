@@ -12,7 +12,7 @@ class TestpageController extends Controller
 {
     public function showPage()
     {
-        return view('frontend.pages.test-part1');
+        return view('frontend.pages.test-part');
     }
 
 

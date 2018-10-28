@@ -11,4 +11,9 @@ class QuizHistory extends Model
     protected $fillable = [
         'user', 'session', 'activity', 'answer'
     ];
+
+    public function activity()
+    {
+        return $this->belongsTo('App\Models\Activity', 'activity','id');
+    }
 }
