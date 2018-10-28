@@ -67,4 +67,23 @@ class TestpageController extends Controller
     {
         return view('frontend.pages.test-part2');
     }
+
+    public function showPart3(Request $request)
+    {
+        $data = array_only($request->all(), ['q1', 'q2', 'q3']);
+        $dataDotted = array_dot($data);
+
+        $request->session()->forget(['q1', 'q2', 'q3']);
+        foreach ($dataDotted as $key => $value) {
+
+            $request->session()->push($key, $value);
+        }
+
+        return view('frontend.pages.test-part3');
+    }
+
+    public function register(Request $request)
+    {
+        dd($request->all());
+    }
 }

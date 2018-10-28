@@ -23,8 +23,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
 
 Route::group(['middleware' => ['web']], function() {
 
-        Route::get('/', 'HomepageController@showPage')->name('index');
+    Route::get('/', 'HomepageController@showPage')->name('index');
     Route::get('/quiz', 'TestpageController@showPage')->name('test');
-    Route::get('/quiz/part2', 'TestpageController@showPart2')->name('test-part2');
     Route::post('/quiz/get-question', 'TestpageController@getQuestion')->name('getQuestion');
+    Route::get('/quiz/part2', 'TestpageController@showPart2')->name('test-part2');
+    Route::post('/quiz/part3', 'TestpageController@showPart3')->name('test-part3');
+    Route::post('/quiz/register', 'Auth\RegisterController@register')->name('test-register');
 });
+
