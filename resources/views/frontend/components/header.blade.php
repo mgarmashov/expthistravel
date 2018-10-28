@@ -7,10 +7,28 @@
                 <div class="col-md-12">
                     <div class="ed-com-t1-right">
                         <ul>
-                            <li><a href="login.html">Sign In</a>
-                            </li>
-                            <li><a href="register.html">Sign Up</a>
-                            </li>
+                            @guest
+                                <li>
+                                    <a href="{{ route('login') }}">Sign In</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="{{ route('register') }}">Sign Up</a>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="{{ route('profile') }}">{{Auth::user()->name ?? Auth::user()->email}} - Profile</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Sign Out
+                                    </a>
+                                </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            @endguest
                         </ul>
                     </div>
                     <div class="ed-com-t1-social">

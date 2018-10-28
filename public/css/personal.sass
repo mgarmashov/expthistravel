@@ -1,4 +1,9 @@
 //sections at home page
+.background-image
+  background-image: url(../images/home-large-image/asia3.jpg)
+  position: relative
+  background-size: cover
+
 .dark-layout
   background: rgba(0,0,0,0.6)
   width: 100%
@@ -54,10 +59,12 @@
 
 //part 2
 .application-layout
-  margin: 0 auto
-  width: 50%
+  //margin: 0 auto
+  //width: 50%
   background: #fff
   padding: 45px 50px 50px 50px
+  @media (max-width: 768px)
+    padding: 0
   margin-bottom: 70px
   border-radius: 5px
   text-align: center

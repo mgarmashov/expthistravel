@@ -16,13 +16,15 @@ class UsersTableSeeder extends Seeder
             'login' => 'root',
             'name' => 'Mikhail Garmashov',
             'email' => 'mikhail.garmashov@gmail.com',
-            'password' => \Illuminate\Support\Facades\Hash::make('moscow')
+            'password' => \Illuminate\Support\Facades\Hash::make('moscow'),
+            'role' => 'admin'
         ]);
 
         factory(User::class)->create([
             'login' => 'jon',
             'name' => 'Jon Fisher',
-            'password' => \Illuminate\Support\Facades\Hash::make('jon')
+            'password' => \Illuminate\Support\Facades\Hash::make('jon'),
+            'role' => 'admin'
         ]);
     }
 }

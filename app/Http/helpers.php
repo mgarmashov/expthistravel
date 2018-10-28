@@ -27,3 +27,29 @@ if (! function_exists('cropImage')) {
         return 'storage/'.$newSrc;
     }
 }
+
+
+if (! function_exists('randomBgImage')) {
+    function randomBgImage()
+    {
+        $bgImages = [
+            'windsurf.jpg',
+            'boat.jpg',
+            'food.jpg',
+            'bus.jpg',
+            'bikes.jpg',
+            'asia1.jpg',
+            'asia2.jpg',
+            'asia3.jpg',
+            'asia4.jpg',
+            'beach1.jpg',
+            'beach2.jpg',
+            'beach3.jpg',
+            'beach4.jpg',
+            'waterfall.jpg',
+        ];
+
+        return array_random($bgImages);
+    }
+}
+

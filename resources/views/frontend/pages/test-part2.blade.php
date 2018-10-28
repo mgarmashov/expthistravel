@@ -15,11 +15,11 @@
                     <p>Page 2/3</p>
                 </div>
 
-                <div class="application-layout">
+                <div class="application-layout col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
 
-                <form action="{{route('test-part3')}}" class="part2-form" method="post">
+                    <form action="{{route('test-part3')}}" class="part2-form" method="post">
                     <h4>Who is travelling?</h4>
-                        <div class="col-xs-12">
+                        <div class="col-xs-12" id="q1">
                             <div class="checkbox checkbox-info checkbox-circle">
                                 <input name="q1[solo]" id="q1-solo" class="styled" type="checkbox">
                                 <label for="q1-solo">I’m going solo </label>
@@ -34,16 +34,17 @@
                             </div>
                             <div class="checkbox checkbox-info checkbox-circle">
                                 <input name="q1[family]" id="q1-family" class="styled" type="checkbox">
-                                <label for="q1[family]">Family with little ones</label>
+                                <label for="q1-family">Family with little ones</label>
                             </div>
+                            <hr>
                             <div class="checkbox checkbox-info checkbox-circle">
                                 <input name="q1[all]" id="q1-all" class="styled" type="checkbox">
-                                <label for="q1[all]">Not sure</label>
+                                <label for="q1-all">Not sure</label>
                             </div>
                         </div>
 
                     <h4>How long do you want to go for?</h4>
-                    <div class="col-xs-12">
+                    <div class="col-xs-12"  id="q2">
                         <div class="checkbox checkbox-info checkbox-circle">
                             <input name="q2[up7]" id="q2-up7" class="styled" type="checkbox">
                             <label for="q2-up7">7 nights or less </label>
@@ -56,6 +57,7 @@
                             <input name="q2[14more]" id="q2-14more" class="styled" type="checkbox">
                             <label for="q2-14more">14 nights or more</label>
                         </div>
+                        <hr>
                         <div class="checkbox checkbox-info checkbox-circle">
                             <input name="q2[all]" id="q2-all" class="styled" type="checkbox">
                             <label for="q2-all">I don’t mind</label>
@@ -79,34 +81,39 @@
                             12 => 'December'
                         ]
                     @endphp
-                    <div class="col-xs-12">
-                        <div class="checkbox checkbox-info checkbox-circle">
-                            <input name="q3[0]" id="q3-0" class="styled" type="checkbox">
-                            <label for="q3-0">I don’t mind</label>
-                        </div>
-                    </div>
-                    <div class="col-xs-6">
-                        @foreach($months as $val => $month)
-
+                    <div id="q3">
+                        <div class="col-xs-12">
                             <div class="checkbox checkbox-info checkbox-circle">
-                                <input name="q3[{{$val}}]" id="q3-{{$val}}" class="styled" type="checkbox">
-                                <label for="q3-{{$val}}">{{ $month }}</label>
+                                <input name="q3[0]" id="q3-all" class="styled" type="checkbox">
+                                <label for="q3-all">I don’t mind</label>
                             </div>
-                            @if($val == 6)
-                    </div>
-                    <div class="col-xs-6">
-                            @endif
+                        </div>
+                        <div class="clearfix"></div>
+                            <hr>
+                        <div class="col-sm-6">
+                            @foreach($months as $val => $month)
 
-                        @endforeach
+                                <div class="checkbox checkbox-info checkbox-circle">
+                                    <input name="q3[{{$val}}]" id="q3-{{$val}}" class="styled" type="checkbox">
+                                    <label for="q3-{{$val}}">{{ $month }}</label>
+                                </div>
+                                @if($val == 6)
+                        </div>
+                        <div class="col-sm-6">
+                                @endif
+
+                            @endforeach
+                        </div>
                     </div>
                     <div class="clearfix"></div>
                     @csrf
-                    <div class="col-xs-6 col-xs-offset-3">
+                    <div class="col-sm-6 col-sm-offset-3">
                         <i id="submit-btn" class="waves-effect waves-light tourz-sear-btn v2-ser-btn waves-input-wrapper" style="">
-                            <input type="submit" value="search" class="waves-button-input">
+                            <input type="submit" value="Next" class="waves-button-input">
 
                         </i>
                     </div>
+                    <div class="clearfix"></div>
                 </form>
                 </div>
             </div>
@@ -124,6 +131,29 @@
     <script>
         document.getElementById('submit-btn').onclick = function() {
             document.getElementsByTagName('form')[0].submit();
+        }
+
+    </script>
+
+    <script>
+        for (let id of ['q1', 'q2', 'q3']) {
+            document.getElementById(id+'-all').onclick = function() {
+                checkElements(this, id)
+            }
+        }
+
+
+        function checkElements(clickedElement, container) {
+            let elements = document.getElementById(container).getElementsByTagName('input');
+            if (clickedElement.checked) {
+                for ( let el of elements) {
+                    el.checked = true;
+                }
+            } else {
+                for ( let el of elements) {
+                    el.checked = false;
+                }
+            }
         }
     </script>
 @endpush

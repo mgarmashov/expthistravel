@@ -1,3 +1,8 @@
+.background-image {
+  background-image: url(../images/home-large-image/asia3.jpg);
+  position: relative;
+  background-size: cover; }
+
 .dark-layout {
   background: rgba(0, 0, 0, 0.6);
   width: 100%;
@@ -49,8 +54,6 @@
       background: #ca0d29; }
 
 .application-layout {
-  margin: 0 auto;
-  width: 50%;
   background: #fff;
   padding: 45px 50px 50px 50px;
   margin-bottom: 70px;
@@ -58,6 +61,9 @@
   text-align: center;
   position: relative;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.8); }
+  @media (max-width: 768px) {
+    .application-layout {
+      padding: 0; } }
   .application-layout p {
     font-size: 18px;
     margin-bottom: 0px; }

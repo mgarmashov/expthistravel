@@ -1,26 +1,26 @@
 @extends('frontend.layouts.main')
 
+@php
+    $homeImages = [
+        'windsurf',
+        'boat',
+        'food',
+        'bus',
+        'bikes',
+        'asia1',
+        'asia2',
+        'asia3',
+        'asia4',
+        'beach1',
+        'beach2',
+        'beach3',
+        'beach4',
+        'waterfall',
+    ];
+    $rand = array_rand($homeImages, 2);
+@endphp
+
 @section('content')
-    <!--HEADER SECTION-->
-    @php
-        $homeImages = [
-            'windsurf',
-            'boat',
-            'food',
-            'bus',
-            'bikes',
-            'asia1',
-            'asia2',
-            'asia3',
-            'asia4',
-            'beach1',
-            'beach2',
-            'beach3',
-            'beach4',
-            'waterfall',
-        ];
-        $rand = array_rand($homeImages, 2);
-    @endphp
     <section>
         <div class="tourz-search" style="background-image: url(../images/home-large-image/{{ $homeImages[$rand[0]] }}.jpg)">
             <div class="dark-layout">

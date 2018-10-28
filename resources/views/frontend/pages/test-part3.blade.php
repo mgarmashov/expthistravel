@@ -19,19 +19,29 @@
 
                 </div>
 
-                <div class="application-layout">
+                <div class="application-layout col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
                     <p>Almost done. Register please for keeping your answers and relating with your profile</p>
                     <form class="col s12" method="post" action="{{ route('test-register') }}">
                         <div class="row">
                             <div class="input-field col s12">
-                                <input type="email" class="validate" name="email">
+                                <input type="email" class="validate" name="email" value="{{ old('email') }}" required autofocus>
                                 <label>Email</label>
+                                @if ($errors->has('email'))
+                                    <span class="red-text" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input type="password" class="validate"  name="password">
                                 <label>Password</label>
+                                @if ($errors->has('password'))
+                                    <span class="red-text" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         <div class="row">
@@ -46,7 +56,7 @@
                                 <i class="waves-effect waves-light btn-large full-btn waves-input-wrapper" style=""><input type="submit" value="submit" class="waves-button-input"></i> </div>
                         </div>
                     </form>
-                    <p>Are you a already member ? <a href="login.html">Click to Login</a>
+                    <p>Are you a already member ? <a href="{{route('login')}}">Click to Login</a>
                     </p>
                 </div>
 
@@ -64,7 +74,17 @@
 @push('after_scripts')
     <script>
         document.getElementById('submit-btn').onclick = function() {
-            document.getElementsByTagName('form')[0].submit();
+            let form = document.getElementsByTagName('form')[0];
+            let fields = [];
+            fields.push(form.querySelector('input[name="email"]'));
+            fields.push(form.querySelector('input[name="password"]'));
+            fields.push(form.querySelector('input[name="password_confirmation"]'));
+            for ( let input of fields ) {
+                if (input.value == null || input.value == '' || input.value == 'NaN' || input.value == 'undefined') {
+                    break;
+                }
+                document.getElementsByTagName('form')[0].submit();
+            }
         }
     </script>
 @endpush
