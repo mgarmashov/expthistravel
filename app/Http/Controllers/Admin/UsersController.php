@@ -51,22 +51,26 @@ class UsersController extends CrudController
             [
                 'label' => "Name",
                 'name' => "name",
-                'type' => 'text'
+                'type' => 'text',
+                'tab' => 'Description'
             ],
             [
                 'label' => "Login",
                 'name' => "login",
-                'type' => 'text'
+                'type' => 'text',
+                'tab' => 'Description'
             ],
             [
                 'label' => "Email",
                 'name' => "email",
-                'type' => 'text'
+                'type' => 'text',
+                'tab' => 'Description'
             ],
             [
                 'label' => "Phone",
                 'name' => "phone",
-                'type' => 'text'
+                'type' => 'text',
+                'tab' => 'Description'
             ],
             [
                 'label' => "Role",
@@ -74,6 +78,13 @@ class UsersController extends CrudController
                 'type' => 'select_from_array',
                 'options' => ['user' => 'user', 'admin' => 'admin'],
                 'allows_null' => true,
+                'tab' => 'Description'
+            ],
+            [
+                'label' => "Answers",
+                'name' => "id",
+                'type' => 'answers',
+                'tab' => 'Answers'
             ],
 
         ]);

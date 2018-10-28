@@ -10,4 +10,14 @@ class HomepageController extends Controller
     {
         return view('frontend.pages.home');
     }
+
+    public function showContacts()
+    {
+        return view('frontend.pages.contacts');
+    }
+
+    public function showHowWeWork()
+    {
+        return view('frontend.pages.howWeWork');
+    }
 }

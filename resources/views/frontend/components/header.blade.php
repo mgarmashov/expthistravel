@@ -33,12 +33,9 @@
                     </div>
                     <div class="ed-com-t1-social">
                         <ul>
-                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            </li>
+                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -57,8 +54,7 @@
                     </div>
                     <div class="main-menu">
                         <ul>
-                            <li><a href="#">Home</a>
-                            </li>
+                            {{--<li><a href="{{ route('index') }}">Home</a></li>--}}
                             <li class="about-menu">
                                 <a href="family-package.html" class="mm-arr">Packages</a>
                                 <!-- MEGA MENU 1 -->
@@ -101,8 +97,9 @@
                                     </div>
                                 </div>
                             </li>
-                            <li><a href="#">Contact us</a>
-                            </li>
+                            <li><a href="{{route('how-we-work')}}">How we work</a></li>
+                            <li><a href="{{route('contacts')}}">Contact us</a></li>
+                            <li class="yellow"><a href="{{route('test')}}">Find the best trip</a></li>
                         </ul>
                     </div>
                 </div>

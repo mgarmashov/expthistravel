@@ -1,28 +1,8 @@
 @extends('frontend.layouts.main')
 
-@php
-    $homeImages = [
-        'windsurf',
-        'boat',
-        'food',
-        'bus',
-        'bikes',
-        'asia1',
-        'asia2',
-        'asia3',
-        'asia4',
-        'beach1',
-        'beach2',
-        'beach3',
-        'beach4',
-        'waterfall',
-    ];
-    $rand = array_rand($homeImages, 2);
-@endphp
-
 @section('content')
     <section>
-        <div class="tourz-search" style="background-image: url(../images/home-large-image/{{ $homeImages[$rand[0]] }}.jpg)">
+        <div class="tourz-search" style="background-image: url(../images/home-large-image/{{ randomBgImage() }}">
             <div class="dark-layout">
                 <div class="container">
                     <div class="row">
@@ -79,7 +59,7 @@
     </section>
     <!--====== TIPS BEFORE TRAVEL ==========-->
     <section>
-        <div class="rows tips tips-home home_title" style="background-image: url(../images/home-large-image/{{ $homeImages[$rand[1]] }}.jpg)">
+        <div class="rows tips tips-home home_title" style="background-image: url(../images/sea-water-bg.jpg">
             <div class="light-layout tb-space ">
                 <div class="container tips_1">
                     <!-- TIPS BEFORE TRAVEL -->

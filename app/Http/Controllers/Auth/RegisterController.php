@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\QuizHistory;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -38,6 +41,27 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        /*
+         * Changed block. We keep previous session token tu current user
+         */
+        $sessionIdBefore = request()->session()->getId();
+        foreach(QuizHistory::where('session', $sessionIdBefore)->get() as $item) {
+            $item->user = $user->id;
+            $item->save();
+        }
+        ///////////////////// end
+
+        $this->guard()->login($user);
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
     }
 
     /**

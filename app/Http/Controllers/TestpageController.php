@@ -12,7 +12,7 @@ class TestpageController extends Controller
 {
     public function showPage()
     {
-        return view('frontend.pages.test-part');
+        return view('frontend.pages.test-part1');
     }
 
 
@@ -84,6 +84,6 @@ class TestpageController extends Controller
 
     public function register(Request $request)
     {
-        dd($request->all());
+
     }
 }
