@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone'
+        'name', 'email', 'password', 'phone', 'role', 'login'
     ];
 
     /**
@@ -34,5 +34,14 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+    public function emailApprovedStatus() {
+        if (empty($this->email_verified_at)) {
+            return '<i class="fa fa-times" style="color:red" aria-hidden="true"></i>';
+        } else {
+            return '<i class="fa fa-check-circle" style="color:green" aria-hidden="true"></i>';
+        }
+
     }
 }

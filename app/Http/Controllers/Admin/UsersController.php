@@ -33,8 +33,51 @@ class UsersController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        // TODO: remove setFromDb() and manually define Fields and Columns
-        $this->crud->setFromDb();
+        $this->crud->addColumn('name');
+        $this->crud->addColumn('login');
+        $this->crud->addColumn('email');
+        $this->crud->addColumn([
+            'name' => "is_approved",
+            'label' => "Email approved",
+            'type' => "model_function",
+            'function_name' => 'emailApprovedStatus',
+        ]);
+        $this->crud->addColumn('role');
+
+        /**
+         * fields
+         */
+        $this->crud->addFields([
+            [
+                'label' => "Name",
+                'name' => "name",
+                'type' => 'text'
+            ],
+            [
+                'label' => "Login",
+                'name' => "login",
+                'type' => 'text'
+            ],
+            [
+                'label' => "Email",
+                'name' => "email",
+                'type' => 'text'
+            ],
+            [
+                'label' => "Phone",
+                'name' => "phone",
+                'type' => 'text'
+            ],
+            [
+                'label' => "Role",
+                'name' => "role",
+                'type' => 'select_from_array',
+                'options' => ['user' => 'user', 'admin' => 'admin'],
+                'allows_null' => true,
+            ],
+
+        ]);
+
 
         // add asterisk for fields that are required in UserRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
