@@ -46,10 +46,10 @@ class TestpageController extends Controller
         foreach (request()->answers as $answer) {
             $excludeList[] = $answer['activity'];
         }
-        ;
+
         $activity = Activity::query()->whereNotIn('id', $excludeList)->inRandomOrder()->first();
 
-        if ( count($activity) == 0 ) {
+        if ( !$activity ) {
             return response()->json(['redirect'=>'part2']);
         }
 

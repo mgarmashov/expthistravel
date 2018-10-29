@@ -105,12 +105,11 @@
                             el.hidden = true;
                         }
                         $('#status').fadeIn();
-                        $('#preloader').delay(350).fadeIn('slow', function () {
+                        $('#preloader').delay(350).fadeIn('fast', function () {
                             return window.location = "{{route('test-part2')}}";
                         });
 
-                    }
-
+                    } else {
                         document.getElementById('activity-item').dataset.activity = data.id;
                         container.getElementsByTagName('img')[0].src = data.image;
                         container.getElementsByTagName('img')[0].alt = data.name;
@@ -119,8 +118,7 @@
                         step++;
                         counter.innerText = step+'/{{$totalCounter}}';
                         counter.dataset.number = step;
-
-
+                    }
                 },
 
             })
