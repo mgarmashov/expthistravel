@@ -33,18 +33,13 @@ Route::group(['middleware' => ['web']], function() {
     Route::post('/quiz/get-question', 'QuizController@getQuestion')->name('getQuestion');
     Route::get('/quiz/part2', 'QuizController@showPart2')->name('quiz-part2');
     Route::any('/quiz/part3', 'QuizController@showPart3')->name('quiz-part3');
-//    Route::get('/quiz/part3', function() {
-//        redirect('/profile');
-//    })->name('registered');
     Route::post('/quiz/register', 'Auth\RegisterController@register')->name('quiz-register');
+    Route::get('/quiz-results', 'QuizController@showResults')->name('quiz-results');
 });
 
 Auth::routes();
 
 
 Route::group(['middleware' => ['auth']], function() {
-
     Route::get('/profile', 'ProfileController@showPage')->name('profile');
-    Route::get('/quiz-results', 'QuizController@showResults')->name('quiz-results');
-
 });
