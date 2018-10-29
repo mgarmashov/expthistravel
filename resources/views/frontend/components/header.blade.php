@@ -99,7 +99,7 @@
                             </li>
                             <li><a href="{{route('how-we-work')}}">How we work</a></li>
                             <li><a href="{{route('contacts')}}">Contact us</a></li>
-                            <li class="yellow"><a href="{{route('test')}}">Find the best trip</a></li>
+                            <li class="yellow"><a href="{{route('quiz-part1')}}">Find the best trip</a></li>
                         </ul>
                     </div>
                 </div>

@@ -12,33 +12,17 @@ class ActivitiesTableSeeder extends Seeder
      */
     public function run()
     {
-        $categories = [
-            'Sight seeing',
-            'Nature',
-            'Wildlife',
-            'Watersports',
-            'Exercise / sport',
-            'Relaxation',
-            'Food and Drink',
-            'Learn',
-            'Volunteer',
-            'Challenge',
-            'Events /festivals',
-            'Culture'
-        ];
+        $categories = config('categories');
 
         $data = config('activities');
 
         foreach ($data as $activity) {
             $scores = [];
-            foreach ($categories as $cat) {
-                $categoryId = \App\Models\Category::where('name', $cat)->first()->id;
-//                $scores[$categoryId] = $activity[$cat];
-                $scores[$categoryId] = rand(0,10);
-
+            foreach ($categories as $key => $category) {
+                $scores[$key] = rand(0,10);
             }
 
-            $p1 = factory(Activity::class)->create([
+            factory(Activity::class)->create([
                 'name' => $activity['name'],
                 'image' => $this->getFile('examples', $activity['image']),
                 'scores' => $scores

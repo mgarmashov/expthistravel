@@ -21,7 +21,7 @@
 
                 <div class="application-layout col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
                     <p>Almost done. Register please for keeping your answers and relating with your profile</p>
-                    <form class="col s12" method="post" action="{{ route('test-register') }}">
+                    <form class="col s12" method="post" action="{{ route('quiz-register') }}">
                         <div class="row">
                             <div class="input-field col s12">
                                 <input type="email" class="validate" name="email" value="{{ old('email') }}" required autofocus>
@@ -50,6 +50,7 @@
                                 <label>Confirm Password</label>
                             </div>
                         </div>
+                        <input type="hidden" name="quiz-results" value="{{ $dataUrl ?? '' }}">
                         @csrf
                         <div class="row">
                             <div class="input-field col s12" id="submit-btn">

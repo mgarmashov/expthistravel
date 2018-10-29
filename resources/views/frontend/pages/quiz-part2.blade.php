@@ -17,7 +17,7 @@
 
                 <div class="application-layout col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
 
-                    <form action="{{route('test-part3')}}" class="part2-form" method="post">
+                    <form action="{{route('quiz-part3')}}" class="part2-form" method="post">
                     <h4>Who is travelling?</h4>
                         <div class="col-xs-12" id="q1">
                             <div class="checkbox checkbox-info checkbox-circle">

@@ -29,14 +29,14 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('/', 'HomepageController@showPage')->name('index');
     Route::get('/contacts', 'HomepageController@showContacts')->name('contacts');
     Route::get('/how-we-work', 'HomepageController@showHowWeWork')->name('how-we-work');
-    Route::get('/quiz', 'TestpageController@showPage')->name('test');
-    Route::post('/quiz/get-question', 'TestpageController@getQuestion')->name('getQuestion');
-    Route::get('/quiz/part2', 'TestpageController@showPart2')->name('test-part2');
-    Route::any('/quiz/part3', 'TestpageController@showPart3')->name('test-part3');
+    Route::get('/quiz', 'QuizController@showPage')->name('quiz-part1');
+    Route::post('/quiz/get-question', 'QuizController@getQuestion')->name('getQuestion');
+    Route::get('/quiz/part2', 'QuizController@showPart2')->name('quiz-part2');
+    Route::any('/quiz/part3', 'QuizController@showPart3')->name('quiz-part3');
 //    Route::get('/quiz/part3', function() {
 //        redirect('/profile');
 //    })->name('registered');
-    Route::post('/quiz/register', 'Auth\RegisterController@register')->name('test-register');
+    Route::post('/quiz/register', 'Auth\RegisterController@register')->name('quiz-register');
 });
 
 Auth::routes();
@@ -45,5 +45,6 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/profile', 'ProfileController@showPage')->name('profile');
+    Route::get('/quiz-results', 'QuizController@showResults')->name('quiz-results');
 
 });

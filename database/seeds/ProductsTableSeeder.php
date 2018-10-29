@@ -14,28 +14,14 @@ class ProductsTableSeeder extends Seeder
 
     public function run()
     {
-        $categories = [
-            'Sight seeing',
-            'Nature',
-            'Wildlife',
-            'Watersports',
-            'Exercise / sport',
-            'Relaxation',
-            'Food and Drink',
-            'Learn',
-            'Volunteer',
-            'Challenge',
-            'Events /festivals',
-            'Culture'
-        ];
+        $categories = config('categories');
 
         $data = config('products');
 
         foreach ($data as $product) {
             $scores = [];
-            foreach ($categories as $cat) {
-                $categoryId = \App\Models\Category::where('name', $cat)->first()->id;
-                $scores[$categoryId] = $product[$cat];
+            foreach ($categories as $key => $category) {
+                $scores[$key] = $product[$category['name']];
 
             }
 

@@ -32,6 +32,7 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/profile';
+    protected $quizResults;
 
     /**
      * Create a new controller instance.
@@ -45,6 +46,7 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
+        $this->quizResults = $request->input('quiz-results');
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
@@ -92,5 +94,20 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+
+
+    public function redirectTo()
+    {
+
+        if ($this->quizResults) {
+            $attribures = [];
+            parse_str($this->quizResults, $attribures);
+
+            return route('quiz-results', $attribures);
+        }
+
+        return route('profile');
     }
 }

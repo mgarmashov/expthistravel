@@ -10,7 +10,7 @@
                             <h1>Find out the best suitable travel experience for you!</h1>
                             <p>We offer you small test. All you need is choose some pictures!</p>
                             <p>Our special images and your associations will help you to define most interesting kinds of rest and getting impressions</p>
-                            <a class="waves-effect waves-light tourz-sear-btn" href="{{ route('test') }}"> Let's start!</a>
+                            <a class="waves-effect waves-light tourz-sear-btn" href="{{ route('quiz-part1') }}"> Let's start!</a>
                         </div>
                     </div>
                 </div>

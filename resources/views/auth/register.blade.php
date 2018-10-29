@@ -7,7 +7,7 @@
                 <div class="tr-regi-form">
                             <h4>Create an Account</h4>
                             <p></p>
-                            <form class="col s12" method="post" action="{{ route('test-register') }}">
+                            <form class="col s12" method="post" action="{{ route('quiz-register') }}">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input type="email" class="validate" name="email" value="{{ old('email') }}" required>

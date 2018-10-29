@@ -106,7 +106,7 @@
                         }
                         $('#status').fadeIn();
                         $('#preloader').delay(350).fadeIn('fast', function () {
-                            return window.location = "{{route('test-part2')}}";
+                            return window.location = "{{route('quiz-part2')}}";
                         });
 
                     } else {
