@@ -1,4 +1,6 @@
 @php
+
+    $user = \App\Models\User::find($id);
     $activities = \App\Models\Activity::all();
     $likes = \App\Models\QuizHistory::where('user', $id)->where('answer', 'like')->select('activity')->get();
     $dislikes = \App\Models\QuizHistory::where('user', $id)->where('answer', 'dislike')->select('activity')->get();
@@ -15,52 +17,95 @@
 <div @include('crud::inc.field_wrapper_attributes')>
     <div class="">
         <row>
-            <div class="col-sm-6">
+            <h3>Conditions</h3>
+            <div>
+                <table class="table table-condensed table-bordered">
+                    <tbody>
+                        <tr>
+                            <td><b>Who is travelling?</b></td>
+                            <td>
+                                @if($user->q1)
+                                    @foreach ($user->q1 as $value)
+                                        <ul>
+                                            <li>{{ config('questions')['q1'][$value] ?? '' }}</li>
+                                        </ul>
+                                    @endforeach
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>How long do you want to go for?</b></td>
+                            <td>
+                                @if($user->q2)
+                                    @foreach ($user->q2 as $value)
+                                        <ul>
+                                            <li>{{ config('questions')['q2'][$value] ?? '' }}</li>
+                                        </ul>
+                                    @endforeach
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>When do you want to go?</b></td>
+                            <td>
+                                @if($user->q3)
+                                    @foreach ($user->q3 as $value)
+                                        <ul>
+                                            <li>{{ config('questions')['q3'][$value] ?? '' }}</li>
+                                        </ul>
+                                    @endforeach
+                                @endif
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </row>
+    </div>
+
+
+    <div class="">
+        <row>
+            <h3>Interests</h3>
+            <div>
                 <table class="table table-condensed table-bordered">
                     <tbody>
 
                     @foreach ($kinds as $key => $label)
                         <tr>
-                            <td>{{ $label }}</td>
+                            <td><b>{{ $label }}</b></td>
                             <td>
                                 @foreach(${$key} as $item)
                                     @php
                                         $activity = $activities->firstWhere('id', $item->activity);
                                     @endphp
-                                    <img src="{{ asset(cropImage($activity->image, 50, 50)) }}" alt="{{ $activity->name }}" title="{{ $activity->name }}">
+                                    {{ $activity->name ?? '' }} <br />
                                 @endforeach
                             </td>
                         </tr>
                     @endforeach
-                    {{--@foreach( $categoriesList as $category)--}}
-                        {{--@php $fieldName = 'category-'.$category->id;  @endphp--}}
-                        {{--<tr>--}}
-                            {{--<td>{{ $i }}</td>--}}
-                            {{--<td>{{ $category->name }}</td>--}}
-                            {{--<td>--}}
-                                {{--<input--}}
-                                        {{--type="number"--}}
-                                        {{--name="{{ $fieldName }}"--}}
-                                        {{--min=0--}}
-                                        {{--max=10--}}
-                                        {{--value="{{ old($fieldName) ?? $field['value'][$category->id] ?? '0' }}"--}}
-                                        {{--@include('crud::inc.field_attributes')--}}
-                                {{-->--}}
-                            {{--</td>--}}
-                        {{--</tr>--}}
-                        {{--new column of table--}}
-                        {{--@if($i % (($count+1) / 2) == 0)--}}
-                    {{--</tbody>--}}
-                {{--</table>--}}
-            {{--</div>--}}
-            {{--<div class="col-sm-6">--}}
-                {{--<table class="table table-condensed">--}}
-                    {{--<tbody>--}}
+                    </tbody>
+                </table>
+            </div>
+        </row>
+    </div>
 
-                    {{--@endif--}}
+    <div>
+        <row>
+            <h3>Categories total scores</h3>
+            <div>
+                <table class="table table-condensed table-bordered">
+                    <tbody>
 
-                    {{--@php $i++; @endphp--}}
-                    {{--@endforeach--}}
+                    @foreach ($user->totalScores as $key => $score)
+                        <tr>
+                            <td>{{ config('categories')[$key]['name'] ?? "error with name" }}</td>
+                            <td>
+                                {{ $score }}
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

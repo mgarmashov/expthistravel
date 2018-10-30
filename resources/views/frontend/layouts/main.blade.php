@@ -2,7 +2,7 @@
 <html lang="{{ app()->getLocale() }}">
 
 <head>
-    <title>{{ env('APP_NAME') }}</title>
+    <title>{{ env('APP_NAME') }} @yield('title')</title>
     {{--<!--== META TAGS ==-->--}}
     <meta charset="utf-8">
     {{-- Encrypted CSRF token for Laravel, in order for Ajax requests to work --}}

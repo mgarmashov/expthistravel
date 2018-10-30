@@ -31,6 +31,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $casts = [
+        'totalScores' => 'array',
+        'q1' => 'array',
+        'q2' => 'array',
+        'q3' => 'array',
+    ];
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));

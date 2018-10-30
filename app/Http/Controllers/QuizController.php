@@ -91,7 +91,12 @@ class QuizController extends Controller
 
         $urlWithAttributes = $this->createUrlWithAttributes($request);
 
-        return view('frontend.pages.quiz-part3', ['dataUrl' => $urlWithAttributes]);
+        if(Auth::guest()) {
+            return view('frontend.pages.quiz-part3', ['dataUrl' => $urlWithAttributes]);
+        } else {
+            return $this->showResultsAuth($urlWithAttributes);
+        }
+
     }
 
     protected function createUrlWithAttributes($request)
@@ -119,12 +124,48 @@ class QuizController extends Controller
 
     public function showResults(Request $request)
     {
-        $totalScores = [];
-        if($answers = $request->query('a')) {
-            $totalScores = $this->countTotalScores($answers);
-        }
-        dd($totalScores);
+        return $this->showResultsPage($request->query());
+    }
 
+    protected function showResultsAuth($urlWithAttributes)
+    {
+        return $this->showResultsPage($urlWithAttributes);
+    }
+
+    protected function showResultsPage($userAnswers)
+    {
+        if (empty($userAnswers)) {
+            return redirect()->route('quiz-part1');
+        }
+
+        $answers = [];
+        if(is_string($userAnswers)) {
+            parse_str($userAnswers, $answers);
+        } else {
+            $answers = $userAnswers;
+        }
+
+        $currentUser = Auth::user();
+
+        if ($answers['a']) {
+            $totalScores = $this->countTotalScores($answers['a']);
+            $currentUser->totalScores = $totalScores;
+        }
+
+        if ($answers['q1']) {
+            $currentUser->q1 = $answers['q1'];
+        }
+        if ($answers['q2']) {
+            $currentUser->q2 = $answers['q2'];
+        }
+        if ($answers['q3']) {
+            $currentUser->q3 = $answers['q3'];
+        }
+
+
+        $currentUser->save();
+
+        return view('frontend.pages.quiz-results');
     }
 
     protected function countTotalScores ($answers)

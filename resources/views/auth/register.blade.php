@@ -7,7 +7,7 @@
                 <div class="tr-regi-form">
                             <h4>Create an Account</h4>
                             <p></p>
-                            <form class="col s12" method="post" action="{{ route('quiz-register') }}">
+                            <form class="col s12" method="post" action="{{ route('quiz-register') }}" id="register-form">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input type="email" class="validate" name="email" value="{{ old('email') }}" required>
@@ -55,7 +55,7 @@
 @push('after_scripts')
     <script>
         document.getElementById('submit-btn').onclick = function() {
-            let form = document.getElementsByTagName('form')[0];
+            let form = document.getElementById('register-form');
             let fields = [];
             fields.push(form.querySelector('input[name="email"]'));
             fields.push(form.querySelector('input[name="password"]'));
@@ -64,7 +64,7 @@
                 if (input.value == null || input.value == '' || input.value == 'NaN' || input.value == 'undefined') {
                     break;
                 }
-                document.getElementsByTagName('form')[0].submit();
+                form.submit();
             }
         }
     </script>

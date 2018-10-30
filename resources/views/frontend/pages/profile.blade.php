@@ -1,5 +1,9 @@
 @extends('frontend.layouts.main')
 
+@section('title')
+    | Profile
+@endsection
+
 @section('content')
 
 <section>

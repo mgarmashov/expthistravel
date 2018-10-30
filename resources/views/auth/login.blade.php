@@ -7,7 +7,7 @@
                 <div class="tr-regi-form">
                     <h4>Sign In</h4>
                     {{--<p>It's free and always will be.</p>--}}
-                    <form class="col s12" method="post" action="{{ route('login') }}">
+                    <form class="col s12" method="post" action="{{ route('login') }}" id="login-form">
                         <div class="row">
                             <div class="input-field col s12">
                                 <input type="text" name="email" class="validate" value="{{ old('email') }}">
@@ -53,7 +53,7 @@
 @push('after_scripts')
     <script>
         document.getElementById('submit-btn').onclick = function() {
-            let form = document.getElementsByTagName('form')[0];
+            let form = document.getElementById('login-form');
             let fields = [];
             fields.push(form.querySelector('input[name="email"]'));
             fields.push(form.querySelector('input[name="password"]'));
@@ -61,7 +61,7 @@
                 if (input.value == null || input.value == '' || input.value == 'NaN' || input.value == 'undefined') {
                     break;
                 }
-                document.getElementsByTagName('form')[0].submit();
+                form.submit();
             }
         }
     </script>

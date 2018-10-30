@@ -1,5 +1,9 @@
 @extends('frontend.layouts.main')
 
+@section('title')
+    | Contacts
+@endsection
+
 @section('content')
     <section>
         <div class="form form-spac rows con-page">

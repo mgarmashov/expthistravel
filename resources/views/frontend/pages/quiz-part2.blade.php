@@ -1,5 +1,8 @@
 @extends('frontend.layouts.main')
 
+@section('title')
+    | Quiz - part 2
+@endsection
 @section('content')
     <section>
         <div class="rows inn-page-bg com-colo">
@@ -17,12 +20,12 @@
 
                 <div class="application-layout col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
 
-                    <form action="{{route('quiz-part3')}}" class="part2-form" method="post">
+                    <form action="{{route('quiz-part3')}}" class="part2-form" method="post" id="part2-form">
                     <h4>Who is travelling?</h4>
                         <div class="col-xs-12" id="q1">
                             <div class="checkbox checkbox-info checkbox-circle">
                                 <input name="q1[solo]" id="q1-solo" class="styled" type="checkbox">
-                                <label for="q1-solo">I’m going solo </label>
+                                <label for="q1-solo">I’m going solo</label>
                             </div>
                             <div class="checkbox checkbox-info checkbox-circle">
                                 <input name="q1[couple]" id="q1-couple" class="styled" type="checkbox">
@@ -130,7 +133,7 @@
 @push('after_scripts')
     <script>
         document.getElementById('submit-btn').onclick = function() {
-            document.getElementsByTagName('form')[0].submit();
+            document.getElementById('part2-form').submit();
         }
 
     </script>

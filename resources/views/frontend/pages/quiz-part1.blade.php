@@ -1,5 +1,9 @@
 @extends('frontend.layouts.main')
 
+@section('title')
+    | Quiz - part 1
+@endsection
+
 @php
     $totalCounter = count(\App\Models\Activity::all());
 @endphp
