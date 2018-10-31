@@ -19,12 +19,12 @@ class ActivitiesTableSeeder extends Seeder
         foreach ($data as $activity) {
             $scores = [];
             foreach ($categories as $key => $category) {
-                $scores[$key] = rand(0,10);
+                (int) $scores[$key] = (int) $activity[$category['name']];
             }
 
             factory(Activity::class)->create([
                 'name' => $activity['name'],
-                'image' => $this->getFile('examples', $activity['image']),
+//                'image' => $this->getFile('examples', $activity['image']),
                 'scores' => $scores
             ]);
 

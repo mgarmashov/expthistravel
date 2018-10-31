@@ -31,6 +31,8 @@ class ProductsTableSeeder extends Seeder
 //                'description_long' => 'Take on the challenge of a Muay Thai training camp in Thailand. Learn a martial art, stay fit and keep active, and immerse in a Thai culture.',
                 'months' => $product['When (month)'],
 //                'image' => $this->getFile('examples', 'muay_thai_1.jpg'),
+                'minDuration' => $product['minDuration'] ?? 0,
+                'maxDuration' => $product['maxDuration'] ?? 30,
                 'scores' => $scores
             ]);
 

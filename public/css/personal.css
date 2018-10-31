@@ -131,4 +131,45 @@
   margin-top: 0 !important;
 }
 
+.charts-section {
+  padding: 2em 0;
+  background: rgba(22, 127, 209, 0.7);
+}
+
+@media (min-width: 769px) {
+  .label-column {
+    text-align: right;
+  }
+}
+
+.chart-label {
+  height: 2em;
+}
+
+.chart-line {
+  height: 1.7em;
+  margin-bottom: 1em;
+  background: linear-gradient(to bottom, #f4364f, #dc2039);
+  border-radius: 1em;
+  color: white;
+}
+
+.b_packages {
+  margin-bottom: 10px;
+}
+
+h4.product-list-name {
+  white-space: normal;
+  height: 4em;
+}
+h4.product-list-name a {
+  line-height: 0.9em;
+}
+h4.product-list-name span {
+  padding: 0;
+  text-transform: capitalize;
+  color: #6C6C6C;
+  font-weight: 500;
+}
+
 /*# sourceMappingURL=personal.css.map */

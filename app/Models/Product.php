@@ -46,6 +46,71 @@ class Product extends Model
     |--------------------------------------------------------------------------
     */
 
+    public static function filterByPeriod($periodsArray)
+    {
+        $userDurationMin = 30;
+        $userDurationMax = 7;
+
+        if (empty($periodsArray) ) {
+            return Product::all();
+        }
+
+        if(in_array('8-13',$periodsArray)) {
+            $userDurationMin = 8;
+            $userDurationMax = 14;
+        }
+
+        if(in_array('up7', $periodsArray)) {
+            $userDurationMin = 0;
+        }
+        if(in_array('14more', $periodsArray)) {
+            $userDurationMax = 30;
+        }
+        if(in_array('all', $periodsArray)) {
+            $userDurationMin = 0;
+            $userDurationMax = 30;
+        }
+
+        $products = Product::all()->filter(function ($product, $key) use ($userDurationMin, $userDurationMax) {
+            return ($product->minDuration >= $userDurationMin && $product->maxDuration <= $userDurationMax);
+        });
+
+        return $products;
+    }
+
+
+    public static function findBestProducts($inputProducts, $scoresForView)
+    {
+        $products = $inputProducts;
+
+        $categoriesIds = array_divide($scoresForView->toArray())[0];
+
+        $filteredProducts = [];
+        foreach ($products as $product) {
+            $filteredProducts[$product->id] = [
+                'name' => $product->name
+            ];
+            $filteredProducts[$product->id]['sumScores'] = 0;
+            foreach($categoriesIds as $categoryId) {
+                $filteredProducts[$product->id]['scores'][$categoryId] = $product->scores[$categoryId];
+                $filteredProducts[$product->id]['sumScores'] += ($product->scores[$categoryId] * $scoresForView[$categoryId]['score']);
+            }
+        }
+        $filteredProducts = collect($filteredProducts)->sortBy('sumScores')->reverse()->slice(0,18);
+
+        $output = $products->filter(function ($product, $key) use ($filteredProducts) {
+            return array_has($filteredProducts, $product->id);
+        });
+
+        $output->sortBy(function ($product, $key) use ($filteredProducts) {
+            return array_search($product->id, $filteredProducts->toArray());
+        });
+
+        return $output;
+
+
+    }
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

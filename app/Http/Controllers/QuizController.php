@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\QuizHistory;
 use Illuminate\Http\Request;
 use App\Models\Activity;
@@ -145,27 +146,22 @@ class QuizController extends Controller
             $answers = $userAnswers;
         }
 
-        $currentUser = Auth::user();
+        $totalScores = $this->updateUserAnswers($answers);
 
-        if ($answers['a']) {
-            $totalScores = $this->countTotalScores($answers['a']);
-            $currentUser->totalScores = $totalScores;
-        }
+        $scoresForView = $this->transformScoresForView($totalScores);
 
-        if ($answers['q1']) {
-            $currentUser->q1 = $answers['q1'];
-        }
-        if ($answers['q2']) {
-            $currentUser->q2 = $answers['q2'];
-        }
-        if ($answers['q3']) {
-            $currentUser->q3 = $answers['q3'];
-        }
+        $filteredProducts = Product::filterByPeriod($userAnswers['q2'] ?? '');
+
+        $bestProducts = Product::findBestProducts($filteredProducts, $scoresForView);
 
 
-        $currentUser->save();
-
-        return view('frontend.pages.quiz-results');
+        return view('frontend.pages.quiz-results', [
+            'scores' => $scoresForView->slice(0,4),
+            'bestProducts' => $bestProducts,
+            'filter' =>[
+                'duration' => $userAnswers['q2']
+            ]
+        ]);
     }
 
     protected function countTotalScores ($answers)
@@ -183,6 +179,62 @@ class QuizController extends Controller
 
         return $totalScores;
     }
+
+    protected function updateUserAnswers($answers)
+    {
+        if (Auth::guest()) {
+            return $this->countTotalScores($answers['a']) ?? '';
+        }
+
+        $currentUser = Auth::user();
+
+        if ($answers['a']) {
+            $totalScores = $this->countTotalScores($answers['a']);
+            dd($currentUser);
+            $currentUser->totalScores = $totalScores;
+        }
+
+        if ($answers['q1']) {
+            $currentUser->q1 = $answers['q1'];
+        }
+        if ($answers['q2']) {
+            $currentUser->q2 = $answers['q2'];
+        }
+        if ($answers['q3']) {
+            $currentUser->q3 = $answers['q3'];
+        }
+
+        $currentUser->save();
+
+        return $totalScores ?? '';
+    }
+
+    protected function transformScoresForView($totalScores)
+    {
+        $outputScores = collect();
+
+        foreach ($totalScores as $id => $score) {
+            $outputScores[$id] = [
+                'name' => config('categories')[$id]['name'],
+                'score' => $score
+            ];
+        }
+        $outputScores = $outputScores->sortBy('score')->reverse();
+
+        $top = (int) $outputScores->max('score');
+
+//        $top = $outputScores->sum('score');
+
+        $outputScores = $outputScores->map(function($item, $key) use ($top) {
+            $item['percent'] = round($item['score'] / $top *100);
+            return $item;
+        });
+
+        return $outputScores;
+    }
+
+
+
 
 
 }
