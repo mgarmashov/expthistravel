@@ -40,65 +40,34 @@ class Product extends Model
 //        'img' =>
     ];
 
+    public static $filteredProductsList;
+
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
 
-    public static function filterByPeriod($periodsArray)
+    public static function findBestProducts($scoresOfUser)
     {
-        $userDurationMin = 30;
-        $userDurationMax = 7;
+        if (!self::$filteredProductsList) {self::$filteredProductsList = self::with('countries')->get();}
 
-        if (empty($periodsArray) ) {
-            return Product::all();
-        }
-
-        if(in_array('8-13',$periodsArray)) {
-            $userDurationMin = 8;
-            $userDurationMax = 14;
-        }
-
-        if(in_array('up7', $periodsArray)) {
-            $userDurationMin = 0;
-        }
-        if(in_array('14more', $periodsArray)) {
-            $userDurationMax = 30;
-        }
-        if(in_array('all', $periodsArray)) {
-            $userDurationMin = 0;
-            $userDurationMax = 30;
-        }
-
-        $products = Product::all()->filter(function ($product, $key) use ($userDurationMin, $userDurationMax) {
-            return ($product->minDuration >= $userDurationMin && $product->maxDuration <= $userDurationMax);
-        });
-
-        return $products;
-    }
-
-
-    public static function findBestProducts($inputProducts, $scoresForView)
-    {
-        $products = $inputProducts;
-
-        $categoriesIds = array_divide($scoresForView->toArray())[0];
+        $categoriesIds = array_divide($scoresOfUser->toArray())[0];
 
         $filteredProducts = [];
-        foreach ($products as $product) {
+        foreach (self::$filteredProductsList as $product) {
             $filteredProducts[$product->id] = [
                 'name' => $product->name
             ];
             $filteredProducts[$product->id]['sumScores'] = 0;
             foreach($categoriesIds as $categoryId) {
                 $filteredProducts[$product->id]['scores'][$categoryId] = $product->scores[$categoryId];
-                $filteredProducts[$product->id]['sumScores'] += ($product->scores[$categoryId] * $scoresForView[$categoryId]['score']);
+                $filteredProducts[$product->id]['sumScores'] += ($product->scores[$categoryId] * $scoresOfUser[$categoryId]['score']);
             }
         }
         $filteredProducts = collect($filteredProducts)->sortBy('sumScores')->reverse()->slice(0,18);
 
-        $output = $products->filter(function ($product, $key) use ($filteredProducts) {
+        $output = self::$filteredProductsList->filter(function ($product, $key) use ($filteredProducts) {
             return array_has($filteredProducts, $product->id);
         });
 
@@ -110,6 +79,78 @@ class Product extends Model
 
 
     }
+
+    public static function filterByCountry($countriesIdsArray)
+    {
+        if (!self::$filteredProductsList) {self::$filteredProductsList = self::with('countries')->get();}
+
+        self::$filteredProductsList = self::$filteredProductsList->filter(function($product) use ($countriesIdsArray) {
+            $productCountriesIds = $product->countries->pluck('id')->toArray();
+            foreach ($productCountriesIds as $countryId) {
+                if (in_array($countryId, $countriesIdsArray)) {
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        return self::$filteredProductsList;
+    }
+
+    public static function filterByMonth($monthIdsArray)
+    {
+        if (!self::$filteredProductsList) {self::$filteredProductsList = self::with('countries')->get();}
+
+        self::$filteredProductsList = self::$filteredProductsList->filter(function($product) use ($monthIdsArray) {
+            if (in_array(0, $product->months)) {
+                return true;
+            }
+            foreach ($product->months as $monthId) {
+                if (in_array($monthId, $monthIdsArray)) {
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        return self::$filteredProductsList;
+    }
+
+    public static function filterByDuration($periodsArray)
+    {
+        if (!self::$filteredProductsList) {self::$filteredProductsList = self::with('countries')->get();}
+
+        $userDurationMin = 14;
+        $userDurationMax = 7;
+
+        if (empty($periodsArray) ) {
+            return self::$filteredProductsList;
+        }
+
+        if(in_array('8-13',$periodsArray)) {
+            $userDurationMin = 0;
+            $userDurationMax = 14;
+        }
+
+        if(in_array('up7', $periodsArray)) {
+            $userDurationMin = 0;
+        }
+        if(in_array('14more', $periodsArray)) {
+            $userDurationMin = 0;
+            $userDurationMax = 30;
+        }
+        if(in_array('all', $periodsArray) || in_array('0', $periodsArray)) {
+            $userDurationMin = 0;
+            $userDurationMax = 30;
+        }
+
+        self::$filteredProductsList = self::$filteredProductsList->filter(function ($product, $key) use ($userDurationMin, $userDurationMax) {
+            return ($product->minDuration >= $userDurationMin && $product->maxDuration <= $userDurationMax);
+        });
+
+        return self::$filteredProductsList;
+    }
+
 
     /*
     |--------------------------------------------------------------------------

@@ -2,7 +2,7 @@
 
 return
     [
-        [
+        1 => [
             "name" => "Must-see Sights",
             "Sight seeing" => "10",
             "Nature" => "5",
@@ -17,7 +17,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "5"
         ],
-        [
+        2 => [
             "name" => "Guided Tours",
             "Sight seeing" => "10",
             "Nature" => "1",
@@ -32,7 +32,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "10"
         ],
-        [
+        3 => [
             "name" => "Boat Trips",
             "Sight seeing" => "10",
             "Nature" => "10",
@@ -47,7 +47,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "5"
         ],
-        [
+        4 => [
             "name" => "Idyllic Islands and Beaches",
             "Sight seeing" => "5",
             "Nature" => "10",
@@ -62,7 +62,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        5 => [
             "name" => "Explore National Parks",
             "Sight seeing" => "5",
             "Nature" => "10",
@@ -77,7 +77,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        6 => [
             "name" => "Photograph Natural Wonders",
             "Sight seeing" => "10",
             "Nature" => "10",
@@ -92,7 +92,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        7 => [
             "name" => "Visit an Elephant Sanctuary",
             "Sight seeing" => "5",
             "Nature" => "5",
@@ -107,7 +107,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        8 => [
             "name" => "Go on Safari",
             "Sight seeing" => "5",
             "Nature" => "10",
@@ -122,7 +122,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        9 => [
             "name" => "Whale Watching",
             "Sight seeing" => "5",
             "Nature" => "5",
@@ -137,7 +137,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        10 => [
             "name" => "Swim with Turtles",
             "Sight seeing" => "5",
             "Nature" => "5",
@@ -152,7 +152,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        11 => [
             "name" => "Rafting",
             "Sight seeing" => "1",
             "Nature" => "5",
@@ -167,7 +167,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        12 => [
             "name" => "Paddle Board",
             "Sight seeing" => "1",
             "Nature" => "1",
@@ -182,7 +182,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        13 => [
             "name" => "Kayaking",
             "Sight seeing" => "1",
             "Nature" => "1",
@@ -197,7 +197,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        14 => [
             "name" => "Scuba Diving",
             "Sight seeing" => "5",
             "Nature" => "5",
@@ -212,7 +212,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        15 => [
             "name" => "Keep Fit",
             "Sight seeing" => "1",
             "Nature" => "1",
@@ -227,7 +227,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        16 => [
             "name" => "Hiking",
             "Sight seeing" => "5",
             "Nature" => "10",
@@ -242,7 +242,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        17 => [
             "name" => "Cycling",
             "Sight seeing" => "5",
             "Nature" => "5",
@@ -257,7 +257,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        18 => [
             "name" => "Visit a Spa ",
             "Sight seeing" => "1",
             "Nature" => "1",
@@ -272,7 +272,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        19 => [
             "name" => "Relax on the beach",
             "Sight seeing" => "5",
             "Nature" => "5",
@@ -287,7 +287,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        20 => [
             "name" => "Yoga",
             "Sight seeing" => "1",
             "Nature" => "1",
@@ -302,7 +302,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "5"
         ],
-        [
+        21 => [
             "name" => "Street Food Markets",
             "Sight seeing" => "5",
             "Nature" => "1",
@@ -317,7 +317,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "5"
         ],
-        [
+        22 => [
             "name" => "Bars and Night life",
             "Sight seeing" => "1",
             "Nature" => "1",
@@ -332,7 +332,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        23 => [
             "name" => "Try Local Delicacies ",
             "Sight seeing" => "1",
             "Nature" => "1",
@@ -347,7 +347,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "5"
         ],
-        [
+        24 => [
             "name" => "Cooking Classes",
             "Sight seeing" => "1",
             "Nature" => "1",
@@ -362,7 +362,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "5"
         ],
-        [
+        25 => [
             "name" => "Learn to Surf",
             "Sight seeing" => "1",
             "Nature" => "5",
@@ -377,7 +377,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        26 => [
             "name" => "Learn Thai Boxing",
             "Sight seeing" => "1",
             "Nature" => "1",
@@ -392,7 +392,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        27 => [
             "name" => "Mindfulness Classes",
             "Sight seeing" => "1",
             "Nature" => "1",
@@ -407,7 +407,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "5"
         ],
-        [
+        28 => [
             "name" => "Volunteer at an Animal Rescue Centre",
             "Sight seeing" => "1",
             "Nature" => "1",
@@ -422,7 +422,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        29 => [
             "name" => "Help with a Beach Clean Up",
             "Sight seeing" => "1",
             "Nature" => "5",
@@ -437,7 +437,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        30 => [
             "name" => "Tackle Rock Climbing",
             "Sight seeing" => "1",
             "Nature" => "1",
@@ -452,7 +452,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        31 => [
             "name" => "Try Kitesurfing",
             "Sight seeing" => "1",
             "Nature" => "1",
@@ -467,7 +467,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "1"
         ],
-        [
+        32 => [
             "name" => "Two-wheel Tours",
             "Sight seeing" => "10",
             "Nature" => "5",
@@ -482,7 +482,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "5"
         ],
-        [
+        33 => [
             "name" => "Trekking Tours",
             "Sight seeing" => "10",
             "Nature" => "10",
@@ -497,7 +497,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "5"
         ],
-        [
+        34 => [
             "name" => "Festivals/ Events",
             "Sight seeing" => "5",
             "Nature" => "1",
@@ -512,7 +512,7 @@ return
             "Events /festivals" => "10",
             "Culture" => "10"
         ],
-        [
+        35 => [
             "name" => "Local Celebrations ",
             "Sight seeing" => "5",
             "Nature" => "1",
@@ -527,7 +527,7 @@ return
             "Events /festivals" => "10",
             "Culture" => "10"
         ],
-        [
+        36 => [
             "name" => "Homestays",
             "Sight seeing" => "5",
             "Nature" => "5",
@@ -542,7 +542,7 @@ return
             "Events /festivals" => "1",
             "Culture" => "10"
         ],
-        [
+        37 => [
             "name" => "Historic Sites",
             "Sight seeing" => "10",
             "Nature" => "5",

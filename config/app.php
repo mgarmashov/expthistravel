@@ -213,4 +213,6 @@ return [
 
     ],
 
+    'totalActivitiesInQuiz' => 3,
+
 ];

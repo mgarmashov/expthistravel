@@ -4,10 +4,6 @@
     | Quiz - part 1
 @endsection
 
-@php
-    $totalCounter = count(\App\Models\Activity::all());
-@endphp
-
 @section('content')
     <!--====== PLACES ==========-->
     <section>
@@ -22,7 +18,7 @@
                         <div class="tl-3"></div>
                     </div>
                     <p>Press if you like things on picture</p>
-                    <p id="counter" data-number=1 >1/{{ $totalCounter }}</p>
+                    <p id="counter" data-number=1 >1/{{ config('app.totalActivitiesInQuiz') }}</p>
                 </div>
                 <div class="col-sm-8 col-sm-offset-2">
                     @php
@@ -104,7 +100,7 @@
 
                 success: function(data)
                 {
-                    if (step == {{ $totalCounter }} || data.redirect) {
+                    if (step == {{ config('app.totalActivitiesInQuiz') }} || data.redirect) {
                         for ( let el of document.getElementsByClassName('btn-quiz')) {
                             el.hidden = true;
                         }
@@ -120,7 +116,7 @@
                         container.getElementsByTagName('h4')[0].innerText = data.name;
 
                         step++;
-                        counter.innerText = step+'/{{$totalCounter}}';
+                        counter.innerText = step+'/{{ config('app.totalActivitiesInQuiz') }}';
                         counter.dataset.number = step;
                     }
                 },

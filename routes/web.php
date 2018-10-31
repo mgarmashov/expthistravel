@@ -30,7 +30,7 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('/contacts', 'HomepageController@showContacts')->name('contacts');
     Route::get('/how-we-work', 'HomepageController@showHowWeWork')->name('how-we-work');
 
-    Route::get('/search', 'SearchController@showResults')->name('search');
+    Route::get('/search', 'SearchController@showPage')->name('search');
 
     Route::get('/experience/{id}', 'ProductController@showPage')->name('product');
 

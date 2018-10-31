@@ -146,20 +146,22 @@ class QuizController extends Controller
             $answers = $userAnswers;
         }
 
+
         $totalScores = $this->updateUserAnswers($answers);
 
         $scoresForView = $this->transformScoresForView($totalScores);
 
-        $filteredProducts = Product::filterByPeriod($userAnswers['q2'] ?? '');
+        $filteredProducts = Product::filterByDuration($answers['q2'] ?? '');
 
-        $bestProducts = Product::findBestProducts($filteredProducts, $scoresForView);
+        $bestProducts = Product::findBestProducts($scoresForView);
 
 
         return view('frontend.pages.quiz-results', [
             'scores' => $scoresForView->slice(0,4),
             'bestProducts' => $bestProducts,
             'filter' =>[
-                'duration' => $userAnswers['q2']
+                'applyScores' => true,
+                'duration' => $answers['q2'] ?? ''
             ]
         ]);
     }
@@ -188,19 +190,18 @@ class QuizController extends Controller
 
         $currentUser = Auth::user();
 
-        if ($answers['a']) {
+        if (isset($answers['a'])) {
             $totalScores = $this->countTotalScores($answers['a']);
-            dd($currentUser);
             $currentUser->totalScores = $totalScores;
         }
 
-        if ($answers['q1']) {
+        if (isset($answers['q1'])) {
             $currentUser->q1 = $answers['q1'];
         }
-        if ($answers['q2']) {
+        if (isset($answers['q2'])) {
             $currentUser->q2 = $answers['q2'];
         }
-        if ($answers['q3']) {
+        if (isset($answers['q3'])) {
             $currentUser->q3 = $answers['q3'];
         }
 
@@ -209,13 +210,14 @@ class QuizController extends Controller
         return $totalScores ?? '';
     }
 
-    protected function transformScoresForView($totalScores)
+    public static function transformScoresForView($totalScores)
     {
+//        dd($totalScores);
         $outputScores = collect();
 
         foreach ($totalScores as $id => $score) {
             $outputScores[$id] = [
-                'name' => config('categories')[$id]['name'],
+                'name' => config('activities')[$id]['name'],
                 'score' => $score
             ];
         }

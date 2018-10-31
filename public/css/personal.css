@@ -172,4 +172,9 @@ h4.product-list-name span {
   font-weight: 500;
 }
 
+.filter-checkbox label {
+  font-size: 1em;
+  font-weight: normal;
+}
+
 /*# sourceMappingURL=personal.css.map */
