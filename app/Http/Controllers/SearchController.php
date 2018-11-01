@@ -27,7 +27,7 @@ class SearchController extends Controller
         }
 
         if (Auth::check() && $request->applyScores) {
-            $scoresOfUser = Auth::user()->score();
+            $scoresOfUser = Auth::user()->scores();
             $products = Product::findBestProducts($scoresOfUser);
         }
 
