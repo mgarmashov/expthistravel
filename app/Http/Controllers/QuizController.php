@@ -74,13 +74,22 @@ class QuizController extends Controller
     }
 
 
-    public function showPart2()
+    public function showPart2(Request $request)
     {
+        if(!$request->session()->has('answers')) {
+            return redirect()->route('quiz-part1');
+        }
+
         return view('frontend.pages.quiz-part2');
     }
 
     public function showPart3(Request $request)
     {
+
+        if(!$request->session()->has('answers')) {
+            return redirect()->route('quiz-part1');
+        }
+
         $data = array_only($request->all(), ['q1', 'q2', 'q3']);
         $dataDotted = array_dot($data);
 
@@ -133,42 +142,49 @@ class QuizController extends Controller
         return $this->showResultsPage($urlWithAttributes);
     }
 
+
+
+
+
     protected function showResultsPage($userAnswers)
     {
         if (empty($userAnswers)) {
             return redirect()->route('quiz-part1');
         }
 
-        $answers = [];
+        $allAnswersAsArray = [];
         if(is_string($userAnswers)) {
-            parse_str($userAnswers, $answers);
+            parse_str($userAnswers, $allAnswersAsArray);
         } else {
-            $answers = $userAnswers;
+            $allAnswersAsArray = $userAnswers;
         }
 
 
-        $totalScores = $this->updateUserAnswers($answers);
+        $totalScoresOfCategories = $this->countTotalScores($allAnswersAsArray['a']);
 
-        $scoresForView = $this->transformScoresForView($totalScores);
+        $this->updateUserAnswers($allAnswersAsArray);
 
-        $filteredProducts = Product::filterByDuration($answers['q2'] ?? '');
+        $scoresForView = self::transformScoresForView($totalScoresOfCategories);
+
+        $filteredProducts = Product::filterByDuration($allAnswersAsArray['q2'] ?? '');
 
         $bestProducts = Product::findBestProducts($scoresForView);
 
 
         return view('frontend.pages.quiz-results', [
-            'scores' => $scoresForView->slice(0,4),
             'bestProducts' => $bestProducts,
             'filter' =>[
                 'applyScores' => true,
-                'duration' => $answers['q2'] ?? ''
+                'duration' => $allAnswersAsArray['q2'] ?? null
             ]
         ]);
     }
 
-    protected function countTotalScores ($answers)
+
+
+    protected function countTotalScores ($answersActivitiesAsArray)
     {
-        $likedActivities = Activity::whereIn('id', $answers)->get();
+        $likedActivities = Activity::whereIn('id', $answersActivitiesAsArray)->get();
         $totalScores = [];
 
         foreach (config('categories') as $key => $category) {
@@ -182,42 +198,39 @@ class QuizController extends Controller
         return $totalScores;
     }
 
-    protected function updateUserAnswers($answers)
+    protected function updateUserAnswers($allAnswersAsArray)
     {
         if (Auth::guest()) {
-            return $this->countTotalScores($answers['a']) ?? '';
+            return $this->countTotalScores($allAnswersAsArray['a']) ?? '';
         }
 
         $currentUser = Auth::user();
 
-        if (isset($answers['a'])) {
-            $totalScores = $this->countTotalScores($answers['a']);
+        if (isset($allAnswersAsArray['a'])) {
+            $totalScores = $this->countTotalScores($allAnswersAsArray['a']);
             $currentUser->totalScores = $totalScores;
         }
 
-        if (isset($answers['q1'])) {
-            $currentUser->q1 = $answers['q1'];
+        if (isset($allAnswersAsArray['q1'])) {
+            $currentUser->q1 = $allAnswersAsArray['q1'];
         }
-        if (isset($answers['q2'])) {
-            $currentUser->q2 = $answers['q2'];
+        if (isset($allAnswersAsArray['q2'])) {
+            $currentUser->q2 = $allAnswersAsArray['q2'];
         }
-        if (isset($answers['q3'])) {
-            $currentUser->q3 = $answers['q3'];
+        if (isset($allAnswersAsArray['q3'])) {
+            $currentUser->q3 = $allAnswersAsArray['q3'];
         }
 
         $currentUser->save();
-
-        return $totalScores ?? '';
     }
 
-    public static function transformScoresForView($totalScores)
+    public static function transformScoresForView($totalScoresOfCategories)
     {
-//        dd($totalScores);
         $outputScores = collect();
 
-        foreach ($totalScores as $id => $score) {
+        foreach ($totalScoresOfCategories as $id => $score) {
             $outputScores[$id] = [
-                'name' => config('activities')[$id]['name'],
+                'name' => config('categories')[$id]['name'],
                 'score' => $score
             ];
         }

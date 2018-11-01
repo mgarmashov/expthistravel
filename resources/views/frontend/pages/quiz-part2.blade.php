@@ -85,14 +85,6 @@
                         ]
                     @endphp
                     <div id="q3">
-                        <div class="col-xs-12">
-                            <div class="checkbox checkbox-info checkbox-circle">
-                                <input name="q3[0]" id="q3-all" class="styled" type="checkbox">
-                                <label for="q3-all">I don’t mind</label>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                            <hr>
                         <div class="col-sm-6">
                             @foreach($months as $val => $month)
 
@@ -107,6 +99,15 @@
 
                             @endforeach
                         </div>
+                        <div class="clearfix"></div>
+                        <hr class="margin10">
+                        <div class="col-xs-12">
+                            <div class="checkbox checkbox-info checkbox-circle">
+                                <input name="q3[0]" id="q3-all" class="styled" type="checkbox">
+                                <label for="q3-all">I don’t mind</label>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="clearfix"></div>
                     @csrf

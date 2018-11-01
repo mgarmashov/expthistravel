@@ -55,48 +55,7 @@
                     <div class="main-menu">
                         <ul>
                             {{--<li><a href="{{ route('index') }}">Home</a></li>--}}
-                            <li class="about-menu">
-                                <a href="family-package.html" class="mm-arr">Packages</a>
-                                <!-- MEGA MENU 1 -->
-                                <div class="mm-pos">
-                                    <div class="about-mm m-menu">
-                                        <div class="m-menu-inn">
-                                            <div class="mm1-com mm1-s1">
-                                                <div class="ed-course-in">
-                                                    <a class="course-overlay menu-about" href="all-package.html">
-                                                        <img src="images/sight/5.jpg" alt="">
-                                                        <span>Popular Package</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="mm1-com mm1-s2">
-                                                <p>Want to change the world? At Berkeley we’re doing just that. When you join the Golden Bear community, you’re part of an institution that shifts the global conversation every single day.</p>
-                                                <a href="all-package.html" class="mm-r-m-btn">Read more</a>
-                                            </div>
-                                            <div class="mm1-com mm1-s3">
-                                                <ul>
-                                                    <li><a href="booking-all.html">All Booking</a></li>
-                                                    <li><a href="booking-tour-package.html">Tour Package Booking</a></li>
-                                                    <li><a href="booking-hotel.html">Hotel Booking</a></li>
-                                                    <li><a href="booking-car-rentals.html">Car Rentals Booking</a></li>
-                                                    <li><a href="booking-flight.html">Flight Booking</a></li>
-                                                    <li><a href="booking-slider.html">Slider Booking</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="mm1-com mm1-s4">
-                                                <ul>
-                                                    <li><a href="all-package.html">All Package</a></li><li><a href="family-package.html">Family Package</a></li>
-                                                    <li><a href="honeymoon-package.html">Honeymoon Package</a></li>
-                                                    <li><a href="group-package.html">Group Package</a></li>
-                                                    <li><a href="weekend-package.html">WeekEnd Package</a></li>
-                                                    <li><a href="regular-package.html">Regular Package</a></li>
-                                                    <li><a href="custom-package.html">Custom Package</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            <li><a href="{{route('experiences')}}">Experiences</a></li>
                             <li><a href="{{route('how-we-work')}}">How we work</a></li>
                             <li><a href="{{route('contacts')}}">Contact us</a></li>
                             <li class="yellow"><a href="{{route('quiz-part1')}}">Find the best trip</a></li>

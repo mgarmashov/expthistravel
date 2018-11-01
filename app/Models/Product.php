@@ -48,6 +48,32 @@ class Product extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function duration()
+    {
+        if ($this->minDuration == 0 && $this->maxDuration == 0) return 'Any days';
+        if ($this->minDuration == 1 && $this->maxDuration == 30) return 'Any days';
+        if ($this->minDuration == 1 && $this->maxDuration == 1) return '1 day';
+        if ($this->minDuration == $this->maxDuration) return $this->maxDuration.' days';
+        if ($this->maxDuration == 30) return $this->minDuration.' days and more';
+
+        return $this->minDuration.' - '.$this->maxDuration.' days';
+
+    }
+
+    public function scores()
+    {
+        $outputScores = [];
+        foreach ($this->scores as $categoryId => $score) {
+            if ($score == 0) continue;
+            $outputScores[config('categories')[$categoryId]['name']] = $score;
+        }
+
+        arsort($outputScores);
+        $outputScores = array_slice($outputScores,0,6);
+
+        return $outputScores;
+    }
+
     public static function findBestProducts($scoresOfUser)
     {
         if (!self::$filteredProductsList) {self::$filteredProductsList = self::with('countries')->get();}
@@ -76,8 +102,6 @@ class Product extends Model
         });
 
         return $output;
-
-
     }
 
     public static function filterByCountry($countriesIdsArray)

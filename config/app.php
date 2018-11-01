@@ -213,6 +213,6 @@ return [
 
     ],
 
-    'totalActivitiesInQuiz' => 3,
+    'totalActivitiesInQuiz' => env('totalActivitiesInQuiz','20'),
 
 ];

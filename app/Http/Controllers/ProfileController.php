@@ -10,4 +10,9 @@ class ProfileController extends Controller
     {
         return view('frontend.pages.profile');
     }
+
+    public function orderPage()
+    {
+
+    }
 }

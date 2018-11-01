@@ -27,12 +27,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
 Route::group(['middleware' => ['web']], function() {
 
     Route::get('/', 'HomepageController@showPage')->name('index');
+    Route::get('/experiences', 'SearchController@showPage')->name('experiences');
+
     Route::get('/contacts', 'HomepageController@showContacts')->name('contacts');
     Route::get('/how-we-work', 'HomepageController@showHowWeWork')->name('how-we-work');
-
+    Route::get('/order', 'ProfileController@orderPage')->name('orderPage');
     Route::get('/search', 'SearchController@showPage')->name('search');
 
     Route::get('/experience/{id}', 'ProductController@showPage')->name('product');
+    Route::get('/toOrder/{id?}', 'ProductController@toCart')->name('productToOrder');
 
     Route::get('/quiz', 'QuizController@showPage')->name('quiz-part1');
     Route::post('/quiz/get-question', 'QuizController@getQuestion')->name('getQuestion');

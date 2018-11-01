@@ -12,4 +12,9 @@ class ProductController extends Controller
         $product = Product::find($request->id);
         return view('frontend.pages.product-details', ['product' => $product]);
     }
+
+    public function toCart(Request $request)
+    {
+        dd($request->id);
+    }
 }

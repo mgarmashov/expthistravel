@@ -51,4 +51,29 @@ class User extends Authenticatable
         }
 
     }
+
+    public function scores()
+    {
+
+        $outputScores = collect();
+
+        foreach ($this->totalScores as $id => $score) {
+            $outputScores[$id] = [
+                'name' => config('categories')[$id]['name'],
+                'score' => $score
+            ];
+        }
+        $outputScores = $outputScores->sortBy('score')->reverse();
+
+        $top = (int) $outputScores->max('score');
+
+//        $top = $outputScores->sum('score');
+
+        $outputScores = $outputScores->map(function($item, $key) use ($top) {
+            $item['percent'] = round($item['score'] / $top *100);
+            return $item;
+        });
+
+        return $outputScores;
+    }
 }

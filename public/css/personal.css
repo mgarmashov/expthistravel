@@ -72,7 +72,6 @@
 .application-layout {
   background: #fff;
   padding: 45px 50px 50px 50px;
-  margin-bottom: 70px;
   border-radius: 5px;
   text-align: center;
   position: relative;
@@ -154,6 +153,11 @@
   color: white;
 }
 
+.filter-checkbox label {
+  font-size: 1em;
+  font-weight: normal;
+}
+
 .b_packages {
   margin-bottom: 10px;
 }
@@ -172,9 +176,37 @@ h4.product-list-name span {
   font-weight: 500;
 }
 
-.filter-checkbox label {
-  font-size: 1em;
-  font-weight: normal;
+.added-to-order {
+  display: table;
+}
+.added-to-order a {
+  display: inline-block !important;
+  padding-right: 1em;
+}
+
+.margin10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.product-scores ul {
+  padding-left: 0px;
+}
+.product-scores li {
+  list-style: none;
+  position: relative;
+}
+.product-scores li .name {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+}
+.product-scores li .line {
+  margin-left: 130px;
+  display: inline-block;
+  background: #a2dd2f;
+  height: 1em;
+  border-radius: 0 10px 10px 0;
 }
 
 /*# sourceMappingURL=personal.css.map */

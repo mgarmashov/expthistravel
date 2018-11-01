@@ -1,4 +1,5 @@
 <form class="" id="filter-form" method="get" action="{{ route('search') }}">
+
     @auth
         <row>
             <div class="text-left font-light filter-checkbox">
@@ -46,10 +47,10 @@
         <div class="input-field col s4">
             <select id="filter-duration" multiple name="duration[]">
                 <option value="0" disabled selected>Select duration</option>
-                <option value="0" {{ $filter['duration'] && in_array('all', $filter['duration']) ? 'selected' : '' }}>Any</option>
-                <option value="up7" {{ $filter['duration'] && in_array('up7', $filter['duration']) ? 'selected' : '' }}>7 nights or less</option>
-                <option value="8-13" {{ $filter['duration'] && in_array('8-13', $filter['duration']) ? 'selected' : '' }}>8 to 13 nights</option>
-                <option value="14more" {{ $filter['duration'] && in_array('14more', $filter['duration']) ? 'selected' : '' }}>14 nights or more</option>
+                <option value="0" {{ isset($filter['duration']) && in_array('all', $filter['duration']) ? 'selected' : '' }}>Any</option>
+                <option value="up7" {{ isset($filter['duration']) && in_array('up7', $filter['duration']) ? 'selected' : '' }}>7 nights or less</option>
+                <option value="8-13" {{ isset($filter['duration']) && in_array('8-13', $filter['duration']) ? 'selected' : '' }}>8 to 13 nights</option>
+                <option value="14more" {{ isset($filter['duration']) && in_array('14more', $filter['duration']) ? 'selected' : '' }}>14 nights or more</option>
             </select>
         </div>
     </div>

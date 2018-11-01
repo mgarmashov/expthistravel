@@ -61,7 +61,7 @@
                                 <i class="waves-effect waves-light btn-large full-btn waves-input-wrapper" style=""><input type="submit" value="submit" class="waves-button-input"></i> </div>
                         </div>
                     </form>
-                    <p>Are you a already member ? <a href="{{route('login')}}">Click to Login</a>
+                    {{--<p>Are you a already member ? <a href="{{route('login')}}">Click to Login</a>--}}
                     </p>
                 </div>
 

@@ -10,41 +10,8 @@
 
 @section('content')
 
-    <!--====== PLACES ==========-->
-    <section class="charts-section">
-        <div class="container">
-            <div class="application-layout">
+    @include('frontend.components.filter-section')
 
-                @auth
-                <h4>Your top interests</h4>
-                    <div class="charts-block">
-                        <div class="col-sm-6">
-                            @php
-                                $i = 1;
-                            @endphp
-                            @foreach($scores as $id => $score)
-                                <div class="row">
-                                    <div class="col-sm-4 label-column"><span class="chart-label">{{ $score['name'] }}</span></div>
-                                    <div class="col-sm-8 chart-column"><div class="chart-line" style="width: {{$score['percent']}}%;">{{ $score['percent'] }}%</div></div>
-                                </div>
-                                @if($i%2 == 0)
-                        </div>
-                        <div class="col-sm-6">
-                                @endif
-                                @php
-                                    $i++;
-                                @endphp
-                            @endforeach
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                @endauth
-
-                @include('frontend.components.filter')
-
-            </div>
-        </div>
-    </section>
     <section>
         <div class="rows inn-page-bg com-colo">
             <div class="container inn-page-con-bg tb-space pad-bot-redu" id="inner-page-title">
@@ -60,23 +27,9 @@
                 </div>
                 <div>
                     @foreach($bestProducts as $product)
-                        @php
-                            $countries = array_pluck($product->countries->toArray(), 'name');
-                            $countries = implode(', ', $countries);
-                        @endphp
-                        <div class="col-md-4 col-sm-6 col-xs-12 b_packages">
-{{--                            <div class="band"><img src="{{ asset('images/band.png') }}" alt="" /> </div>--}}
-                            <div class="v_place_img"><img src="{{ cropImage($product->image, 377, 218) }}" alt="{{ $product->name }}" title="{{ $product->name }}" /> </div>
-                            <div class="b_pack rows">
-                                <div class="col-md-12 col-sm-12">
-                                    <h4 class="product-list-name">
-                                        <a href="{{ route('product', ['id' => $product->id]) }}">{{ $product->name }} <br />
-                                            <span class="v_pl_name">{!! $countries !!}</span>
-                                        </a>
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
+
+                        @include('frontend.components.list-item-product-small', ['product' => $product])
+
                     @endforeach
 
                 </div>
@@ -85,3 +38,28 @@
     </section>
 @endsection
 
+
+
+@push('after_scripts')
+    <script>
+        let buttons = document.getElementsByClassName('btn-book-product');
+        for ( let button of buttons ) {
+            button.onclick = function() {
+                event.preventDefault();
+                var currentBtn = this;
+                $.ajax({
+                    type: "get",
+                    url: '{{ route('productToOrder') }}/'+this.dataset.product,
+
+                    success: function () {
+                    },
+                });
+                var newEl = document.createElement('p');
+                newEl.classList.add('added-to-order');
+                newEl.innerHTML = 'Added to <a class="" href="{{ route('orderPage') }}">order</a>';
+
+                currentBtn.parentNode.replaceChild(newEl, currentBtn);
+            }
+        }
+    </script>
+@endpush
