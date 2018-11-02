@@ -37,9 +37,9 @@
         <div class="input-field col s4">
             <select id="filter-month" multiple name="month[]">
                 <option value="" disabled selected>Select month</option>
-                <option value="0">Any</option>
+                <option value="0" {{ isset($filter['month']) && in_array('all', $filter['month']) ? 'selected' : '' }}>Any</option>
                 @foreach($months as $key => $month)
-                    <option value="{{ $key }}">{{ $month }}</option>
+                    <option value="{{ $key }}" {{ isset($filter['month']) && !in_array('all', $filter['month']) && in_array($key, $filter['month']) ? 'selected' : '' }}>{{ $month }}</option>
                 @endforeach
             </select>
         </div>

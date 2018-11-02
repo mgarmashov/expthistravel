@@ -175,6 +175,7 @@ class QuizController extends Controller
             'bestProducts' => $bestProducts,
             'filter' =>[
                 'applyScores' => true,
+                'month' => $allAnswersAsArray['q3'] ?? null,
                 'duration' => $allAnswersAsArray['q2'] ?? null
             ]
         ]);
