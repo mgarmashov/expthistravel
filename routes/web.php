@@ -31,11 +31,15 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::get('/contacts', 'HomepageController@showContacts')->name('contacts');
     Route::get('/how-we-work', 'HomepageController@showHowWeWork')->name('how-we-work');
-    Route::get('/order', 'ProfileController@orderPage')->name('orderPage');
     Route::get('/search', 'SearchController@showPage')->name('search');
+    Route::get('/order', 'ProfileController@orderPage')->name('orderPage');
+    Route::get('/booking', 'ProfileController@bookingPage')->name('bookingPage');
+    Route::post('/booking/send', 'ProfileController@sendBookingMessage')->name('sendBooking');
 
     Route::get('/experience/{id}', 'ProductController@showPage')->name('product');
-    Route::get('/toOrder/{id?}', 'ProductController@toCart')->name('productToOrder');
+    Route::get('/toOrder/{id?}', 'ProductController@toOrder')->name('productToOrder');
+    Route::get('/fromOrder/{id?}', 'ProductController@deleteFromOrder')->name('productDeleteFromOrder');
+
 
     Route::get('/quiz', 'QuizController@showPage')->name('quiz-part1');
     Route::post('/quiz/get-question', 'QuizController@getQuestion')->name('getQuestion');

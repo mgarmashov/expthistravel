@@ -52,9 +52,22 @@ class User extends Authenticatable
 
     }
 
+    public function name()
+    {
+        $output = '';
+        if ($this->name) {
+            $output .= $this->name;
+        }
+        if ($this->surname) {
+            $output .= $this->surname;
+        }
+
+        return $output;
+    }
+
     public function scores()
     {
-
+        if(!$this->totalScores) return null;
         $outputScores = collect();
 
         foreach ($this->totalScores as $id => $score) {
@@ -75,5 +88,11 @@ class User extends Authenticatable
         });
 
         return $outputScores;
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany('App\Models\Product', 'users_products', 'user_id', 'product_id')
+            ->withPivot('status');
     }
 }

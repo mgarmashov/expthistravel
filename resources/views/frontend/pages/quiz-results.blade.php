@@ -49,7 +49,7 @@
                 var currentBtn = this;
                 $.ajax({
                     type: "get",
-                    url: '{{ route('productToOrder') }}/'+this.dataset.product,
+                    url: '{{ route('productToOrder') }}/'+currentBtn.dataset.product,
 
                     success: function () {
                     },

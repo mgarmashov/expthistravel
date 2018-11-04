@@ -1,21 +1,21 @@
 @extends('frontend.layouts.main')
 
 @section('title')
-    | Profile
+    | Cart
 @endsection
 
 @section('content')
 
 <section>
     <div class="db">
-        <div class="db-l">
-            @include('frontend.components.profile-left-part')
-        </div>
+    <div class="container">
 
         <div class="db-2">
             @include('frontend.components.profile-cart-list')
         </div>
     </div>
+    </div>
+
 </section>
 
 

@@ -5,21 +5,29 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="ed-com-t1-right">
+                    <div class="profile-btns">
                         <ul>
                             @guest
                                 <li>
-                                    <a href="{{ route('login') }}">Sign In</a>
+                                    <a class="bright" href="{{ route('orderPage') }}">&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;
+                                    </a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="{{ route('register') }}">Sign Up</a>
+                                    <a class="medium" href="{{ route('login') }}">Sign In</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link dark" href="{{ route('register') }}">Sign Up</a>
                                 </li>
                             @else
                                 <li>
-                                    <a href="{{ route('profile') }}">{{Auth::user()->name ?? Auth::user()->email}} - Profile</a>
+                                    <a class="bright" href="{{ route('orderPage') }}">&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('logout') }}"
+                                    <a class="medium" href="{{ route('profile') }}">{{Auth::user()->name ?? Auth::user()->email}} - Profile</a>
+                                </li>
+                                <li>
+                                    <a class="dark" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         Sign Out

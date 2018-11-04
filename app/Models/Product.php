@@ -60,6 +60,20 @@ class Product extends Model
 
     }
 
+    public function place()
+    {
+        $countries = [];
+        foreach($this->countries as $country) {
+            $countries[] = $country->name;
+        }
+        $place = implode(', ', $countries);
+        if ($this->city) {
+            $place .= ', '.$this->city;
+        }
+
+        return $place;
+    }
+
     public function scores()
     {
         $outputScores = [];
