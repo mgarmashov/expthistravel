@@ -10,7 +10,7 @@
     <div class="db">
     <div class="container">
 
-        <div class="db-2">
+        <div class="db-2" @guest style="width: 100% !important;" @endguest>
             @include('frontend.components.profile-cart-list')
         </div>
     </div>

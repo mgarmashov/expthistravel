@@ -33,14 +33,29 @@ class ProfileController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-            $months = $user->q3;
+            $months = $user->q3 ?? [];
             $selectedProducts = $user->products()->get();
             $place = $selectedProducts[0]->place() ?? '';
         } else {
-            //todo here to continue
-        }
+            $months = [];
+            $selectedProducts = collect();
+            $place = '';
 
-        return view('frontend.pages.booking', ['oldMonths' => $months, 'oldProducts' => $selectedProducts, 'oldPlace' => $place]);
+
+            if (session('q3')) {
+                $months = array_keys(session('q3')) ?? [];
+            }
+            if (session('cart')) {
+                $selectedProducts = Product::whereIn('id', session('cart'))->get();
+                $place = $selectedProducts[0]->place() ?? '';
+            }
+        }
+        $selectedProductsIds = $selectedProducts->pluck('id');
+        return view('frontend.pages.booking', [
+            'oldMonths' => collect($months),
+            'oldProductsIds' => $selectedProductsIds,
+            'oldPlace' => $place
+        ]);
     }
 
     public function sendBookingMessage(Request $request)

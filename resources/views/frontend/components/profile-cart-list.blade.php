@@ -22,7 +22,7 @@
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->duration() }}</td>
                             <td>{{ $product->place() }}</td>
-                            <td><a href="{{ route('product', ['id' => $product->id]) }}" class="db-done">view more</a>
+                            <td><a href="{{ route('product', ['id' => $product->id]) }}" class="db-done text-nowrap">view more</a>
                             </td>
                             <td><a href="#" class="db-done btn-delete-product">Delete</a>
                             </td>
