@@ -65,7 +65,7 @@
                 <div class="tour_head1">
                     <h3>Description</h3>
                     <p>
-                        {{$product->description_long}}
+                        {!! $product->description_long !!}
                     </p>
                 </div>
             </div>
@@ -87,7 +87,7 @@
                         <div class="tour_rela_1">
                             <img src="{{ asset(cropImage($pp->image, 250, 200)) }}" alt="" />
                             <h4>{{ $pp->place() }} : {{ $pp->name }}</h4>
-                            <p> {{ $pp->description_short }}</p>
+                            <p> {!! $pp->description_short !!}</p>
                             <a href="{{ route('product', ['id' => $pp->id]) }}" class="link-btn">View this Package</a>
                         </div>
                     @endforeach
