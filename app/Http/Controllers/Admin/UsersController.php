@@ -82,10 +82,22 @@ class UsersController extends CrudController
             ],
             [
                 'label' => "Answers",
-                'name' => "id",
+                'name' => "answers",
                 'type' => 'answers',
                 'tab' => 'Answers'
             ],
+            [
+                'label' => "Products in cart",
+                'name' => "products",
+                'type' => 'products',
+                'tab' => 'Products in cart'
+            ],
+//            [
+//                'label' => "Orders",
+//                'name' => "id",
+//                'type' => 'orders',
+//                'tab' => 'Orders'
+//            ],
 
         ]);
 

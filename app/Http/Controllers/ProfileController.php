@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -58,8 +59,25 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function sendBookingMessage(Request $request)
+    public function createOrder(Request $request)
     {
-        dd($request);
+        $user = Auth::user();
+        $order = new Order;
+        $order->user_id = $user->id;
+        $order->comment = view('frontend.components.order-to-database', ['data' => $request])->render();
+        $order->save();
+        foreach ($request->products as $productId) {
+            $order->products()->attach($productId);
+        }
+        $user->products()->detach();
+
+        return redirect(route('thank-for-order'));
     }
+
+    public function thankYouPage(Request $request)
+    {
+        return view('frontend.pages.booking-thank-you');
+    }
+
+
 }

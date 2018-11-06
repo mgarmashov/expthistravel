@@ -26,7 +26,7 @@
                         </div>
                         <div class="col s12">
                             <label for="products">Select your experience</label>
-                            <select multiple name="products" id="products">
+                            <select multiple name="products[]" id="products">
                                 <option value="" disabled selected>Select your experience</option>
                                 @foreach(\App\Models\Product::all() as $product)
                                     <option value="{{ $product->id }}" @if($oldProductsIds->contains($product->id)) selected @endif>{{ $product->name }}</option>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="col s12">
                             <label for="months">Choose months when you plan to travel</label>
-                            <select multiple name="months" id="months">
+                            <select multiple name="months[]" id="months">
                                 <option value="" disabled selected>Choose months when you plan to travel</option>
                                 @foreach(monthsList() as $key => $value)
                                     <option value="{{ $key }}" @if($oldMonths->contains($key)) selected @endif>{{ $value }}</option>
@@ -73,12 +73,19 @@
                             <input type="text" id="duration" name="duration">
                         </div>
                     </div>
-
                     <div class="row">
-                        <div class="input-field col s12 m6 offset-m3">
-                            <input type="submit" value="Send order" class="waves-effect waves-light tourz-sear-btn v2-ser-btn">
+                        <div class="col s12">
+                            <label for="comment">Comment</label>
+                            <textarea name="comment" id="comment" rows="12"></textarea>
                         </div>
                     </div>
+
+                    <div class="row">
+                        {{--<div class="input-field col s12 m6 offset-m3">--}}
+                            <input type="submit" value="Send order" class="tourz-sear-btn v2-ser-btn col s12">
+                        {{--</div>--}}
+                    </div>
+                    @csrf
                 </form>
 
             </div>

@@ -3,6 +3,7 @@
 
 <li><a href="{{  backpack_url('products') }}"><i class="fa fa-shopping-bag"></i> <span>Products</span></a></li>
 <li><a href="{{  backpack_url('activities') }}"><i class="fa fa-bar-chart"></i> <span>Activities</span></a></li>
+<li><a href="{{  backpack_url('orders') }}"><i class="fa fa-handshake-o"></i> <span>Orders</span></a></li>
 
 <li class="active treeview menu-open">
     <a href="#">

@@ -19,9 +19,10 @@
                                     <a class="nav-link dark" href="{{ route('register') }}">Sign Up</a>
                                 </li>
                             @else
-                                <li>
+                                <li class="with-counter">
                                     <a class="bright" href="{{ route('orderPage') }}">&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;
                                     </a>
+                                    <span>{{ count(Auth::user()->products()->get()) }}</span>
                                 </li>
                                 <li>
                                     <a class="medium" href="{{ route('profile') }}">{{Auth::user()->name ?? Auth::user()->email}} - Profile</a>

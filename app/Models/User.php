@@ -21,6 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password', 'phone', 'role', 'login'
     ];
+    public $timestamps = true;
 
     /**
      * The attributes that should be hidden for arrays.
@@ -93,6 +94,6 @@ class User extends Authenticatable
     public function products()
     {
         return $this->belongsToMany('App\Models\Product', 'users_products', 'user_id', 'product_id')
-            ->withPivot('status');
+            ->withPivot('status')->withTimestamps();
     }
 }

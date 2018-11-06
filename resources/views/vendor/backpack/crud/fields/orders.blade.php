@@ -76,14 +76,12 @@
                         <tr>
                             <td><b>{{ $label }}</b></td>
                             <td>
-                                @if(${$key})
-                                    @foreach(${$key} as $item)
-                                        @php
-                                            $activity = $activities->firstWhere('id', $item->activity);
-                                        @endphp
-                                        {{ $activity->name ?? '' }} <br />
-                                    @endforeach
-                                @endif
+                                @foreach(${$key} as $item)
+                                    @php
+                                        $activity = $activities->firstWhere('id', $item->activity);
+                                    @endphp
+                                    {{ $activity->name ?? '' }} <br />
+                                @endforeach
                             </td>
                         </tr>
                     @endforeach
@@ -100,16 +98,14 @@
                 <table class="table table-condensed table-bordered">
                     <tbody>
 
-                    @if(count($user->totalScores))
-                        @foreach ($user->totalScores as $key => $score)
-                            <tr>
-                                <td>{{ config('categories')[$key]['name'] ?? "error with name" }}</td>
-                                <td>
-                                    {{ $score }}
-                                </td>
-                            </tr>
-                        @endforeach
-                    @endif
+                    @foreach ($user->totalScores as $key => $score)
+                        <tr>
+                            <td>{{ config('categories')[$key]['name'] ?? "error with name" }}</td>
+                            <td>
+                                {{ $score }}
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

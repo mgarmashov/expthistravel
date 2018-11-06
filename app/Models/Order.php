@@ -41,6 +41,27 @@ class Order extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
+    public function getUserNameEmail()
+    {
+        $user = $this->user()->first();
+//        dd($user->name);
+        $output = $user->name ?? '';
+        $output .= ' '.$user->surname ?? '';
+        $output .= ' '.$user->email ?? '';
+        return $output;
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany('App\Models\Product', 'orders_products', 'order_id', 'product_id')
+            ->withTimestamps();
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

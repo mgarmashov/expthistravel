@@ -18,6 +18,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
     CRUD::resource('products', 'ProductsController');
     CRUD::resource('activities', 'ActivitiesController');
     CRUD::resource('countries', 'CountriesController');
+    CRUD::resource('orders', 'OrdersController');
 
     Route::get('/quiz-statistics', 'QuizHistoryController@showList')->name('admin.quiz-statistic');
 
@@ -34,7 +35,9 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('/search', 'SearchController@showPage')->name('search');
     Route::get('/order', 'ProfileController@orderPage')->name('orderPage');
     Route::get('/booking', 'ProfileController@bookingPage')->name('bookingPage');
-    Route::post('/booking/send', 'ProfileController@sendBookingMessage')->name('sendBooking');
+    Route::post('/booking/send', 'ProfileController@createOrder')->name('sendBooking');
+    Route::get('/booking/sent', 'ProfileController@thankYouPage')->name('thank-for-order');
+
 
     Route::get('/experience/{id}', 'ProductController@showPage')->name('product');
     Route::get('/toOrder/{id?}', 'ProductController@toOrder')->name('productToOrder');
