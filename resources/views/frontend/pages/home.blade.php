@@ -45,7 +45,7 @@
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <h3>{{ $product->name }}</h3>
                                 <span> {!! $countries !!} </span>
-                                <p>{{ $product->sedcription_short }}</p> <a href="tour-details.html" class="link-btn">more info</a> </div>
+                                <p>{{ $product->sedcription_short }}</p> <a href="{{ route('product', ['id' => $product->id]) }}" class="link-btn">more info</a> </div>
                         </div>
                         @php $i++; @endphp
                         @if($i %2 == 0)
