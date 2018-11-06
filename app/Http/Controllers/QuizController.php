@@ -170,7 +170,7 @@ class QuizController extends Controller
 
         $bestProducts = Product::findBestProducts($scoresForView);
 
-dd($scoresForView);
+
         return view('frontend.pages.quiz-results', [
             'bestProducts' => $bestProducts,
             'filter' =>[
