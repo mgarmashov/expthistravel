@@ -8,13 +8,13 @@
             </div>
         </row>
     @endauth
-    <div class="row">
-        <div class="input-field col s4">
+    <div class="row form-with-labels">
+        <div class="col l4 m12 s12">
+            <label for="filter-country">Select country</label>
             <select id="filter-country" multiple name="country[]">
-                <option value="0" disabled selected>Select country</option>
-                <option value="0">Any</option>
+                <option value="all" {{ isset($filter['country']) && in_array('all', $filter['country']) ? 'selected' : '' }}>Any</option>
                 @foreach(\App\Models\Country::all() as $country)
-                    <option value="{{$country->id}}">{{ $country->name }}</option>
+                    <option value="{{$country->id}}" {{ isset($filter['country']) && !in_array('all', $filter['country']) && in_array($country->id, $filter['country']) ? 'selected' : '' }}>{{ $country->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -34,23 +34,23 @@
                 12 => 'December'
             ];
         @endphp
-        <div class="input-field col s4">
+        <div class="col l4 m12 s12">
+            <label for="filter-month">Select month</label>
             <select id="filter-month" multiple name="month[]">
-                <option value="" disabled selected>Select month</option>
-                <option value="0" {{ isset($filter['month']) && in_array('all', $filter['month']) ? 'selected' : '' }}>Any</option>
+                <option value="all" {{ isset($filter['month']) && in_array('all', $filter['month']) ? 'selected' : '' }}>Any</option>
                 @foreach($months as $key => $month)
                     <option value="{{ $key }}" {{ isset($filter['month']) && !in_array('all', $filter['month']) && in_array($key, $filter['month']) ? 'selected' : '' }}>{{ $month }}</option>
                 @endforeach
             </select>
         </div>
 
-        <div class="input-field col s4">
+        <div class="col l4 m12 s12">
+            <label for="filter-duration">Select duration</label>
             <select id="filter-duration" multiple name="duration[]">
-                <option value="0" disabled selected>Select duration</option>
-                <option value="0" {{ isset($filter['duration']) && in_array('all', $filter['duration']) ? 'selected' : '' }}>Any</option>
-                <option value="up7" {{ isset($filter['duration']) && in_array('up7', $filter['duration']) ? 'selected' : '' }}>7 nights or less</option>
-                <option value="8-13" {{ isset($filter['duration']) && in_array('8-13', $filter['duration']) ? 'selected' : '' }}>8 to 13 nights</option>
-                <option value="14more" {{ isset($filter['duration']) && in_array('14more', $filter['duration']) ? 'selected' : '' }}>14 nights or more</option>
+                <option value="all" {{ isset($filter['duration']) && !in_array('all', $filter['duration']) && in_array('all', $filter['duration']) ? 'selected' : '' }}>Any</option>
+                <option value="up7" {{ isset($filter['duration']) && !in_array('all', $filter['duration']) && in_array('up7', $filter['duration']) ? 'selected' : '' }}>7 nights or less</option>
+                <option value="8-13" {{ isset($filter['duration']) && !in_array('all', $filter['duration']) && in_array('8-13', $filter['duration']) ? 'selected' : '' }}>8 to 13 nights</option>
+                <option value="14more" {{ isset($filter['duration']) && !in_array('all', $filter['duration']) && in_array('14more', $filter['duration']) ? 'selected' : '' }}>14 nights or more</option>
             </select>
         </div>
     </div>

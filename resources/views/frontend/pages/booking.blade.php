@@ -18,7 +18,7 @@
                     </div>
                     <p>Send the offer and we will connect with you</p>
                 </div>
-                <form class="contact-form" method="post" action="{{ route('sendBooking') }}">
+                <form class="form-with-labels" method="post" action="{{ route('sendBooking') }}">
                     <div class="row">
                         <div class="col s12">
                             <label for="place">Select Country or place</label>

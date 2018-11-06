@@ -13,16 +13,16 @@ class SearchController extends Controller
     {
         $products = Product::all();
 
-        if ($request->country && !in_array('0', $request->country)) {
+        if ($request->country && !in_array('all', $request->country)) {
             $products = Product::filterByCountry($request->country);
         }
 
-        if ($request->month && !in_array('0', $request->month)) {
+        if ($request->month && !in_array('all', $request->month)) {
             $products = Product::filterByMonth($request->month);
         }
 
 
-        if ($request->duration && !in_array('0', $request->duration)) {
+        if ($request->duration && !in_array('all', $request->duration)) {
             $products = Product::filterByDuration($request->duration);
         }
 

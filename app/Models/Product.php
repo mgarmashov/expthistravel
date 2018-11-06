@@ -74,6 +74,24 @@ class Product extends Model
         return $place;
     }
 
+    public function months()
+    {
+        $input = $this->months;
+
+        if (in_array(0, $input)) { return 'Any month';}
+        if (count($input) == 1 ) {return monthsList()[$input[0]];}
+
+        sort($input);
+        $output = collect($input)->map(function($month) {
+            return monthsList()[$month];
+        })
+        ->implode(', ')
+        ;
+
+//        dd($output);
+        return $output;
+    }
+
     public function scores()
     {
         $outputScores = [];

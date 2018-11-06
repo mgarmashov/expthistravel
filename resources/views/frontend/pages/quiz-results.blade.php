@@ -28,7 +28,7 @@
                 <div>
                     @foreach($bestProducts as $product)
 
-                        @include('frontend.components.list-item-product-small', ['product' => $product])
+                        @include('frontend.components.list-item-product-large', ['product' => $product])
 
                     @endforeach
 
