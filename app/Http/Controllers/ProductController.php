@@ -12,7 +12,14 @@ class ProductController extends Controller
     public function showPage(Request $request)
     {
         $product = Product::find($request->id);
-        return view('frontend.pages.product-details', ['product' => $product]);
+        $countriesIds = $product->countries()->pluck('countries.id')->toArray();
+
+        $popularPackages = Product::whereHas('countries', function($q) use ($countriesIds) {
+            $q->whereIn('countries.id', $countriesIds);
+        })->inRandomOrder()->limit(3)->get();
+
+
+        return view('frontend.pages.product-details', ['product' => $product, 'popularPackages' => $popularPackages]);
     }
 
     public function toOrder(Request $request)

@@ -1,5 +1,14 @@
     <p>
-        Select Country or place: <b>{{ $data->country ?? '' }}</b>
+        Select Country or place: <b>
+            @php
+                $arr = [];
+                foreach ($data->countries as $id) {
+                    $arr[] = \App\Models\Country::find($id)->name;
+                }
+                $output = implode(', ', $arr);
+            echo $output;
+            @endphp
+        </b>
     </p>
     <p>
         Select your experience:

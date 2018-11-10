@@ -31,7 +31,7 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('/experiences', 'SearchController@showPage')->name('experiences');
 
     Route::get('/contacts', 'HomepageController@showContacts')->name('contacts');
-    Route::get('/how-we-work', 'HomepageController@showHowWeWork')->name('how-we-work');
+    Route::get('/about', 'HomepageController@showAbout')->name('about');
     Route::get('/search', 'SearchController@showPage')->name('search');
     Route::get('/order', 'ProfileController@orderPage')->name('orderPage');
     Route::get('/booking', 'ProfileController@bookingPage')->name('bookingPage');
@@ -56,5 +56,8 @@ Auth::routes();
 
 
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('/profile', 'ProfileController@showPage')->name('profile');
+    Route::get('/profile', 'ProfileController@showProductsPage')->name('profile.products');
+    Route::get('/profile/show', 'ProfileController@showProfilePage')->name('profile.show');
+    Route::post('/profile/save', 'ProfileController@saveProfile')->name('profile.save');
+    Route::get('/profile/edit', 'ProfileController@showEditPage')->name('profile.edit');
 });

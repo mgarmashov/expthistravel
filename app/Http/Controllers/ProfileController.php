@@ -9,18 +9,52 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    public function showPage()
+    public function showProductsPage()
     {
 
         $productsInCart = Auth::user()->products()->get();
 
-        return view('frontend.pages.profile', ['products' => $productsInCart]);
+        return view('frontend.pages.profile.products', ['products' => $productsInCart]);
+    }
+
+    public function showProfilePage(Request $request)
+    {
+
+//        $productsInCart = Auth::user()->products()->get();
+
+        return view('frontend.pages.profile.show');
+    }
+
+    public function showEditPage(Request $request)
+    {
+
+//        $productsInCart = Auth::user()->products()->get();
+
+        return view('frontend.pages.profile.edit');
+    }
+
+    public function saveProfile(Request $request)
+    {
+        if(!Auth::check()) {
+            return redirect()->route('index');
+        }
+
+        $user = Auth::user();
+        if($request->input('login')) {
+            $user->login = $request->input('login');
+        }
+        $user->name = $request->input('name') ?? '';
+        $user->surname = $request->input('surname') ?? '';
+        $user->phone = $request->input('phone') ?? '';
+        $user->save();
+
+        return view('frontend.pages.profile.show');
     }
 
     public function orderPage()
     {
         if (Auth::user()) {
-            return redirect()->route('profile');
+            return redirect()->route('profile.products');
         }
 
         $productIds = session('cart') ?? [];
@@ -48,28 +82,35 @@ class ProfileController extends Controller
             }
             if (session('cart')) {
                 $selectedProducts = Product::whereIn('id', session('cart'))->get();
-                $place = $selectedProducts[0]->place() ?? '';
+                $countryId = $selectedProducts[0]->country->id ?? '';
             }
         }
         $selectedProductsIds = $selectedProducts->pluck('id');
         return view('frontend.pages.booking', [
             'oldMonths' => collect($months),
-            'oldProductsIds' => $selectedProductsIds,
-            'oldPlace' => $place
+            'oldProductsIds' => $selectedProductsIds ?? [],
+            'oldCountryId' => $countryId ?? ''
         ]);
     }
 
     public function createOrder(Request $request)
     {
-        $user = Auth::user();
         $order = new Order;
-        $order->user_id = $user->id;
+        $order->user_id = 0;
+        if (Auth::check()) {
+            $user = Auth::user();
+            $order->user_id = $user->id;
+        }
+
         $order->comment = view('frontend.components.order-to-database', ['data' => $request])->render();
         $order->save();
+
         foreach ($request->products as $productId) {
             $order->products()->attach($productId);
         }
-        $user->products()->detach();
+        if (isset($user)) {
+            $user->products()->detach();
+        }
 
         return redirect(route('thank-for-order'));
     }

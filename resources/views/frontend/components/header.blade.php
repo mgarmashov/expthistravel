@@ -1,5 +1,5 @@
 <!--HEADER SECTION-->
-<section>
+<section  data-spy="affix" data-offset-top="250">
     <!-- TOP BAR -->
     <div class="ed-top">
         <div class="container">
@@ -8,24 +8,25 @@
                     <div class="profile-btns">
                         <ul>
                             @guest
-                                <li>
+                                <li class="with-counter">
                                     <a class="bright" href="{{ route('orderPage') }}">&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;
                                     </a>
+                                    <span id="order-counter" data-total="{{ count(session('cart')) }}">{{ count(session('cart')) }}</span>
                                 </li>
                                 <li>
-                                    <a class="medium" href="{{ route('login') }}">Sign In</a>
+                                    <a class="medium" href="{{ route('login') }}">Sign In / Register</a>
                                 </li>
-                                <li>
-                                    <a class="nav-link dark" href="{{ route('register') }}">Sign Up</a>
-                                </li>
+                                {{--<li>--}}
+                                    {{--<a class="nav-link dark" href="{{ route('register') }}">Sign Up</a>--}}
+                                {{--</li>--}}
                             @else
                                 <li class="with-counter">
                                     <a class="bright" href="{{ route('orderPage') }}">&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;
                                     </a>
-                                    <span>{{ count(Auth::user()->products()->get()) }}</span>
+                                    <span id="order-counter" data-total="{{ count(Auth::user()->products()->get()) }}">{{ count(Auth::user()->products()->get()) }}</span>
                                 </li>
                                 <li>
-                                    <a class="medium" href="{{ route('profile') }}">{{Auth::user()->name ?? Auth::user()->email}} - Profile</a>
+                                    <a class="medium" href="{{ route('profile.products') }}">{{Auth::user()->name ?? Auth::user()->email}} - Profile</a>
                                 </li>
                                 <li>
                                     <a class="dark" href="{{ route('logout') }}"
@@ -53,7 +54,7 @@
     </div>
 
     <!-- LOGO AND MENU SECTION -->
-    <div class="top-logo" data-spy="affix" data-offset-top="250">
+    <div class="top-logo">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -63,11 +64,12 @@
                     </div>
                     <div class="main-menu">
                         <ul>
-                            {{--<li><a href="{{ route('index') }}">Home</a></li>--}}
+                            <li><a href="{{ route('index') }}">Home</a></li>
+                            <li class="yellow"><a href="{{route('quiz-part1')}}">Get started</a></li>
                             <li><a href="{{route('experiences')}}">Experiences</a></li>
-                            <li><a href="{{route('how-we-work')}}">How we work</a></li>
-                            <li><a href="{{route('contacts')}}">Contact us</a></li>
-                            <li class="yellow"><a href="{{route('quiz-part1')}}">Find the best trip</a></li>
+                            <li><a href="{{route('contacts')}}">Contact</a></li>
+                            <li><a href="{{route('about')}}">About us</a></li>
+                            {{--<li class="yellow"><a href="{{route('quiz-part1')}}">Find the best trip</a></li>--}}
                         </ul>
                     </div>
                 </div>

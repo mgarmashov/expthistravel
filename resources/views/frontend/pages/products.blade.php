@@ -63,13 +63,14 @@
             <div class="container inn-page-con-bg tb-space pad-bot-redu-5" id="inner-page-title">
                 <!-- TITLE & DESCRIPTION -->
                 <div class="spe-title col-md-12">
-                    <h2>All <span>experience</span></h2>
+                    <h2>All <span>experiences</span></h2>
                     <div class="title-line">
                         <div class="tl-1"></div>
                         <div class="tl-2"></div>
                         <div class="tl-3"></div>
                     </div>
-                    <p>As you filtered, sure. @auth It's sorted according your interests @endauth</p>
+                    <p>Discover our incredible range of travel experiences.</p>
+                    <p>Get personalised travel inspiration here - <a href="{{ route('quiz-part1') }}">Get Started</a></p>
                 </div>
                 @foreach($products as $product)
                     @include('frontend.components.list-item-product-large', ['product' => $product])

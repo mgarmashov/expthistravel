@@ -9,12 +9,13 @@
             <div class="container inn-page-con-bg tb-space" id="inner-page-title">
                 <!-- TITLE & DESCRIPTION -->
                 <div class="spe-title">
-                    <h2>Answer few questions</h2>
+                    <h2>About your trip</h2>
                     <div class="title-line">
                         <div class="tl-1"></div>
                         <div class="tl-2"></div>
                         <div class="tl-3"></div>
                     </div>
+                    <p>Just a few more questions to help us with our recommendations</p>
                     <p>Page 2/3</p>
                 </div>
 

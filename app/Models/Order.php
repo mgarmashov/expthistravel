@@ -48,8 +48,10 @@ class Order extends Model
 
     public function getUserNameEmail()
     {
+        if ( !isset($this->user_id) || $this->user_id == 0) {
+            return 'Anonymous';
+        }
         $user = $this->user()->first();
-//        dd($user->name);
         $output = $user->name ?? '';
         $output .= ' '.$user->surname ?? '';
         $output .= ' '.$user->email ?? '';

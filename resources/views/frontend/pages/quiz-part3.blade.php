@@ -10,7 +10,7 @@
             <div class="container inn-page-con-bg tb-space" id="inner-page-title">
                 <!-- TITLE & DESCRIPTION -->
                 <div class="spe-title">
-                    <h2>Answer few questions</h2>
+                    <h2>Almost there, now save your answers</h2>
                     <div class="title-line">
                         <div class="tl-1"></div>
                         <div class="tl-2"></div>
@@ -19,12 +19,13 @@
                     <p>Page 3/3</p>
                 </div>
 
-                <div>
-
-                </div>
-
                 <div class="application-layout col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
-                    <p>Almost done. Register please for keeping your answers and relating with your profile</p>
+                    <ul class="left-align">
+                        <li>Get personalised travel inspiration</li>
+                        <li>Your information is kept private and secure.
+                            We never share your personal details</li>
+                        <li>Update your interests and preferences or unsubscribe any time</li>
+                    </ul>
                     <form class="col s12" method="post" action="{{ route('quiz-register') }}" id="register-form">
                         <div class="row">
                             <div class="input-field col s12">

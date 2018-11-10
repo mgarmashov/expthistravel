@@ -51,39 +51,31 @@
                 <div class="foot-sec2">
                     <div>
                         <div class="row">
-                            <div class="col-sm-3 foot-spec foot-com">
-                                <h4><span>Holiday</span> Tour & Travels</h4>
-                                <p>World's leading tour and travels Booking website,Over 30,000 packages worldwide.</p>
+                            <div class="col-sm-4 foot-spec foot-com">
+                                <h4><span>Experience</span> This Travel</h4>
+                                <p>Travel Experiences Made For You. Travel Planning Made Easy</p>
                             </div>
-                            <div class="col-sm-3 foot-spec foot-com">
-                                <h4><span>Address</span> & Contact Info</h4>
-                                <p>28800 Orchard Lake Road, Suite 180 Farmington Hills, U.S.A. Landmark : Next To Airport</p>
-                                <p> <span class="strong">Phone: </span> <span class="highlighted">+101-1231-1231</span> </p>
-                            </div>
-                            <div class="col-sm-3 col-md-3 foot-spec foot-com">
+                            <div class="col-sm-4 foot-spec foot-com">
                                 <h4><span>SUPPORT</span> & HELP</h4>
                                 <ul class="two-columns">
-                                    <li> <a href="#">About Us</a> </li>
-                                    <li> <a href="#">FAQ</a> </li>
-                                    <li> <a href="#">Feedbacks</a> </li>
-                                    <li> <a href="#">Blog </a> </li>
-                                    <li> <a href="#">Use Cases</a> </li>
-                                    <li> <a href="#">Advertise us</a> </li>
-                                    <li> <a href="#">Discount</a> </li>
-                                    <li> <a href="#">Vacations</a> </li>
-                                    <li> <a href="#">Branding Offers </a> </li>
-                                    <li> <a href="#">Contact Us</a> </li>
+                                    <li> <a href="{{ route('quiz-part1') }}">Personalised Travel Inspiration</a> </li>
+                                    <li> <a href="{{ route('experiences') }}">Experiences </a></li>
+                                    <li> <a href="{{ route('bookingPage') }}">Plan My Trip</a></li>
+                                    <li> <a href="{{ route('about') }}">About us</a></li>
+                                    {{--<li> <a href="{{ route('') }}">Blog</a></li>--}}
+                                    {{--<li> <a href="{{ route('') }}">FAQ</a></li>--}}
+                                    {{--<li> <a href="{{ route('') }}">Terms and Conditions</a></li>--}}
+                                    <li> <a href="{{ route('login') }}">Sign In/ Register</a></li>
+                                    <li> <a href="{{ route('contacts') }}">Contact</a></li>
                                 </ul>
                             </div>
-                            <div class="col-sm-3 foot-social foot-spec foot-com">
+                            <div class="col-sm-4 foot-social foot-spec foot-com">
                                 <h4><span>Follow</span> with us</h4>
-                                <p>Join the thousands of other There are many variations of passages of Lorem Ipsum available</p>
+                                <p>Get inspiration on your feed and share your travel experiences with us #ExperienceThis</p>
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
-                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
-                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
-                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
-                                    <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
+                                    <li><a href="https://www.facebook.com/ExperienceThisTravel"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
+                                    <li><a href="https://www.instagram.com/experience_this_travel"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+                                    <li><a href="https://twitter.com/ExperienceThisTravel"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
                                 </ul>
                             </div>
                         </div>

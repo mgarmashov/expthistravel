@@ -17,7 +17,10 @@
                         <div class="tl-2"></div>
                         <div class="tl-3"></div>
                     </div>
-                    <p>Press if you like things on picture</p>
+                    <p>Tell us what you think of these activities. <br/>
+                        <i><u>Like it</u></i> | <i><u>not my cup of tea</u></i> | <i><u>not sure...</u></i><br/>
+                        We’ll use your preferences to find the ideal travel experiences for you.
+                    </p>
                     <p id="counter" data-number=1 >1/{{ config('app.totalActivitiesInQuiz') }}</p>
                 </div>
                 <div class="col-sm-8 col-sm-offset-2">
@@ -32,8 +35,8 @@
                                         <img src="{{ asset(cropImage($activity->image, 700, 400)) }}" alt="{{ $activity->name }}" />
                                     </div>
                                     <div class="b_pack rows text-center">
-                                        <div class="col-md-8 col-md-offset-2">
-                                            <h4>{{ $activity->name }}</h4>
+                                        <div class="col-xs-8 col-xs-offset-2">
+                                            <h4 class="full-text">{{ $activity->name }}</h4>
                                         </div>
                                     </div>
                                 </div>

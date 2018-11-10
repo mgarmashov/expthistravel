@@ -1,7 +1,7 @@
 @extends('frontend.layouts.main')
 
 @section('title')
-    | Profile
+    | Profile - Experiences
 @endsection
 
 @section('content')

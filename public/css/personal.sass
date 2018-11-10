@@ -8,8 +8,9 @@
   background: rgba(0,0,0,0.6)
   width: 100%
   height: 100%
+
 .light-layout
-  background: rgba(255,255,255,0.5)
+  background: rgba(255,255,255,0.8)
   width: 100%
   height: 100%
 
@@ -18,6 +19,21 @@
   width: 70%
 .wed-logo
   width: 30%
+
+.affix
+  height: 89px
+  @media (max-width: 992px)
+    display: none
+
+.tourz-search-1
+  @media (max-width: 992px)
+    width: 100%
+  h1
+    font-size: 46px
+    @media (max-width: 800px)
+      font-size: 30px
+    margin-bottom: 20px
+    line-height: 1.5em
 
 
 .place
@@ -28,6 +44,87 @@
 .b_pack
   margin-bottom: 5px
 
+.full-text
+  text-overflow: initial !important
+  white-space: normal !important
+
+
+.howItWorks
+  &-container
+  &-block
+    background: white
+    position: relative
+    padding: 30px 5px 100px 5px
+    border-radius: 10px
+    border: 2px solid #d2a032
+    box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.3)
+
+    @media(max-width: 768px)
+      height: auto
+    margin-top: 30px
+    img
+      width: 100px
+      position: absolute
+      right: 10px
+      margin-left: -25px
+      bottom: 6px
+    i
+      //position: absolute
+      //display: block
+      //width: 100%
+      //height: 100%
+      //left: 0
+      //top: 0
+      //background: rgba(210,160,50,0.1)
+      //color: white
+      //font-size: 17em
+
+      position: absolute
+      left: 50%
+      margin-left: -25px
+      bottom: 3px
+      font-size: 50px
+      color: #f4364f
+    .number
+      text-align: center
+      position: absolute
+      width: 50px
+      height: 50px
+      border-radius: 25px
+      top: -25px
+      left: 50%
+      margin-left: -25px
+      background: linear-gradient(to bottom, #d2a032, #b18013)
+      color: white
+      font-size: 30px
+      line-height: 50px
+    h5
+      display: block
+      text-align: center
+      font-size: 26px
+      @media (max-width: 1200px) and (min-width: 993px)
+        font-size: 20px
+
+.home-why
+  &-container
+  &-block
+    position: relative
+    padding-left: 120px
+    margin: 2em auto
+    .img-container
+      position: absolute
+      left: 0
+      top: 0
+      width: 90px
+      background: white
+      border-radius: 10px
+      padding: 5px
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.8)
+      img
+        width: 100%
+.wysiwyg-content
+  text-align: left
+  font-size: 14px
 //  quiz
 .quiz-question
   position: relative

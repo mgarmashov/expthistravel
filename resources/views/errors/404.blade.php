@@ -18,7 +18,7 @@
               <li><a href="{{ route('login') }}">Sign In</a></li>
               <li><a class="nav-link" href="{{ route('register') }}">Sign Up</a></li>
             @else
-              <li><a href="{{ route('profile') }}">Profile</a></li>
+              <li><a href="{{ route('profile.products') }}">Profile</a></li>
               <li><a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

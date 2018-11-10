@@ -94,6 +94,6 @@ class RegisterController extends Controller
             return route('quiz-results', $attribures);
         }
 
-        return route('profile');
+        return route('profile.products');
     }
 }

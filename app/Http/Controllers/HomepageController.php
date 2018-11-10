@@ -16,8 +16,8 @@ class HomepageController extends Controller
         return view('frontend.pages.contacts');
     }
 
-    public function showHowWeWork()
+    public function showAbout()
     {
-        return view('frontend.pages.howWeWork');
+        return view('frontend.pages.about');
     }
 }

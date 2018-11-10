@@ -11,7 +11,10 @@
 @section('content')
 <!--====== BANNER ==========-->
 <section>
-    <div class="rows inner_banner inner_banner_4" style="background-image: url({{ asset(cropImage($product->image, 1350, 500)) }})">
+    <div class="rows inner_banner inner_banner_4" style="background-image: url(
+{{--    {{ asset(cropImage($product->image, 1350, 500)) }}--}}
+            {{ asset('images/home-large-image/'.randomBgImage()) }}
+            )">
         <div class="container">
             <h2>| {{ $product->name }}</h2>
             <ul>
@@ -50,7 +53,7 @@
                     <h2>{{ $product->name }}</h2> </div>
 
                 <div class="tour_head1">
-                    <h3>Impressions</h3>
+                    <h3>Type of Experience</h3>
                     <div class="product-scores">
                         <ul>
                             @foreach($product->scores() as $category => $score)
@@ -82,13 +85,13 @@
 
                 <!--====== PUPULAR TOUR PACKAGES ==========-->
                 <div class="tour_right tour_rela tour-ri-com">
-                    <h3>Popular Packages</h3>
-                    @foreach(\App\Models\Product::query()->inRandomOrder()->limit(3)->get() as $pp)
+                    <h3>Add Other Experiences</h3>
+                    @foreach($popularPackages as $pp)
                         <div class="tour_rela_1">
                             <img src="{{ asset(cropImage($pp->image, 250, 200)) }}" alt="" />
                             <h4>{{ $pp->place() }} : {{ $pp->name }}</h4>
                             <p> {!! $pp->description_short !!}</p>
-                            <a href="{{ route('product', ['id' => $pp->id]) }}" class="link-btn">View this Package</a>
+                            <a href="{{ route('product', ['id' => $pp->id]) }}" class="link-btn">Find out more</a>
                         </div>
                     @endforeach
                 </div>
