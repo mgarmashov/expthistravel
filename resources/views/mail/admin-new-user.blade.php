@@ -15,7 +15,7 @@
             <tr>
             <td>
                 People:
-                @if($quizResults['q1'])
+                @if(isset($quizResults['q1']))
                     <ul>
                         @foreach($quizResults['q1'] as $id)
                             <li>{{ config('questions.q1.'.$id) }}</li>
@@ -27,7 +27,7 @@
         <tr>
             <td>
                 Duration:
-                @if($quizResults['q2'])
+                @if(isset($quizResults['q2']))
                 <ul>
                     @foreach($quizResults['q2'] as $id)
                         <li>{{ config('questions.q2.'.$id) }}</li>
@@ -39,7 +39,7 @@
         <tr>
             <td>
                 Months:
-                @if($quizResults['q3'])
+                @if(isset($quizResults['q3']))
                 <ul>
                     @foreach($quizResults['q3'] as $id)
                         <li>{{ config('questions.q3.'.$id) }}</li>
@@ -54,7 +54,20 @@
                     @foreach($activityAnswers as $answer)
                         <tr>
                             <td>{{ $answer->activity()->name }}</td>
-                            <td style="background: {{ $answer->answer == 'like' ? '8DFF91' : $answer->answer == 'dislike' ? '#FF8284' : 'white' }}">{{ $answer->answer }}</td>
+                            @php
+                                switch ($answer->answer) {
+                                    case 'like':
+                                        $color = '#8DFF91';
+                                        break;
+                                    case 'dislike':
+                                        $color = '#FF8284';
+                                        break;
+                                    default:
+                                        $color = 'white';
+                                        break;
+                                }
+                            @endphp
+                            <td style="background: {{ $color }}">{{ $answer->answer }}</td>
                         </tr>
                     @endforeach
                 </table>
