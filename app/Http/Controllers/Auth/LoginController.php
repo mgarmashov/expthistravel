@@ -41,7 +41,7 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $sessionIdBefore = request()->session()->getId(); //We keep previous session token tu current user
+        $sessionIdBefore = request()->session()->getId(); //We keep previous session token before auth
 
         $this->validateLogin($request);
 
@@ -54,7 +54,10 @@ class LoginController extends Controller
         if ($this->attemptLogin($request)) {
 
 
-            //We keep previous session token tu current user
+
+            /*
+             * If user made answers and auth after that, so we relate his answers with account
+             */
             foreach(QuizHistory::where('session', $sessionIdBefore)->get() as $item) {
                 $item->user = $this->guard()->user()->id;
                 $item->save();

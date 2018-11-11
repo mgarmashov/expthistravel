@@ -14,6 +14,6 @@ class QuizHistory extends Model
 
     public function activity()
     {
-        return $this->belongsTo('App\Models\Activity', 'activity','id');
+        return $this->belongsTo('App\Models\Activity', 'activity','id')->first();
     }
 }

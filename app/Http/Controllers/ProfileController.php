@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewOrderEvent;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -111,6 +112,8 @@ class ProfileController extends Controller
         if (isset($user)) {
             $user->products()->detach();
         }
+
+        event(new NewOrderEvent($order));
 
         return redirect(route('thank-for-order'));
     }

@@ -160,7 +160,7 @@ class QuizController extends Controller
         }
 
 
-        $totalScoresOfCategories = $this->countTotalScores($allAnswersAsArray['a']);
+        $totalScoresOfCategories = $this->countTotalScores($allAnswersAsArray['a'] ?? []);
 
         $this->updateUserAnswers($allAnswersAsArray);
 
@@ -238,6 +238,9 @@ class QuizController extends Controller
         $outputScores = $outputScores->sortBy('score')->reverse();
 
         $top = (int) $outputScores->max('score');
+        if ($top ==0) {
+            $top = 100;
+        }
 
 //        $top = $outputScores->sum('score');
 

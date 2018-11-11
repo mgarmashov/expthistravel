@@ -40,8 +40,8 @@
                         </div>
                     </form>
                     <p>
-                        {{--<a href="{{ route('password.request') }}">forgot password</a> |--}}
-                        Are you a new user ? <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('password.request') }}">forgot password</a> |
+                        Are you a new user? <a href="{{ route('register') }}">Register</a>
                     </p>
                 </div>
             </div>

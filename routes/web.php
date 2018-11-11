@@ -53,6 +53,9 @@ Route::group(['middleware' => ['web']], function() {
 });
 
 Auth::routes();
+//Route::get('/reset-password/{token}', function($token){
+//    dd($token);
+//})->name('password.reset');
 
 
 Route::group(['middleware' => ['auth']], function() {

@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -16,9 +17,16 @@ class NewUserRegisteredNotification extends Notification
      *
      * @return void
      */
-    public function __construct()
+    protected $newUser;
+    protected $activityAnswers;
+    protected $quizResults;
+
+    public function __construct(User $user, $activityAnswers, $quizResults)
     {
-        //
+        $this->newUser = $user;
+        $this->activityAnswers = $activityAnswers;
+        $this->quizResults = $quizResults;
+//        dd('test2');
     }
 
     /**
@@ -41,9 +49,12 @@ class NewUserRegisteredNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->subject('"Experience this travel" - there is new user registered')
+            ->view('mail.admin-new-user', [
+                'user' => $this->newUser,
+                'activityAnswers' => $this->activityAnswers,
+                'quizResults' => $this->quizResults
+            ]);
     }
 
     /**

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Models\QuizHistory;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Notifications\NewUserRegisteredNotification;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -29,6 +31,7 @@ class RegisterController extends Controller
 
     protected $redirectTo = '/profile';
     protected $quizResults;
+    protected $activityAnswers;
 
     /**
      * Create a new controller instance.
@@ -49,14 +52,18 @@ class RegisterController extends Controller
         event(new Registered($user = $this->create($request->all())));
 
         /*
-         * Changed block. We keep previous session token tu current user
+         * After registration (but BEFORE auth) we take user's session id.
+         * And relate his answer from History with userId
          */
         $sessionIdBefore = request()->session()->getId();
-        foreach(QuizHistory::where('session', $sessionIdBefore)->get() as $item) {
+        $this->activityAnswers = QuizHistory::where('session', $sessionIdBefore)->get();
+        foreach($this->activityAnswers as $item) {
             $item->user = $user->id;
             $item->save();
         }
-        ///////////////////// end
+
+        //notify about new user registration
+        $this->notifyAdmin($user);
 
         $this->guard()->login($user);
         return $this->registered($request, $user)
@@ -67,7 +74,6 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-//            'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:4|confirmed',
         ]);
@@ -77,7 +83,6 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-//            'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
@@ -87,7 +92,7 @@ class RegisterController extends Controller
 
     public function redirectTo()
     {
-        //if used passed QUiz, he has results in special input on the registartion page
+        //if used passed Quiz , he has results in special input on the registartion page
         if ($this->quizResults) {
             $attribures = [];
             parse_str($this->quizResults, $attribures);
@@ -95,5 +100,18 @@ class RegisterController extends Controller
         }
 
         return route('profile.products');
+    }
+
+    protected function notifyAdmin($newUser)
+    {
+        $admin = User::where('login', env('USER_NOTIFY', 'root'))->first();
+
+        //we have to transfer activityAnswers and quizResults, because user has not logged in yet and search hasn't applied
+        //=>
+        //user's info still empty. we need take data fron session.
+        $attribures = [];
+        parse_str($this->quizResults, $attribures);
+        $admin->notify(new NewUserRegisteredNotification($newUser, $this->activityAnswers, $attribures));
+
     }
 }
