@@ -11,7 +11,7 @@
                                 <li class="with-counter">
                                     <a class="bright" href="{{ route('orderPage') }}">&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;
                                     </a>
-                                    <span id="order-counter" data-total="{{ count(session('cart')) ?? 0 }}">{{ count(session('cart')) }}</span>
+                                    <span id="order-counter" data-total="{{ count(session('cart')) ?? 0 }}">{{ count(session('cart')) ?? 0 }}</span>
                                 </li>
                                 <li>
                                     <a class="medium" href="{{ route('login') }}">Sign In / Register</a>
