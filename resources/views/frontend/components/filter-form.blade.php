@@ -1,12 +1,16 @@
 <form class="" id="filter-form" method="get" action="{{ route('search') }}">
 
     @auth
+        @if(\Illuminate\Support\Facades\Auth::user()->scores())
         <row>
             <div class="text-left font-light filter-checkbox">
                 <input type="checkbox" name="applyScores" id="applyScores" class="styled" {{ isset($filter['applyScores']) ? 'checked' : ''}}>
                 <label for="applyScores">Apply personal recommendations</label>
             </div>
         </row>
+            @else
+                <p>We can help you to choose tour. Just answer some questions in <a href="{{ route('quiz-part1') }}">our Quiz</a></p>
+            @endif
     @endauth
     <div class="row form-with-labels">
         <div class="col l4 m12 s12">

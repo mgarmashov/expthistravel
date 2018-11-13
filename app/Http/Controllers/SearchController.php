@@ -26,15 +26,20 @@ class SearchController extends Controller
             $products = Product::filterByDuration($request->duration);
         }
 
-        if (Auth::check() && $request->applyScores) {
+        $applyScores = 'no';
+        if (Auth::check() && Auth::user()->scores() && $request->applyScores) {
             $scoresOfUser = Auth::user()->scores();
             $products = Product::findBestProducts($scoresOfUser);
+            $applyScores = 'yes';
+        }
+        if (Auth::check() && Auth::user()->scores()) {
+            $applyScores = 'takeQuiz';
         }
 
         return view('frontend.pages.products', [
             'products' => $products,
             'filter' =>[
-                'applyScores' => true,
+                'applyScores' => $applyScores,
                 'country' => $request->country ?? null,
                 'month' => $request->month ?? null,
                 'duration' => $request->duration ?? null

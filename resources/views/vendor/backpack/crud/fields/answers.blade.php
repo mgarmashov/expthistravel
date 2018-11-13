@@ -99,8 +99,7 @@
             <div>
                 <table class="table table-condensed table-bordered">
                     <tbody>
-
-                    @if(count($user->totalScores))
+                    @if($user->totalScores)
                         @foreach ($user->totalScores as $key => $score)
                             <tr>
                                 <td>{{ config('categories')[$key]['name'] ?? "error with name" }}</td>
@@ -109,6 +108,12 @@
                                 </td>
                             </tr>
                         @endforeach
+                    @else
+                        <tr>
+                            <td>
+                                User has not passed the Quiz
+                            </td>
+                        </tr>
                     @endif
                     </tbody>
                 </table>
