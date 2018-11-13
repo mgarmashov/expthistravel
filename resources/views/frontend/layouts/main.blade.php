@@ -61,7 +61,9 @@
                                     <li> <a href="{{ route('quiz-part1') }}">Personalised Travel Inspiration</a> </li>
                                     <li> <a href="{{ route('experiences') }}">Experiences </a></li>
                                     <li> <a href="{{ route('bookingPage') }}">Plan My Trip</a></li>
-                                    <li> <a href="{{ route('about') }}">About us</a></li>
+                                    @if($about = \App\Models\Page::about())
+                                        <li><a href="{{route($about->slug)}}">{{ $about->name }}</a></li>
+                                    @endif
                                     {{--<li> <a href="{{ route('') }}">Blog</a></li>--}}
                                     {{--<li> <a href="{{ route('') }}">FAQ</a></li>--}}
                                     {{--<li> <a href="{{ route('') }}">Terms and Conditions</a></li>--}}

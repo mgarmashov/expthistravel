@@ -68,8 +68,9 @@
                             <li class="yellow"><a href="{{route('quiz-part1')}}">Get started</a></li>
                             <li><a href="{{route('experiences')}}">Experiences</a></li>
                             <li><a href="{{route('contacts')}}">Contact</a></li>
-                            <li><a href="{{route('about')}}">About us</a></li>
-                            {{--<li class="yellow"><a href="{{route('quiz-part1')}}">Find the best trip</a></li>--}}
+                            @if($about = \App\Models\Page::about())
+                                <li><a href="{{route($about->slug)}}">{{ $about->name }}</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>

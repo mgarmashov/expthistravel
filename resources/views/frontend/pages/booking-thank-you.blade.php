@@ -1,7 +1,7 @@
 @extends('frontend.layouts.main')
 
 @section('title')
-    | Booking
+    | Booking successful
 @endsection
 
 @section('content')

@@ -29,6 +29,7 @@
     </a>
     <ul class="treeview-menu">
         <li><a href="{{  backpack_url('users') }}"><i class="fa fa-users"></i> <span>Users</span></a></li>
+        <li><a href="{{  backpack_url('pages') }}"><i class="fa fa-file-text"></i> <span>Pages</span></a></li>
         <li><a href="{{  backpack_url('elfinder') }}"><i class="fa fa-files-o"></i> <span>File manager</span></a></li>
         <li><a href="{{  route('admin.quiz-statistic') }}"><i class="fa fa-bar-chart-o"></i> <span>Statistic of Quiz</span></a></li>
     </ul>

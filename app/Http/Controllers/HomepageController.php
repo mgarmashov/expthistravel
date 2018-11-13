@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class HomepageController extends Controller
@@ -18,6 +19,10 @@ class HomepageController extends Controller
 
     public function showAbout()
     {
-        return view('frontend.pages.about');
+        $about = Page::about();
+        return view('frontend.layouts.infoPage-template', [
+            'title' => $about->name,
+            'content' => $about->content
+        ]);
     }
 }
