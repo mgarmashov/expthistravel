@@ -166,7 +166,8 @@ class QuizController extends Controller
 
         $scoresForView = self::transformScoresForView($totalScoresOfCategories);
 
-        $filteredProducts = Product::filterByDuration($allAnswersAsArray['q2'] ?? '');
+        Product::filterByDuration($allAnswersAsArray['q2'] ?? '');
+        Product::filterByMonth($allAnswersAsArray['q3']);
 
         $bestProducts = Product::findBestProducts($scoresForView);
 

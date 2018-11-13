@@ -88,7 +88,6 @@ class Product extends Model
         ->implode(', ')
         ;
 
-//        dd($output);
         return $output;
     }
 
@@ -129,8 +128,9 @@ class Product extends Model
             return array_has($filteredProducts, $product->id);
         });
 
-        $output->sortBy(function ($product, $key) use ($filteredProducts) {
-            return array_search($product->id, $filteredProducts->toArray());
+        $output = $output->sortBy(function ($product, $key) use ($filteredProducts) {
+            $sortedProductsIds = $filteredProducts->keys()->toArray();
+            return array_search($product->id, $sortedProductsIds);
         });
 
         return $output;
