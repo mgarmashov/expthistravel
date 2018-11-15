@@ -10,7 +10,8 @@
                             <h1>Travel experiences made for you <br />
                                 Travel planning made easy
                             </h1>
-                            <p>Discover amazing travel experiences suited to you – Design your tailormade trip –Your personalised travel itinerary, organised and booked for you – Create incredible travel memories</p>
+                            <p>Discover amazing travel experiences suited to you – Design your tailormade trip – <br />
+                                Your personalised travel itinerary, organised and booked for you – Create incredible travel memories</p>
                             <a class="waves-effect waves-light tourz-sear-btn" href="{{ route('quiz-part1') }}"> Get started</a>
                         </div>
                     </div>
@@ -52,7 +53,7 @@
                             <div class="number">3</div>
                             {{--<i class="fa fa-map-signs" aria-hidden="true"></i>--}}
                             <img src="{{ asset('images/icon-trip.png') }}" alt="">
-                            <h5>Your entire trip organised for you </h5>
+                            <h5>Create your bespoke travel plan </h5>
                             <p>Add experiences to your tailormade trip and submit your trip enquiry</p>
                         </div>
                     </div>
@@ -62,7 +63,7 @@
                             <div class="number">4</div>
                             {{--<i class="fa fa-ticket" aria-hidden="true"></i>--}}
                             <img src="{{ asset('images/icon-ticket.png') }}" alt="">
-                            <h5>Take our travel profiler test </h5>
+                            <h5>Your entire trip organised for you </h5>
                             <p>We’ll create your customised travel itinerary and book your entire trip for you</p>
                         </div>
                     </div>
@@ -145,7 +146,7 @@
                             <div class="img-container">
                                 <img src="{{ asset('images/icon-expert.png') }}" alt="">
                             </div>
-                            <h5>Register with your embassy</h5>
+                            <h5>Trusted, tried and tested</h5>
                             <p>- Expert destination knowledge and insights</p>
                             <p>- A handpicked selection of highly-regarded, socially responsible suppliers</p>
                         </div>
@@ -156,7 +157,7 @@
                             <div class="img-container">
                                 <img src="{{ asset('images/icon-itinerary.png') }}" alt="">
                             </div>
-                            <h5>Always have local cash</h5>
+                            <h5>Organised and booked for you</h5>
                             <p>- We do the legwork. Saving you valuable time researching and planning your trip.</p>
                             <p>- All your documents easily accessible, when you need them</p>
                         </div>
@@ -182,36 +183,36 @@
         });
     </script>
 
-    <script>
-        let buttons = document.getElementsByClassName('btn-book-product');
-        for ( let button of buttons ) {
-            button.onclick = function() {
-                event.preventDefault();
-                var currentBtn = this;
-                $.ajax({
-                    type: "get",
-                    url: '{{ route('productToOrder') }}/'+currentBtn.dataset.product,
+    {{--<script>--}}
+        {{--let buttons = document.getElementsByClassName('btn-book-product');--}}
+        {{--for ( let button of buttons ) {--}}
+            {{--button.onclick = function() {--}}
+                {{--event.preventDefault();--}}
+                {{--var currentBtn = this;--}}
+                {{--$.ajax({--}}
+                    {{--type: "get",--}}
+                    {{--url: '{{ route('productToOrder') }}/'+currentBtn.dataset.product,--}}
 
-                    success: function () {
-                    },
-                });
-                var newEl = document.createElement('p');
-                newEl.classList.add('added-to-order');
-                newEl.innerHTML = 'Added to <a class="" href="{{ route('orderPage') }}">order</a>';
+                    {{--success: function () {--}}
+                    {{--},--}}
+                {{--});--}}
+                {{--var newEl = document.createElement('p');--}}
+                {{--newEl.classList.add('added-to-order');--}}
+                {{--newEl.innerHTML = 'Added to <a class="" href="{{ route('orderPage') }}">order</a>';--}}
 
-                currentBtn.parentNode.replaceChild(newEl, currentBtn);
-
-
-
-                let orderCounter = document.getElementById('order-counter');
-
-                let newTotal = Number(orderCounter.dataset.total) + 1;
-                console.log(newTotal);
-                orderCounter.dataset.total = newTotal;
-                orderCounter.innerHTML = newTotal;
+                {{--currentBtn.parentNode.replaceChild(newEl, currentBtn);--}}
 
 
-            }
-        }
-    </script>
+
+                {{--let orderCounter = document.getElementById('order-counter');--}}
+
+                {{--let newTotal = Number(orderCounter.dataset.total) + 1;--}}
+                {{--console.log(newTotal);--}}
+                {{--orderCounter.dataset.total = newTotal;--}}
+                {{--orderCounter.innerHTML = newTotal;--}}
+
+
+            {{--}--}}
+        {{--}--}}
+    {{--</script>--}}
 @endpush

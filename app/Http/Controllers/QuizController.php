@@ -166,8 +166,14 @@ class QuizController extends Controller
 
         $scoresForView = self::transformScoresForView($totalScoresOfCategories);
 
-        Product::filterByDuration($allAnswersAsArray['q2'] ?? '');
-        Product::filterByMonth($allAnswersAsArray['q3']);
+        if (isset($allAnswersAsArray['q2'])) {
+            Product::filterByDuration($allAnswersAsArray['q2'] ?? '');
+        }
+
+        if (isset($allAnswersAsArray['q3'])) {
+            Product::filterByMonth($allAnswersAsArray['q3']);
+        }
+
 
         $bestProducts = Product::findBestProducts($scoresForView);
 
@@ -175,7 +181,7 @@ class QuizController extends Controller
         return view('frontend.pages.quiz-results', [
             'bestProducts' => $bestProducts,
             'filter' =>[
-                'applyScores' => true,
+                'applyScores' => 'yes',
                 'month' => $allAnswersAsArray['q3'] ?? null,
                 'duration' => $allAnswersAsArray['q2'] ?? null
             ]

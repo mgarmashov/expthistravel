@@ -27,12 +27,12 @@ class SearchController extends Controller
         }
 
         $applyScores = 'no';
-        if (Auth::check() && Auth::user()->scores() && $request->applyScores) {
+        if (Auth::check() && Auth::user()->totalScores && $request->applyScores) {
             $scoresOfUser = Auth::user()->scores();
             $products = Product::findBestProducts($scoresOfUser);
             $applyScores = 'yes';
         }
-        if (Auth::check() && Auth::user()->scores()) {
+        if (Auth::check() && ! Auth::user()->totalScores) {
             $applyScores = 'takeQuiz';
         }
 

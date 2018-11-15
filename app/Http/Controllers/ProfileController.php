@@ -106,9 +106,12 @@ class ProfileController extends Controller
         $order->comment = view('frontend.components.order-to-database', ['data' => $request])->render();
         $order->save();
 
-        foreach ($request->products as $productId) {
-            $order->products()->attach($productId);
+        if(isset($request->products)) {
+            foreach ($request->products as $productId) {
+                $order->products()->attach($productId);
+            }
         }
+
         if (isset($user)) {
             $user->products()->detach();
         }

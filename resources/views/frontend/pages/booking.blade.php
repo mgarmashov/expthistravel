@@ -70,7 +70,7 @@
                     </div>
                     <div class="row">
                         <div class="col s12 m6">
-                            <label for="people">How many people will go</label>
+                            <label for="people">How many people are travelling?</label>
                             <input type="text" id="people" name="people">
                         </div>
                         <div class="col s12 m6">
@@ -80,7 +80,7 @@
                     </div>
                     <div class="row">
                         <div class="col s12">
-                            <label for="comment">How many people are travelling?</label>
+                            <label for="comment">Additional comments or request</label>
                             <textarea name="comment" id="comment" rows="12"></textarea>
                         </div>
                     </div>

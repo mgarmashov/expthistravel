@@ -50,8 +50,8 @@ class Product extends Model
 
     public function duration()
     {
-        if ($this->minDuration == 0 && $this->maxDuration == 0) return 'Any days';
-        if ($this->minDuration == 1 && $this->maxDuration == 30) return 'Any days';
+        if ($this->minDuration == 0 && $this->maxDuration == 0) return '1+ days';
+        if ($this->minDuration == 1 && $this->maxDuration == 30) return '1+ days';
         if ($this->minDuration == 1 && $this->maxDuration == 1) return '1 day';
         if ($this->minDuration == $this->maxDuration) return $this->maxDuration.' days';
         if ($this->maxDuration == 30) return $this->minDuration.' days and more';
@@ -216,6 +216,11 @@ class Product extends Model
     public function countries()
     {
         return $this->belongsToMany('App\Models\Country', 'countries_products');
+    }
+
+    public function images()
+    {
+        return $this->belongsToMany('App\Models\Image', 'images_products');
     }
 
     /*

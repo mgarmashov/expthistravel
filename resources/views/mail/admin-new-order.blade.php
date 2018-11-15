@@ -11,7 +11,7 @@
         <tr>
             <td>
                 @if($order->user_id && $order->user_id != 0)
-                    User: {!! $order->user()->name !!} {!! $order->user()->surname !!} {!! $order->user()->email !!}
+                    User: {!! $order->user()->name ?? '' !!} {!! $order->user()->surname ?? '' !!} {!! $order->user()->email ?? '' !!}
                 @else
                     User: Anonymous
                 @endif

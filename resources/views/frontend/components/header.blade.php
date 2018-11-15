@@ -43,9 +43,9 @@
                     </div>
                     <div class="ed-com-t1-social">
                         <ul>
-                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="{{ config('socials.facebook.url') }}" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
+                            <li><a href="{{ config('socials.instagram.url') }}" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a> </li>
+                            <li><a href="{{ config('socials.twitter.url') }}" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
                         </ul>
                     </div>
                 </div>

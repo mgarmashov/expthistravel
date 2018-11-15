@@ -53,12 +53,13 @@
                         <div class="row">
                             <div class="col-sm-4 foot-spec foot-com">
                                 <h4><span>Experience</span> This Travel</h4>
-                                <p>Travel Experiences Made For You. Travel Planning Made Easy</p>
+                                <p>Travel Experiences Made For You. <br />
+                                    Travel Planning Made Easy</p>
                             </div>
                             <div class="col-sm-4 foot-spec foot-com">
                                 <h4><span>SUPPORT</span> & HELP</h4>
                                 <ul class="two-columns">
-                                    <li> <a href="{{ route('quiz-part1') }}">Personalised Travel Inspiration</a> </li>
+                                    <li> <a href="{{ route('quiz-part1') }}">Inspire Me</a> </li>
                                     <li> <a href="{{ route('experiences') }}">Experiences </a></li>
                                     <li> <a href="{{ route('bookingPage') }}">Plan My Trip</a></li>
                                     @if($about = \App\Models\Page::about())
@@ -72,12 +73,12 @@
                                 </ul>
                             </div>
                             <div class="col-sm-4 foot-social foot-spec foot-com">
-                                <h4><span>Follow</span> with us</h4>
+                                <h4><span>Follow</span> us</h4>
                                 <p>Get inspiration on your feed and share your travel experiences with us #ExperienceThis</p>
                                 <ul>
-                                    <li><a href="https://www.facebook.com/ExperienceThisTravel"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
-                                    <li><a href="https://www.instagram.com/experience_this_travel"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
-                                    <li><a href="https://twitter.com/ExperienceThisTravel"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+                                    <li><a href="{{ config('socials.facebook.url') }}" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
+                                    <li><a href="{{ config('socials.instagram.url') }}" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a> </li>
+                                    <li><a href="{{ config('socials.twitter.url') }}" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
                                 </ul>
                             </div>
                         </div>
@@ -91,7 +92,7 @@
 <section>
     <div class="rows copy">
         <div class="container">
-            <p>Copyrights © 2018 Company Name. All Rights Reserved</p>
+            <p>Copyrights © 2018 Experience this travel</p>
         </div>
     </div>
 </section>
@@ -115,6 +116,10 @@
 <script src="{{asset('js/bootstrap.js')}}"></script>
 <script src="{{asset('js/wow.min.js')}}"></script>
 <script src="{{asset('js/materialize.min.js')}}"></script>
+<script>
+    const productToOrder = "{{ route('productToOrder')}}";
+    const orderPage = "{{ route('orderPage')}}";
+</script>
 <script src="{{asset('js/custom.js')}}"></script>
 @yield('after_scripts')
 @stack('after_scripts')

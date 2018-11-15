@@ -16,13 +16,13 @@
                         <div class="tl-2"></div>
                         <div class="tl-3"></div>
                         <h4>
-                            Thank you for your order.
+                            Thank you for your booking enquiry.
                         </h4>
                     </div>
                 </div>
                 <div>
                     <h5>
-                        We will connect with you.
+                        We'll be in touch shortly with your personalised travel plan.
                     </h5>
                     <a href="{{ route('index') }}">Go to main page</a>
                 </div>

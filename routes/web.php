@@ -32,6 +32,8 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('/experiences', 'SearchController@showPage')->name('experiences');
 
     Route::get('/contacts', 'HomepageController@showContacts')->name('contacts');
+    Route::post('/contacts/send', 'HomepageController@sendContacts')->name('contacts.send');
+
     Route::get('/about', 'HomepageController@showAbout')->name('about');
     Route::get('/search', 'SearchController@showPage')->name('search');
     Route::get('/order', 'ProfileController@orderPage')->name('orderPage');

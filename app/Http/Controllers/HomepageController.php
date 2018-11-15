@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
+use App\Models\User;
+use App\Notifications\NewMessageNotification;
 use Illuminate\Http\Request;
 
 class HomepageController extends Controller
@@ -24,5 +26,12 @@ class HomepageController extends Controller
             'title' => $about->name,
             'content' => $about->content
         ]);
+    }
+
+    public function sendContacts(Request $request)
+    {
+        $admin = User::where('login', env('USER_NOTIFY', 'root'))->first();
+        $admin->notify(new NewMessageNotification($request));
+
     }
 }

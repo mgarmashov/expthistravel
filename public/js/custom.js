@@ -207,3 +207,36 @@ function myFunction() {
 //         return date;
 //     }
 // });
+
+
+//Personal
+let buttonsToCart = document.getElementsByClassName('btn-book-product');
+for ( let button of buttonsToCart ) {
+    button.onclick = function() {
+        event.preventDefault();
+        var currentBtn = this;
+        $.ajax({
+            type: "get",
+            url: productToOrder+'/'+currentBtn.dataset.product,
+
+            success: function () {
+            },
+        });
+        var newEl = document.createElement('p');
+        newEl.classList.add('btn-added-to-order');
+        newEl.innerHTML = 'Added to <a class="" href="'+orderPage+'">order</a>';
+
+        currentBtn.parentNode.replaceChild(newEl, currentBtn);
+
+
+
+        let orderCounter = document.getElementById('order-counter');
+
+        let newTotal = Number(orderCounter.dataset.total) + 1;
+        console.log(newTotal);
+        orderCounter.dataset.total = newTotal;
+        orderCounter.innerHTML = newTotal;
+
+
+    }
+}

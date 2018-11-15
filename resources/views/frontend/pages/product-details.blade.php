@@ -71,6 +71,47 @@
                         {!! $product->description_long !!}
                     </p>
                 </div>
+                <div class="tour_head1 hotel-book-room">
+                    <h3>Photo Gallery</h3>
+                    <div id="myCarousel1" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators carousel-indicators-1">
+                            <li data-target="#myCarousel1" data-slide-to="0"><img src="{{ asset($product->image) }}" alt="Chania">
+                            </li>
+                            {{--<li data-target="#myCarousel1" data-slide-to="1"><img src="images/gallery/t2.jpg" alt="Chania">--}}
+                            {{--</li>--}}
+                            {{--<li data-target="#myCarousel1" data-slide-to="2"><img src="images/gallery/t3.jpg" alt="Chania">--}}
+                            {{--</li>--}}
+                            {{--<li data-target="#myCarousel1" data-slide-to="3"><img src="images/gallery/t4.jpg" alt="Chania">--}}
+                            {{--</li>--}}
+                            {{--<li data-target="#myCarousel1" data-slide-to="4"><img src="images/gallery/t5.jpg" alt="Chania">--}}
+                            {{--</li>--}}
+                            {{--<li data-target="#myCarousel1" data-slide-to="5"><img src="images/gallery/s6.jpeg" alt="Chania">--}}
+                            {{--</li>--}}
+                            {{--<li data-target="#myCarousel1" data-slide-to="6"><img src="images/gallery/s7.jpeg" alt="Chania">--}}
+                            {{--</li>--}}
+                            {{--<li data-target="#myCarousel1" data-slide-to="7"><img src="images/gallery/s8.jpg" alt="Chania">--}}
+                            {{--</li>--}}
+                            {{--<li data-target="#myCarousel1" data-slide-to="8"><img src="images/gallery/s9.jpg" alt="Chania">--}}
+                            {{--</li>--}}
+                        </ol>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner carousel-inner1" role="listbox">
+                            <div class="item active"> <img src="{{ asset($product->image) }}" alt="Chania" width="460" height="345"> </div>
+                            {{--<div class="item"> <img src="images/gallery/t2.jpg" alt="Chania" width="460" height="345"> </div>--}}
+                            {{--<div class="item"> <img src="images/gallery/t3.jpg" alt="Chania" width="460" height="345"> </div>--}}
+                            {{--<div class="item"> <img src="images/gallery/t4.jpg" alt="Chania" width="460" height="345"> </div>--}}
+                            {{--<div class="item"> <img src="images/gallery/t5.jpg" alt="Chania" width="460" height="345"> </div>--}}
+                            {{--<div class="item"> <img src="images/gallery/t6.jpg" alt="Chania" width="460" height="345"> </div>--}}
+                            {{--<div class="item"> <img src="images/gallery/t7.jpg" alt="Chania" width="460" height="345"> </div>--}}
+                            {{--<div class="item"> <img src="images/gallery/t8.jpg" alt="Chania" width="460" height="345"> </div>--}}
+                            {{--<div class="item"> <img src="images/gallery/t9.jpg" alt="Chania" width="460" height="345"> </div>--}}
+                        </div>
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev"> <span><i class="fa fa-angle-left hotel-gal-arr" aria-hidden="true"></i></span> </a>
+                        <a class="right carousel-control" href="#myCarousel1" role="button" data-slide="next"> <span><i class="fa fa-angle-right hotel-gal-arr hotel-gal-arr1" aria-hidden="true"></i></span> </a>
+                    </div>
+                </div>
             </div>
             <div class="col-md-3 tour_r">
                 <!--====== TRIP INFORMATION ==========-->

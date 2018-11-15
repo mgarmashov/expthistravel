@@ -284,12 +284,30 @@ h4.product-list-name span {
   font-weight: 500;
 }
 
-.added-to-order {
-  display: table;
+p.btn-added-to-order {
+  font-weight: 700;
+  padding: 6px 15px;
+  border-radius: 2px;
+  font-family: "Quicksand", sans-serif;
+  text-decoration: none;
+  background: none;
+  border: 1px solid #868686;
+  font-size: 13px;
+  margin-bottom: 0;
+  color: #868686;
 }
-.added-to-order a {
+p.btn-added-to-order a {
   display: inline-block !important;
-  padding-right: 1em;
+  text-decoration: underline;
+}
+
+.p2_book ul li a {
+  display: inline-block;
+}
+
+.link-large {
+  font-size: 1em;
+  text-decoration: underline;
 }
 
 .margin5 {

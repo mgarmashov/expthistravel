@@ -11,14 +11,14 @@
             <div class="container inn-page-con-bg tb-space" id="inner-page-title">
                 <!-- TITLE & DESCRIPTION -->
                 <div class="spe-title col-md-12">
-                    <h2>Answer few questions</h2>
+                    <h2>My kind of experiences</h2>
                     <div class="title-line">
                         <div class="tl-1"></div>
                         <div class="tl-2"></div>
                         <div class="tl-3"></div>
                     </div>
                     <p>Tell us what you think of these activities. <br/>
-                        <i><u>Like it</u></i> | <i><u>not my cup of tea</u></i> | <i><u>not sure...</u></i><br/>
+                        <i><u>Like it</u></i> | <i><u>not for me</u></i> | <i><u>not sure...</u></i><br/>
                         We’ll use your preferences to find the ideal travel experiences for you.
                     </p>
                     <p id="counter" data-number=1 >1/{{ config('app.totalActivitiesInQuiz') }}</p>
