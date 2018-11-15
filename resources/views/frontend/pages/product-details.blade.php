@@ -114,7 +114,7 @@
                 </div>
 
                 {{--Country description--}}
-                @if( count($product->countries()) )
+                @if( count($product->countries()->get()) )
                     @php
                         $country = $product->countries()->first()
                     @endphp
