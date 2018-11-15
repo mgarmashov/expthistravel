@@ -112,7 +112,27 @@
                         <a class="right carousel-control" href="#myCarousel1" role="button" data-slide="next"> <span><i class="fa fa-angle-right hotel-gal-arr hotel-gal-arr1" aria-hidden="true"></i></span> </a>
                     </div>
                 </div>
+
+                {{--Country description--}}
+                @if( count($product->countries()) )
+                    @php
+                        $country = $product->countries()->first()
+                    @endphp
+                    <div class="tour_head1">
+                        <h3>About {{ $country->name }}</h3>
+                        <div class="row">
+                            <p>
+                                @if($country->image)
+                                    <img class="col m6" src="{{ asset($country->image) }}" alt="">
+                                @endif
+                                {!! $country->description_long !!}
+                            </p>
+                        </div>
+                    </div>
+                @endif
+
             </div>
+
             <div class="col-md-3 tour_r">
                 <!--====== TRIP INFORMATION ==========-->
                 <div class="tour_right tour_incl tour-ri-com">
