@@ -15,6 +15,6 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Activity::class, function (Faker $faker) {
     return [
-        'image' => 'data:image/jpeg;base64,'.base64_encode(file_get_contents($faker->imageUrl())),
+//        'image' => 'data:image/jpeg;base64,'.base64_encode(file_get_contents($faker->imageUrl())),
     ];
 });

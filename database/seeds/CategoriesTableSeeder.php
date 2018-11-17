@@ -29,10 +29,10 @@ class CategoriesTableSeeder extends Seeder
 
         foreach ($arr as $key => $value) {
 
-            $img = $value ? $this->getFile('examples', $value) : null;
+//            $img = $value ? $this->getFile('examples', $value) : null;
             factory(Category::class)->create([
                 'name' => $key,
-                'image' => $img,
+//                'image' => $img,
 
             ]);
         }
