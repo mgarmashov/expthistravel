@@ -19,12 +19,16 @@ if (! function_exists('cropImage')) {
         }
 
         //http://image.intervention.io/
-        $img = Image::make(\Storage::disk('public')->get($src));
-        $img->fit($width, $height);
+        try {
+            $img = Image::make(\Storage::disk('public')->get($src));
+            $img->fit($width, $height);
 
-        \Storage::disk('public')->put($newSrc, $img->stream());
+            \Storage::disk('public')->put($newSrc, $img->stream());
 
-        return 'storage/'.$newSrc;
+            return 'storage/'.$newSrc;
+        } catch (Exception $e) {
+            return '';
+        }
     }
 }
 
