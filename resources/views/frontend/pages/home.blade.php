@@ -10,8 +10,13 @@
                             <h1>Travel experiences made for you <br />
                                 Travel planning made easy
                             </h1>
-                            <p>Discover amazing travel experiences suited to you – Design your tailormade trip – <br />
-                                Your personalised travel itinerary, organised and booked for you – Create incredible travel memories</p>
+                            <p>Discover amazing travel experiences suited to you <br>
+                                –<br>
+                                Design your tailormade trip
+                                <br>– <br />
+                                Your personalised travel itinerary, organised and booked for you<br>
+                                –
+                                <br>Create incredible travel memories</p>
                             <a class="waves-effect waves-light tourz-sear-btn" href="{{ route('quiz-part1') }}"> Get started</a>
                         </div>
                     </div>
