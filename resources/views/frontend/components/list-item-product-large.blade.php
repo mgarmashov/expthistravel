@@ -8,9 +8,9 @@
         <a href="{{ route('product', ['id' => $product->id]) }}"><h3>{{ $product->name }}</h3></a>
         <p>{{ $product->description_short }}</p>
         <div class="featur">
-            @foreach($product->countries as $country)
-                <h4>{{ $country->name }}</h4>
-            @endforeach
+
+            <h4>{{ $product->place() }}</h4>
+
             <ul>
                 <li>{{ $product->duration() }}</li>
             </ul>
