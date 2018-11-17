@@ -16,7 +16,7 @@ class ProductsTableSeeder extends Seeder
     {
         $categories = config('categories');
 
-        $data = config('products2');
+        $data = config('products');
 
         foreach ($data as $product) {
             $scores = [];
