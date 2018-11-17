@@ -16,7 +16,7 @@ class ProductsTableSeeder extends Seeder
     {
         $categories = config('categories');
 
-        $data = config('products');
+        $data = config('products2');
 
         foreach ($data as $product) {
             $scores = [];
@@ -27,6 +27,7 @@ class ProductsTableSeeder extends Seeder
 
             $p1 = factory(Product::class)->create([
                 'name' => $product['Experience'],
+                'city' => $product['City'] ?? null,
 //                'description_short' => 'Master the art of Muay Thai',
 //                'description_long' => 'Take on the challenge of a Muay Thai training camp in Thailand. Learn a martial art, stay fit and keep active, and immerse in a Thai culture.',
                 'months' => $product['When (month)'],
