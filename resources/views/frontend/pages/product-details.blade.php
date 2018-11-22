@@ -11,10 +11,7 @@
 @section('content')
 <!--====== BANNER ==========-->
 <section>
-    <div class="rows inner_banner inner_banner_4" style="background-image: url(
-{{--    {{ asset(cropImage($product->image, 1350, 500)) }}--}}
-            {{ asset('images/home-large-image/'.randomBgImage()) }}
-            )">
+    <div class="rows inner_banner inner_banner_4" @include('frontend.components.randomBgStyle')>
         <div class="container">
             <h2>| {{ $product->name }}</h2>
             <ul>

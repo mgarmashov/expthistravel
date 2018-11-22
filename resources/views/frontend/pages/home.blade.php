@@ -2,7 +2,7 @@
 
 @section('content')
     <section>
-        <div class="tourz-search" style="background-image: url(../images/home-large-image/{{ randomBgImage() }}">
+        <div class="tourz-search" @include('frontend.components.randomBgStyle')>
             <div class="dark-layout">
                 <div class="container">
                     <div class="row">

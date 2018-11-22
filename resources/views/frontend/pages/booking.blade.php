@@ -6,7 +6,7 @@
 
 @section('content')
     <section>
-        <div class="tr-register"  style="background-image: url(../images/home-large-image/{{ randomBgImage() }}">
+        <div class="tr-register"  @include('frontend.components.randomBgStyle')>
             <div class="dark-layout">
                 <div class="application-layout col-md-10 col-md-offset-1 margin70">
                 <div class="spe-title">

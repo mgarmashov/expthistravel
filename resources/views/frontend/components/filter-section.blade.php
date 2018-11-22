@@ -2,10 +2,10 @@
 
 @endphp
 
-<section class="charts-section background-image" style="background-image: url(../images/home-large-image/{{ randomBgImage()  }}">
+<section class="background-image" @include('frontend.components.randomBgStyle')>
     <div class="dark-layout">
     <div class="container">
-        <div class="application-layout">
+        <div class="application-layout margin20">
 
             @auth
                 @if(Auth::user()->scores())

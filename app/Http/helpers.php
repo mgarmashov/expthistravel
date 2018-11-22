@@ -36,24 +36,14 @@ if (! function_exists('cropImage')) {
 if (! function_exists('randomBgImage')) {
     function randomBgImage()
     {
-        $bgImages = [
-            'windsurf.jpg',
-            'boat.jpg',
-            'food.jpg',
-            'bus.jpg',
-            'bikes.jpg',
-            'asia1.jpg',
-            'asia2.jpg',
-            'asia3.jpg',
-            'asia4.jpg',
-            'beach1.jpg',
-            'beach2.jpg',
-            'beach3.jpg',
-            'beach4.jpg',
-            'waterfall.jpg',
-        ];
+        $filesInFolder = \File::files('images/bg-images/');
 
-        return array_random($bgImages);
+        $fileNames = [];
+        foreach($filesInFolder as $path) {
+            $fileNames[] = rawurlencode(pathinfo($path)['basename']);
+        }
+
+        return asset('images/bg-images/'.array_random($fileNames));
     }
 }
 

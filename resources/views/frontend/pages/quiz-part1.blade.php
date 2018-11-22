@@ -32,6 +32,7 @@
                             <div id="activity-container">
                                 <div class="avtivity-item" id="activity-item" data-activity="{{ $activity->id }}">
                                     <div class="v_place_img">
+{{--                                        {{ dd(cropImage($activity->image, 700, 400)) }}--}}
                                         <img src="{{ asset(cropImage($activity->image, 700, 400)) }}" alt="{{ $activity->name }}" />
                                     </div>
                                     <div class="b_pack rows text-center">

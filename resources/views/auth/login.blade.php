@@ -1,7 +1,7 @@
 @extends('frontend.layouts.main')
 
 @section('content')
-    <section class="background-image" style="background-image: url(../images/home-large-image/{{ randomBgImage()  }}">
+    <section class="background-image" @include('frontend.components.randomBgStyle')>
         <div class="dark-layout">
             <div class="container">
                 <div class="tr-regi-form">
