@@ -115,6 +115,16 @@
 <!--========= Scripts ===========-->
 @yield('before_scripts')
 @stack('before_scripts')
+@if(env('APP_ENV') == 'production')
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129822952-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ env('gtag', 'UA-129822952-1') }}');
+    </script>
+@endif
 <script src="{{asset('js/jquery-latest.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.js')}}"></script>
 <script src="{{asset('js/wow.min.js')}}"></script>
