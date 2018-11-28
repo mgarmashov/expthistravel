@@ -59,7 +59,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="wed-logo">
-                        <a href="{{route('index')}}"><img src="{{ asset('images/logo_500.png') }}" alt="" />
+{{--                        <a href="{{route('index')}}"><img src="{{ asset('images/logo_500.png') }}" alt="" />--}}
+                        <a href="{{route('index')}}"><img src="{{ asset('images/logo4.png') }}" alt="" />
                         </a>
                     </div>
                     <div class="main-menu">
@@ -72,6 +73,7 @@
                                 <li><a href="{{route($about->slug)}}">{{ $about->name }}</a></li>
                             @endif
                         </ul>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
             </div>

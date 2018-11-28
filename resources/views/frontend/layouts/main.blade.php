@@ -12,7 +12,7 @@
         <meta name="google-site-verification" content="{{ env('google-site-verification') }}" />
     @endif
     {{--<!-- FAV ICON -->--}}
-    <link rel="shortcut icon" href="{{asset('images/favicon32.png')}}">
+    <link rel="shortcut icon" href="{{asset('images/favicon2.png')}}">
     {{--<!-- GOOGLE FONTS -->--}}
     <link href="https://fonts.googleapis.com/css?family=Poppins%7CQuicksand:400,500,700" rel="stylesheet">
     {{--<!-- FONT-AWESOME ICON CSS -->--}}

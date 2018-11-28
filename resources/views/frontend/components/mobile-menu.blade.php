@@ -4,7 +4,9 @@
         <div class="ed-mob-menu-con">
             <div class="ed-mm-left">
                 <div class="wed-logo">
-                    <a href="{{route('index')}}"><img src="{{ asset('images/logo_500.png') }}" alt="" />
+                    <a href="{{route('index')}}">
+{{--                        <img src="{{ asset('images/logo_500.png') }}" alt="" />--}}
+                        <img src="{{ asset('images/logo4.png') }}" alt="" />
                     </a>
                 </div>
             </div>
