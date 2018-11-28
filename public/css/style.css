@@ -5543,7 +5543,7 @@
  .wed-logo a{
 }
  .wed-logo a img{
-     width: 250px;
+     width: 290px;
      padding: 7px 0px;
 }
  .wed-menu{
@@ -5665,7 +5665,7 @@
  .main-menu ul li a{
      color: #000000;
      padding: 20px 10px;
-     line-height: 58px;
+     line-height: 86px;
      font-size: 15px;
      font-weight: 600;
     /* text-transform: uppercase;
@@ -6443,7 +6443,7 @@
      position:fixed;
      top:0px;
      width:100%;
-     height:70px;
+     height:86px;
      background:#fff;
      box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.32);
      z-index: 999;
@@ -6468,6 +6468,7 @@
      float: left;
      width: 50%;
      box-sizing: border-box;
+     margin-top: 18px;
 }
  .ed-mm-menu{
 }
