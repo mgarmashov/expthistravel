@@ -6,6 +6,7 @@ use App\Models\QuizHistory;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Notifications\NewUserRegisteredNotification;
+use App\Services\AdminNotifications;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -104,14 +105,12 @@ class RegisterController extends Controller
 
     protected function notifyAdmin($newUser)
     {
-        $admin = User::where('login', env('USER_NOTIFY', 'root'))->first();
-
         //we have to transfer activityAnswers and quizResults, because user has not logged in yet and search hasn't applied
         //=>
         //user's info still empty. we need take data fron session.
         $attribures = [];
         parse_str($this->quizResults, $attribures);
-        $admin->notify(new NewUserRegisteredNotification($newUser, $this->activityAnswers, $attribures));
+        AdminNotifications::AdminNotify(new NewUserRegisteredNotification($newUser, $this->activityAnswers, $attribures));
 
     }
 }

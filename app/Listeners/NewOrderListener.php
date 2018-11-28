@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\NewOrderEvent;
 use App\Models\User;
 use App\Notifications\NewOrderNotification;
+use App\Services\AdminNotifications;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -28,8 +29,6 @@ class NewOrderListener
      */
     public function handle(NewOrderEvent $event)
     {
-        $user = User::where('login', env('USER_NOTIFY', 'root'))->first();
-
-        $user->notify(new NewOrderNotification($event->order));
+        AdminNotifications::AdminNotify(new NewOrderNotification($event->order));
     }
 }

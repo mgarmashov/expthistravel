@@ -215,4 +215,7 @@ return [
 
     'totalActivitiesInQuiz' => env('totalActivitiesInQuiz','20'),
 
+    'USER_NOTIFY' => env('USER_NOTIFY', 'root'),
+    'DEFAULT_EMAIL_NOTIFY' => env('DEFAULT_EMAIL_NOTIFY', 'notify@experiencethistravel.com'),
+
 ];
