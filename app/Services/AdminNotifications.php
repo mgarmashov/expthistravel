@@ -10,10 +10,10 @@ class AdminNotifications
     {
         $admin = User::where('login', config('app.USER_NOTIFY'))->first();
 
-        if (isset($admin) && !count($admin)) {
+        if (!isset($admin)) {
             $admin = User::where('email', config('app.DEFAULT_EMAIL_NOTIFY'))->first();
         }
-        if (isset($admin) && !count($admin)) {
+        if (!isset($admin)) {
 
             $admin = new User;
             $admin->email = config('app.DEFAULT_EMAIL_NOTIFY');
