@@ -56,8 +56,7 @@
                         <div class="row">
                             <div class="col-sm-4 foot-spec foot-com">
                                 <h4><span>Experience</span> This Travel</h4>
-                                <p>Travel Experiences Made For You. <br />
-                                    Travel Planning Made Easy</p>
+                                <p>Travel Experiences Made For You.</p>
                             </div>
                             <div class="col-sm-4 foot-spec foot-com">
                                 <h4><span>SUPPORT</span> & HELP</h4>

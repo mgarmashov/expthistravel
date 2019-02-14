@@ -7,9 +7,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="tourz-search-1">
-                            <h1>Travel experiences made for you <br />
-                                Travel planning made easy
-                            </h1>
+                            <h1>Travel experiences made for you</h1>
                             {{--<p>Discover amazing travel experiences suited to you <br>--}}
                                 {{--–<br>--}}
                                 {{--Design your tailormade trip--}}
