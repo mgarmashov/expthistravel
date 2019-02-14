@@ -40,6 +40,16 @@ class Page extends Model
         return self::where('slug', 'about')->first();
     }
 
+    public static function privacy()
+    {
+        return self::where('slug', 'privacy')->first();
+    }
+
+    public static function terms()
+    {
+        return self::where('slug', 'terms')->first();
+    }
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

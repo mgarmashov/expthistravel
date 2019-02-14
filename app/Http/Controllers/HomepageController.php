@@ -22,10 +22,28 @@ class HomepageController extends Controller
 
     public function showAbout()
     {
-        $about = Page::about();
+        $page = Page::about();
         return view('frontend.layouts.infoPage-template', [
-            'title' => $about->name,
-            'content' => $about->content
+            'title' => $page->name,
+            'content' => $page->content
+        ]);
+    }
+
+    public function showPrivacy()
+    {
+        $page = Page::privacy();
+        return view('frontend.layouts.infoPage-template', [
+            'title' => $page->name,
+            'content' => $page->content
+        ]);
+    }
+
+    public function showTerms()
+    {
+        $page = Page::terms();
+        return view('frontend.layouts.infoPage-template', [
+            'title' => $page->name,
+            'content' => $page->content
         ]);
     }
 

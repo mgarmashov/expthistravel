@@ -61,12 +61,24 @@
                             </div>
                             <div class="col-sm-4 foot-spec foot-com">
                                 <h4><span>SUPPORT</span> & HELP</h4>
-                                <ul class="two-columns">
+                                <ul class="one-column">
                                     <li> <a href="{{ route('quiz-part1') }}">Inspire Me</a> </li>
                                     <li> <a href="{{ route('experiences') }}">Experiences </a></li>
                                     <li> <a href="{{ route('bookingPage') }}">Plan My Trip</a></li>
                                     @if($about = \App\Models\Page::about())
                                         <li><a href="{{route($about->slug)}}">{{ $about->name }}</a></li>
+                                    @else
+                                        <li></li>
+                                    @endif
+                                    @if($page = \App\Models\Page::privacy())
+                                        <li><a href="{{route($page->slug)}}">{{ $page->name }}</a></li>
+                                    @else
+                                        <li></li>
+                                    @endif
+                                    @if($page = \App\Models\Page::terms())
+                                        <li><a href="{{route($page->slug)}}">{{ $page->name }}</a></li>
+                                    @else
+                                        <li></li>
                                     @endif
                                     {{--<li> <a href="{{ route('') }}">Blog</a></li>--}}
                                     {{--<li> <a href="{{ route('') }}">FAQ</a></li>--}}

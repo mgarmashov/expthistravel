@@ -67,7 +67,7 @@ class PagesController extends CrudController
         // add asterisk for fields that are required in ActivityCategoryRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
-        $this->crud->removeButton( 'delete' );
+//        $this->crud->removeButton( 'delete' );
     }
 
     public function store(StoreRequest $request)

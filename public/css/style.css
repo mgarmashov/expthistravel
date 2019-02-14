@@ -1486,6 +1486,22 @@
  .foot-sec2 p {
      color: #616161;
 }
+.one-column {
+    padding: 0px;
+}
+.one-column li {
+    width: 100%;
+    float: left;
+    list-style-type: none;
+}
+.one-column::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.one-column li a {
+    color: #616161;
+}
  .two-columns {
      padding: 0px;
 }
