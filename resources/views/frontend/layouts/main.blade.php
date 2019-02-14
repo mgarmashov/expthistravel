@@ -95,7 +95,7 @@
 <section>
     <div class="rows copy">
         <div class="container">
-            <p>Copyrights © 2018 Experience this travel</p>
+            <p>Experience This Travel © {{ \Carbon\Carbon::now()->year >='2019' ? \Carbon\Carbon::now()->year : 2019 }}</p>
         </div>
     </div>
 </section>
