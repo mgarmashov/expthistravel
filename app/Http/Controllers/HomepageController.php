@@ -20,27 +20,11 @@ class HomepageController extends Controller
         return view('frontend.pages.contacts');
     }
 
-    public function showAbout()
+    public function showStaticPage(Request $request)
     {
-        $page = Page::about();
-        return view('frontend.layouts.infoPage-template', [
-            'title' => $page->name,
-            'content' => $page->content
-        ]);
-    }
-
-    public function showPrivacy()
-    {
-        $page = Page::privacy();
-        return view('frontend.layouts.infoPage-template', [
-            'title' => $page->name,
-            'content' => $page->content
-        ]);
-    }
-
-    public function showTerms()
-    {
-        $page = Page::terms();
+        $slug = $request->segment(count(request()->segments()));
+        $page = Page::getPage($slug);
+        if (empty($page)) abort(404);
         return view('frontend.layouts.infoPage-template', [
             'title' => $page->name,
             'content' => $page->content

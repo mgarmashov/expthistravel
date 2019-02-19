@@ -37,19 +37,9 @@ class Page extends Model
     |--------------------------------------------------------------------------
     */
 
-    public static function about()
+    public static function getPage($slug)
     {
-        return self::where('slug', 'about')->first();
-    }
-
-    public static function privacy()
-    {
-        return self::where('slug', 'privacy')->first();
-    }
-
-    public static function terms()
-    {
-        return self::where('slug', 'terms')->first();
+        return self::where('slug', $slug)->first();
     }
 
     /*

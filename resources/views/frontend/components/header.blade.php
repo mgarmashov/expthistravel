@@ -69,7 +69,7 @@
                             <li class="btn-get-started"><a href="{{route('quiz-part1')}}">Get started</a></li>
                             <li><a href="{{route('experiences')}}">Experiences</a></li>
                             <li><a href="{{route('contacts')}}">Contact</a></li>
-                            @if($about = \App\Models\Page::about())
+                            @if($about = \App\Models\Page::getPage('about'))
                                 <li><a href="{{route($about->slug)}}">{{ $about->name }}</a></li>
                             @endif
                         </ul>

@@ -34,9 +34,9 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('/contacts', 'HomepageController@showContacts')->name('contacts');
     Route::post('/contacts/send', 'HomepageController@sendContacts')->name('contacts.send');
 
-    Route::get('/about', 'HomepageController@showAbout')->name('about');
-    Route::get('/privacy', 'HomepageController@showPrivacy')->name('privacy');
-    Route::get('/terms', 'HomepageController@showTerms')->name('terms');
+    foreach (\App\Models\Page::all() as $page) {
+        Route::get('/'.$page->slug, 'HomepageController@showStaticPage')->name($page->slug);
+    }
     Route::get('/search', 'SearchController@showPage')->name('search');
     Route::get('/order', 'ProfileController@orderPage')->name('orderPage');
     Route::get('/booking', 'ProfileController@bookingPage')->name('bookingPage');

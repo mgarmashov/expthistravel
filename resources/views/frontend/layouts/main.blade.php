@@ -64,21 +64,10 @@
                                     <li> <a href="{{ route('quiz-part1') }}">Inspire Me</a> </li>
                                     <li> <a href="{{ route('experiences') }}">Experiences </a></li>
                                     <li> <a href="{{ route('bookingPage') }}">Plan My Trip</a></li>
-                                    @if($about = \App\Models\Page::about())
-                                        <li><a href="{{route($about->slug)}}">{{ $about->name }}</a></li>
-                                    @else
-                                        <li></li>
-                                    @endif
-                                    @if($page = \App\Models\Page::privacy())
+                                    @foreach (\App\Models\Page::orderBy('updated_at', 'desc')->get() as $page)
                                         <li><a href="{{route($page->slug)}}">{{ $page->name }}</a></li>
-                                    @else
-                                        <li></li>
-                                    @endif
-                                    @if($page = \App\Models\Page::terms())
-                                        <li><a href="{{route($page->slug)}}">{{ $page->name }}</a></li>
-                                    @else
-                                        <li></li>
-                                    @endif
+                                    @endforeach
+
                                     {{--<li> <a href="{{ route('') }}">Blog</a></li>--}}
                                     {{--<li> <a href="{{ route('') }}">FAQ</a></li>--}}
                                     {{--<li> <a href="{{ route('') }}">Terms and Conditions</a></li>--}}
