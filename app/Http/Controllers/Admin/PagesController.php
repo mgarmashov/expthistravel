@@ -37,6 +37,11 @@ class PagesController extends CrudController
         $this->crud->addColumn('slug');
         $this->crud->addColumn('content');
 
+        $this->crud->addColumn([
+            'name' => 'enabled', // The db column name
+            'label' => "Enabled", // Table column heading
+            'type' => 'check'
+        ]);
 
         /**
          * fields
@@ -46,6 +51,11 @@ class PagesController extends CrudController
             'label' => "Name",
             'name' => "name",
             'type' => 'text'
+        ]);
+        $this->crud->addField([
+            'label' => "Enabled",
+            'name' => "enabled",
+            'type' => 'checkbox'
         ]);
         $this->crud->addField([
             'label' => "Slug",

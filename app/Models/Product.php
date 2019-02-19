@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\EnabledScope;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
@@ -30,7 +31,8 @@ class Product extends Model
         'index',
         'scores',
         'minDuration',
-        'maxDuration'
+        'maxDuration',
+        'enabled'
         ];
     // protected $hidden = [];
     // protected $dates = [];
@@ -228,6 +230,12 @@ class Product extends Model
     | SCOPES
     |--------------------------------------------------------------------------
     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new EnabledScope);
+    }
 
     /*
     |--------------------------------------------------------------------------

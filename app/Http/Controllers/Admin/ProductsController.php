@@ -63,6 +63,14 @@ class ProductsController extends CrudController
             'model' => "App\Models\Countries"
 
         ]);
+
+        $this->crud->addColumn([
+            'name' => 'enabled', // The db column name
+            'label' => "Enabled", // Table column heading
+            'type' => 'check'
+        ]);
+
+
         $this->crud->addColumn('description_short');
 
 
@@ -74,6 +82,13 @@ class ProductsController extends CrudController
             'label' => "Name",
             'name' => "name",
             'type' => 'text',
+            'tab' => 'Description'
+
+        ]);
+        $this->crud->addField([
+            'label' => "Enabled",
+            'name' => "enabled",
+            'type' => 'checkbox',
             'tab' => 'Description'
 
         ]);

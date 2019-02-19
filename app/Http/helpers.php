@@ -32,6 +32,16 @@ if (! function_exists('cropImage')) {
     }
 }
 
+if (! function_exists('is_admin_controller')) {
+    /**
+     * @return bool
+     */
+    function is_admin_controller()
+    {
+        return ($route = app()->router->current()) && in_array('admin', (array)$route->middleware());
+    }
+}
+
 
 if (! function_exists('randomBgImage')) {
     function randomBgImage()

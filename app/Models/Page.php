@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\EnabledScope;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
@@ -24,7 +25,8 @@ class Page extends Model
         'content',
         'slug',
         'type',
-        'image'
+        'image',
+        'enabled'
     ];
     // protected $hidden = [];
     // protected $dates = [];
@@ -61,7 +63,12 @@ class Page extends Model
     | SCOPES
     |--------------------------------------------------------------------------
     */
+    protected static function boot()
+    {
+        parent::boot();
 
+        static::addGlobalScope(new EnabledScope);
+    }
     /*
     |--------------------------------------------------------------------------
     | ACCESORS

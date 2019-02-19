@@ -40,6 +40,11 @@ class ActivitiesController extends CrudController
         $this->crud->addColumn('name');
         $this->crud->addColumn('description');
 
+        $this->crud->addColumn([
+            'name' => 'enabled', // The db column name
+            'label' => "Enabled", // Table column heading
+            'type' => 'check'
+        ]);
 
 
         /**
@@ -51,7 +56,12 @@ class ActivitiesController extends CrudController
             'name' => "name",
             'type' => 'text',
             'tab' => 'Description'
-
+        ]);
+        $this->crud->addField([
+            'label' => "Enabled",
+            'name' => "enabled",
+            'type' => 'checkbox',
+            'tab' => 'Description'
         ]);
         $this->crud->addField([
             'label' => "Image",

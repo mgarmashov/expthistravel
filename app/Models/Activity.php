@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\EnabledScope;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
@@ -23,7 +24,8 @@ class Activity extends Model
         'name',
         'description',
         'image',
-        'index'
+        'index',
+        'enabled'
     ];
     // protected $hidden = [];
     // protected $dates = [];
@@ -48,7 +50,12 @@ class Activity extends Model
     | SCOPES
     |--------------------------------------------------------------------------
     */
+    protected static function boot()
+    {
+        parent::boot();
 
+        static::addGlobalScope(new EnabledScope);
+    }
     /*
     |--------------------------------------------------------------------------
     | ACCESORS
