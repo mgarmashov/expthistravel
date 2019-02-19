@@ -37,7 +37,7 @@ class ProfileController extends Controller
     public function saveProfile(Request $request)
     {
         if(!Auth::check()) {
-            return redirect()->route('index');
+            return redirect()->url('/');
         }
 
         $user = Auth::user();

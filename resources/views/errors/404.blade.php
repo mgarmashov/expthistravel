@@ -10,8 +10,8 @@
           <h4>Top Website Pages</h4>
           <ul>
             <li><a href="{{ route('index') }}">Home</a></li>
-              @if($about = \App\Models\Page::getPage('about'))
-                  <li><a href="{{route($about->slug)}}">{{ $about->name }}</a></li>
+              @if($page = \App\Models\Page::getPage('about'))
+                  <li><a href="{{route('index') .'/'. $page->slug }}">{{ $page->name }}</a></li>
               @endif
             <li><a href="{{route('contacts')}}">Contact us</a></li>
           </ul>

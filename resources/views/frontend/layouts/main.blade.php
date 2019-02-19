@@ -65,7 +65,7 @@
                                     <li> <a href="{{ route('experiences') }}">Experiences </a></li>
                                     <li> <a href="{{ route('bookingPage') }}">Plan My Trip</a></li>
                                     @foreach (\App\Models\Page::orderBy('updated_at', 'desc')->get() as $page)
-                                        <li><a href="{{route($page->slug)}}">{{ $page->name }}</a></li>
+                                        <li><a href="{{route('index') .'/'. $page->slug }}">{{ $page->name }}</a></li>
                                     @endforeach
 
                                     {{--<li> <a href="{{ route('') }}">Blog</a></li>--}}

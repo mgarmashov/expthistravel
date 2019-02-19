@@ -34,9 +34,6 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('/contacts', 'HomepageController@showContacts')->name('contacts');
     Route::post('/contacts/send', 'HomepageController@sendContacts')->name('contacts.send');
 
-    foreach (\App\Models\Page::all() as $page) {
-        Route::get('/'.$page->slug, 'HomepageController@showStaticPage')->name($page->slug);
-    }
     Route::get('/search', 'SearchController@showPage')->name('search');
     Route::get('/order', 'ProfileController@orderPage')->name('orderPage');
     Route::get('/booking', 'ProfileController@bookingPage')->name('bookingPage');
@@ -55,6 +52,10 @@ Route::group(['middleware' => ['web']], function() {
     Route::any('/quiz/part3', 'QuizController@showPart3')->name('quiz-part3');
     Route::post('/quiz/register', 'Auth\RegisterController@register')->name('quiz-register');
     Route::get('/quiz-results', 'QuizController@showResults')->name('quiz-results');
+
+
+    Route::get('/{slug}', 'HomepageController@showStaticPage');
+
 });
 
 Auth::routes();
