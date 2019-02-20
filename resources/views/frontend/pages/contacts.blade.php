@@ -23,7 +23,7 @@
                     <div class="pg-contact">
                         <div class="new-con new-con1">
                             <h2 class="m-t-0"> <span>Experience</span> This Travel</h2>
-                            <p>Travel Experiences Made For You. Travel Planning Made Easy.</p>
+                            <p>Travel Experiences Made For You</p>
                         </div>
                         <div class="new-con new-con3 margin20">
                             <h4>CONTACT INFO:</h4>
