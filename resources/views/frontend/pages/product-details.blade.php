@@ -73,7 +73,7 @@
                     <div id="myCarousel1" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->
                         <ol class="carousel-indicators carousel-indicators-1">
-                            <li data-target="#myCarousel1" data-slide-to="0"><img src="{{ asset($product->image) }}" alt="Chania">
+                            <li data-target="#myCarousel1" data-slide-to="0"><img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
                             </li>
                             {{--<li data-target="#myCarousel1" data-slide-to="1"><img src="images/gallery/t2.jpg" alt="Chania">--}}
                             {{--</li>--}}
