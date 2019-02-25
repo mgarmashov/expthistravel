@@ -102,7 +102,7 @@
                                 <a href="{{ route('product', ['id' => $product->id]) }}"><h3>{{ $product->name }}</h3></a>
                                 <p>{{ $product->description_short }}</p>
                                 <div class="featur">
-                                        <h4>{{ $product->countries()->first()->name }}</h4>
+                                        <h4>{{ $product->countries()->first()->name ?? '' }}</h4>
                                     <ul>
                                         <li>{{ $product->duration() }}</li>
                                     </ul>

@@ -41,6 +41,12 @@ class CountriesController extends CrudController
         $this->crud->addColumn('name');
         $this->crud->addColumn('description_short');
 
+        $this->crud->addColumn([
+            'name' => 'enabled', // The db column name
+            'label' => "Enabled", // Table column heading
+            'type' => 'check'
+        ]);
+
         /**
          * fields
          */
@@ -48,7 +54,11 @@ class CountriesController extends CrudController
             'label' => "Name",
             'name' => "name",
             'type' => 'text'
-
+        ]);
+        $this->crud->addField([
+            'label' => "Enabled",
+            'name' => "enabled",
+            'type' => 'checkbox'
         ]);
         $this->crud->addField([
             'label' => "Image",

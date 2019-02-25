@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\EnabledScope;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
@@ -24,7 +25,8 @@ class Country extends Model
         'description_short',
         'description_long',
         'image',
-        'index'
+        'index',
+        'enabled'
     ];
     // protected $hidden = [];
     // protected $dates = [];
@@ -46,7 +48,12 @@ class Country extends Model
     | SCOPES
     |--------------------------------------------------------------------------
     */
+    protected static function boot()
+    {
+        parent::boot();
 
+        static::addGlobalScope(new EnabledScope);
+    }
     /*
     |--------------------------------------------------------------------------
     | ACCESORS
