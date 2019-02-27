@@ -54,7 +54,7 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('/quiz-results', 'QuizController@showResults')->name('quiz-results');
 
 
-    Route::get('/{slug}', 'HomepageController@showStaticPage');
+
 
 });
 
@@ -70,3 +70,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/profile/save', 'ProfileController@saveProfile')->name('profile.save');
     Route::get('/profile/edit', 'ProfileController@showEditPage')->name('profile.edit');
 });
+
+Route::get('/{slug}', 'HomepageController@showStaticPage');
