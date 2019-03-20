@@ -115,9 +115,9 @@
 <!--========= Scripts ===========-->
 @yield('before_scripts')
 @stack('before_scripts')
-@if(env('APP_URL') == 'http://experiencethistravel.com')
+@if(env('APP_URL') == env('PROD_URL'))
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129822952-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('gtag', 'UA-129822952-1') }}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
