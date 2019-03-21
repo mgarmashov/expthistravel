@@ -50,34 +50,68 @@ class PagesController extends CrudController
         $this->crud->addField([
             'label' => "Name",
             'name' => "name",
-            'type' => 'text'
+            'type' => 'text',
+            'tab' => 'Content'
         ]);
         $this->crud->addField([
             'label' => "Enabled",
             'name' => "enabled",
-            'type' => 'checkbox'
+            'type' => 'checkbox',
+            'tab' => 'Content'
         ]);
         $this->crud->addField([
             'label' => "Slug",
             'name' => "slug",
-            'type' => 'slug'
+            'type' => 'slug',
+            'tab' => 'Content'
         ]);
         $this->crud->addField([
             'label' => "Image",
             'name' => "image",
             'type' => 'image',
-            'aspect_ratio' => 1
+            'aspect_ratio' => 1,
+            'tab' => 'Content'
         ]);
         $this->crud->addField([
             'name' => 'content',
             'label' => 'Content',
-            'type' => 'wysiwyg'
+            'type' => 'wysiwyg',
+            'tab' => 'Content'
         ]);
+
+        $this->crud->addField([
+            'label' => "Title",
+            'name' => "seo_title",
+            'type' => 'text',
+            'tab' => 'SEO'
+        ]);
+
+        $this->crud->addField([
+            'label' => "Description",
+            'name' => "seo_description",
+            'type' => 'textarea',
+            'tab' => 'SEO'
+        ]);
+
+        $this->crud->addField([
+            'label' => "Header H1",
+            'name' => "seo_h1",
+            'type' => 'text',
+            'tab' => 'SEO'
+        ]);
+
+        $this->crud->addField([
+            'label' => "Keywords",
+            'name' => "seo_keywords",
+            'type' => 'text',
+            'tab' => 'SEO'
+        ]);
+
 
         // add asterisk for fields that are required in ActivityCategoryRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
-//        $this->crud->removeButton( 'delete' );
+        $this->crud->removeButton( 'delete' );
     }
 
     public function store(StoreRequest $request)

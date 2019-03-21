@@ -160,6 +160,34 @@ class ProductsController extends CrudController
         ]);
 
 
+        $this->crud->addField([
+            'label' => "Title",
+            'name' => "seo_title",
+            'type' => 'text',
+            'tab' => 'SEO'
+        ]);
+
+        $this->crud->addField([
+            'label' => "Description",
+            'name' => "seo_description",
+            'type' => 'textarea',
+            'tab' => 'SEO'
+        ]);
+
+        $this->crud->addField([
+            'label' => "Header H1",
+            'name' => "seo_h1",
+            'type' => 'text',
+            'tab' => 'SEO'
+        ]);
+
+        $this->crud->addField([
+            'label' => "Keywords",
+            'name' => "seo_keywords",
+            'type' => 'text',
+            'tab' => 'SEO'
+        ]);
+
 
         // add asterisk for fields that are required in ProductRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
