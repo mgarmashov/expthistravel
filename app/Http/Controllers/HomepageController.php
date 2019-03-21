@@ -26,8 +26,12 @@ class HomepageController extends Controller
         $page = Page::getPage($slug);
         if (empty($page)) abort(404);
         return view('frontend.layouts.infoPage-template', [
-            'title' => $page->name,
-            'content' => $page->content
+            'title' => !empty($page->seo_title) ? $page->seo_title : $page->name,
+            'description' => !empty($page->seo_description) ? $page->seo_description : mb_substr(strip_tags($page->content), 0, 160) ?? '',
+            'keywords' => $page->seo_keywords ?? '',
+            'h1' => $page->seo_h1 ?? '',
+            'content' => $page->content,
+            'image' => $page->image ?? ''
         ]);
     }
 

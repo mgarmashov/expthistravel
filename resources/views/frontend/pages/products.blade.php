@@ -1,8 +1,6 @@
 @extends('frontend.layouts.main')
 
-@section('title')
-    | Search
-@endsection
+@section('title')Search | {{env('APP_NAME')}}@endsection
 
 @push('after_styles')
 

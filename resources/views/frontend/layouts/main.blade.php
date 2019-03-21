@@ -2,7 +2,7 @@
 <html lang="{{ app()->getLocale() }}">
 
 <head>
-    <title>{{ env('APP_NAME') }} @yield('title')</title>
+    <title>@yield('title', env('APP_NAME'))</title>
     {{--<!--== META TAGS ==-->--}}
     <meta charset="utf-8">
     {{-- Encrypted CSRF token for Laravel, in order for Ajax requests to work --}}
@@ -11,6 +11,12 @@
     @if(env('google-site-verification'))
         <meta name="google-site-verification" content="{{ env('google-site-verification') }}" />
     @endif
+    @stack('seo')
+    <meta property="og:locale" content="{{ app()->getLocale() }}"/>
+    <meta property="og:title" content="@yield('title',  env('APP_NAME') )" />
+    <meta property="og:url" content="{{ url()->full() }}"/>
+    <meta property="og:image" content="@yield('og-image', asset('images/favicon2.png'))" />
+
     {{--<!-- FAV ICON -->--}}
     <link rel="shortcut icon" href="{{asset('images/favicon2.png')}}">
     {{--<!-- GOOGLE FONTS -->--}}

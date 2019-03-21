@@ -1,8 +1,6 @@
 @extends('frontend.layouts.main')
 
-@section('title')
-    | Quiz - part 1
-@endsection
+@section('title')Quiz - part 1 | {{env('APP_NAME')}}@endsection
 
 @section('content')
     <!--====== PLACES ==========-->

@@ -1,8 +1,28 @@
 @extends('frontend.layouts.main')
 
+@php
+    $title = !empty($product->seo_title) ? $product->seo_title : $product->name;
+    $description = !empty($product->seo_description) ? $product->seo_description : mb_substr(strip_tags($product->description_long), 0, 160);
+@endphp
+
 @section('title')
-    | {{ $product->name }}
+    {{ $title }} | {{ env('APP_NAME') }}
 @endsection
+
+@push('seo')
+    <meta name="description" content="{!!  $description !!}">
+    <meta property="og:description" content="{!! $description !!}"/>
+
+    @if(!empty($product->keywords))
+        <meta name="keywords" content="{{ $product->keywords }}">
+    @endif
+@endpush
+
+
+@if(!empty($product->image))
+    @section('og-image'){{ asset($product->image) }}@endsection
+@endif
+
 
 @push('after_styles')
 

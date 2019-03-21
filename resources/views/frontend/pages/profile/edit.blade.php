@@ -1,8 +1,6 @@
 @extends('frontend.layouts.main')
 
-@section('title')
-    | Profile
-@endsection
+@section('title')Profile | {{env('APP_NAME')}}@endsection
 
 @section('content')
 

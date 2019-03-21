@@ -1,8 +1,6 @@
 @extends('frontend.layouts.main')
 
-@section('title')
-    | Contacts
-@endsection
+@section('title')Contacts | {{env('APP_NAME')}}@endsection
 
 @section('content')
     <section>
