@@ -1,8 +1,6 @@
 @extends('frontend.layouts.main')
 
-@section('title')
-    | Cart
-@endsection
+@section('title')Cart | {{env('APP_NAME')}}@endsection
 
 @section('content')
 

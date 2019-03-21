@@ -1,8 +1,6 @@
 @extends('frontend.layouts.main')
 
-@section('title')
-    | Booking successful
-@endsection
+@section('title')Booking successful | {{env('APP_NAME')}}@endsection
 
 @section('content')
     <section>
