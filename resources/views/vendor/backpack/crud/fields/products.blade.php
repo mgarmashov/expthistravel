@@ -1,3 +1,4 @@
+@if(isset($id))
 @php
 
     $user = \App\Models\User::find($id);
@@ -54,4 +55,5 @@
     @push('crud_fields_scripts')
         <!-- no scripts -->
     @endpush
+@endif
 @endif

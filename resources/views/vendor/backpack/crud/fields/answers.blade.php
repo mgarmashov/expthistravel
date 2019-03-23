@@ -1,5 +1,6 @@
 @php
 
+    $id = $id ?? 0;
     $user = \App\Models\User::find($id);
     $activities = \App\Models\Activity::all();
     $likes = \App\Models\QuizHistory::where('user', $id)->where('answer', 'like')->select('activity')->get();
@@ -24,7 +25,7 @@
                         <tr>
                             <td><b>Who is travelling?</b></td>
                             <td>
-                                @if($user->q1)
+                                @if($user && $user->q1)
                                     @foreach ($user->q1 as $value)
                                         <ul>
                                             <li>{{ config('questions')['q1'][$value] ?? '' }}</li>
@@ -36,7 +37,7 @@
                         <tr>
                             <td><b>How long do you want to go for?</b></td>
                             <td>
-                                @if($user->q2)
+                                @if($user && $user->q2)
                                     @foreach ($user->q2 as $value)
                                         <ul>
                                             <li>{{ config('questions')['q2'][$value] ?? '' }}</li>
@@ -48,7 +49,7 @@
                         <tr>
                             <td><b>When do you want to go?</b></td>
                             <td>
-                                @if($user->q3)
+                                @if($user && $user->q3)
                                     @foreach ($user->q3 as $value)
                                         <ul>
                                             <li>{{ config('questions')['q3'][$value] ?? '' }}</li>
@@ -99,7 +100,7 @@
             <div>
                 <table class="table table-condensed table-bordered">
                     <tbody>
-                    @if($user->totalScores)
+                    @if($user && $user->totalScores)
                         @foreach ($user->totalScores as $key => $score)
                             <tr>
                                 <td>{{ config('categories')[$key]['name'] ?? "error with name" }}</td>
