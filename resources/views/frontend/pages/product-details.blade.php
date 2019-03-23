@@ -2,7 +2,7 @@
 
 @php
     $title = !empty($product->seo_title) ? $product->seo_title : $product->name;
-    $description = !empty($product->seo_description) ? $product->seo_description : mb_substr(strip_tags($product->description_long), 0, 160);
+    $description = !empty($product->seo_description) ? $product->seo_description : (!empty($product->description_short) ? $product->description_short : mb_substr(strip_tags($product->description_long), 0, 160));
 @endphp
 
 @section('title')
