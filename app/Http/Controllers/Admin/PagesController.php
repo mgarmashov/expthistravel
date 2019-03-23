@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\CategoryRequest as StoreRequest;
-use App\Http\Requests\CategoryRequest as UpdateRequest;
+use App\Http\Requests\PageRequest as StoreRequest;
+use App\Http\Requests\PageRequest as UpdateRequest;
 
 /**
  * Class ActivityCategoryCrudController
@@ -111,7 +111,7 @@ class PagesController extends CrudController
         // add asterisk for fields that are required in ActivityCategoryRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
-        $this->crud->removeButton( 'delete' );
+//        $this->crud->removeButton( 'delete' );
     }
 
     public function store(StoreRequest $request)
