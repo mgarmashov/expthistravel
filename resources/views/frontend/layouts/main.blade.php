@@ -12,10 +12,12 @@
         <meta name="google-site-verification" content="{{ env('google-site-verification') }}" />
     @endif
     @stack('seo')
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{ env('APP_NAME') }}">
     <meta property="og:locale" content="{{ app()->getLocale() }}"/>
     <meta property="og:title" content="@yield('title',  env('APP_NAME') )" />
     <meta property="og:url" content="{{ url()->full() }}"/>
-    <meta property="og:image" content="@yield('og-image', asset('images/favicon2.png'))" />
+    <meta property="og:image:secure_url" itemprop="image" content="@yield('og-image', asset('images/favicon2.png'))" />
 
     {{--<!-- FAV ICON -->--}}
     <link rel="shortcut icon" href="{{asset('images/favicon2.png')}}">
