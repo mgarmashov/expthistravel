@@ -34,6 +34,7 @@
             </div>
         </div>
     </section>
+    @include('frontend.components.popup-googleForm')
 @endsection
 
 

@@ -28,7 +28,7 @@
     {{--<!--== ALL CSS FILES ==-->--}}
     @yield('before_styles')
     @stack('before_styles')
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css?v='.config('app.version'))}}">
     <link rel="stylesheet" href="{{asset('css/materialize.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/mob.css')}}">
@@ -91,6 +91,8 @@
                                     <li><a href="{{ config('socials.instagram.url') }}" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a> </li>
                                     <li><a href="{{ config('socials.twitter.url') }}" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
                                 </ul>
+                                <div class="clearfix"></div>
+                                @stack('popup-btn')
                             </div>
                         </div>
                     </div>
@@ -141,7 +143,7 @@
     const productToOrder = "{{ route('productToOrder')}}";
     const orderPage = "{{ route('orderPage')}}";
 </script>
-<script src="{{asset('js/custom.js')}}"></script>
+<script src="{{asset('js/custom.js?v='.config('app.version'))}}"></script>
 @yield('after_scripts')
 @stack('after_scripts')
 </body>

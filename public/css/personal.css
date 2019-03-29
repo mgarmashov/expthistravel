@@ -432,4 +432,19 @@ a.btn-delete-product {
   color: #253d52;
 }
 
+.mfp-content {
+  max-width: 630px;
+}
+
+.popup {
+  background: white;
+  padding: 1em 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.popup-btn-footer {
+  color: #616161;
+}
+
 /*# sourceMappingURL=personal.css.map */
