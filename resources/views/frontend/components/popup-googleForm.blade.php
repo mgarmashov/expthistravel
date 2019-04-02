@@ -1,5 +1,5 @@
 @push('after_styles')
-    <link rel="stylesheet" href="{{asset('vendor/magnific-popup/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/magnific-popup/magnific-popup.css?v='.config('app.version'))}}')}}">
 @endpush
 
 <div id="popup-review" class="mfp-hide popup popup-review">
@@ -16,7 +16,7 @@
 @endpush
 
 @push('after_scripts')
-    <script src="{{asset('vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('vendor/magnific-popup/jquery.magnific-popup.min.js?v='.config('app.version'))}}')}}"></script>
     <script>
       $(document).ready(function() {
         setTimeout(function(){
@@ -25,6 +25,7 @@
       });
 
       $('.popup-btn-footer').click(function(){
+        event.preventDefault();
         popup();
       });
 

@@ -31,9 +31,9 @@
     <link rel="stylesheet" href="{{asset('css/style.css?v='.config('app.version'))}}">
     <link rel="stylesheet" href="{{asset('css/materialize.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('css/mob.css')}}">
+    <link rel="stylesheet" href="{{asset('css/mob.css?v='.config('app.version'))}}')}}">
     <link rel="stylesheet" href="{{asset('css/animate.css')}}">
-    <link rel="stylesheet" href="{{asset('css/personal.css')}}">
+    <link rel="stylesheet" href="{{asset('css/personal.css?v='.config('app.version'))}}')}}">
     @yield('after_styles')
     @stack('after_styles')
     {{--<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->--}}
