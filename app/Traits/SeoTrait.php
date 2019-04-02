@@ -14,6 +14,7 @@ trait SeoTrait
 
     public function __construct()
     {
+        parent::__construct();
         array_push($this->fillable, 'seo_title');
         array_push($this->fillable, 'seo_description');
         array_push($this->fillable, 'seo_h1');
