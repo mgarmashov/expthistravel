@@ -20,6 +20,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
     CRUD::resource('activities', 'ActivitiesController');
     CRUD::resource('countries', 'CountriesController');
     CRUD::resource('orders', 'OrdersController');
+    CRUD::resource('blog', 'BlogArticlesController');
 
     Route::get('/quiz-statistics', 'QuizHistoryController@showList')->name('admin.quiz-statistic');
 
