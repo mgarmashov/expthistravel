@@ -35,8 +35,8 @@
                         <div class="margin20">
                             <h4 >Social</h4>
                             <p><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook: <a href="{{ config('socials.facebook.url') }}" target="_blank">@ExperienceThisTravel</a></p>
-                            <p><i class="fa fa-instagram" aria-hidden="true"></i> Twitter: <a href="{{ config('socials.instagram.url') }}" target="_blank">@experience_this_travel</a></p>
-                            <p><i class="fa fa-twitter-square" aria-hidden="true"></i> Instagram: <a href="{{ config('socials.twitter.url') }}" target="_blank">@ExperienceThisTravel</a></p>
+                            <p><i class="fa fa-instagram" aria-hidden="true"></i> Instagram: <a href="{{ config('socials.instagram.url') }}" target="_blank">@experience_this_travel</a></p>
+                            <p><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter: <a href="{{ config('socials.twitter.url') }}" target="_blank">@expthistravel</a></p>
 
                         </div>
                     </div>

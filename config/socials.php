@@ -10,7 +10,7 @@ return
             'url' => 'https://www.facebook.com/ExperienceThisTravel'
         ],
         'twitter' => [
-            'url' => 'https://twitter.com/ExperienceThisTravel'
+            'url' => 'https://twitter.com/expthistravel'
         ],
         'instagram' => [
             'url' => 'https://www.instagram.com/experience_this_travel'
