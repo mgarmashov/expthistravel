@@ -3,7 +3,7 @@
 @php
     $title = !empty($article->seo_title) ? $article->seo_title : $article->name;
     $description = !empty($article->seo_description) ? $article->seo_description : (!empty($article->description_short) ? $article->description_short : mb_substr(strip_tags($article->description_long), 0, 160));
-    $title = !empty($article->seo_h1) ? $article->seo_h1 : $article->name;
+    $h1 = !empty($article->seo_h1) ? $article->seo_h1 : $article->name;
 @endphp
 
 @section('title')
@@ -41,7 +41,7 @@
                             @if($article->image)<img src="{{ asset(cropImage($article->image, 550, 353)) }}" alt="{{ $article->name }}" /> @endif
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <h3>{{ $article->name }}</h3>
+                            <h1>{{ $h1 }}</h1>
                             <h5><span class="post_author">{{ $article->date()->format('jS \\of F, Y') }}</span></h5>
                             <div class="post-btn">
                                 <ul>
@@ -51,7 +51,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            {{ $article->description_long }}
+                            {!! $article->description_long !!}
                     </div>
                 </div>
                 <!--===== POST END ======-->

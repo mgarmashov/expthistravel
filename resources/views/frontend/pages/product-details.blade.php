@@ -3,7 +3,7 @@
 @php
     $title = !empty($product->seo_title) ? $product->seo_title : $product->name;
     $description = !empty($product->seo_description) ? $product->seo_description : (!empty($product->description_short) ? $product->description_short : mb_substr(strip_tags($product->description_long), 0, 160));
-    $title = !empty($product->seo_h1) ? $product->seo_h1 : $product->name;
+    $h1 = !empty($product->seo_h1) ? $product->seo_h1 : $product->name;
 @endphp
 
 @section('title')
@@ -34,7 +34,7 @@
 <section>
     <div class="rows inner_banner inner_banner_4" @include('frontend.components.randomBgStyle')>
         <div class="container">
-            <h2>| {{ $product->name }}</h2>
+            <h1>| {{ $h1 }}</h1>
             <ul>
                 <li><a href="#inner-page-title">Home</a>
                 </li>
