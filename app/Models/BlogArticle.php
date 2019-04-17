@@ -112,6 +112,5 @@ class BlogArticle extends Model
         if (count($articles)>0) {
             $this->attributes['slug'] = $this->attributes['slug'].'-2';
         }
-        dd($this);
     }
 }

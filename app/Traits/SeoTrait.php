@@ -12,14 +12,12 @@ namespace App\Traits;
 trait SeoTrait
 {
 
-    public function __construct()
+        public function initializeSeoTrait()
     {
-        parent::__construct();
-        array_push($this->fillable, 'seo_title');
-        array_push($this->fillable, 'seo_description');
-        array_push($this->fillable, 'seo_h1');
-        array_push($this->fillable, 'seo_keywords');
-
+            $this->fillable[] = 'seo_title';
+            $this->fillable[] = 'seo_description';
+            $this->fillable[] = 'seo_h1';
+            $this->fillable[] = 'seo_keywords';
     }
 
     public function seo()
@@ -63,7 +61,6 @@ trait SeoTrait
     {
         $seo = $this->seo()->firstOrCreate(['model_type' => parent::getMorphClass(), 'model_id' => $this->id]);
         $seo->h1 = $value;
-//        dd($seo);
         $seo->save();
     }
 

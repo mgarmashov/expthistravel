@@ -196,10 +196,10 @@ class ProductsController extends CrudController
 
     public function store(StoreRequest $request)
     {
-        // your additional operations before save here
+        $request = SeoController::cutSeoFields($request);
         $redirect_location = parent::storeCrud($request);
-        // your additional operations after save here
-        // use $this->data['entry'] or $this->crud->entry
+        SeoController::addSeoFields(get_class($this->crud->model), $this->data['entry']->id);
+
         $this->saveScores($request, $this->data['entry']);
         return $redirect_location;
     }
