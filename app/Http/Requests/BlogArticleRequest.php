@@ -28,12 +28,12 @@ class BlogArticleRequest extends FormRequest
     {
         return [
             'name' => 'required|min:2|max:255',
-            'slug' => [
-                'required',
-                'min:2',
-                'max:255',
-                Rule::unique('blog_articles')->ignore(request()->id, 'id')
-            ],
+//            'slug' => [
+//                'required',
+//                'min:2',
+//                'max:255',
+//                Rule::unique('blog_articles')->ignore(request()->id ?? 0, 'id')
+//            ],
         ];
     }
 

@@ -88,40 +88,7 @@
                     </div>
                     <p>Discover our incredible range of travel experiences:</p>
                 </div>
-                <div class="popu-places-home">
-                    @php $i=0; @endphp
-                    @foreach(\App\Models\Product::query()->inRandomOrder()->limit(4)->with('countries')->get() as $product)
-                        @php
-                            $countries = array_pluck($product->countries->toArray(), 'name');
-                            $countries = implode(', ', $countries);
-                        @endphp
-
-                        <div class="col-md-6 col-sm-6 col-xs-12 place">
-                            <div class="col-md-6 col-sm-12 col-xs-12"> <img src="{{ cropImage($product->image, 250, 230) }}" alt="" /> </div>
-                            <div class="col-md-6 col-sm-12 col-xs-12">
-                                <a href="{{ route('product', ['id' => $product->id]) }}"><h3>{{ $product->name }}</h3></a>
-                                <p>{{ $product->description_short }}</p>
-                                <div class="featur">
-                                        <h4>{{ $product->countries()->first()->name ?? '' }}</h4>
-                                    <ul>
-                                        <li>{{ $product->duration() }}</li>
-                                    </ul>
-                                </div>
-                                <div class="p2_book">
-                                    <ul>
-                                        <li><a href="#" class="link-btn btn-book-product" data-product="{{$product->id}}">Add to my trip</a> </li>
-                                        <li><a href="{{ route('product', ['id' => $product->id]) }}" class="link-btn">Find out more</a> </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        @php $i++; @endphp
-                        @if($i %2 == 0)
-                </div>
-                <div class="popu-places-home">
-                        @endif
-                    @endforeach
-                </div>
+                @include('frontend.components.section-popularTravelExperiences')
             </div>
         </div>
     </section>
@@ -186,36 +153,4 @@
         });
     </script>
 
-    {{--<script>--}}
-        {{--let buttons = document.getElementsByClassName('btn-book-product');--}}
-        {{--for ( let button of buttons ) {--}}
-            {{--button.onclick = function() {--}}
-                {{--event.preventDefault();--}}
-                {{--var currentBtn = this;--}}
-                {{--$.ajax({--}}
-                    {{--type: "get",--}}
-                    {{--url: '{{ route('productToOrder') }}/'+currentBtn.dataset.product,--}}
-
-                    {{--success: function () {--}}
-                    {{--},--}}
-                {{--});--}}
-                {{--var newEl = document.createElement('p');--}}
-                {{--newEl.classList.add('added-to-order');--}}
-                {{--newEl.innerHTML = 'Added to <a class="" href="{{ route('orderPage') }}">order</a>';--}}
-
-                {{--currentBtn.parentNode.replaceChild(newEl, currentBtn);--}}
-
-
-
-                {{--let orderCounter = document.getElementById('order-counter');--}}
-
-                {{--let newTotal = Number(orderCounter.dataset.total) + 1;--}}
-                {{--console.log(newTotal);--}}
-                {{--orderCounter.dataset.total = newTotal;--}}
-                {{--orderCounter.innerHTML = newTotal;--}}
-
-
-            {{--}--}}
-        {{--}--}}
-    {{--</script>--}}
 @endpush

@@ -29,10 +29,13 @@ class BlogArticle extends Model
         'description_long',
         'image',
         'index',
-        'enabled'
+        'enabled',
+        'datetime'
     ];
     // protected $hidden = [];
-    // protected $dates = [];
+     protected $dates = [
+         'datetime'
+     ];
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +70,10 @@ class BlogArticle extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-
+    public function date()
+    {
+        return $this->datetime ?? $this->created_at;
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
@@ -77,7 +83,7 @@ class BlogArticle extends Model
     public function setImageAttribute($value)
     {
         $attribute_name = "image";
-        $destination_path = "blog/articles";
+        $destination_path = "articles";
 
         // if the image was erased
         if ($value==null) {
@@ -93,5 +99,19 @@ class BlogArticle extends Model
             \Storage::disk("public")->put($destination_path.'/'.$filename, $image->stream());
             $this->attributes[$attribute_name] = 'storage/'.$destination_path.'/'.$filename;
         }
+    }
+
+    public function setDatetimeAttribute($value) {
+        $this->attributes['datetime'] = \Date::parse($value);
+    }
+
+    public function setSlugAttribute($value) {
+        $this->attributes['slug'] = $value ?? str_slug(request()->input('name'));
+        $articles = BlogArticle::where('slug', $this->attributes['slug'])->where('id','!=',request()->id ?? 0)->get();
+
+        if (count($articles)>0) {
+            $this->attributes['slug'] = $this->attributes['slug'].'-2';
+        }
+        dd($this);
     }
 }

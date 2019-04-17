@@ -17,6 +17,7 @@ class CreateBlogArticlesTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
+            $table->dateTime('datetime')->nullable();
             $table->boolean('enabled')->default(true);
             $table->text('description_short')->nullable();
             $table->text('description_long')->nullable();

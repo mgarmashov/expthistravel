@@ -39,7 +39,11 @@ class BlogArticlesController extends CrudController
         ]);
         $this->crud->addColumn('name');
         $this->crud->addColumn('slug');
-
+        $this->crud->addColumn([
+            'name' => 'datetime',
+            'label' => 'Date',
+            'type' => 'text'
+        ]);
         $this->crud->addColumn([
             'name' => 'enabled', // The db column name
             'label' => "Enabled", // Table column heading
@@ -72,8 +76,21 @@ class BlogArticlesController extends CrudController
             'name' => "enabled",
             'type' => 'checkbox',
             'tab' => 'Description'
-
         ]);
+
+        $this->crud->addField([
+            'label' => "Date",
+            'name' => "datetime",
+            'type' => 'datetime_picker',
+            'datetime_picker_options' => [
+                'useCurrent' => true,
+                'showClear' => true,
+                'format' => 'YYYY-MM-DD HH:mm',
+                'language' => 'en'
+            ],
+            'tab' => 'Description'
+        ]);
+
         $this->crud->addField([
             'label' => "Image",
             'name' => "image",

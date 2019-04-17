@@ -17,7 +17,9 @@
     <meta property="og:locale" content="{{ app()->getLocale() }}"/>
     <meta property="og:title" content="@yield('title',  env('APP_NAME') )" />
     <meta property="og:url" content="{{ url()->full() }}"/>
+    <meta property="og:image" content="@yield('og-image', asset('images/favicon2.png'))"/>
     <meta property="og:image:secure_url" itemprop="image" content="@yield('og-image', asset('images/favicon2.png'))" />
+    <meta property="fb:admins" content="373637163058493"/>
 
     {{--<!-- FAV ICON -->--}}
     <link rel="shortcut icon" href="{{asset('images/favicon2.png')}}">
@@ -72,6 +74,7 @@
                                     <li> <a href="{{ route('quiz-part1') }}">Inspire Me</a> </li>
                                     <li> <a href="{{ route('experiences') }}">Experiences </a></li>
                                     <li> <a href="{{ route('bookingPage') }}">Plan My Trip</a></li>
+                                    <li> <a href="{{ route('blog') }}">Travel Insights</a></li>
                                     @foreach (\App\Models\Page::orderBy('updated_at', 'desc')->get() as $page)
                                         <li><a href="{{route('index') .'/'. $page->slug }}">{{ $page->name }}</a></li>
                                     @endforeach
