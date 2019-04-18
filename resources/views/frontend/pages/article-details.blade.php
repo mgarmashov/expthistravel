@@ -30,7 +30,21 @@
 @endpush
 
 @section('content')
-
+    <!--====== BANNER ==========-->
+    <section>
+        <div class="rows inner_banner" @include('frontend.components.randomBgStyle')>
+            <div class="container">
+                <h2><a href="{{ route('blog') }}"><span>Travel Insights</span></a><span> > </span> {{ $title }}</h2>
+                {{--<ul>--}}
+                    {{--<li><a href="{{ route('blog') }}">Travel Insights</a> </li>--}}
+                    {{--<li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>--}}
+                    {{--<li><a href="{{ url()->current() }}" class="bread-acti">{{ $title }}</a> </li>--}}
+                {{--</ul>--}}
+                <p>{!! $article->description_short !!}</p>
+            </div>
+        </div>
+    </section>
+    <!--====== ALL POST ==========-->
     <section>
         <div class="rows inn-page-bg com-colo">
             <div class="container inn-page-con-bg tb-space pad-bot-redu-5" id="inner-page-title">
