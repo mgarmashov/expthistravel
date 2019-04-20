@@ -47,34 +47,65 @@
     <!--====== ALL POST ==========-->
     <section>
         <div class="rows inn-page-bg com-colo">
-            <div class="container inn-page-con-bg tb-space pad-bot-redu-5" id="inner-page-title">
+            <div class="container inn-page-con-bg pad-bot-redu-5" id="inner-page-title">
                 <!--===== POSTS ======-->
                 <div class="rows">
-                    <div class="posts">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            @if($article->image)<img src="{{ asset(cropImage($article->image, 550, 353)) }}" alt="{{ $article->name }}" /> @endif
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <h1>{{ $h1 }}</h1>
-                            <h5><span class="post_author">{{ $article->date()->format('jS \\of F, Y') }}</span></h5>
-                            <div class="post-btn">
-                                <ul>
-                                    <li><a href="https://web.facebook.com/sharer/sharer.php?u={{ URL::current() }}"  target="_blank"><i class="fa fa-facebook fb1"></i> Share On Facebook</a>
-                                    </li>
-                                    <li><a href="https://twitter.com/intent/tweet?text={{ urlencode($article->name) }}&url={{ URL::current() }}&hashtags=ExperienceThisTravel" target="_blank"><i class="fa fa-twitter tw1"></i> Share On Twitter</a>
-                                    </li>
-                                </ul>
+                    <div class="">
+                        <div class="col-md-12">
+                            <h1 class="margin50">{{ $h1 }}</h1>
+                            <div>
+                                @if($article->image)<img class="article-image" src="{{ asset(cropImage($article->image, 550, 353)) }}" alt="{{ $article->name }}" /> @endif
+                                    <h5><span class="post_author">{{ $article->date()->format('j F Y') }}</span></h5>
+                                    <div class="post-btn">
+                                        <ul>
+                                            <li><a href="https://web.facebook.com/sharer/sharer.php?u={{ URL::current() }}"  target="_blank"><i class="fa fa-facebook fb1"></i> Share On Facebook</a>
+                                            </li>
+                                            <li><a href="https://twitter.com/intent/tweet?text={{ urlencode($article->name) }}&url={{ URL::current() }}&hashtags=ExperienceThisTravel" target="_blank"><i class="fa fa-twitter tw1"></i> Share On Twitter</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div  class="article-paragraph">
+                                        {!! $article->description_long !!}
+                                    </div>
+                                    <p></p>
                             </div>
-                            {!! $article->description_long !!}
+                        </div>
+                        {{--<div class="col-md-6 col-sm-6 col-xs-12">--}}
+                            {{--@if($article->image)<img src="{{ asset(cropImage($article->image, 550, 353)) }}" alt="{{ $article->name }}" /> @endif--}}
+                        {{--</div>--}}
+                        {{--<div class="col-md-6 col-sm-6 col-xs-12">--}}
+
+                            {{--<h5><span class="post_author">{{ $article->date()->format('j F Y') }}</span></h5>--}}
+                            {{--<div class="post-btn">--}}
+                                {{--<ul>--}}
+                                    {{--<li><a href="https://web.facebook.com/sharer/sharer.php?u={{ URL::current() }}"  target="_blank"><i class="fa fa-facebook fb1"></i> Share On Facebook</a>--}}
+                                    {{--</li>--}}
+                                    {{--<li><a href="https://twitter.com/intent/tweet?text={{ urlencode($article->name) }}&url={{ URL::current() }}&hashtags=ExperienceThisTravel" target="_blank"><i class="fa fa-twitter tw1"></i> Share On Twitter</a>--}}
+                                    {{--</li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                            {{--{!! $article->description_long !!}--}}
                     </div>
                 </div>
                 <!--===== POST END ======-->
-                <div class="spe-title">
-                    <div class="tl-1"></div>
-                    <div class="tl-2"></div>
-                    <div class="tl-3"></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="rows pla pad-bot-redu tb-space">
+            <div class="pla1 p-home container">
+                <!-- TITLE & DESCRIPTION -->
+                <div class="spe-title spe-title-1">
+                    <h2>Read <span>more</span></h2>
+                    <div class="title-line">
+                        <div class="tl-1"></div>
+                        <div class="tl-2"></div>
+                        <div class="tl-3"></div>
+                    </div>
+                    {{--<p>Discover our incredible range of travel experiences:</p>--}}
                 </div>
-                @include('frontend.components.section-popularTravelExperiences')
+                @include('frontend.components.section-popularArticles')
             </div>
         </div>
     </section>

@@ -1,5 +1,4 @@
 <div class="popu-places-home">
-    @php $i=0; @endphp
     @foreach(\App\Models\Product::query()->inRandomOrder()->limit(4)->with('countries')->get() as $product)
         @php
             $countries = array_pluck($product->countries->toArray(), 'name');
@@ -25,8 +24,7 @@
                 </div>
             </div>
         </div>
-        @php $i++; @endphp
-@if($i %2 == 0)
+@if($loop->index %2 == 1)
     </div>
     <div class="popu-places-home">
 @endif
