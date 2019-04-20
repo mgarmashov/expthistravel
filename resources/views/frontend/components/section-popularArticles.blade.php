@@ -10,7 +10,7 @@
                 <p style="padding: 0">{{ $article->description_short }}</p>
                 <div class="p2_book">
                     <ul>
-                        <li><a href="{{ route('article', ['slug' => $article->slug]) }}" class="link-btn btn-book-product">Read more</a> </li>
+                        <li><a href="{{ route('article', ['slug' => $article->slug]) }}" class="link-btn">Read more</a> </li>
                     </ul>
                 </div>
             </div>
