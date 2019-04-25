@@ -464,6 +464,13 @@ h2 span.red-text {
   font-family: "Quicksand", sans-serif;
 }
 
+h1.red-text {
+  color: #f4364f !important;
+  font-size: 32px;
+  display: inline-block;
+  font-weight: 600;
+}
+
 @media (min-width: 501px) {
   .article-image {
     float: left;

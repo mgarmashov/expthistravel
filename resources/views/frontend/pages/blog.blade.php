@@ -24,16 +24,15 @@
     <!--====== ALL POST ==========-->
     <section>
         <div class="rows inn-page-bg com-colo">
-            <div class="container inn-page-con-bg tb-space pad-bot-redu-5" id="inner-page-title">
+            <div class="container inn-page-con-bg pad-bot-redu-5" id="inner-page-title">
                 <!-- TITLE & DESCRIPTION -->
                 <div class="spe-title col-md-12">
-                    <h1>Blog Posts</h1>
+                    <h1>Travel Insights</h1>
                     <div class="title-line">
                         <div class="tl-1"></div>
                         <div class="tl-2"></div>
                         <div class="tl-3"></div>
                     </div>
-                    <p>Travel insights from the team at Experience This</p>
                 </div>
                 <!--===== POSTS ======-->
                 <div class="rows">

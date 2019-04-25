@@ -82,7 +82,7 @@ class Product extends Model
     {
         $input = $this->months;
 
-        if (in_array(0, $input)) { return 'Any month';}
+        if (is_null($input) || in_array(0, $input)) { return 'Any month';}
         if (count($input) == 1 ) {return monthsList()[$input[0]];}
 
         sort($input);

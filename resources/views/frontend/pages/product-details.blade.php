@@ -34,7 +34,7 @@
 <section>
     <div class="rows inner_banner inner_banner_4" @include('frontend.components.randomBgStyle')>
         <div class="container">
-            <h1>| {{ $h1 }}</h1>
+            <h1 class="red-text">| {{ $h1 }}</h1>
             <ul>
                 <li><a href="#inner-page-title">Home</a>
                 </li>
