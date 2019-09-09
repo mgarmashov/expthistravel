@@ -6462,7 +6462,7 @@
      height:86px;
      background:#fff;
      box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.32);
-     z-index: 999;
+     z-index: 1000;
      display:none;
 }
  .ed-mob-menu-con{
