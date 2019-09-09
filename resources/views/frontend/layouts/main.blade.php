@@ -30,12 +30,12 @@
     {{--<!--== ALL CSS FILES ==-->--}}
     @yield('before_styles')
     @stack('before_styles')
-    <link rel="stylesheet" href="{{asset('css/style.css?v='.config('app.version'))}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}?v={{ filemtime(public_path('css/style.css')) }}">
     <link rel="stylesheet" href="{{asset('css/materialize.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('css/mob.css?v='.config('app.version'))}}')}}">
+    <link rel="stylesheet" href="{{asset('css/mob.css')}}?v={{ filemtime(public_path('css/mob.css')) }}">
     <link rel="stylesheet" href="{{asset('css/animate.css')}}">
-    <link rel="stylesheet" href="{{asset('css/personal.css?v='.config('app.version'))}}')}}">
+    <link rel="stylesheet" href="{{asset('css/personal.css')}}?v={{ filemtime(public_path('css/personal.css')) }}">
     @yield('after_styles')
     @stack('after_styles')
     {{--<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->--}}
@@ -134,7 +134,7 @@
     const productToOrder = "{{ route('productToOrder')}}";
     const orderPage = "{{ route('orderPage')}}";
 </script>
-<script src="{{asset('js/custom.js?v='.config('app.version'))}}"></script>
+<script src="{{asset('js/custom.js')}}?v={{ filemtime(public_path('js/custom.js')) }}"></script>
 @yield('after_scripts')
 @stack('after_scripts')
 </body>
