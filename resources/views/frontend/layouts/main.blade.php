@@ -31,7 +31,7 @@
     @yield('before_styles')
     @stack('before_styles')
     <link rel="stylesheet" href="{{asset('css/style.css')}}?v={{ filemtime(public_path('css/style.css')) }}">
-    <link rel="stylesheet" href="{{asset('css/materialize.css')}}">
+    <link rel="stylesheet" href="{{asset('css/materialize.css')}}?v={{ filemtime(public_path('css/materialize.css')) }}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/mob.css')}}?v={{ filemtime(public_path('css/mob.css')) }}">
     <link rel="stylesheet" href="{{asset('css/animate.css')}}">
@@ -129,7 +129,7 @@
 <script src="{{asset('js/jquery-latest.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.js')}}"></script>
 <script src="{{asset('js/wow.min.js')}}"></script>
-<script src="{{asset('js/materialize.min.js')}}"></script>
+<script src="{{asset('js/materialize.min.js')}}?v={{ filemtime(public_path('js/materialize.min.js')) }}"></script>
 <script>
     const productToOrder = "{{ route('productToOrder')}}";
     const orderPage = "{{ route('orderPage')}}";
