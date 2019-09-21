@@ -71,7 +71,7 @@ class ProfileController extends Controller
             $user = Auth::user();
             $months = $user->q3 ?? [];
             $selectedProducts = $user->products()->get();
-            $place = $selectedProducts[0]->place() ?? '';
+            $place = count($selectedProducts) ? $selectedProducts[0]->place() : '';
         } else {
             $months = [];
             $selectedProducts = collect();
