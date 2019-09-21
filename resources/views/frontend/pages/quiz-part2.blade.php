@@ -23,46 +23,64 @@
                     <h4>Who is travelling?</h4>
                         <div class="col-xs-12" id="q1">
                             <div class="checkbox checkbox-info checkbox-circle">
-                                <input name="q1[solo]" id="q1-solo" class="styled" type="checkbox">
-                                <label for="q1-solo">I’m going solo</label>
+                                <label for="q1-solo">
+                                    <input name="q1[solo]" id="q1-solo" class="styled" type="checkbox">
+                                    <span>I’m going solo</span>
+                                </label>
                             </div>
                             <div class="checkbox checkbox-info checkbox-circle">
-                                <input name="q1[couple]" id="q1-couple" class="styled" type="checkbox">
-                                <label for="q1-couple">Couple</label>
+                                <label for="q1-couple">
+                                    <input name="q1[couple]" id="q1-couple" class="styled" type="checkbox">
+                                    <span>Couple</span>
+                                </label>
                             </div>
                             <div class="checkbox checkbox-info checkbox-circle">
-                                <input name="q1[group]" id="q1-group" class="styled" type="checkbox">
-                                <label for="q1-group">Group – friends/ family</label>
+                                <label for="q1-group">
+                                    <input name="q1[group]" id="q1-group" class="styled" type="checkbox">
+                                    <span>Group – friends/ family</span>
+                                </label>
                             </div>
                             <div class="checkbox checkbox-info checkbox-circle">
-                                <input name="q1[family]" id="q1-family" class="styled" type="checkbox">
-                                <label for="q1-family">Family with little ones</label>
+                                <label for="q1-family">
+                                    <input name="q1[family]" id="q1-family" class="styled" type="checkbox">
+                                    <span>Family with little ones</span>
+                                </label>
                             </div>
                             <hr>
                             <div class="checkbox checkbox-info checkbox-circle">
-                                <input name="q1[all]" id="q1-all" class="styled" type="checkbox">
-                                <label for="q1-all">Not sure</label>
+                                <label for="q1-all">
+                                    <input name="q1[all]" id="q1-all" class="styled" type="checkbox">
+                                    <span>Not sure</span>
+                                </label>
                             </div>
                         </div>
 
                     <h4>How long do you want to go for?</h4>
                     <div class="col-xs-12"  id="q2">
                         <div class="checkbox checkbox-info checkbox-circle">
-                            <input name="q2[up7]" id="q2-up7" class="styled" type="checkbox">
-                            <label for="q2-up7">7 nights or less </label>
+                            <label for="q2-up7">
+                                <input name="q2[up7]" id="q2-up7" class="styled" type="checkbox">
+                                <span>7 nights or less</span>
+                            </label>
                         </div>
                         <div class="checkbox checkbox-info checkbox-circle">
-                            <input name="q2[8-13]" id="q2-8-13" class="styled" type="checkbox">
-                            <label for="q2-8-13">8 to 13 nights</label>
+                            <label for="q2-8-13">
+                                <input name="q2[8-13]" id="q2-8-13" class="styled" type="checkbox">
+                                <span>8 to 13 nights</span>
+                            </label>
                         </div>
                         <div class="checkbox checkbox-info checkbox-circle">
-                            <input name="q2[14more]" id="q2-14more" class="styled" type="checkbox">
-                            <label for="q2-14more">14 nights or more</label>
+                            <label for="q2-14more">
+                                <input name="q2[14more]" id="q2-14more" class="styled" type="checkbox">
+                                <span>14 nights or more</span>
+                            </label>
                         </div>
                         <hr>
                         <div class="checkbox checkbox-info checkbox-circle">
-                            <input name="q2[all]" id="q2-all" class="styled" type="checkbox">
-                            <label for="q2-all">I don’t mind</label>
+                            <label for="q2-all">
+                                <input name="q2[all]" id="q2-all" class="styled" type="checkbox">
+                                <span>I don’t mind</span>
+                            </label>
                         </div>
                     </div>
 
@@ -88,8 +106,10 @@
                             @foreach($months as $val => $month)
 
                                 <div class="checkbox checkbox-info checkbox-circle">
-                                    <input name="q3[{{$val}}]" id="q3-{{$val}}" class="styled" type="checkbox">
-                                    <label for="q3-{{$val}}">{{ $month }}</label>
+                                    <label for="q3-{{$val}}">
+                                        <input name="q3[{{$val}}]" id="q3-{{$val}}" class="styled" type="checkbox">
+                                        <span>{{ $month }}</span>
+                                    </label>
                                 </div>
                                 @if($val == 6)
                         </div>
@@ -102,8 +122,10 @@
                         <hr class="margin10">
                         <div class="col-xs-12">
                             <div class="checkbox checkbox-info checkbox-circle">
-                                <input name="q3[0]" id="q3-all" class="styled" type="checkbox">
-                                <label for="q3-all">I don’t mind</label>
+                                <label for="q3-all">
+                                    <input name="q3[0]" id="q3-all" class="styled" type="checkbox">
+                                    <span>I don’t mind</span>
+                                </label>
                             </div>
                         </div>
 

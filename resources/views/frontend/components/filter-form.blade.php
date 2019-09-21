@@ -4,8 +4,11 @@
         @if(\Illuminate\Support\Facades\Auth::user()->scores())
         <row>
             <div class="text-left font-light filter-checkbox">
-                <input type="checkbox" name="applyScores" id="applyScores" class="styled" {{ (isset($filter['applyScores']) && $filter['applyScores']=='yes') ? 'checked' : ''}}>
-                <label for="applyScores">Apply personal recommendations</label>
+
+                <label for="applyScores">
+                    <input type="checkbox" name="applyScores" id="applyScores" class="styled" {{ (isset($filter['applyScores']) && $filter['applyScores']=='yes') ? 'checked' : ''}}>
+                    <span>Apply personal recommendations</span>
+                </label>
             </div>
         </row>
             @else
