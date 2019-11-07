@@ -18,12 +18,6 @@
                 </div>
 
                 <div class="application-layout col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
-                    <ul class="left-align">
-                        <li>Get personalised travel inspiration</li>
-                        <li>Your information is kept private and secure.
-                            We never share your personal details</li>
-                        <li>Update your interests and preferences or unsubscribe any time</li>
-                    </ul>
                     <form class="col s12" method="post" action="{{ route('quiz-register') }}" id="register-form">
                         <div class="row">
                             <div class="input-field col s12">
