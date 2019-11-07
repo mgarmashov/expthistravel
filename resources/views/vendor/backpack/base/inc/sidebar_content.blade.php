@@ -17,6 +17,7 @@
     </a>
     <ul class="treeview-menu">
         <li><a href="{{  backpack_url('categories') }}"><i class="fa fa-book"></i> <span>Categories</span></a></li>
+        <li><a href="{{  backpack_url('experiences') }}"><i class="fa fa-book"></i> <span>Experiences</span></a></li>
         <li><a href="{{  backpack_url('countries') }}"><i class="fa fa-globe"></i> <span>Countries</span></a></li>
     </ul>
 </li>

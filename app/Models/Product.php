@@ -227,6 +227,11 @@ class Product extends Model
         return $this->belongsToMany('App\Models\Image', 'images_products');
     }
 
+    public function experiences()
+    {
+        return $this->belongsToMany('App\Models\Experience', 'experiences_products');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

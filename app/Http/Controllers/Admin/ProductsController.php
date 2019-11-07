@@ -122,6 +122,15 @@ class ProductsController extends CrudController
             'tab' => 'Description'
         ]);
         $this->crud->addField([
+            'name' => 'experiences',
+            'entity' => 'experiences',
+            'label' => "Experiences",
+            'type' => 'select2_multiple',
+            'attribute' => 'name',
+            'pivot' => true,
+            'tab' => 'Description'
+        ]);
+        $this->crud->addField([
             'name' => 'city',
             'label' => "City",
             'type' => 'text',
