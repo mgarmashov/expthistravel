@@ -78,7 +78,7 @@
                         </div>
                         @if(!Auth::check() || !Auth::user()->totalScores)
                             <p>Discover our incredible range of travel experiences.</p>
-                            <p>Get personalised travel inspiration here - <a class="link-large" href="{{ route('quiz-part1') }}">Get Started</a></p>
+                            <p>Get personalised travel inspiration here - <a class="link-large" href="{{ route('quiz-step1') }}">Get Started</a></p>
                         @endif
                     @endif
 

@@ -193,9 +193,9 @@ h1, h2, h3, h4, h5 {
     padding: 0px;
     font-size: 18px !important; }
 
-.part2-form {
+.step2-form {
   text-align: left; }
-  .part2-form h4 {
+  .step2-form h4 {
     background: #e6e6e6;
     color: #343c42;
     padding: 10px 15px;
@@ -206,7 +206,7 @@ h1, h2, h3, h4, h5 {
     text-overflow: ellipsis;
     white-space: pre;
     overflow: hidden; }
-  .part2-form label span {
+  .step2-form label span {
     color: #343c42;
     font-weight: 600; }
 

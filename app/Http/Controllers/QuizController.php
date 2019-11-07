@@ -13,7 +13,7 @@ class QuizController extends Controller
 {
     public function showPage()
     {
-        return view('frontend.pages.quiz-part1');
+        return view('frontend.pages.quiz-step1');
     }
 
 
@@ -61,7 +61,7 @@ class QuizController extends Controller
         $activity = Activity::query()->whereNotIn('id', $excludeList)->inRandomOrder()->first();
 
         if ( !$activity ) {
-            return response()->json(['redirect'=>'part2']);
+            return response()->json(['redirect'=>'step2']);
         }
 
         $response = [
@@ -74,20 +74,20 @@ class QuizController extends Controller
     }
 
 
-    public function showPart2(Request $request)
+    public function showStep2(Request $request)
     {
         if(!$request->session()->has('answers')) {
-            return redirect()->route('quiz-part1');
+            return redirect()->route('quiz-step1');
         }
 
-        return view('frontend.pages.quiz-part2');
+        return view('frontend.pages.quiz-step2');
     }
 
-    public function showPart3(Request $request)
+    public function showStep3(Request $request)
     {
 
         if(!$request->session()->has('answers')) {
-            return redirect()->route('quiz-part1');
+            return redirect()->route('quiz-step1');
         }
 
         $data = array_only($request->all(), ['q1', 'q2', 'q3']);
@@ -102,7 +102,7 @@ class QuizController extends Controller
         $urlWithAttributes = $this->createUrlWithAttributes($request);
 
         if(Auth::guest()) {
-            return view('frontend.pages.quiz-part3', ['dataUrl' => $urlWithAttributes]);
+            return view('frontend.pages.quiz-step3', ['dataUrl' => $urlWithAttributes]);
         } else {
             return $this->showResultsAuth($urlWithAttributes);
         }
@@ -149,7 +149,7 @@ class QuizController extends Controller
     protected function showResultsPage($userAnswers)
     {
         if (empty($userAnswers)) {
-            return redirect()->route('quiz-part1');
+            return redirect()->route('quiz-step1');
         }
 
         $allAnswersAsArray = [];

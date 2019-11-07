@@ -19,7 +19,7 @@
 
                 <div class="application-layout col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
 
-                    <form action="{{route('quiz-part3')}}" class="part2-form" method="post" id="part2-form">
+                    <form action="{{route('quiz-step3')}}" class="step2-form" method="post" id="step2-form">
                     <h4>Who is travelling?</h4>
                         <div class="col-xs-12" id="q1">
                             <div class="checkbox checkbox-info checkbox-circle">
@@ -155,7 +155,7 @@
 @push('after_scripts')
     <script>
         document.getElementById('submit-btn').onclick = function() {
-            document.getElementById('part2-form').submit();
+            document.getElementById('step2-form').submit();
         }
 
     </script>

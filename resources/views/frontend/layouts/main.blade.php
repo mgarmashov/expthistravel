@@ -71,7 +71,7 @@
                             <div class="col-sm-4 foot-spec foot-com">
                                 <h4><span>SUPPORT</span> & HELP</h4>
                                 <ul class="one-column">
-                                    <li> <a href="{{ route('quiz-part1') }}">Inspire Me</a> </li>
+                                    <li> <a href="{{ route('quiz-step1') }}">Inspire Me</a> </li>
                                     <li> <a href="{{ route('experiences') }}">Experiences </a></li>
                                     <li> <a href="{{ route('bookingPage') }}">Plan My Trip</a></li>
                                     <li> <a href="{{ route('blog') }}">Travel Insights</a></li>

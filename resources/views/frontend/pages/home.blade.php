@@ -15,7 +15,7 @@
                                 {{--Your personalised travel itinerary, organised and booked for you<br>--}}
                                 {{--–--}}
                                 {{--<br>Create incredible travel memories</p>--}}
-                            <a class="waves-effect waves-light tourz-sear-btn" href="{{ route('quiz-part1') }}"> Get started</a>
+                            <a class="waves-effect waves-light tourz-sear-btn" href="{{ route('quiz-step1') }}"> Get started</a>
                         </div>
                     </div>
                 </div>

@@ -49,12 +49,12 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('/fromOrder/{id?}', 'ProductController@deleteFromOrder')->name('productDeleteFromOrder');
 
 
-    Route::get('/quiz', 'QuizController@showPage')->name('quiz-part1');
-    Route::post('/quiz/get-question', 'QuizController@getQuestion')->name('getQuestion');
-    Route::get('/quiz/part2', 'QuizController@showPart2')->name('quiz-part2');
-    Route::any('/quiz/part3', 'QuizController@showPart3')->name('quiz-part3');
-    Route::post('/quiz/register', 'Auth\RegisterController@register')->name('quiz-register');
-    Route::get('/quiz-results', 'QuizController@showResults')->name('quiz-results');
+    Route::get('/experiencefinder', 'QuizController@showPage')->name('quiz-step1');
+    Route::post('/experiencefinder/get-question', 'QuizController@getQuestion')->name('getQuestion');
+    Route::get('/experiencefinder/step2', 'QuizController@showStep2')->name('quiz-step2');
+    Route::any('/experiencefinder/step3', 'QuizController@showStep3')->name('quiz-step3');
+    Route::post('/experiencefinder/register', 'Auth\RegisterController@register')->name('quiz-register');
+    Route::get('/experiencefinder-results', 'QuizController@showResults')->name('quiz-results');
 
 
 
