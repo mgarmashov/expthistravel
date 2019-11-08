@@ -33,15 +33,15 @@ return [
 
     // Date & Datetime Format Syntax: https://github.com/jenssegers/date#usage
     // (same as Carbon)
-    'default_date_format'     => 'j F Y',
-    'default_datetime_format' => 'j F Y H:i',
+    'default_date_format'     => 'Do MMMM YYYY',
+    'default_datetime_format' => 'Do MMMM YYYY, HH:mm',
 
     // Content of the HTML meta robots tag to prevent indexing and link following
     'meta_robots_content' => 'noindex, nofollow',
 
     // Overlays - CSS files that change the look and feel of the admin panel
     'overlays' => [
-        'vendor/backpack/overlays/backpack.bold.css',
+        'vendor/backpack/base/backpack.bold.css',
     ],
 
     /*
@@ -92,7 +92,6 @@ return [
     // The classes for the middleware to check if the visitor is an admin
     // Can be a single class or an array of clases
     'middleware_class' => [
-        \Backpack\Base\app\Http\Middleware\CheckIfAdmin::class,
         \App\Http\Middleware\CheckIfAdmin::class
     ],
 
@@ -108,11 +107,11 @@ return [
 
     // The guard that protects the Backpack admin panel.
     // If null, the config.auth.defaults.guard value will be used.
-    'guard' => null,
+    'guard' => 'backpack',
 
     // The password reset configuration for Backpack.
     // If null, the config.auth.defaults.passwords value will be used.
-    'passwords' => null,
+    'passwords' => 'backpack',
 
     // What kind of avatar will you like to show to the user?
     // Default: gravatar (automatically use the gravatar for his email)
