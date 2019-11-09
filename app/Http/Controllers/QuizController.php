@@ -103,9 +103,9 @@ class QuizController extends Controller
     public function showStep3(Request $request)
     {
 
-        if(!$request->session()->has('answers')) {
-            return redirect()->route('quiz-step1');
-        }
+//        if(!$request->session()->has('answers')) {
+//            return redirect()->route('quiz-step0');
+//        }
 
         $data = array_only($request->all(), ['q1', 'q2', 'q3']);
         $dataDotted = array_dot($data);
@@ -128,12 +128,15 @@ class QuizController extends Controller
 
     protected function createUrlWithAttributes($request)
     {
-        $likedAnswers = array_where($request->session()->get('answers'), function ($value, $key) {
-            return $value === 'like';
-        });
+        if($request->session()->get('answers')) {
+            $likedAnswers = array_where($request->session()->get('answers'), function ($value, $key) {
+                return $value === 'like';
+            });
+        }
 
 
-        if($likedAnswers) {
+        $usefulAttributes = [];
+        if(isset($likedAnswers)) {
             $usefulAttributes['a'] = array_divide($likedAnswers)[0];
         }
         if($request->session()->get('q1')) {
@@ -166,7 +169,7 @@ class QuizController extends Controller
     protected function showResultsPage($userAnswers)
     {
         if (empty($userAnswers)) {
-            return redirect()->route('quiz-step1');
+            return redirect()->route('quiz-step0');
         }
 
         $allAnswersAsArray = [];
@@ -182,6 +185,10 @@ class QuizController extends Controller
         $this->updateUserAnswers($allAnswersAsArray);
 
         $scoresForView = self::transformScoresForView($totalScoresOfCategories);
+
+        if (request()->session()->has('experience') && request()->session()->has('experience') != '0') {
+            Product::filterByExperience(request()->session()->get('experience'));
+        }
 
         if (isset($allAnswersAsArray['q2'])) {
             Product::filterByDuration($allAnswersAsArray['q2'] ?? '');

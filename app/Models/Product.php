@@ -211,12 +211,30 @@ class Product extends Model
         return self::$filteredProductsList;
     }
 
+    public static function filterByExperience($experienceId)
+    {
+        if (!self::$filteredProductsList) {
+            self::$filteredProductsList = self::with('countries')->get();
+        }
 
-    /*
-    |--------------------------------------------------------------------------
-    | RELATIONS
-    |--------------------------------------------------------------------------
-    */
+        self::$filteredProductsList = self::$filteredProductsList->filter(function($product) use ($experienceId) {
+            foreach ($product->experiences as $exp) {
+                if ($exp->id == $experienceId) {
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        return self::$filteredProductsList;
+    }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | RELATIONS
+        |--------------------------------------------------------------------------
+        */
     public function countries()
     {
         return $this->belongsToMany('App\Models\Country', 'countries_products');
