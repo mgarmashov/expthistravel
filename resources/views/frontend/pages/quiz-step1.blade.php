@@ -21,36 +21,36 @@
                     </p>
                     <p id="counter" data-number=1 >1/{{ config('app.totalActivitiesInQuiz') }}</p>
                 </div>
-                <div class="col-sm-8 col-sm-offset-2">
-                    @php
-                        $activity = \App\Models\Activity::query()->inRandomOrder()->first();
-                    @endphp
+                <div>
+                    @foreach(\App\Models\Activity::all() as $activity)
 
-                        <div class="col-xs-12 quiz-question">
-                            <div id="activity-container">
-                                <div class="avtivity-item" id="activity-item" data-activity="{{ $activity->id }}">
-                                    <div class="v_place_img">
-{{--                                        {{ dd(cropImage($activity->image, 700, 400)) }}--}}
-                                        <img src="{{ asset(cropImage($activity->image, 700, 400)) }}" alt="{{ $activity->name }}" />
-                                    </div>
-                                    <div class="b_pack rows text-center">
-                                        <div class="col-xs-8 col-xs-offset-2">
-                                            <h4 class="full-text">{{ $activity->name }}</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-2 btn-quiz btn-quiz-img dislike" data-kind="dislike">
-                                <img src="{{ asset('images/icon-thumb-down.png') }}" alt="">
-                            </div>
-                            <div class="col-xs-2 btn-quiz btn-quiz-img like" data-kind="like">
-                                <img src="{{ asset('images/icon-thumb-up.png') }}" alt="">
+                    <div class="col-md-4 col-sm-6 col-xs-12 b_packages b_packages--activity wow slideInUp" data-wow-duration="0.5s" data-activity="{{ $activity->id }}">
+                        <!-- IMAGE -->
+                        <div class="v_place_img"> <img src="{{ asset(cropImage($activity->image, 377, 218))  }}" alt="{{ $activity->name }}" title="{{ $activity->name }}" /> </div>
+                        <!-- TOUR TITLE & ICONS -->
+                        <div class="b_pack rows">
+                            <!-- TOUR TITLE -->
+                            <div class="col-sm-12">
+                                <h4>{{ $activity->name }}</h4>
                             </div>
                         </div>
+                    </div>
+                    @endforeach
                 </div>
-                <div class="spe-title col-sm-8 col-sm-offset-2">
-                    <a href="#" class="btn-quiz">I'm not sure</a>
+                <div class="clearfix"></div>
+                @csrf
+                <div class="col-sm-6 col-sm-offset-3">
+                    <form action="{{route('quiz-step2')}}"method="post" id="step2-form">
+                        @csrf
+                    <i id="submit-btn" class="waves-effect waves-light tourz-sear-btn v2-ser-btn waves-input-wrapper" style="">
+                        <input type="submit" value="Next" class="waves-button-input">
+
+                    </i>
+                    </form>
                 </div>
+                <div class="clearfix"></div>
+
+
             </div>
         </div>
     </section>
@@ -59,71 +59,43 @@
 
 @push('after_scripts')
     <script>
-        let buttons = document.getElementsByClassName('btn-quiz');
-        let counter = document.getElementById('counter');
-        let answers = {};
-        let step = parseInt(counter.dataset.number);
-        let container = document.getElementById('activity-container');
+      let activities = document.getElementsByClassName('b_packages--activity');
+      for ( let activity of activities ) {
+        activity.onclick = function() {
+          this.classList.toggle('active');
+        }
+      }
 
-        for ( let button of buttons ) {
-            button.onclick = function() {
-                event.preventDefault();
-
-                let activityId = parseInt(document.getElementById('activity-item').dataset.activity);
-                let answer = (this.dataset.kind == 'like') ? 'like' : (this.dataset.kind == 'dislike') ? 'dislike' : 'missed';
-
-                answers[step] = {
-                    'activity' : activityId,
-                    'answer' : answer
-                };
-
-                getQuestion(answers);
-
-            }
+      document.getElementById('submit-btn').onclick = function() {
+        event.preventDefault();
+        let actives = document.getElementsByClassName('active');
+        let likes = [];
+        for (active of actives ) {
+          likes.push(active.dataset.activity);
         }
 
-        function getQuestion(answers) {
+        $.ajax({
+          type: "post",
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          url: '{{ route('saveAnswers') }}',
+          data: {
+            'likes': likes
+          },
 
+          beforeSend: function(){
+            $('#preloader').delay(350).fadeIn('fast', function () {
+              return window.location = "{{route('quiz-step2')}}";
+            });
 
+          },
 
-            $.ajax({
-                type: "post",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: '{{ route('getQuestion') }}',
-                data: {
-                    'answers': answers
-                },
-
-                beforeSend: function(){
-
-                },
-
-                success: function(data)
-                {
-                    if (step == {{ config('app.totalActivitiesInQuiz') }} || data.redirect) {
-                        for ( let el of document.getElementsByClassName('btn-quiz')) {
-                            el.hidden = true;
-                        }
-                        $('#status').fadeIn();
-                        $('#preloader').delay(350).fadeIn('fast', function () {
-                            return window.location = "{{route('quiz-step2')}}";
-                        });
-
-                    } else {
-                        document.getElementById('activity-item').dataset.activity = data.id;
-                        container.getElementsByTagName('img')[0].src = data.image;
-                        container.getElementsByTagName('img')[0].alt = data.name;
-                        container.getElementsByTagName('h4')[0].innerText = data.name;
-
-                        step++;
-                        counter.innerText = step+'/{{ config('app.totalActivitiesInQuiz') }}';
-                        counter.dataset.number = step;
-                    }
-                },
-
-            })
-        }
+          success: function(data)
+          {
+            return window.location = "{{route('quiz-step2')}}";
+          },
+        })
+      }
     </script>
 @endpush

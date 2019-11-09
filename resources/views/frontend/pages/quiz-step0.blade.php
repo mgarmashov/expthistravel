@@ -67,11 +67,7 @@
 @push('after_scripts')
     <script>
       document.getElementById('submit-btn').onclick = function() {
-        // if (getAnswer() == '0') {
           document.getElementById('step0-form').submit();
-        {{--} else {--}}
-          {{--window.location.href = "{{ route('quiz-step2') }}";--}}
-        {{--}--}}
       }
 
     </script>

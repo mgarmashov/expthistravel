@@ -158,32 +158,52 @@ section.affix,section.affix-top
   text-align: left
   font-size: 14px
 //  quiz
-.quiz-question
-  position: relative
+//.quiz-question
+//  position: relative
+//
+//.btn-quiz-img
+//  position: absolute
+//  bottom: 5px
+//  padding: 10px
+//  cursor: pointer
+//  box-shadow: 0px 0px 10px grey
+//  background: white
+//  img
+//    width: 100%
+//  &.like
+//    right: 15px
+//    border-radius: 6px 0
+//    &:hover
+//      background: linear-gradient(to bottom, #57b9f4, #4b9cd0)
+//    &:active
+//      background: #3c7fa9
+//  &.dislike
+//    left: 15px
+//    border-radius: 0 6px
+//    &:hover
+//      background: linear-gradient(to bottom,#f4364f,#dc2039)
+//    &:active
+//      background: #ca0d29
 
-.btn-quiz-img
-  position: absolute
-  bottom: 5px
-  padding: 10px
+//quiz 1
+.b_packages--activity
   cursor: pointer
-  box-shadow: 0px 0px 10px grey
-  background: white
-  img
-    width: 100%
-  &.like
-    right: 15px
-    border-radius: 6px 0
-    &:hover
-      background: linear-gradient(to bottom, #57b9f4, #4b9cd0)
-    &:active
-      background: #3c7fa9
-  &.dislike
-    left: 15px
-    border-radius: 0 6px
-    &:hover
-      background: linear-gradient(to bottom,#f4364f,#dc2039)
-    &:active
-      background: #ca0d29
+  .v_place_img
+    img
+      filter: brightness(50%)
+  &.active
+    .v_place_img
+      img
+        filter: none
+    .b_pack
+      background: #2ca324
+      color: white
+  &:hover
+    .v_place_img
+      img
+        filter: none
+
+
 
 
 //part 2

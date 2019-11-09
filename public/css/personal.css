@@ -139,32 +139,17 @@ h1, h2, h3, h4, h5 {
   text-align: left;
   font-size: 14px; }
 
-.quiz-question {
-  position: relative; }
-
-.btn-quiz-img {
-  position: absolute;
-  bottom: 5px;
-  padding: 10px;
-  cursor: pointer;
-  box-shadow: 0px 0px 10px grey;
-  background: white; }
-  .btn-quiz-img img {
-    width: 100%; }
-  .btn-quiz-img.like {
-    right: 15px;
-    border-radius: 6px 0; }
-    .btn-quiz-img.like:hover {
-      background: linear-gradient(to bottom, #57b9f4, #4b9cd0); }
-    .btn-quiz-img.like:active {
-      background: #3c7fa9; }
-  .btn-quiz-img.dislike {
-    left: 15px;
-    border-radius: 0 6px; }
-    .btn-quiz-img.dislike:hover {
-      background: linear-gradient(to bottom, #f4364f, #dc2039); }
-    .btn-quiz-img.dislike:active {
-      background: #ca0d29; }
+.b_packages--activity {
+  cursor: pointer; }
+  .b_packages--activity .v_place_img img {
+    filter: brightness(50%); }
+  .b_packages--activity.active .v_place_img img {
+    filter: none; }
+  .b_packages--activity.active .b_pack {
+    background: #2ca324;
+    color: white; }
+  .b_packages--activity:hover .v_place_img img {
+    filter: none; }
 
 .application-layout {
   background: #fff;

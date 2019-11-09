@@ -33,19 +33,18 @@ class QuizController extends Controller
     }
 
 
-    public function getQuestion(Request $request)
+    public function saveAnswers(Request $request)
     {
         $this->writeQuizHistory($request);
         $this->writeAnswersToSession($request);
-
-        return $this->nextQuestion($request);
+        return response()->json('success', 200);
     }
 
     protected function writeAnswersToSession($request)
     {
-        $answers = $request->answers;
-        foreach ($answers as $key => $answer) {
-            $request->session()->put('answers.'.$answer['activity'], $answer['answer']);
+        $likes = $request->likes;
+        foreach ($likes as $activityId) {
+            $request->session()->put('answers.'.$activityId, 'like');
         }
 
     }
@@ -53,46 +52,29 @@ class QuizController extends Controller
     protected function writeQuizHistory($request)
     {
         $session = $request->session()->getId();
-        $answers = $request->answers;
-        foreach ($answers as $answer) {
+        $likes = $request->likes;
+        foreach ($likes as $activityId) {
 
-            $query['activity'] = $answer['activity'];
+            $query['activity'] = $activityId;
             Auth::check() ? $query['user'] = Auth::user()->id : $query['session'] = $session;
 
             $newRow = QuizHistory::firstOrCreate($query);
-            $newRow->answer = $answer['answer'];
+            $newRow->answer = 'like';
             $newRow->session = $session;
             $newRow->save();
 
         }
     }
 
-    protected function nextQuestion()
-    {
-        $excludeList = [];
-        foreach (request()->answers as $answer) {
-            $excludeList[] = $answer['activity'];
-        }
-
-        $activity = Activity::query()->whereNotIn('id', $excludeList)->inRandomOrder()->first();
-
-        if ( !$activity ) {
-            return response()->json(['redirect'=>'step2']);
-        }
-
-        $response = [
-            'id' => $activity->id,
-            'image' => asset(cropImage($activity->image, 700, 400)),
-            'name' => $activity->name
-        ];
-
-        return response()->json($response);
-    }
 
 
     public function showStep2(Request $request)
     {
-//        dd($request->session());
+        if(isset($request->answers)) {
+            $this->writeAnswersToSession($request);
+            $this->writeQuizHistory($request);
+        }
+
         if(!$request->session()->has('answers') && !$request->session()->has('experience')) {
             return redirect()->route('quiz-step1');
         }

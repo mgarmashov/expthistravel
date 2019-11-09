@@ -52,7 +52,7 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::get('/experiencefinder', 'QuizController@showStep0')->name('quiz-step0');
     Route::any('/experiencefinder/step1', 'QuizController@showStep1')->name('quiz-step1');
-    Route::post('/experiencefinder/get-question', 'QuizController@getQuestion')->name('getQuestion');
+    Route::post('/experiencefinder/save-answers', 'QuizController@saveAnswers')->name('saveAnswers');
     Route::get('/experiencefinder/step2', 'QuizController@showStep2')->name('quiz-step2');
     Route::any('/experiencefinder/step3', 'QuizController@showStep3')->name('quiz-step3');
     Route::post('/experiencefinder/register', 'Auth\RegisterController@register')->name('quiz-register');
