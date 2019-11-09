@@ -18,7 +18,7 @@
                         <h4>Home pages</h4>
                         <ul>
                             <li><a href="{{ route('index') }}">Home</a></li>
-                            <li class="btn-get-started btn-get-started-mobile"><a href="{{route('quiz-step1')}}">Get started</a></li>
+                            <li class="btn-get-started btn-get-started-mobile"><a href="{{route('quiz-step0')}}">Get started</a></li>
                             <li><a href="{{route('experiences')}}">Experiences</a></li>
                             <li><a href="{{route('contacts')}}">Contact</a></li>
                             @if($page = \App\Models\Page::getPage('about'))

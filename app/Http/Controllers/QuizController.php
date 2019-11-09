@@ -11,9 +11,25 @@ use Illuminate\Support\Facades\View;
 
 class QuizController extends Controller
 {
-    public function showPage()
+    public function showStep0()
     {
-        return view('frontend.pages.quiz-step1');
+        return view('frontend.pages.quiz-step0');
+    }
+
+    public function showStep1(Request $request)
+    {
+        if (isset($request->experience)) {
+            $request->session()->put('experience', $request->experience);
+            if ($request->experience == 0) {
+                return view('frontend.pages.quiz-step1');
+            }
+        }
+
+        if (!$request->session()->has('experience')) {
+            return redirect()->route('quiz-step0');
+        }
+
+        return redirect()->route('quiz-step2');
     }
 
 
@@ -76,7 +92,8 @@ class QuizController extends Controller
 
     public function showStep2(Request $request)
     {
-        if(!$request->session()->has('answers')) {
+//        dd($request->session());
+        if(!$request->session()->has('answers') && !$request->session()->has('experience')) {
             return redirect()->route('quiz-step1');
         }
 
