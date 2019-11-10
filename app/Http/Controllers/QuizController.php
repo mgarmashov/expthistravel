@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\View;
 
 class QuizController extends Controller
 {
-    private $arrayAttributes = ['q1', 'q2', 'q3'];
+    private $arrayAttributes = ['q1', 'q2', 'q3', 'q_countries'];
     private $nonArrayAttributes = ['q_how_many_adults', 'q_how_many_child', 'q_how_many_age'];
 
     public function showStep0()
@@ -202,6 +202,7 @@ class QuizController extends Controller
             'bestProducts' => $bestProducts,
             'filter' =>[
                 'applyScores' => 'yes',
+                'country' => $allAnswersAsArray['q_countries'] ?? null,
                 'month' => $allAnswersAsArray['q3'] ?? null,
                 'duration' => $allAnswersAsArray['q2'] ?? null
             ]

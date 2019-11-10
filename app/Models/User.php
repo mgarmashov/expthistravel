@@ -37,6 +37,7 @@ class User extends Authenticatable
         'q1' => 'array',
         'q2' => 'array',
         'q3' => 'array',
+        'q_countries' => 'array',
     ];
 
     public function sendPasswordResetNotification($token)
