@@ -186,6 +186,10 @@ class QuizController extends Controller
             Product::filterByExperience(request()->session()->get('experience'));
         }
 
+        if (isset($allAnswersAsArray['q_countries'])) {
+            Product::filterByCountry($allAnswersAsArray['q_countries'] ?? '');
+        }
+
         if (isset($allAnswersAsArray['q2'])) {
             Product::filterByDuration($allAnswersAsArray['q2'] ?? '');
         }
