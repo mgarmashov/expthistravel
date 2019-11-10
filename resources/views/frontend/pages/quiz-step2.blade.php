@@ -1,5 +1,7 @@
 @extends('frontend.layouts.main')
-
+@push('after_styles')
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+@endpush
 @section('title')Quiz - part 2 | {{env('APP_NAME')}}@endsection
 @section('content')
     <section>
@@ -170,6 +172,34 @@
                         </div>
                     </div>
 
+                    <h4>Your preferred travel style?</h4>
+                    <div class="col-xs-12"  id="q-travel-style">
+                        <div class="checkbox checkbox-info checkbox-circle">
+                            <label for="q-travel-style-full">
+                                <input name="q_travel_style" id="q-travel-style-full" class="with-gap" type="radio" checked value="full">
+                                <span>Full-on
+                                    <i class="tooltipped tiny material-icons" data-tooltip="Always on the go, experiencing as much as possible">help_outline</i>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="checkbox checkbox-info checkbox-circle">
+                            <label for="q-travel-style-steady">
+                                <input name="q_travel_style" id="q-travel-style-steady" class="with-gap" type="radio" value="steady">
+                                <span>Steady
+                                    <i class="tiny material-icons tooltipped" data-tooltip="Plenty to see and do but with some leisure time">help_outline</i>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="checkbox checkbox-info checkbox-circle" data-position="bottom" data-tooltip="I am a tooltip">
+                            <label for="q-travel-style-chilled">
+                                <input name="q_travel_style" id="q-travel-style-chilled" class="with-gap" type="radio" value="chilled">
+                                <span>Chilled
+                                    <i class="tooltipped tiny material-icons" data-tooltip="More time to relax">help_outline</i>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
                     <div class="clearfix"></div>
                     @csrf
                     <div class="col-sm-6 col-sm-offset-3">
@@ -237,5 +267,21 @@
           }
         }
       }
+    </script>
+
+    <script>
+        //Materialize Tooltip
+      document.addEventListener('DOMContentLoaded', function() {
+        let elems = document.querySelectorAll('.tooltipped');
+        let instances = M.Tooltip.init(elems, {
+          exitDelay: 0,
+          enterDelay: 200,
+          margin: 5,
+          inDuration: 300,
+          outDuration: 250,
+          position: 'right',
+          transitionMovement: 10
+        });
+      });
     </script>
 @endpush

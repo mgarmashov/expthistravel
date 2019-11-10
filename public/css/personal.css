@@ -177,6 +177,13 @@ h1, h2, h3, h4, h5 {
   .application-layout input[type="submit"] {
     padding: 0px;
     font-size: 18px !important; }
+  .application-layout label .tooltipped.material-icons {
+    font-size: 1.5em;
+    vertical-align: middle;
+    padding-left: 8px; }
+
+.material-tooltip {
+  background: linear-gradient(to bottom, #d2a032, #b18013); }
 
 .step2-form {
   text-align: left; }
