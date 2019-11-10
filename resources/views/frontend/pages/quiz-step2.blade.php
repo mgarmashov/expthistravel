@@ -54,6 +54,26 @@
                                 </label>
                             </div>
                         </div>
+                    <div id="q-how-many" class="hidden">
+                        <h4>How many people in total?</h4>
+                        <div class="col-xs-12">
+                            <div class="checkbox checkbox-info checkbox-circle">
+                                <label for="q-how-many-adults" class="col-xs-3">
+                                    <input name="q_how_many_adults" id="q-how-many-adults" class="styled" type="number" min="0">
+                                    <span>Adults</span>
+                                </label>
+                                <label for="q-how-many-child" class="col-xs-3">
+                                    <input name="q_how_many_child" id="q-how-many-child" class="styled" type="number" min="0">
+                                    <span>Children</span>
+                                </label>
+                                <label for="q-how-many-age" class="col-xs-4">
+                                    <input name="q_how_many_age" id="q-how-many-age" class="styled" type="number" min="0">
+                                    <span>Age of children</span>
+                                </label>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
 
                     <h4>How long do you want to go for?</h4>
                     <div class="col-xs-12"  id="q2">
@@ -161,6 +181,7 @@
     </script>
 
     <script>
+        //"check" all button
         for (let id of ['q1', 'q2', 'q3']) {
             document.getElementById(id+'-all').onclick = function() {
                 checkElements(this, id)
@@ -180,5 +201,21 @@
                 }
             }
         }
+    </script>
+
+    <script>
+        //Show questions "How many people" if user checked "group" or "family"
+      howManyTriggerIds = ['q1-group', 'q1-family', 'q1-all'];
+      for (let id of howManyTriggerIds) {
+        document.getElementById(id).onclick = function() {
+          for (let id of howManyTriggerIds) {
+            if (document.getElementById(id).checked == true) {
+              document.getElementById('q-how-many').classList.remove('hidden');
+              break
+            }
+            document.getElementById('q-how-many').classList.add('hidden');
+          }
+        }
+      }
     </script>
 @endpush

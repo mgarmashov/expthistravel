@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\View;
 
 class QuizController extends Controller
 {
+    private $arrayAttributes = ['q1', 'q2', 'q3'];
+    private $nonArrayAttributes = ['q_how_many_adults', 'q_how_many_child', 'q_how_many_age'];
+
     public function showStep0()
     {
         return view('frontend.pages.quiz-step0');
@@ -89,15 +92,7 @@ class QuizController extends Controller
 //            return redirect()->route('quiz-step0');
 //        }
 
-        $data = array_only($request->all(), ['q1', 'q2', 'q3']);
-        $dataDotted = array_dot($data);
-
-        $request->session()->forget(['q1', 'q2', 'q3']);
-        foreach ($dataDotted as $key => $value) {
-            $request->session()->push($key, $value);
-        }
-
-
+        $this->saveApplicationQuestionsToSession($request);
         $urlWithAttributes = $this->createUrlWithAttributes($request);
 
         if(Auth::guest()) {
@@ -106,6 +101,23 @@ class QuizController extends Controller
             return $this->showResultsAuth($urlWithAttributes);
         }
 
+    }
+
+    protected function saveApplicationQuestionsToSession($request)
+    {
+        $request->session()->forget($this->arrayAttributes);
+        $request->session()->forget($this->nonArrayAttributes);
+
+        $arrayData = array_only($request->all(), $this->arrayAttributes);
+        $dataDotted = array_dot($arrayData);
+
+        foreach ($dataDotted as $key => $value) {
+            $request->session()->push($key, $value);
+        }
+
+        foreach ($this->nonArrayAttributes as $alias) {
+            $request->session()->put($alias, $request->$alias);
+        }
     }
 
     protected function createUrlWithAttributes($request)
@@ -121,16 +133,18 @@ class QuizController extends Controller
         if(isset($likedAnswers)) {
             $usefulAttributes['a'] = array_divide($likedAnswers)[0];
         }
-        if($request->session()->get('q1')) {
-            $usefulAttributes['q1'] = array_divide($request->session()->get('q1'))[0];
-        }
-        if($request->session()->get('q2')) {
-            $usefulAttributes['q2'] = array_divide($request->session()->get('q2'))[0];
-        }
-        if($request->session()->get('q3')) {
-            $usefulAttributes['q3'] = array_divide($request->session()->get('q3'))[0];
+
+        foreach ($this->arrayAttributes as $alias) {
+            if($request->session()->get($alias)) {
+                $usefulAttributes[$alias] = array_divide($request->session()->get($alias))[0];
+            }
         }
 
+        foreach ($this->nonArrayAttributes as $alias) {
+            if($request->session()->get($alias)) {
+                $usefulAttributes[$alias] = $request->session()->get($alias);
+            }
+        }
         return http_build_query($usefulAttributes);
     }
 
@@ -225,14 +239,10 @@ class QuizController extends Controller
             $currentUser->totalScores = $totalScores;
         }
 
-        if (isset($allAnswersAsArray['q1'])) {
-            $currentUser->q1 = $allAnswersAsArray['q1'];
-        }
-        if (isset($allAnswersAsArray['q2'])) {
-            $currentUser->q2 = $allAnswersAsArray['q2'];
-        }
-        if (isset($allAnswersAsArray['q3'])) {
-            $currentUser->q3 = $allAnswersAsArray['q3'];
+        foreach(array_merge($this->arrayAttributes, $this->nonArrayAttributes) as $alias) {
+            if (isset($allAnswersAsArray[$alias])) {
+                $currentUser->$alias = $allAnswersAsArray[$alias];
+            }
         }
 
         $currentUser->save();
