@@ -182,7 +182,7 @@ class QuizController extends Controller
 
         $scoresForView = self::transformScoresForView($totalScoresOfCategories);
 
-        if (request()->session()->has('experience') && request()->session()->has('experience') != '0') {
+        if (request()->session()->has('experience') && request()->session()->get('experience') != '0') {
             Product::filterByExperience(request()->session()->get('experience'));
         }
 
