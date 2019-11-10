@@ -59,15 +59,15 @@
                         <div class="col-xs-12">
                             <div class="checkbox checkbox-info checkbox-circle">
                                 <label for="q-how-many-adults" class="col-xs-3">
-                                    <input name="q_how_many_adults" id="q-how-many-adults" class="styled" type="number" min="0">
+                                    <input name="q_how_many_adults" id="q-how-many-adults" class="styled" type="number" min="0" max="10">
                                     <span>Adults</span>
                                 </label>
                                 <label for="q-how-many-child" class="col-xs-3">
-                                    <input name="q_how_many_child" id="q-how-many-child" class="styled" type="number" min="0">
+                                    <input name="q_how_many_child" id="q-how-many-child" class="styled" type="number" min="0" max="10">
                                     <span>Children</span>
                                 </label>
                                 <label for="q-how-many-age" class="col-xs-4">
-                                    <input name="q_how_many_age" id="q-how-many-age" class="styled" type="number" min="0">
+                                    <input name="q_how_many_age" id="q-how-many-age" class="styled" type="number" min="0" max="16">
                                     <span>Age of children</span>
                                 </label>
                                 <div class="clearfix"></div>
