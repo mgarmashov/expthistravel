@@ -1,6 +1,7 @@
 @extends('frontend.layouts.main')
 @push('after_styles')
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('vendor/noUiSlider/nouislider.css')}}?v={{ filemtime(public_path('vendor/noUiSlider/nouislider.css')) }}">
 @endpush
 @section('title')Quiz - part 2 | {{env('APP_NAME')}}@endsection
 @section('content')
@@ -78,33 +79,42 @@
                     </div>
 
                     <h4>How long do you want to go for?</h4>
-                    <div class="col-xs-12"  id="q2">
+                    <div class="col-xs-12">
                         <div class="checkbox checkbox-info checkbox-circle">
-                            <label for="q2-up7">
-                                <input name="q2[up7]" id="q2-up7" class="styled" type="checkbox">
-                                <span>7 nights or less</span>
-                            </label>
+                            <input name="q_how_long" id="q-how-long" class="styled hidden" type="number">
+                            <span>Days:</span>
+                            <div id="q-how-long-visible-slider" class="q-how-long-visible-slider"></div>
                         </div>
-                        <div class="checkbox checkbox-info checkbox-circle">
-                            <label for="q2-8-13">
-                                <input name="q2[8-13]" id="q2-8-13" class="styled" type="checkbox">
-                                <span>8 to 13 nights</span>
-                            </label>
-                        </div>
-                        <div class="checkbox checkbox-info checkbox-circle">
-                            <label for="q2-14more">
-                                <input name="q2[14more]" id="q2-14more" class="styled" type="checkbox">
-                                <span>14 nights or more</span>
-                            </label>
-                        </div>
-                        <hr>
-                        <div class="checkbox checkbox-info checkbox-circle">
-                            <label for="q2-all">
-                                <input name="q2[all]" id="q2-all" class="styled" type="checkbox">
-                                <span>I don’t mind</span>
-                            </label>
-                        </div>
+                        <div class="clearfix"></div>
                     </div>
+                    {{--<h4>How long do you want to go for?</h4>--}}
+                    {{--<div class="col-xs-12"  id="q2">--}}
+                        {{--<div class="checkbox checkbox-info checkbox-circle">--}}
+                            {{--<label for="q2-up7">--}}
+                                {{--<input name="q2[up7]" id="q2-up7" class="styled" type="checkbox">--}}
+                                {{--<span>7 nights or less</span>--}}
+                            {{--</label>--}}
+                        {{--</div>--}}
+                        {{--<div class="checkbox checkbox-info checkbox-circle">--}}
+                            {{--<label for="q2-8-13">--}}
+                                {{--<input name="q2[8-13]" id="q2-8-13" class="styled" type="checkbox">--}}
+                                {{--<span>8 to 13 nights</span>--}}
+                            {{--</label>--}}
+                        {{--</div>--}}
+                        {{--<div class="checkbox checkbox-info checkbox-circle">--}}
+                            {{--<label for="q2-14more">--}}
+                                {{--<input name="q2[14more]" id="q2-14more" class="styled" type="checkbox">--}}
+                                {{--<span>14 nights or more</span>--}}
+                            {{--</label>--}}
+                        {{--</div>--}}
+                        {{--<hr>--}}
+                        {{--<div class="checkbox checkbox-info checkbox-circle">--}}
+                            {{--<label for="q2-all">--}}
+                                {{--<input name="q2[all]" id="q2-all" class="styled" type="checkbox">--}}
+                                {{--<span>I don’t mind</span>--}}
+                            {{--</label>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
 
                     <h4>When do you want to go?</h4>
                     @php
@@ -190,7 +200,7 @@
                                 </span>
                             </label>
                         </div>
-                        <div class="checkbox checkbox-info checkbox-circle" data-position="bottom" data-tooltip="I am a tooltip">
+                        <div class="checkbox checkbox-info checkbox-circle">
                             <label for="q-travel-style-chilled">
                                 <input name="q_travel_style" id="q-travel-style-chilled" class="with-gap" type="radio" value="chilled">
                                 <span>Chilled
@@ -200,9 +210,37 @@
                         </div>
                     </div>
 
+                    <h4>Your preferred sights and experiences?</h4>
+                    <div class="col-xs-12"  id="q-preferred-sights">
+                        <div class="checkbox checkbox-info checkbox-circle">
+                            <label for="q-preferred-sights-main">
+                                <input name="q_preferred_sight" id="q-preferred-sights-main" class="with-gap" type="radio" checked value="main">
+                                <span>The main attractions
+                                <i class="tooltipped tiny material-icons" data-tooltip="The most popular, not to be missed things to see and do">help_outline</i>
+                            </span>
+                            </label>
+                        </div>
+                        <div class="checkbox checkbox-info checkbox-circle">
+                            <label for="q-preferred-sights-main-hidden">
+                                <input name="q_preferred_sight" id="q-preferred-sights-main-hidden" class="with-gap" type="radio" value="main-hidden">
+                                <span>Main attractions and hidden gems
+                                <i class="tiny material-icons tooltipped" data-tooltip="A mix of must-see sights and unique experiences">help_outline</i>
+                            </span>
+                            </label>
+                        </div>
+                        <div class="checkbox checkbox-info checkbox-circle">
+                            <label for="q-preferred-sights-hidden">
+                                <input name="q_preferred_sight" id="q-preferred-sights-hidden" class="with-gap" type="radio" value="hidden">
+                                <span>Hidden gems
+                                <i class="tooltipped tiny material-icons" data-tooltip="Avoid the crowds and take the road less travelled">help_outline</i>
+                            </span>
+                            </label>
+                        </div>
+                    </div>
+
                     <div class="clearfix"></div>
                     @csrf
-                    <div class="col-sm-6 col-sm-offset-3">
+                    <div class="col-sm-6 col-sm-offset-3 margin30">
                         <i id="submit-btn" class="waves-effect waves-light tourz-sear-btn v2-ser-btn waves-input-wrapper" style="">
                             <input type="submit" value="Next" class="waves-button-input">
 
@@ -283,5 +321,38 @@
           transitionMovement: 10
         });
       });
+    </script>
+
+    <script src="{{asset('vendor/noUiSlider/nouislider.min.js')}}?v={{ filemtime(public_path('vendor/noUiSlider/nouislider.min.js')) }}"></script>
+    <script src="{{asset('vendor/wNumb/wNumb.min.js')}}?v={{ filemtime(public_path('vendor/wNumb/wNumb.min.js')) }}"></script>
+    <script>
+      let slider = document.getElementById('q-how-long-visible-slider');
+      noUiSlider.create(slider, {
+        start: 14,
+        step: 1,
+        tooltips: wNumb({decimals: 0}),
+        connect: [true, false],
+        range: {
+          'min': 2,
+          'max': 31
+        },
+        pips: {
+          mode: 'values',
+          values: [2, 7, 14, 21, 30],
+          density: 9,
+        }
+      });
+
+      slider.noUiSlider.on('change.one', function () {
+        document.getElementById('q-how-long').value = slider.noUiSlider.get();
+      });
+      slider.noUiSlider.on('update.one', function () {
+        tooltipText = document.querySelector('.noUi-tooltip').innerHTML;
+        if (tooltipText == '31') {
+          document.querySelector('.noUi-tooltip').innerHTML = '30+'
+        }
+      });
+
+
     </script>
 @endpush

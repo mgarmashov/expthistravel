@@ -202,6 +202,11 @@ h1, h2, h3, h4, h5 {
     color: #343c42;
     font-weight: 600; }
 
+.q-how-long-visible-slider.noUi-target {
+  margin: 20px 0 60px 0; }
+  .q-how-long-visible-slider.noUi-target .noUi-connect {
+    background: linear-gradient(to bottom, #d2a032, #b18013); }
+
 .m-t-0 {
   margin-top: 0 !important; }
 
