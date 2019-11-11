@@ -20,7 +20,7 @@
                     <p>Page 2/3</p>
                 </div>
 
-                <div class="application-layout col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+                <div class="application-layout col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
 
                     <form action="{{route('quiz-step3')}}" class="step2-form" method="post" id="step2-form">
                     <h4>Who is travelling?</h4>
