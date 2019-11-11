@@ -19,7 +19,6 @@
                         <i><u>Like it</u></i> | <i><u>not for me</u></i> | <i><u>not sure...</u></i><br/>
                         We’ll use your preferences to find the ideal travel experiences for you.
                     </p>
-                    <p id="counter" data-number=1 >1/{{ config('app.totalActivitiesInQuiz') }}</p>
                 </div>
                 <div>
                     @foreach(\App\Models\Activity::all() as $activity)
