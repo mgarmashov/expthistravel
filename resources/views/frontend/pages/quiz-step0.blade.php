@@ -9,36 +9,36 @@
                 <div class="application-layout col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
 
                     <form action="{{route('quiz-step1')}}" class="step2-form" method="post" id="step0-form">
-
                         <h4>What experience are you looking for?</h4>
                         <div id="q-experience">
-                            <div class="col-sm-6">
-                                @foreach(\App\Models\Experience::all() as $experience)
-
-                                    <div class="checkbox checkbox-info checkbox-circle">
-                                        <label for="q-experience-{{$experience->id}}">
-                                            <input class="with-gap" name="experience" type="radio" value="{{$experience->id}}" id="q-experience-{{$experience->id}}"  />
-                                            <span>{{$experience->name}}</span>
-                                        </label>
-                                    </div>
-
-                                    @if($loop->index == $loop->count/2 - 1 || $loop->index == ($loop->count - 1)/2)
-                            </div>
-                            <div class="col-sm-6">
-                                    @endif
-
-                                @endforeach
-                            </div>
-                            <div class="clearfix"></div>
-                            <hr class="margin10">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 margin10">
                                 <div class="checkbox checkbox-info checkbox-circle">
                                     <label for="q-experience-all">
-                                        <input class="with-gap" name="experience" type="radio" value="0" id="q-experience-all" checked  />
+                                        <input class="with-gap" name="experience" type="radio" value="0" id="q-experience-all" checked />
                                         <span>I’m not sure - inspire me</span>
                                     </label>
                                 </div>
+                                <div class="clearfix"></div>
+                                <hr class="margin10">
                             </div>
+                            <div class="col-xs-12">
+                                <div class="checkbox checkbox-info checkbox-circle">
+                                    <label for="q-experience-choose">
+                                        <input class="with-gap" name="experience" type="radio" value="1" id="q-experience-choose" />
+                                        <span>What experience are you looking for?</span>
+                                    </label>
+                                </div>
+                                <select id="q-experience-list" multiple name="q_experience[]" disabled>
+                                    <option value="" disabled selected>Choose your experience</option>
+                                    @foreach(\App\Models\Experience::all() as $experience)
+                                        <option value="{{$experience->id}}">{{ $experience->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+
+@php //todo надо сохранять отдельно ответ "все" или ответы про экспериенс. не только в сессию @endphp
+
 
                         </div>
 
@@ -65,6 +65,20 @@
 
 
 @push('after_scripts')
+    <script>
+      jQuery(document).ready(function($) {
+        $('input[name="experience"]').change(function(e) {
+console.log($('input[name="experience"]:checked').val());
+          if ($('input[name="experience"]:checked').val() == 0) {
+            $('#q-experience-list').prop('disabled', true)
+          } else {
+            $('#q-experience-list').prop('disabled', false)
+          }
+          $('#q-experience-list').formSelect();
+        });
+      });
+
+    </script>
     <script>
       document.getElementById('submit-btn').onclick = function() {
           document.getElementById('step0-form').submit();
