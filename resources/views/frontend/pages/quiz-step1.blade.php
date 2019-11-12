@@ -6,7 +6,7 @@
     <!--====== PLACES ==========-->
     <section>
         <div class="rows inn-page-bg com-colo">
-            <div class="container inn-page-con-bg tb-space" id="inner-page-title">
+            <div class="container-fluid inn-page-con-bg tb-space" id="inner-page-title">
                 <!-- TITLE & DESCRIPTION -->
                 <div class="spe-title col-md-12">
                     <h2>My kind of experiences</h2>
@@ -15,15 +15,15 @@
                         <div class="tl-2"></div>
                         <div class="tl-3"></div>
                     </div>
-                    <p>Tell us what you think of these activities. <br/>
-                        <i><u>Like it</u></i> | <i><u>not for me</u></i> | <i><u>not sure...</u></i><br/>
+                    <p>Select the activities you're interested in <br/>
+                        {{--<i><u>Like it</u></i> | <i><u>not for me</u></i> | <i><u>not sure...</u></i><br/>--}}
                         We’ll use your preferences to find the ideal travel experiences for you.
                     </p>
                 </div>
                 <div>
                     @foreach(\App\Models\Activity::all() as $activity)
 
-                    <div class="col-md-4 col-sm-6 col-xs-12 b_packages b_packages--activity wow slideInUp" data-wow-duration="0.5s" data-activity="{{ $activity->id }}">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 b_packages b_packages--activity wow slideInUp" data-wow-duration="0.5s" data-activity="{{ $activity->id }}">
                         <!-- IMAGE -->
                         <div class="v_place_img"> <img src="{{ asset(cropImage($activity->image, 377, 218))  }}" alt="{{ $activity->name }}" title="{{ $activity->name }}" /> </div>
                         <!-- TOUR TITLE & ICONS -->

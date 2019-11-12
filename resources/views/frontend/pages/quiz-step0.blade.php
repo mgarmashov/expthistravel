@@ -4,7 +4,7 @@
 @section('content')
     <section>
         <div class="rows inn-page-bg com-colo">
-            <div class="container inn-page-con-bg tb-space" id="inner-page-title">
+            <div class="container-fluid inn-page-con-bg tb-space" id="inner-page-title">
 
                 <div class="application-layout col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
 
