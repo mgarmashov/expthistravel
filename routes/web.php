@@ -56,7 +56,7 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('/experiencefinder/step2', 'QuizController@showStep2')->name('quiz-step2');
     Route::any('/experiencefinder/step3', 'QuizController@showStep3')->name('quiz-step3');
     Route::post('/experiencefinder/register', 'Auth\RegisterController@register')->name('quiz-register');
-    Route::get('/experiencefinder-results', 'QuizController@showResults')->name('quiz-results');
+    Route::get('/myexperience', 'QuizController@showResults')->name('quiz-results');
 
 
 

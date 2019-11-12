@@ -155,7 +155,9 @@ class QuizController extends Controller
 
     protected function showResultsAuth($urlWithAttributes)
     {
-        return $this->showResultsPage($urlWithAttributes);
+        $arr = [];
+        parse_str($urlWithAttributes,$arr);
+        return redirect()->route('quiz-results', $arr);
     }
 
 
@@ -178,7 +180,9 @@ class QuizController extends Controller
 
         $totalScoresOfCategories = $this->countTotalScores($allAnswersAsArray['a'] ?? []);
 
-        $this->updateUserAnswers($allAnswersAsArray);
+        if(Auth::check()) {
+            $this->updateUserAnswers($allAnswersAsArray);
+        }
 
         $scoresForView = self::transformScoresForView($totalScoresOfCategories);
 
