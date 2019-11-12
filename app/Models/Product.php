@@ -24,6 +24,7 @@ class Product extends Model
     // protected $guarded = ['id'];
     protected $fillable = [
         'name',
+        'slug',
         'description_short',
         'description_long',
         'months',
@@ -291,6 +292,15 @@ class Product extends Model
             $filename = md5($value.time()).'.jpg';
             \Storage::disk("public")->put($destination_path.'/'.$filename, $image->stream());
             $this->attributes[$attribute_name] = 'storage/'.$destination_path.'/'.$filename;
+        }
+    }
+
+    public function setSlugAttribute($value) {
+        $this->attributes['slug'] = $value ?? str_slug(request()->input('name'));
+        $products = Product::where('slug', $this->attributes['slug'])->where('id','!=',request()->id ?? 0)->get();
+
+        if (count($products)>0) {
+            $this->attributes['slug'] = $this->attributes['slug'].'-2';
         }
     }
 }

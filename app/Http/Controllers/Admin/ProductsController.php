@@ -52,6 +52,7 @@ class ProductsController extends CrudController
             'height' => '100px'
         ]);
         $this->crud->addColumn('name');
+        $this->crud->addColumn('slug');
 
 
         $this->crud->addColumn([
@@ -83,7 +84,12 @@ class ProductsController extends CrudController
             'name' => "name",
             'type' => 'text',
             'tab' => 'Description'
-
+        ]);
+        $this->crud->addField([
+            'label' => "Slug",
+            'name' => "slug",
+            'type' => 'slug',
+            'tab' => 'Description'
         ]);
         $this->crud->addField([
             'label' => "Enabled",

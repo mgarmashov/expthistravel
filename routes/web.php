@@ -45,7 +45,7 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('/booking/sent', 'ProfileController@thankYouPage')->name('thank-for-order');
 
 
-    Route::get('/experience/{id}', 'ProductController@showPage')->name('product');
+    Route::get('/experience/{id}', 'ProductController@showPage')->name('product'); //actually it's used Slug or Id
     Route::get('/toOrder/{id?}', 'ProductController@toOrder')->name('productToOrder');
     Route::get('/fromOrder/{id?}', 'ProductController@deleteFromOrder')->name('productDeleteFromOrder');
 

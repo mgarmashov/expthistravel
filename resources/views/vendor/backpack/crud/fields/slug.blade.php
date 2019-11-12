@@ -11,6 +11,7 @@
                     type="text"
                     name="{{ $field['name'] }}"
                     value="{{ old($field['name']) ? old($field['name']) : (isset($field['value']) ? $field['value'] : (isset($field['default']) ? $field['default'] : '' )) }}"
+                    style="width: 300px"
             >
         </div>
 

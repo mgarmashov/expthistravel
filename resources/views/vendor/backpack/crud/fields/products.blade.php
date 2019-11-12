@@ -21,7 +21,7 @@
                         @foreach($userProducts as $product)
                             <tr>
                                 <td>
-                                    <a href="{{ route('product', ['id' => $product->id]) }}" target="_blank">{{ $product->name }}</a>
+                                    <a href="{{ route('product', ['id' => $product->slug]) }}" target="_blank">{{ $product->name }}</a>
                                 </td>
                                 <td>
                                     {{ $product->pivot->created_at }}

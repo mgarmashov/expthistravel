@@ -11,7 +11,10 @@ class ProductController extends Controller
 {
     public function showPage(Request $request)
     {
-        $product = Product::find($request->id);
+        $product = Product::where('slug', $request->id)
+            ->orWhere('id', $request->id)
+            ->first();
+        if (empty($product)) abort(404);
         $countriesIds = $product->countries()->pluck('countries.id')->toArray();
 
         $popularPackages = Product::whereHas('countries', function($q) use ($countriesIds) {

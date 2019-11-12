@@ -170,7 +170,7 @@
                             <img src="{{ asset(cropImage($pp->image, 250, 200)) }}" alt="" />
                             <h4>{{ $pp->place() }} : {{ $pp->name }}</h4>
                             <p> {!! $pp->description_short !!}</p>
-                            <a href="{{ route('product', ['id' => $pp->id]) }}" class="link-btn">Find out more</a>
+                            <a href="{{ route('product', ['id' => $pp->slug]) }}" class="link-btn">Find out more</a>
                         </div>
                     @endforeach
                 </div>
