@@ -187,7 +187,7 @@
                         <div class="checkbox checkbox-info checkbox-circle">
                             <label for="q-travel-style-full">
                                 <input name="q_travel_style" id="q-travel-style-full" class="with-gap" type="radio" checked value="full">
-                                <span>Full-on
+                                <span>Full on
                                     <i class="tooltipped tiny material-icons" data-tooltip="Always on the go, experiencing as much as possible">help_outline</i>
                                 </span>
                             </label>
