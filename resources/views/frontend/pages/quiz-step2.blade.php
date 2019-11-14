@@ -22,88 +22,10 @@
                 <div class="application-layout col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
 
                     <form action="{{route('quiz-step3')}}" class="step2-form" method="post" id="step2-form">
-                    <h4>Who is travelling?</h4>
-                        <div class="col-xs-12" id="q-who-travels">
-                            <div class="checkbox checkbox-info checkbox-circle">
-                                <label for="q-who-travels-solo">
-                                    <input name="q_who_travels" id="q-who-travels-solo" class="with-gap" type="radio" value="solo">
-                                    <span>I’m going solo</span>
-                                </label>
-                            </div>
-                            <div class="checkbox checkbox-info checkbox-circle">
-                                <label for="q-who-travels-couple">
-                                    <input name="q_who_travels" id="q-who-travels-couple" class="with-gap" type="radio" value="couple">
-                                    <span>Couple</span>
-                                </label>
-                            </div>
-                            <div class="checkbox checkbox-info checkbox-circle">
-                                <label for="q-who-travels-group">
-                                    <input name="q_who_travels" id="q-who-travels-group" class="with-gap" type="radio" value="group">
-                                    <span>Group – friends/ family</span>
-                                </label>
-                            </div>
-                            <hr>
-                            <div class="checkbox checkbox-info checkbox-circle">
-                                <label for="q-who-travels-all">
-                                    <input name="q_who_travels" id="q-who-travels-all" class="with-gap" type="radio" checked>
-                                    <span>Not sure</span>
-                                </label>
-                            </div>
-                        </div>
-                    <div id="q-how-many" class="hidden">
-                        <h4>How many people in total?</h4>
-                        <div class="col-xs-12">
-                            <div class="checkbox checkbox-info checkbox-circle">
-                                <label for="q-how-many-adults" class="col-xs-4">
-                                    <input name="q_how_many_adults" id="q-how-many-adults" class="styled" type="number" min="0" max="10">
-                                    <span>Adults</span>
-                                </label>
-                                <label for="q-how-many-child" class="col-xs-4">
-                                    <input name="q_how_many_child" id="q-how-many-child" class="styled" type="number" min="0" max="10">
-                                    <span>Children</span> (Aged 0-16)
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                        <div class="clearfix"></div>
-                    <div class="margin10"></div>
-                    <h4>How long do you want to go for?</h4>
-                    <div class="col-xs-12">
-                        <div class="checkbox checkbox-info checkbox-circle">
-                            <input name="q_how_long" id="q-how-long" class="styled hidden" type="number">
-                            <span>Days:</span>
-                            <div id="q-how-long-visible-slider" class="q-how-long-visible-slider"></div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    {{--<h4>How long do you want to go for?</h4>--}}
-                    {{--<div class="col-xs-12"  id="q2">--}}
-                        {{--<div class="checkbox checkbox-info checkbox-circle">--}}
-                            {{--<label for="q2-up7">--}}
-                                {{--<input name="q2[up7]" id="q2-up7" class="styled" type="checkbox">--}}
-                                {{--<span>7 nights or less</span>--}}
-                            {{--</label>--}}
-                        {{--</div>--}}
-                        {{--<div class="checkbox checkbox-info checkbox-circle">--}}
-                            {{--<label for="q2-8-13">--}}
-                                {{--<input name="q2[8-13]" id="q2-8-13" class="styled" type="checkbox">--}}
-                                {{--<span>8 to 13 nights</span>--}}
-                            {{--</label>--}}
-                        {{--</div>--}}
-                        {{--<div class="checkbox checkbox-info checkbox-circle">--}}
-                            {{--<label for="q2-14more">--}}
-                                {{--<input name="q2[14more]" id="q2-14more" class="styled" type="checkbox">--}}
-                                {{--<span>14 nights or more</span>--}}
-                            {{--</label>--}}
-                        {{--</div>--}}
-                        {{--<hr>--}}
-                        {{--<div class="checkbox checkbox-info checkbox-circle">--}}
-                            {{--<label for="q2-all">--}}
-                                {{--<input name="q2[all]" id="q2-all" class="styled" type="checkbox">--}}
-                                {{--<span>I don’t mind</span>--}}
-                            {{--</label>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
+
+                        @include('frontend.components.q-who-travels')
+                        @include('frontend.components.q-how-long')
+
 
                     <h4>When do you want to go?</h4>
                     @php
@@ -281,17 +203,7 @@
         }
     </script>
 
-    <script>
-      document.getElementById('q-who-travels-group').onclick = function () {
-        if (document.getElementById('q-who-travels').checked == true) {
-          console.log('checked');
-          document.getElementById('q-how-many').classList.remove('hidden');
-          // break
-        } else {
-          document.getElementById('q-how-many').classList.add('hidden');
-        }
-      }
-    </script>
+
 
     <script>
         //Materialize Tooltip
@@ -307,38 +219,5 @@
           transitionMovement: 10
         });
       });
-    </script>
-
-    <script src="{{asset('vendor/noUiSlider/nouislider.min.js')}}?v={{ filemtime(public_path('vendor/noUiSlider/nouislider.min.js')) }}"></script>
-    <script src="{{asset('vendor/wnumb/wNumb.min.js')}}?v={{ filemtime(public_path('vendor/wnumb/wNumb.min.js')) }}"></script>
-    <script>
-      let slider = document.getElementById('q-how-long-visible-slider');
-      noUiSlider.create(slider, {
-        start: 14,
-        step: 1,
-        tooltips: wNumb({decimals: 0}),
-        connect: [true, false],
-        range: {
-          'min': 2,
-          'max': 31
-        },
-        pips: {
-          mode: 'values',
-          values: [2, 7, 14, 21, 30],
-          density: 9,
-        }
-      });
-
-      slider.noUiSlider.on('change.one', function () {
-        document.getElementById('q-how-long').value = slider.noUiSlider.get();
-      });
-      slider.noUiSlider.on('update.one', function () {
-        tooltipText = document.querySelector('.noUi-tooltip').innerHTML;
-        if (tooltipText == '31') {
-          document.querySelector('.noUi-tooltip').innerHTML = '30+'
-        }
-      });
-
-
     </script>
 @endpush

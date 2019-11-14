@@ -20,7 +20,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password', 'phone', 'role', 'login',
-        'q_who_travels', 'q_how_many_adults', 'q_how_many_child', 'q_how_many_age', 'q_travel_style', 'q_how_long', 'q_preferred_sight'
+        'q_who_travels', 'q_how_many_adults', 'q_how_many_child', 'q_travel_style', 'q_how_long_from', 'q_how_long_to', 'q_preferred_sight'
     ];
     public $timestamps = true;
 
