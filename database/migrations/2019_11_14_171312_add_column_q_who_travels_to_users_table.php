@@ -15,6 +15,7 @@ class AddColumnQWhoTravelsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('q_who_travels')->after('q3')->nullable();
+            $table->dropColumn('q_how_many_age');
         });
         //todo remove users -> q3
     }
@@ -28,6 +29,7 @@ class AddColumnQWhoTravelsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('q_who_travels');
+            $table->string('q_how_many_age')->after('q_how_many_child')->nullable();
         });
     }
 }
