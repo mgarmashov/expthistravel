@@ -48,11 +48,9 @@
 
 @push('after_scripts')
     <script>
-      document.getElementById('q-who-travels-group').onclick = function () {
-        if (document.getElementById('q-who-travels').checked == true) {
-          console.log('checked');
+      document.getElementById('q-who-travels').onclick = function () {
+        if (document.getElementById('q-who-travels-group').checked == true) {
           document.getElementById('q-how-many').classList.remove('hidden');
-          // break
         } else {
           document.getElementById('q-how-many').classList.add('hidden');
         }
