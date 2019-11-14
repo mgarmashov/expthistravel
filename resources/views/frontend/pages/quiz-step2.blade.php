@@ -17,42 +17,35 @@
                         <div class="tl-3"></div>
                     </div>
                     <p>Just a few more questions to help us with our recommendations</p>
-                    <p>Page 2/3</p>
                 </div>
 
                 <div class="application-layout col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
 
                     <form action="{{route('quiz-step3')}}" class="step2-form" method="post" id="step2-form">
                     <h4>Who is travelling?</h4>
-                        <div class="col-xs-12" id="q1">
+                        <div class="col-xs-12" id="q-who-travels">
                             <div class="checkbox checkbox-info checkbox-circle">
-                                <label for="q1-solo">
-                                    <input name="q1[solo]" id="q1-solo" class="styled" type="checkbox">
+                                <label for="q-who-travels-solo">
+                                    <input name="q_who_travels" id="q-who-travels-solo" class="with-gap" type="radio" value="solo">
                                     <span>I’m going solo</span>
                                 </label>
                             </div>
                             <div class="checkbox checkbox-info checkbox-circle">
-                                <label for="q1-couple">
-                                    <input name="q1[couple]" id="q1-couple" class="styled" type="checkbox">
+                                <label for="q-who-travels-couple">
+                                    <input name="q_who_travels" id="q-who-travels-couple" class="with-gap" type="radio" value="couple">
                                     <span>Couple</span>
                                 </label>
                             </div>
                             <div class="checkbox checkbox-info checkbox-circle">
-                                <label for="q1-group">
-                                    <input name="q1[group]" id="q1-group" class="styled" type="checkbox">
+                                <label for="q-who-travels-group">
+                                    <input name="q_who_travels" id="q-who-travels-group" class="with-gap" type="radio" value="group">
                                     <span>Group – friends/ family</span>
-                                </label>
-                            </div>
-                            <div class="checkbox checkbox-info checkbox-circle">
-                                <label for="q1-family">
-                                    <input name="q1[family]" id="q1-family" class="styled" type="checkbox">
-                                    <span>Family with little ones</span>
                                 </label>
                             </div>
                             <hr>
                             <div class="checkbox checkbox-info checkbox-circle">
-                                <label for="q1-all">
-                                    <input name="q1[all]" id="q1-all" class="styled" type="checkbox">
+                                <label for="q-who-travels-all">
+                                    <input name="q_who_travels" id="q-who-travels-all" class="with-gap" type="radio" checked>
                                     <span>Not sure</span>
                                 </label>
                             </div>
@@ -61,23 +54,19 @@
                         <h4>How many people in total?</h4>
                         <div class="col-xs-12">
                             <div class="checkbox checkbox-info checkbox-circle">
-                                <label for="q-how-many-adults" class="col-xs-3">
+                                <label for="q-how-many-adults" class="col-xs-4">
                                     <input name="q_how_many_adults" id="q-how-many-adults" class="styled" type="number" min="0" max="10">
                                     <span>Adults</span>
                                 </label>
-                                <label for="q-how-many-child" class="col-xs-3">
+                                <label for="q-how-many-child" class="col-xs-4">
                                     <input name="q_how_many_child" id="q-how-many-child" class="styled" type="number" min="0" max="10">
-                                    <span>Children</span>
+                                    <span>Children</span> (Aged 0-16)
                                 </label>
-                                <label for="q-how-many-age" class="col-xs-4">
-                                    <input name="q_how_many_age" id="q-how-many-age" class="styled" type="number" min="0" max="16">
-                                    <span>Age of children</span>
-                                </label>
-                                <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>
-
+                        <div class="clearfix"></div>
+                    <div class="margin10"></div>
                     <h4>How long do you want to go for?</h4>
                     <div class="col-xs-12">
                         <div class="checkbox checkbox-info checkbox-circle">
@@ -270,8 +259,9 @@
 
     <script>
         //"check" all button
-        for (let id of ['q1', 'q2', 'q3', 'q-countries']) {
+        for (let id of ['q3', 'q-countries']) {
             document.getElementById(id+'-all').onclick = function() {
+              console.log('chackall');
                 checkElements(this, id)
             }
         }
@@ -292,17 +282,13 @@
     </script>
 
     <script>
-        //Show questions "How many people" if user checked "group" or "family"
-      howManyTriggerIds = ['q1-group', 'q1-family', 'q1-all'];
-      for (let id of howManyTriggerIds) {
-        document.getElementById(id).onclick = function() {
-          for (let id of howManyTriggerIds) {
-            if (document.getElementById(id).checked == true) {
-              document.getElementById('q-how-many').classList.remove('hidden');
-              break
-            }
-            document.getElementById('q-how-many').classList.add('hidden');
-          }
+      document.getElementById('q-who-travels-group').onclick = function () {
+        if (document.getElementById('q-who-travels').checked == true) {
+          console.log('checked');
+          document.getElementById('q-how-many').classList.remove('hidden');
+          // break
+        } else {
+          document.getElementById('q-how-many').classList.add('hidden');
         }
       }
     </script>

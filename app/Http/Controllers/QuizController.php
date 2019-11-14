@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\View;
 class QuizController extends Controller
 {
     private $arrayAttributes = ['q1', 'q2', 'q3', 'q_countries'];
-    private $nonArrayAttributes = ['q_how_many_adults', 'q_how_many_child', 'q_how_many_age', 'q_travel_style', 'q_how_long', 'q_preferred_sight'];
+    private $nonArrayAttributes = ['q_who_travels', 'q_how_many_adults', 'q_how_many_child', 'q_how_many_age', 'q_travel_style', 'q_how_long', 'q_preferred_sight'];
 
     public function showStep0()
     {
