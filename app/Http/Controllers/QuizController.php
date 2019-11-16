@@ -24,7 +24,10 @@ class QuizController extends Controller
         if (isset($request->experience)) {
             $request->session()->put('experience', $request->experience);
             if ($request->experience == 0) {
+                $request->session()->forget('q_experiences');
                 return view('frontend.pages.quiz-step1');
+            } else {
+                $request->session()->put('q_experiences', $request->q_experiences);
             }
         }
 
@@ -187,7 +190,7 @@ class QuizController extends Controller
         $scoresForView = self::transformScoresForView($totalScoresOfCategories);
 
         if (request()->session()->has('experience') && request()->session()->get('experience') != '0') {
-            Product::filterByExperience(request()->session()->get('experience'));
+            Product::filterByExperience(request()->session()->get('q_experiences'));
         }
 
         if (isset($allAnswersAsArray['q_countries'])) {

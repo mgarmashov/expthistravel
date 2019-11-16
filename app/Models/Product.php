@@ -212,15 +212,15 @@ class Product extends Model
         return self::$filteredProductsList;
     }
 
-    public static function filterByExperience($experienceId)
+    public static function filterByExperience($experiencesIds)
     {
         if (!self::$filteredProductsList) {
             self::$filteredProductsList = self::with('countries')->get();
         }
 
-        self::$filteredProductsList = self::$filteredProductsList->filter(function($product) use ($experienceId) {
+        self::$filteredProductsList = self::$filteredProductsList->filter(function($product) use ($experiencesIds) {
             foreach ($product->experiences as $exp) {
-                if ($exp->id == $experienceId) {
+                if (in_array($exp->id, $experiencesIds)) {
                     return true;
                 }
             }

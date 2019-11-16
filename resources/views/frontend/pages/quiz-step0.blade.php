@@ -28,7 +28,7 @@
                                         <span>What experience are you looking for?</span>
                                     </label>
                                 </div>
-                                <select id="q-experience-list" multiple name="q_experience[]" disabled>
+                                <select id="q-experience-list" multiple name="q_experiences[]" disabled>
                                     <option value="" disabled selected>Choose your experience</option>
                                     @foreach(\App\Models\Experience::all() as $experience)
                                         <option value="{{$experience->id}}">{{ $experience->name }}</option>
