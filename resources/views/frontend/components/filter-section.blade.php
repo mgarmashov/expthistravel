@@ -2,10 +2,10 @@
 
 @endphp
 
-<section class="background-image" @include('frontend.components.randomBgStyle')>
+<section class="background-image filter-section" @include('frontend.components.randomBgStyle')>
     <div class="dark-layout">
-    <div class="container">
-        <div class="application-layout margin20">
+    <div class="container application-layout">
+        {{--<div class="application-layout">--}}
 
             @auth
                 @if(Auth::user()->scores())
@@ -36,7 +36,7 @@
 
             @include('frontend.components.filter-form')
 
-        </div>
+        {{--</div>--}}
     </div>
     </div>
 </section>

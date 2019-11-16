@@ -83,9 +83,7 @@
                     @endif
 
                 </div>
-                @foreach($products as $product)
-                    @include('frontend.components.list-item-product-large', ['product' => $product])
-                @endforeach
+                @include('frontend.components.list-products')
             </div>
         </div>
     </section>

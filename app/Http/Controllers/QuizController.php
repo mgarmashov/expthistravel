@@ -207,7 +207,7 @@ class QuizController extends Controller
 
 
         return view('frontend.pages.quiz-results', [
-            'bestProducts' => $bestProducts,
+            'products' => $bestProducts,
             'filter' =>[
                 'applyScores' => 'yes',
                 'country' => $allAnswersAsArray['q_countries'] ?? null,

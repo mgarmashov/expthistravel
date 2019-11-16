@@ -11,6 +11,31 @@ class SearchController extends Controller
 {
     public function showPage(Request $request)
     {
+
+        $results = $this->applyFilter($request);
+        $products = $results['products'];
+        $applyScores = $results['applyScores'];
+
+        return view('frontend.pages.products', [
+            'products' => $products,
+            'filter' =>[
+                'applyScores' => $applyScores,
+                'country' => $request->country ?? null,
+                'month' => $request->month ?? null,
+                'duration' => $request->duration ?? null
+            ],
+        ]);
+    }
+
+    public function showList(Request $request)
+    {
+        $products = $this->applyFilter($request)['products'];
+
+        return view("frontend.components.list-products",compact('products'));
+    }
+
+    protected function foundProducts($request)
+    {
         $products = Product::all();
 
         if ($request->country && !in_array('all', $request->country)) {
@@ -25,6 +50,12 @@ class SearchController extends Controller
             $products = Product::filterByDuration($request->duration);
         }
 
+        return $products;
+    }
+
+    protected function applyFilter($request)
+    {
+        $products = $this->foundProducts($request);
         $applyScores = 'no';
         if (Auth::check() && Auth::user()->totalScores && $request->applyScores) {
             $scoresOfUser = Auth::user()->scores();
@@ -34,15 +65,6 @@ class SearchController extends Controller
         if (Auth::check() && ! Auth::user()->totalScores) {
             $applyScores = 'takeQuiz';
         }
-
-        return view('frontend.pages.products', [
-            'products' => $products,
-            'filter' =>[
-                'applyScores' => $applyScores,
-                'country' => $request->country ?? null,
-                'month' => $request->month ?? null,
-                'duration' => $request->duration ?? null
-            ],
-        ]);
+        return ['applyScores' => $applyScores, 'products' => $products];
     }
 }

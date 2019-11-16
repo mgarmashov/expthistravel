@@ -23,14 +23,7 @@
                     </div>
                     <p>Based on your interests and preferences. Handpicked for you</p>
                 </div>
-                <div>
-                    @foreach($bestProducts as $product)
-
-                        @include('frontend.components.list-item-product-large', ['product' => $product])
-
-                    @endforeach
-
-                </div>
+                @include('frontend.components.list-products')
             </div>
         </div>
     </section>

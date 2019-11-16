@@ -227,6 +227,11 @@ h1, h2, h3, h4, h5 {
   border-radius: 1em;
   color: white; }
 
+.filter-section .dark-layout {
+  padding: 15px 0; }
+.filter-section .application-layout {
+  padding: 0; }
+
 .filter-checkbox label {
   font-size: 1em;
   font-weight: normal; }

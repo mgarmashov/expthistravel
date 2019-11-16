@@ -1,8 +1,8 @@
 <form class="" id="filter-form" method="get" action="{{ route('search') }}">
-
+    <div class="container form-with-labels">
     @auth
         @if(\Illuminate\Support\Facades\Auth::user()->scores())
-        <row>
+        <div class="col-xs-12">
             <div class="text-left font-light filter-checkbox">
 
                 <label for="applyScores">
@@ -10,15 +10,15 @@
                     <span>Apply personal recommendations</span>
                 </label>
             </div>
-        </row>
+        </div>
             @else
             <p>Get personalised travel inspiration here - <a class="link-large" href="{{ route('quiz-step0') }}">Get Started</a></p>
             @endif
     @endauth
-    <div class="row form-with-labels">
-        <div class="col l4 m12 s12">
-            <label for="filter-country">Select country</label>
-            <select id="filter-country" multiple name="country[]">
+
+        <div class="col-sm-4">
+            <label for="filter-countries">Select country</label>
+            <select id="filter-countries" multiple name="country[]">
                 <option value="all" {{ isset($filter['country']) && in_array('all', $filter['country']) ? 'selected' : '' }}>Any</option>
                 @foreach(\App\Models\Country::all() as $country)
                     <option value="{{$country->id}}" {{ isset($filter['country']) && !in_array('all', $filter['country']) && in_array($country->id, $filter['country']) ? 'selected' : '' }}>{{ $country->name }}</option>
@@ -41,7 +41,7 @@
                 12 => 'December'
             ];
         @endphp
-        <div class="col l4 m12 s12">
+        <div class="col-sm-4">
             <label for="filter-month">Select month</label>
             <select id="filter-month" multiple name="month[]">
                 <option value="all" {{ isset($filter['month']) && in_array('all', $filter['month']) ? 'selected' : '' }}>Any</option>
@@ -51,7 +51,7 @@
             </select>
         </div>
 
-        <div class="col l4 m12 s12">
+        <div class="col-sm-4">
             <label for="filter-duration">Select duration</label>
             <select id="filter-duration" multiple name="duration[]">
                 <option value="all" {{ isset($filter['duration']) && !in_array('all', $filter['duration']) && in_array('all', $filter['duration']) ? 'selected' : '' }}>Any</option>
@@ -61,20 +61,40 @@
             </select>
         </div>
     </div>
-
-    <div class="row">
-        <div class="input-field col s12" id="filter-submit-btn">
-            <input type="submit" value="search" class="waves-effect waves-light tourz-sear-btn v2-ser-btn">
-        </div>
-    </div>
 </form>
 
 @push('after_scripts')
 
     <script>
-        document.getElementById('filter-submit-btn').onclick = function() {
-            let form = document.getElementById('filter-form');
-            form.submit();
+        for (let inputId of ['applyScores', 'filter-countries', 'filter-month', 'filter-duration']) {
+          document.getElementById(inputId).onchange = function() {
+            changeUrl(this);
+            updateResults($('#filter-form').serializeArray());
+          }
+        }
+
+        function changeUrl(field)
+        {
+        }
+
+        function updateResults(data) {
+          $.ajax({
+            type: "get",
+            url: '{{ route('updateResults') }}',
+            data: data,
+
+            beforeSend: function(){
+              $('#product-list').height($('#product-list').height());
+              $('#product-list').html('');
+            },
+
+            success: function(data) {
+              $('#product-list').replaceWith(data);
+            },
+            error: function() {
+              $('#product-list').html('Something wrong... Please update page');
+            }
+          })
         }
     </script>
 @endpush

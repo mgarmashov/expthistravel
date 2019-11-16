@@ -39,6 +39,7 @@ Route::group(['middleware' => ['web']], function() {
     Route::post('/contacts/send', 'HomepageController@sendContacts')->name('contacts.send');
 
     Route::get('/search', 'SearchController@showPage')->name('search');
+    Route::get('/updateResults', 'SearchController@showList')->name('updateResults');
     Route::get('/order', 'ProfileController@orderPage')->name('orderPage');
     Route::get('/booking', 'ProfileController@bookingPage')->name('bookingPage');
     Route::post('/booking/send', 'ProfileController@createOrder')->name('sendBooking');
