@@ -168,7 +168,7 @@
                     <h3>View similar itineraries</h3>
                     @foreach($popularPackages as $pp)
                         <div class="tour_rela_1">
-                            <img src="{{ asset(cropImage($pp->image, 250, 200)) }}" alt="" />
+                            <img src="{{ asset(cropImage($pp->image, 424, 340)) }}" alt="" />
                             <h4>{{ $pp->place() }} : {{ $pp->name }}</h4>
                             <p> {!! $pp->description_short !!}</p>
                             <a href="{{ route('product', ['id' => $pp->slug]) }}" class="link-btn">Find out more</a>
