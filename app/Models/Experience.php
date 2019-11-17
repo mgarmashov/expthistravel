@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\EnabledScope;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
@@ -20,7 +21,8 @@ class Experience extends Model
     // public $timestamps = false;
     // protected $guarded = ['id'];
     protected $fillable = [
-        'name'
+        'name',
+        'enabled'
     ];
     // protected $hidden = [];
     // protected $dates = [];
@@ -42,6 +44,13 @@ class Experience extends Model
     | SCOPES
     |--------------------------------------------------------------------------
     */
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new EnabledScope);
+    }
 
     /*
     |--------------------------------------------------------------------------

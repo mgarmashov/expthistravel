@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ExperienceRequest extends FormRequest
 {
@@ -26,7 +27,12 @@ class ExperienceRequest extends FormRequest
     public function rules()
     {
         return [
-             'name' => 'required|min:3|max:255|unique:experiences'
+             'name' => [
+                 'required',
+                 'min:3',
+                 'max:255',
+                 Rule::unique('experiences')->ignore(request()->id ?? 0, 'id')
+             ]
         ];
     }
 

@@ -33,6 +33,11 @@ class ExperiencesController extends CrudController
         */
 
         $this->crud->addColumn('name');
+        $this->crud->addColumn([
+            'name' => 'enabled', // The db column name
+            'label' => "Enabled", // Table column heading
+            'type' => 'check'
+        ]);
 
 
         /**
@@ -43,7 +48,11 @@ class ExperiencesController extends CrudController
             'label' => "Name",
             'name' => "name",
             'type' => 'text'
-
+        ]);
+        $this->crud->addField([
+            'label' => "Enabled",
+            'name' => "enabled",
+            'type' => 'checkbox',
         ]);
 
         // add asterisk for fields that are required in ExperienceRequest
