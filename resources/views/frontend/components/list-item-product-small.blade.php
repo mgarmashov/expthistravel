@@ -16,7 +16,7 @@
             </h4>
             <div class="p2_book text-right">
                 <ul>
-                    <li><a href="#" class="link-btn btn-book-product" data-product="{{$product->id}}">Add to my trip</a> </li>
+                    {{--<li><a href="#" class="link-btn btn-book-product" data-product="{{$product->id}}">Add to my trip</a> </li>--}}
                     <li><a href="{{ route('product', ['id' => $product->slug]) }}" class="link-btn">Find out more</a> </li>
                 </ul>
             </div>
