@@ -304,17 +304,27 @@ p.btn-added-to-order {
   padding-left: 0px; }
 .product-scores li {
   list-style: none;
-  position: relative; }
+  position: relative;
+  width: 100%;
+  clear: both;
+  display: block;
+  margin-bottom: 10px;
+  height: 1em; }
   .product-scores li .name {
+    width: 130px;
     display: inline-block;
     position: absolute;
-    left: 0; }
+    left: 0;
+    top: -0.2em; }
   .product-scores li .line {
-    margin-left: 130px;
-    display: inline-block;
-    background: #a2dd2f;
-    height: 1em;
-    border-radius: 0 10px 10px 0; }
+    padding-left: 133px;
+    float: right;
+    width: 100%; }
+    .product-scores li .line span {
+      display: block;
+      background: #a2dd2f;
+      height: 1em;
+      border-radius: 0 10px 10px 0; }
 
 .profile-btns {
   float: right; }
