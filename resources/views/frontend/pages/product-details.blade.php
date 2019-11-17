@@ -52,7 +52,7 @@
         <div class="container">
             <div class="banner_book_1">
                 <ul>
-                    <li class="dl1">Location : {{ $product->place() }}</li>
+                    <li class="dl1">Destination : {{ $product->place() }}</li>
                     <li class="dl2">Duration : {{ $product->duration() }}</li>
                     <li class="dl3">&nbsp;</li>
                     <li class="dl4"><a class="btn-book-product" href="#">Book Now</a> </li>
@@ -64,7 +64,7 @@
 <!--====== TOUR DETAILS ==========-->
 <section>
     <div class="rows inn-page-bg com-colo">
-        <div class="container inn-page-con-bg tb-space">
+        <div class="container-fluid inn-page-con-bg tb-space">
             <div class="col-md-9">
                 <!--====== TOUR TITLE ==========-->
                 <div class="tour_head">
@@ -85,9 +85,10 @@
                 </div>
                 <div class="tour_head1">
                     <h3>Description</h3>
-                    <p>
+                    <div class="long-description-block">
                         {!! $product->description_long !!}
-                    </p>
+                    </div>
+
                 </div>
                 <div class="tour_head1 hotel-book-room">
                     <h3>Photo Gallery</h3>
@@ -156,7 +157,7 @@
                 <div class="tour_right tour_incl tour-ri-com">
                     <h3>Trip Information</h3>
                     <ul>
-                        <li>Location : {{ $product->place() }}</li>
+                        <li>Destination : {{ $product->place() }}</li>
                         <li>Duration: {{ $product->duration() }}</li>
                         <li>Time of year: {{ $product->months() }}</li>
                     </ul>
@@ -164,7 +165,7 @@
 
                 <!--====== PUPULAR TOUR PACKAGES ==========-->
                 <div class="tour_right tour_rela tour-ri-com">
-                    <h3>Add Other Experiences</h3>
+                    <h3>View similar itineraries</h3>
                     @foreach($popularPackages as $pp)
                         <div class="tour_rela_1">
                             <img src="{{ asset(cropImage($pp->image, 250, 200)) }}" alt="" />

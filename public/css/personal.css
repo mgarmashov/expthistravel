@@ -331,6 +331,10 @@ p.btn-added-to-order {
   .products-list-scores li .number {
     float: right; }
 
+.long-description-block img {
+  max-width: 100%;
+  height: auto !important; }
+
 .profile-btns {
   float: right; }
   .profile-btns li {
