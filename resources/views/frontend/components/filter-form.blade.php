@@ -67,6 +67,7 @@
 
     <script>
         for (let inputId of ['applyScores', 'filter-countries', 'filter-month', 'filter-duration']) {
+          if (document.getElementById(inputId) == null) { continue; } //applyScores can be absent
           document.getElementById(inputId).onchange = function() {
             changeUrl(this);
             updateResults($('#filter-form').serializeArray());

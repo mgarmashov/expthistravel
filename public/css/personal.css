@@ -36,7 +36,7 @@ h1, h2, h3, h4, h5 {
   width: 30%; }
 
 @media (max-width: 992px) {
-  section.affix ~ section, section.affix-top ~ section {
+  section.affix ~ section.filter-section, section.affix-top ~ section.filter-section {
     margin-top: 86px; } }
 
 .affix {
@@ -230,7 +230,8 @@ h1, h2, h3, h4, h5 {
 .filter-section .dark-layout {
   padding: 15px 0; }
 .filter-section .application-layout {
-  padding: 0; }
+  padding: 0;
+  background: linear-gradient(to bottom, #f2f9ff, #e1e4e8); }
 
 .filter-checkbox label {
   font-size: 1em;
@@ -401,5 +402,11 @@ h1.red-text {
   margin-bottom: 1em;
   font-size: 1.3em;
   line-height: normal; }
+
+.container--products-list {
+  padding: 100px 0; }
+@media(max-width: 768px) {
+  .container--products-list {
+    padding: 10px 0; } }
 
 /*# sourceMappingURL=personal.css.map */

@@ -12,7 +12,7 @@
 
     <section>
         <div class="rows inn-page-bg com-colo">
-            <div class="container inn-page-con-bg tb-space pad-bot-redu" id="inner-page-title">
+            <div class="container inn-page-con-bg container--products-list" id="inner-page-title">
                 <!-- TITLE & DESCRIPTION -->
                 <div class="spe-title col-md-12">
                     <h2>Your <span>experiences</span></h2>
