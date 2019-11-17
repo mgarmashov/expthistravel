@@ -26,7 +26,7 @@
         },
         pips: {
           mode: 'values',
-          values: [2, 7, 14, 21, 28],
+          values: [7, 14, 21, 28],
           density: 7
         }
       });
