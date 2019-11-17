@@ -29,4 +29,27 @@ return [
         11 => 'November',
         12 => 'December'
     ],
+    'q_who_travels' => [
+        'solo' => 'I’m going solo',
+        'couple' => 'Couple',
+        'group' => 'Group – friends/ family',
+        'all' => 'Not sure'
+    ],
+    'q_how_many_adults' => '',
+    'q_how_many_child' => '',
+    'q_how_long_from' => '',
+    'q_how_long_to' => '',
+    'q_travel_style' => [
+        'full' => 'Full on',
+        'steady' => 'Steady',
+        'chilled' => 'Chilled'
+    ],
+    'q_preferred_sight' => [
+    'main' => 'The main attractions',
+    'main-hidden' => 'Main attractions and hidden gems',
+    'hidden' => 'Hidden gems'
+]
+
+
+
 ];

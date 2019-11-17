@@ -23,7 +23,7 @@
                 <table class="table table-condensed table-bordered">
                     <tbody>
                         <tr>
-                            <td><b>Who is travelling?</b></td>
+                            <td><b>Who is travelling? (old edition)</b></td>
                             <td>
                                 @if($user && $user->q1)
                                     @foreach ($user->q1 as $value)
@@ -35,12 +35,35 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><b>How long do you want to go for?</b></td>
+                            <td><b>Who is travelling? (new edition)</b></td>
+                            <td>{{ config('questions')['q_who_travels'][$user->q_who_travels] ?? '' }} <br /><br />
+                                Adults: {{ $user->q_how_many_adults }} <br />
+                                Child: {{ $user->q_how_many_child }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>How long do you want to go for? (old edition)</b></td>
                             <td>
                                 @if($user && $user->q2)
                                     @foreach ($user->q2 as $value)
                                         <ul>
                                             <li>{{ config('questions')['q2'][$value] ?? '' }}</li>
+                                        </ul>
+                                    @endforeach
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>How long do you want to go for? (new edition)</b></td>
+                            <td> {{intval($user->q_how_long_from) ?? ''}} - {{ intval($user->q_how_long_to) == 29 ? '28+' : intval($user->q_how_long_to) }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Where do you want to go?</b></td>
+                            <td>
+                                @if($user && $user->q_countries)
+                                    @foreach ($user->q_countries as $value)
+                                        <ul>
+                                            <li>{{ \App\Models\Country::find($value)->name }}</li>
                                         </ul>
                                     @endforeach
                                 @endif
@@ -56,6 +79,16 @@
                                         </ul>
                                     @endforeach
                                 @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Your preferred travel style?</b></td>
+                            <td>{{ config('questions')['q_travel_style'][$user->q_travel_style] ?? '' }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Your preferred sights and experiences?</b></td>
+                            <td>{{ config('questions')['q_preferred_sight'][$user->q_preferred_sight] ?? '' }}
                             </td>
                         </tr>
 
