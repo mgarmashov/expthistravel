@@ -25,7 +25,7 @@
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 b_packages b_packages--activity wow slideInUp" data-wow-duration="0.5s" data-activity="{{ $activity->id }}">
                         <!-- IMAGE -->
-                        <div class="v_place_img"> <img src="{{ asset(cropImage($activity->image, 377, 218))  }}" alt="{{ $activity->name }}" title="{{ $activity->name }}" /> </div>
+                        <div class="v_place_img"> <img src="{{ asset(cropImage($activity->image, 533, 308))  }}" alt="{{ $activity->name }}" title="{{ $activity->name }}" /> </div>
                         <!-- TOUR TITLE & ICONS -->
                         <div class="b_pack rows">
                             <!-- TOUR TITLE -->
