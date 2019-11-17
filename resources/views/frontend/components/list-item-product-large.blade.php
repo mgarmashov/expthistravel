@@ -7,21 +7,21 @@
     <div class="col-md-6 col-sm-6 col-xs-12 p2">
         <a href="{{ route('product', ['id' => $product->slug]) }}"><h3>{{ $product->name }}</h3></a>
         <p>{{ $product->description_short }}</p>
-        <hr class="margin10">
-        <div class="product-scores">
-            <ul>
-                @foreach($product->scores() as $category => $score)
-                    <li title="{{$category}}: {{$score }}/10">
-                        <div class="line" style="width: {{$score >= 3 ? ($score*10) : 30}}%">
-                            <span class="name">{{ $category }}</span>
-                            <span class="number">{{$score }} / 10</span>
-                        </div>
-                    </li>
+        {{--<hr class="margin10">--}}
+        {{--<div class="products-list-scores">--}}
+            {{--<ul>--}}
+                {{--@foreach($product->scores() as $category => $score)--}}
+                    {{--<li title="{{$category}}: {{$score }}/10">--}}
+                        {{--<div class="line" style="width: {{$score >= 3 ? ($score*10) : 30}}%">--}}
+                            {{--<span class="name">{{ $category }}</span>--}}
+                            {{--<span class="number">{{$score }} / 10</span>--}}
+                        {{--</div>--}}
+                    {{--</li>--}}
 
-                @endforeach
-            </ul>
-        </div>
-        <hr class="margin10">
+                {{--@endforeach--}}
+            {{--</ul>--}}
+        {{--</div>--}}
+        {{--<hr class="margin10">--}}
         <div class="featur">
 
             <h4>{{ $product->place() }}</h4>
