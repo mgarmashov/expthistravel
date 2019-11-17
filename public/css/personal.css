@@ -335,6 +335,10 @@ p.btn-added-to-order {
   max-width: 100%;
   height: auto !important; }
 
+.carousel {
+  max-width: 1000px;
+  height: auto; }
+
 .profile-btns {
   float: right; }
   .profile-btns li {
