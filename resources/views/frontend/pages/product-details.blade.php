@@ -140,12 +140,14 @@
                     <div class="tour_head1">
                         <h3>About {{ $country->name }}</h3>
                         <div class="row">
-                            <p>
+                            <div class="col m6">
                                 @if($country->image)
-                                    <img class="col m6" src="{{ asset($country->image) }}" alt="">
+                                    <img class="materialboxed image-full-width" src="{{ asset($country->image) }}" alt="">
                                 @endif
+                            </div>
+                            <div class="col m6">
                                 {!! $country->description_long !!}
-                            </p>
+                            </div>
                         </div>
                     </div>
                 @endif
@@ -198,5 +200,12 @@
                     },
                 });            }
         }
+    </script>
+
+
+    <script>
+        $(document).ready(function(){
+            $('.materialboxed').materialbox();
+        });
     </script>
 @endpush
