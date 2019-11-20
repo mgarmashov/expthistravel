@@ -71,19 +71,6 @@
                     <h2>{{ $product->name }}</h2> </div>
 
                 <div class="tour_head1">
-                    <h3>Type of Experience</h3>
-                    <div class="product-scores">
-                        <ul>
-                            @foreach($product->scores() as $category => $score)
-                                <li>
-                                    <span class="name">{{ $category }}:</span>
-                                    <span class="line" style="width: {{$score/10*50}}%"></span>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-                <div class="tour_head1">
                     <h3>Description</h3>
                     <div class="long-description-block">
                         {!! $product->description_long !!}
