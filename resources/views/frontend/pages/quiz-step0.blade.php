@@ -9,13 +9,13 @@
                 <div class="application-layout col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
 
                     <form action="{{route('quiz-step1')}}" class="step2-form" method="post" id="step0-form">
-                        <h4>What experience are you looking for?</h4>
+                        <h4>Choose your experience</h4>
                         <div id="q-experience">
                             <div class="col-xs-12 margin10">
                                 <div class="checkbox checkbox-info checkbox-circle">
                                     <label for="q-experience-all">
                                         <input class="with-gap" name="experience" type="radio" value="0" id="q-experience-all" checked />
-                                        <span>I’m not sure - inspire me</span>
+                                        <span>Inspire me</span>
                                     </label>
                                 </div>
                                 <div class="clearfix"></div>
