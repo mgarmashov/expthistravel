@@ -28,7 +28,8 @@
             <div class="pla1 p-home container">
                 <!-- TITLE & DESCRIPTION -->
                 <div class="spe-title spe-title-1">
-                    <h2>How it <span>works</span></h2>
+                    <h2>Tell us your <span>travel</span> preferences</h2>
+                    <h3>Answer a few questions to help us find your ideal trip</h3>
                 </div>
                 <div class="howItWorks-container">
                     <div class="col-md-3 col-sm-6">
