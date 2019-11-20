@@ -17,6 +17,7 @@
 
 @push('after_scripts')
     <script src="{{asset('vendor/magnific-popup/jquery.magnific-popup.min.js')}}?v={{ filemtime(public_path('vendor/magnific-popup/jquery.magnific-popup.min.js')) }}"></script>
+@if(env('disableGooglePopup') != true)
     <script>
       $(document).ready(function() {
         setTimeout(function(){
@@ -50,5 +51,6 @@
           });
         })
       }
+@endif
     </script>
 @endpush
