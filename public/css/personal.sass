@@ -32,9 +32,9 @@ h1, h2, h3, h4, h5
   width: 100%
   height: 100%
 .image-full-width
-    width: 100%
-    max-width: 100%
-    height: auto
+  width: 100%
+  max-width: 100%
+  height: auto
 //width of menu
 .main-menu
   width: 70%
@@ -305,7 +305,7 @@ section.affix,section.affix-top
 
 .filter-section
   .dark-layout
-    padding: 15px
+    padding: 10px
   .application-layout
     padding: 0
     //background: linear-gradient(to bottom,#f2f9ff,#e1e4e8)
@@ -314,6 +314,18 @@ section.affix,section.affix-top
   label
     font-size: 1em
     font-weight: normal
+
+.filter-duration
+  label
+    display: block
+  .filter-duration-field
+    display: inline-block
+    width: 60px
+    margin: 0 15px
+    @media(max-width: 870px) and (min-width: 692px)
+      margin: 0 5px
+      width: 40px
+
 
 .b_packages
   margin-bottom: 10px

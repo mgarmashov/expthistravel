@@ -181,32 +181,11 @@ class Product extends Model
     {
         if (!self::$filteredProductsList) {self::$filteredProductsList = self::with('countries')->get();}
 
-        $userDurationMin = 14;
-        $userDurationMax = 7;
-
-        if (empty($periodsArray) ) {
-            return self::$filteredProductsList;
-        }
-
-        if(in_array('8-13',$periodsArray)) {
-            $userDurationMin = 0;
-            $userDurationMax = 14;
-        }
-
-        if(in_array('up7', $periodsArray)) {
-            $userDurationMin = 0;
-        }
-        if(in_array('14more', $periodsArray)) {
-            $userDurationMin = 0;
-            $userDurationMax = 30;
-        }
-        if(in_array('all', $periodsArray) || in_array('0', $periodsArray)) {
-            $userDurationMin = 0;
-            $userDurationMax = 30;
-        }
+        $userDurationMin = intval($periodsArray[0]) ?? 1;
+        $userDurationMax = intval($periodsArray[1]) ?? 29;
 
         self::$filteredProductsList = self::$filteredProductsList->filter(function ($product, $key) use ($userDurationMin, $userDurationMax) {
-            return ($product->minDuration >= $userDurationMin && $product->maxDuration <= $userDurationMax);
+            return (($userDurationMin >= $product->minDuration && $userDurationMin <= $product->maxDuration) || ($userDurationMax <= $product->maxDuration && $userDurationMax >= $product->maxDuration));
         });
 
         return self::$filteredProductsList;

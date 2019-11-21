@@ -16,6 +16,7 @@
             @endif
     @endauth
 
+
         <div class="col-sm-4">
             <label for="filter-countries">Select country</label>
             <select id="filter-countries" multiple name="country[]">
@@ -51,14 +52,29 @@
             </select>
         </div>
 
-        <div class="col-sm-4">
-            <label for="filter-duration">Select duration</label>
-            <select id="filter-duration" multiple name="duration[]">
-                <option value="all" {{ isset($filter['duration']) && !in_array('all', $filter['duration']) && in_array('all', $filter['duration']) ? 'selected' : '' }}>Any</option>
-                <option value="up7" {{ isset($filter['duration']) && !in_array('all', $filter['duration']) && in_array('up7', $filter['duration']) ? 'selected' : '' }}>7 nights or less</option>
-                <option value="8-13" {{ isset($filter['duration']) && !in_array('all', $filter['duration']) && in_array('8-13', $filter['duration']) ? 'selected' : '' }}>8 to 13 nights</option>
-                <option value="14more" {{ isset($filter['duration']) && !in_array('all', $filter['duration']) && in_array('14more', $filter['duration']) ? 'selected' : '' }}>14 nights or more</option>
-            </select>
+        <div class="col-sm-4 filter-duration">
+            <label for="" class="block">Select duration</label>
+            <span>From:</span>
+            <div class="filter-duration-field">
+                <select id="filter-duration-from" name="filter_duration_from" class="">
+                    @php
+                        $duration_from = $filter['q_how_long_from'] ?? 1;
+                        $duration_to = $filter['q_how_long_to'] ?? 29;
+                    @endphp
+                    @for($i=1; $i<=29;$i++)
+                        <option value="{{$i}}" {{ $i == $duration_from ? 'selected' : '' }}>{{$i==29 ? '28+' : $i}}</option>
+                    @endfor
+                </select>
+            </div>
+            <span>To:</span>
+            <div class="filter-duration-field">
+                <select id="filter-duration-to" name="filter_duration_to" class="">
+                    @for($i=1; $i<=29;$i++)
+                        <option value="{{$i}}" {{ $i == $duration_to ? 'selected' : '' }}>{{$i==29 ? '28+' : $i}}</option>
+                    @endfor
+                </select>
+            </div>
+            </div>
         </div>
     </div>
 </form>
@@ -66,9 +82,14 @@
 @push('after_scripts')
 
     <script>
-        for (let inputId of ['applyScores', 'filter-countries', 'filter-month', 'filter-duration']) {
+        for (let inputId of ['applyScores', 'filter-countries', 'filter-month', 'filter-duration-from', 'filter-duration-to']) {
           if (document.getElementById(inputId) == null) { continue; } //applyScores can be absent
           document.getElementById(inputId).onchange = function() {
+            if((inputId == 'filter-duration-from' || inputId == 'filter-duration-to') && parseInt(document.getElementById('filter-duration-from').value) > parseInt(document.getElementById('filter-duration-to').value)) {
+              document.getElementById('filter-duration-from').classList.add('invalid');
+              document.getElementById('filter-duration-to').classList.add('invalid');
+              return
+            }
             changeUrl(this);
             updateResults($('#filter-form').serializeArray());
           }

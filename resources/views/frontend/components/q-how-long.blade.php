@@ -1,8 +1,8 @@
 <h4>How long do you want to go for?</h4>
 <div class="col-xs-12">
     <div class="checkbox checkbox-info checkbox-circle">
-        <input name="q_how_long_from" id="q-how-long-from" class="styled hidden" type="number">
-        <input name="q_how_long_to" id="q-how-long-to" class="styled hidden" type="number">
+        <input name="q_how_long_from" id="q-how-long-from" class="styled hidden" type="number" value="7">
+        <input name="q_how_long_to" id="q-how-long-to" class="styled hidden" type="number" value="14">
         <span>Days:</span>
         <div id="q-how-long-visible-slider" class="q-how-long-visible-slider"></div>
     </div>
@@ -19,6 +19,14 @@
         step: 1,
         margin: 1,
         tooltips: [wNumb({decimals: 0}), wNumb({decimals: 0})],
+        format: {
+          to: function (value) {
+            return parseInt(value);
+          },
+          from: function (value) {
+            return parseInt(value);
+          }
+        },
         connect: true,
         range: {
           'min': 0,

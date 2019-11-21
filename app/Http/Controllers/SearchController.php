@@ -46,8 +46,8 @@ class SearchController extends Controller
             $products = Product::filterByMonth($request->month);
         }
 
-        if ($request->duration && !in_array('all', $request->duration)) {
-            $products = Product::filterByDuration($request->duration);
+        if (isset($request->filter_duration_from) || isset($request->filter_duration_to)) {
+            $products = Product::filterByDuration([$request->filter_duration_from ?? 1, $request->filter_duration_to ?? 29]);
         }
 
         return $products;

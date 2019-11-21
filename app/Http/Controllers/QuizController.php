@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\View;
 
 class QuizController extends Controller
 {
-    private $arrayAttributes = ['q1', 'q2', 'q3', 'q_countries'];
+    private $arrayAttributes = ['q3', 'q_countries'];
     private $nonArrayAttributes = ['q_who_travels', 'q_how_many_adults', 'q_how_many_child', 'q_how_long_from', 'q_how_long_to', 'q_how_many_age', 'q_travel_style', 'q_how_long', 'q_preferred_sight'];
 
     public function showStep0()
@@ -196,9 +196,8 @@ class QuizController extends Controller
         if (isset($allAnswersAsArray['q_countries'])) {
             Product::filterByCountry($allAnswersAsArray['q_countries'] ?? '');
         }
-
-        if (isset($allAnswersAsArray['q2'])) {
-            Product::filterByDuration($allAnswersAsArray['q2'] ?? '');
+        if (isset($allAnswersAsArray['q_how_long_from']) || isset($allAnswersAsArray['q_how_long_to'])) {
+            Product::filterByDuration([$allAnswersAsArray['q_how_long_from'] ?? 1, $allAnswersAsArray['q_how_long_to'] ?? 29]);
         }
 
         if (isset($allAnswersAsArray['q3'])) {
@@ -215,7 +214,9 @@ class QuizController extends Controller
                 'applyScores' => 'yes',
                 'country' => $allAnswersAsArray['q_countries'] ?? null,
                 'month' => $allAnswersAsArray['q3'] ?? null,
-                'duration' => $allAnswersAsArray['q2'] ?? null
+                'q_how_long_from' => $allAnswersAsArray['q_how_long_from'] ?? null,
+                'q_how_long_to' => $allAnswersAsArray['q_how_long_to'] ?? null,
+
             ]
         ]);
     }
