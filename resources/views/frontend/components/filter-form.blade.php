@@ -86,10 +86,10 @@
           if (document.getElementById(inputId) == null) { continue; } //applyScores can be absent
           document.getElementById(inputId).onchange = function() {
             if((inputId == 'filter-duration-from' || inputId == 'filter-duration-to') && parseInt(document.getElementById('filter-duration-from').value) > parseInt(document.getElementById('filter-duration-to').value)) {
-              document.getElementById('filter-duration-from').classList.add('invalid');
-              document.getElementById('filter-duration-to').classList.add('invalid');
+              document.getElementsByClassName('filter-duration')[0].classList.add('invalid');
               return
             }
+            document.getElementsByClassName('filter-duration')[0].classList.remove('invalid');
             changeUrl(this);
             updateResults($('#filter-form').serializeArray());
           }
