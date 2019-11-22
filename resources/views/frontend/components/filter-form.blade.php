@@ -20,7 +20,7 @@
         <div class="col-sm-4">
             <label for="filter-countries">Select country</label>
             <select id="filter-countries" multiple name="country[]">
-                <option value="all" {{ isset($filter['country']) && in_array('all', $filter['country']) ? 'selected' : '' }}>Any</option>
+{{--                <option value="all" {{ isset($filter['country']) && in_array('all', $filter['country']) ? 'selected' : '' }}>Any</option>--}}
                 @foreach(\App\Models\Country::all() as $country)
                     <option value="{{$country->id}}" {{ isset($filter['country']) && !in_array('all', $filter['country']) && in_array($country->id, $filter['country']) ? 'selected' : '' }}>{{ $country->name }}</option>
                 @endforeach
@@ -45,7 +45,7 @@
         <div class="col-sm-4">
             <label for="filter-month">Select month</label>
             <select id="filter-month" multiple name="month[]">
-                <option value="all" {{ isset($filter['month']) && in_array('all', $filter['month']) ? 'selected' : '' }}>Any</option>
+{{--                <option value="all" {{ isset($filter['month']) && in_array('all', $filter['month']) ? 'selected' : '' }}>Any</option>--}}
                 @foreach($months as $key => $month)
                     <option value="{{ $key }}" {{ isset($filter['month']) && !in_array('all', $filter['month']) && in_array($key, $filter['month']) ? 'selected' : '' }}>{{ $month }}</option>
                 @endforeach
@@ -53,7 +53,7 @@
         </div>
 
         <div class="col-sm-4 filter-duration">
-            <label for="" class="block">Select duration</label>
+            <label for="" class="block">Select duration (days)</label>
             <span>From:</span>
             <div class="filter-duration-field">
                 <select id="filter-duration-from" name="filter_duration_from" class="">

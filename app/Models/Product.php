@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\CountriesScope;
 use App\Scopes\EnabledScope;
 use App\Traits\SeoTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -145,8 +146,14 @@ class Product extends Model
     {
         if (!self::$filteredProductsList) {self::$filteredProductsList = self::with('countries')->get();}
 
+        if (empty($countriesIdsArray) || in_array(0, $countriesIdsArray)) {
+            return true;
+        }
         self::$filteredProductsList = self::$filteredProductsList->filter(function($product) use ($countriesIdsArray) {
             $productCountriesIds = $product->countries->pluck('id')->toArray();
+            if(empty($productCountriesIds)) {
+                return true;
+            }
             foreach ($productCountriesIds as $countryId) {
                 if (in_array($countryId, $countriesIdsArray)) {
                     return true;
@@ -162,7 +169,14 @@ class Product extends Model
     {
         if (!self::$filteredProductsList) {self::$filteredProductsList = self::with('countries')->get();}
 
+        if (empty($monthIdsArray) || in_array(0, $monthIdsArray)) {
+            return self::$filteredProductsList;
+        }
+
         self::$filteredProductsList = self::$filteredProductsList->filter(function($product) use ($monthIdsArray) {
+            if(!$product->months) {
+                return true;
+            }
             if (in_array(0, $product->months)) {
                 return true;
             }
@@ -239,6 +253,7 @@ class Product extends Model
     {
         parent::boot();
 
+        static::addGlobalScope(new CountriesScope);
         static::addGlobalScope(new EnabledScope);
     }
 
