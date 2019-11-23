@@ -60,7 +60,7 @@ h4 {
 }
 
 @media (max-width: 992px) {
-  section.affix ~ section.filter-section, section.affix-top ~ section.filter-section {
+  section.affix ~ section.filter-section, section.affix ~ section.booking-page, section.affix-top ~ section.filter-section, section.affix-top ~ section.booking-page {
     margin-top: 86px;
   }
 }

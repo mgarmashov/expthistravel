@@ -1,5 +1,7 @@
 @extends('frontend.layouts.main')
-
+@push('after_styles')
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+@endpush
 @section('title')Booking | {{env('APP_NAME')}}@endsection
 
 @section('content')
