@@ -114,7 +114,7 @@
                     <div class="row margin40">
                         <div class="col s12">
                             <label for="comment">Trip notes/ requests</label>
-                            <textarea name="b-comment" id="b-comment" rows="20" required></textarea>
+                            <textarea name="b_comment" id="b-comment" rows="20" required></textarea>
                         </div>
                     </div>
 
