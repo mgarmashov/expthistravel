@@ -30,9 +30,9 @@
     {{--<!--== ALL CSS FILES ==-->--}}
     @yield('before_styles')
     @stack('before_styles')
-    <link rel="stylesheet" href="{{asset('css/style.css')}}?v={{ filemtime(public_path('css/style.css')) }}">
-    <link rel="stylesheet" href="{{asset('css/materialize.css')}}?v={{ filemtime(public_path('css/materialize.css')) }}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('css/materialize.css')}}?v={{ filemtime(public_path('css/materialize.css')) }}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}?v={{ filemtime(public_path('css/style.css')) }}">
     <link rel="stylesheet" href="{{asset('css/mob.css')}}?v={{ filemtime(public_path('css/mob.css')) }}">
     <link rel="stylesheet" href="{{asset('css/animate.css')}}">
     <link rel="stylesheet" href="{{asset('css/personal.css')}}?v={{ filemtime(public_path('css/personal.css')) }}">

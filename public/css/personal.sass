@@ -1,3 +1,5 @@
+$red: #f4364f
+$brown: #b18013
 
 //Restore some styles after migration to materialize 1.0.0
 html
@@ -10,6 +12,10 @@ h1, h2, h3, h4, h5
   font-family: 'Quicksand', sans-serif
   font-weight: 700
 
+h4
+    font-size: 18px
+.brown-text
+    color: $brown !important
 .row
   margin-bottom: 0
 
@@ -119,7 +125,7 @@ section.affix,section.affix-top
       margin-left: -25px
       bottom: 3px
       font-size: 50px
-      color: #f4364f
+      color: $red
     .number
       text-align: center
       position: absolute
@@ -299,7 +305,7 @@ section.affix,section.affix-top
 .chart-line
   height: 1.7em
   margin-bottom: 1em
-  background: linear-gradient(to bottom,#f4364f,#dc2039)
+  background: linear-gradient(to bottom,$red,#dc2039)
   border-radius: 1em
   color: white
 
@@ -328,10 +334,10 @@ section.affix,section.affix-top
   //rewrite materialize selectbox styles
   &.invalid
     span
-      color: #f4364f
+      color: $red
     .select-dropdown, .select-dropdown:focus
-      border-bottom-color: #f4364f
-      color: #f4364f
+      border-bottom-color: $red
+      color: $red
 
 
 
@@ -455,7 +461,7 @@ p.btn-added-to-order
       line-height: 30px
       font-size: 12px
       &.bright
-        background: linear-gradient(to bottom,#f4364f,#dc2039)
+        background: linear-gradient(to bottom,$red,#dc2039)
         //background: none
       &.medium
         background: linear-gradient(to bottom, #d2a032, #b18013)
@@ -490,7 +496,7 @@ p.btn-added-to-order
 
 
 a.btn-delete-product
-  background: linear-gradient(to bottom,#f4364f,#dc2039)
+  background: linear-gradient(to bottom,$red,#dc2039)
 
 .form-with-labels
   text-align: left
@@ -514,13 +520,13 @@ a.btn-delete-product
   color: #616161
 
 h2 span.red-text
-  color: #f4364f
+  color: $red
   font-size: inherit
   font-weight: 600
   font-family: 'Quicksand', sans-serif
 
 h1.red-text
-  color: #f4364f !important
+  color: $red !important
   font-size: 32px
   display: inline-block
   font-weight: 600
@@ -543,3 +549,43 @@ h1.red-text
   padding: 100px 0
   @media(max-width: 768px)
     padding: 10px 0
+
+
+
+//booking page
+.booking-page
+    input[type=text]:not(.browser-default), input[type=email]:not(.browser-default)
+        height: 2em
+        line-height: 2em
+
+.booking-dates-section
+    .modal //try rewrite bootstrap .modal by materialize .modal attributes
+        bottom: auto
+.booking-dates-fields
+    display: inline-block
+    margin-left: 30px
+    height: 25px
+
+    span
+        display: inline
+    input
+        display: inline
+        width: 100px !important
+        padding-left: 10px !important
+        margin-right: 10px !important
+
+
+.label-with-info
+    position: relative
+    .small
+        position: absolute
+        left: 34px
+        top: 17px
+        width: 190px
+        color: $brown
+
+#b-products-block.invalid
+    label
+        color: $red
+    .select-dropdown, .select-dropdown:focus
+        border-bottom-color: $red
