@@ -91,6 +91,7 @@ h4 {
 @media (max-width: 575px) {
   .tourz-search-1 {
     height: 100vh;
+    padding-top: 33vh;
   }
 }
 .tourz-search-1 h1 {
