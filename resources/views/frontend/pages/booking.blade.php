@@ -114,7 +114,7 @@
                     <div class="row margin40">
                         <div class="col s12">
                             <label for="comment">Trip notes/ requests</label>
-                            <textarea name="b-comment" id="b-comment" rows="20"></textarea>
+                            <textarea name="b-comment" id="b-comment" rows="20" required></textarea>
                         </div>
                     </div>
 
@@ -235,6 +235,14 @@
                 $('#b-products-block').removeClass('invalid');
             }
         });
+        $('#b-field-products').change(function(){
+            if($('#b-field-products').val().length == 0) {
+                $('#b-products-block').addClass('invalid');
+            } else {
+                $('#b-products-block').removeClass('invalid');
+            }
+        });
+
     </script>
 @endpush
 
