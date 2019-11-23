@@ -88,6 +88,11 @@ h4 {
     width: 100%;
   }
 }
+@media (max-width: 575px) {
+  .tourz-search-1 {
+    height: 100vh;
+  }
+}
 .tourz-search-1 h1 {
   font-size: 46px;
   margin-bottom: 20px;

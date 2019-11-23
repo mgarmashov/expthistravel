@@ -1,1 +1,1 @@
-style="background-image: url({{ randomBgImage() }}); background-size: cover;"
+style="background-image: url({{ randomBgImage() }}); background-size: cover; background-position: center;"
