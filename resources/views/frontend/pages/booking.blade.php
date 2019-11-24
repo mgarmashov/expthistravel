@@ -88,7 +88,7 @@
                         <div></div>
                         <div class="col s12 m6 l3 xl3">
                             <label for="b-how-can-help-experiences" class="">
-                                <input name="b_how_can_help[experiences]" id="b-how-can-help-experiences" class="styled" type="checkbox">
+                                <input name="b_how_can_help[experiences]" id="b-how-can-help-experiences" class="styled" type="checkbox" checked disabled>
                                 <span>Experiences<i class="tooltipped tiny material-icons" data-tooltip="Activities and excursions">help_outline</i></span>
                             </label>
                         </div>
