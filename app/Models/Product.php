@@ -36,14 +36,15 @@ class Product extends Model
         'scores',
         'minDuration',
         'maxDuration',
-        'enabled'
+        'enabled',
+        'gallery'
         ];
     // protected $hidden = [];
     // protected $dates = [];
     protected $casts = [
         'months' => 'array',
-        'scores' => 'array'
-//        'img' =>
+        'scores' => 'array',
+        'gallery' => 'array'
     ];
 
     public static $filteredProductsList;
@@ -232,11 +233,6 @@ class Product extends Model
     public function countries()
     {
         return $this->belongsToMany('App\Models\Country', 'countries_products');
-    }
-
-    public function images()
-    {
-        return $this->belongsToMany('App\Models\Image', 'images_products');
     }
 
     public function experiences()
