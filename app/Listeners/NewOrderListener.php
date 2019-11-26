@@ -5,9 +5,11 @@ namespace App\Listeners;
 use App\Events\NewOrderEvent;
 use App\Models\User;
 use App\Notifications\NewOrderNotification;
+use App\Notifications\ThanksForOrderNotification;
 use App\Services\AdminNotifications;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Notification;
 
 class NewOrderListener
 {
@@ -29,6 +31,8 @@ class NewOrderListener
      */
     public function handle(NewOrderEvent $event)
     {
+        $clientEmail = request()->b_email;
         AdminNotifications::AdminNotify(new NewOrderNotification($event->order));
+        Notification::route('mail', $clientEmail)->notify(new ThanksForOrderNotification());
     }
 }
