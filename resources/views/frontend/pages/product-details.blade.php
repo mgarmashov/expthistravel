@@ -87,12 +87,13 @@
                                     <img src="{{ asset(cropImage($product->image, 460, 345)) }}" />
                                 </li>
                             @endif
-
+                            @if($product->gallery)
                             @foreach($product->gallery as $path)
                                 <li data-thumb="{{ asset(cropImage($path, 160, 90)) }}" data-src="{{ asset($path) }}">
                                     <img src="{{ asset(cropImage($path, 460, 345)) }}" />
                                 </li>
                             @endforeach
+                            @endif
                         </ul>
                     </div>
 
