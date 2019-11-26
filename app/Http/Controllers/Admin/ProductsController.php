@@ -262,21 +262,15 @@ class ProductsController extends CrudController
 
     public function handleDropzoneUpload(DropzoneRequest $request)
     {
-        $disk = "public"; //
-        $destination_path = "products";
-        $file = $request->file('file');
-
         try
         {
-            $image = \Image::make($file);
-            $filename = md5($file->getClientOriginalName().time()).'.jpg';
-            \Storage::disk($disk)->put($destination_path.'/'.$filename, $image->stream());
+            $path = uploadImage('products', $request->file('file'));
 
-            return response()->json(['success' => true, 'filename' => $destination_path . '/' . $filename]);
+            return response()->json(['success' => true, 'filename' => $path]);
         }
         catch (\Exception $e)
         {
-            if (empty ($image)) {
+            if (empty ($path)) {
                 return response('Not a valid image type', 412);
             } else {
                 return response('Unknown error', 412);

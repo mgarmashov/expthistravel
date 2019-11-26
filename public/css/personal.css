@@ -467,9 +467,8 @@ p.btn-added-to-order a {
   height: auto !important;
 }
 
-.carousel {
-  max-width: 1000px;
-  height: auto;
+.gallery-container {
+  max-width: 460px;
 }
 
 .profile-btns {

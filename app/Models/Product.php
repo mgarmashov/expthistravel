@@ -267,7 +267,6 @@ class Product extends Model
     public function setImageAttribute($value)
     {
         $attribute_name = "image";
-        $destination_path = "products";
 
         // if the image was erased
         if ($value==null) {
@@ -278,10 +277,8 @@ class Product extends Model
         // if a base64 was sent, store it in the db
         if (starts_with($value, 'data:image'))
         {
-            $image = \Image::make($value);
-            $filename = md5($value.time()).'.jpg';
-            \Storage::disk("public")->put($destination_path.'/'.$filename, $image->stream());
-            $this->attributes[$attribute_name] = 'storage/'.$destination_path.'/'.$filename;
+            $path = uploadImage("products", $value);
+            $this->attributes[$attribute_name] = $path;
         }
     }
 

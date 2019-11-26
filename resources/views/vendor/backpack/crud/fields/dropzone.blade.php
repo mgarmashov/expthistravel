@@ -4,7 +4,6 @@
 @push('crud_fields_styles')
 <link rel="stylesheet" href="{{asset('vendor/dropzone.js/dropzone.css')}}?v={{ filemtime(public_path('vendor/dropzone.js/dropzone.css')) }}">
 <link rel="stylesheet" href="{{asset('vendor/dropzone.js/basic.css')}}?v={{ filemtime(public_path('vendor/dropzone.js/basic.css')) }}">
-{{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css" integrity="sha256-e47xOkXs1JXFbjjpoRr1/LhVcqSzRmGmPqsrUQeVs+g=" crossorigin="anonymous" />--}}
 <style>
     .dropzone-target {
         background: #f3f3f3;
@@ -72,11 +71,8 @@
 </div>
 
 @push('crud_fields_scripts')
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js" integrity="sha256-p2l8VeL3iL1J0NxcXbEVtoyYSC+VbEbre5KHbzq1fq8=" crossorigin="anonymous"></script>--}}
 <script src="{{asset('vendor/dropzone.js/dropzone.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.5.1/Sortable.min.js" integrity="sha256-OQFsXEK3UpvAlOjkWPTPt+jOHF04+PgHoZES3LTjWos=" crossorigin="anonymous"></script>
-
-{{--<script src="{{asset('vendor/dropzone.js/dropzone-amd-module.js')}}"></script>--}}
+<script src="{{asset('vendor/Sortable.min.js')}}"></script>
 <script>
     $("div#{{ $field['name'] }}-dropzone").dropzone({
         url: "{{ route($field['upload-url']) }}",
