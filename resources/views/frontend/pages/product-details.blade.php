@@ -82,6 +82,12 @@
                     <h3>Photo Gallery</h3>
                     <div class="gallery-container">
                         <ul id="imageGallery">
+                            @if($product->image)
+                                <li data-thumb="{{ asset(cropImage($product->image, 160, 90)) }}" data-src="{{ asset($product->image) }}">
+                                    <img src="{{ asset(cropImage($product->image, 460, 345)) }}" />
+                                </li>
+                            @endif
+
                             @foreach($product->gallery as $path)
                                 <li data-thumb="{{ asset(cropImage($path, 160, 90)) }}" data-src="{{ asset($path) }}">
                                     <img src="{{ asset(cropImage($path, 460, 345)) }}" />
