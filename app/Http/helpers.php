@@ -76,3 +76,33 @@ if (! function_exists('monthsList')) {
         ];
     }
 }
+
+
+
+
+if (! function_exists('uploadImage')) {
+    function uploadImage($destination_path, $file)
+    {
+        try
+        {
+            $image = \Image::make($file);
+            if (is_file($file)) {
+                $filename = md5($file->getClientOriginalName().time()).'.jpg';
+            } else {
+                $filename = md5($file.time()).'.jpg';
+            }
+
+            \Storage::disk('public')->put($destination_path.'/'.$filename, $image->stream());
+
+            return '/storage/'.$destination_path . '/' . $filename;
+        }
+        catch (\Exception $e)
+        {
+            if (empty ($image)) {
+                return response('Not a valid image type', 412);
+            } else {
+                return response('Unknown error', 412);
+            }
+        }
+    }
+}
