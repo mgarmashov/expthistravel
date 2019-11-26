@@ -564,6 +564,16 @@ h1.red-text
   //try rewrite bootstrap .modal by materialize .modal attributes
   .modal
     bottom: auto
+    @media(max-width: 400px)
+      width: 95%
+      max-width: inherit
+    //input
+    //  display: inherit
+    //  width: inherit !important
+    //  padding-left: inherit !important
+    //  margin-right: inherit !important
+
+
 
 .booking-dates-fields
   display: inline-block
@@ -572,7 +582,7 @@ h1.red-text
 
   span
     display: inline
-  input
+  input.small-line
     display: inline
     width: 100px !important
     padding-left: 10px !important

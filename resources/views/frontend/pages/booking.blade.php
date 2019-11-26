@@ -23,22 +23,22 @@
                     <div class="row">
                         <div class="col s12 m6">
                             <label for="b-field-name">First name</label>
-                            <input type="text" id="b-field-name" name="b_name" value="{{ Auth::user() && Auth::user()->name ? Auth::user()->name : ''  }}" required="" aria-required="true">
+                            <input class="small-line" type="text" id="b-field-name" name="b_name" value="{{ Auth::user() && Auth::user()->name ? Auth::user()->name : ''  }}" required="" aria-required="true">
                         </div>
                         <div class="col s12 m6">
                             <label for="b-field-surname">Surname</label>
-                            <input type="text" id="b-field-surname" name="b_surname" value="{{ Auth::user() && Auth::user()->surname ? Auth::user()->surname : ''  }}"  required="" aria-required="true">
+                            <input class="small-line" type="text" id="b-field-surname" name="b_surname" value="{{ Auth::user() && Auth::user()->surname ? Auth::user()->surname : ''  }}"  required="" aria-required="true">
                         </div>
                     </div>
 
                     <div class="row margin20">
                         <div class="col s12 m6">
                             <label for="b-field-email">Email</label>
-                            <input type="email" id="b-field-email" name="b_email" value="{{ Auth::user() && Auth::user()->email ? Auth::user()->email : ''  }}"  required="" aria-required="true">
+                            <input class="small-line" type="email" id="b-field-email" name="b_email" value="{{ Auth::user() && Auth::user()->email ? Auth::user()->email : ''  }}"  required="" aria-required="true">
                         </div>
                         <div class="col s12 m6">
                             <label for="b-field-phone">Phone number</label>
-                            <input type="text" id="b-field-phone" name="b_phone"  required="" aria-required="true">
+                            <input class="small-line" type="text" id="b-field-phone" name="b_phone"  required="" aria-required="true">
                         </div>
                     </div>
 
@@ -65,10 +65,10 @@
                                 </label>
                                 <div class="booking-dates-fields hidden" id="dates-fields">
                                     <span>Departure date</span>
-                                    <input type="text" id="b-field-dates-from" name="b_field_dates_from" class="datepicker">
+                                    <input type="text" id="b-field-dates-from" name="b_field_dates_from" class="datepicker small-line">
 
                                     <span>Return date</span>
-                                    <input type="text" id="b-field-dates-to" name="b_field_dates_to" class="datepicker">
+                                    <input type="text" id="b-field-dates-to" name="b_field_dates_to" class="datepicker small-line">
                                 </div>
                             </div>
                             <div class="">
@@ -154,23 +154,25 @@
     <script>
 
         $(function() {
-            var dateFormat = "mm/dd/yy",
+            var dateFormat = "M dd, yy", //Nov 29, 2019
                 from = $("#b-field-dates-from")
                     .datepicker({
-                        defaultDate: "+1w",
-                        changeMonth: false,
-                        numberOfMonths: 1
+                        minDate: new Date(),
                     })
                     .on("change", function() {
-                        to.datepicker("option", "minDate", getDate(this));
+                      // console.log(this);
+                      // console.log(this.value);
+                      // console.log(getDate(this));
+                        to.datepicker({minDate: getDate(this)});
                     }),
                 to = $("#b-field-dates-to").datepicker({
                     defaultDate: "+1w",
-                    changeMonth: false,
-                    numberOfMonths: 1
+                    changeMonth: true,
+                    minDate: new Date(),
+                    numberOfMonths: 2
                 })
                     .on("change", function() {
-                        from.datepicker("option", "maxDate", getDate(this));
+                        from.datepicker({maxDate: getDate(this)});
                     });
 
             function getDate(element) {
