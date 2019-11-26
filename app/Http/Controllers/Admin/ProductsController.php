@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\DropzoneRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
@@ -104,6 +105,15 @@ class ProductsController extends CrudController
             'type' => 'image',
             'upload' => false,
             'aspect_ratio' => 1,
+            'tab' => 'Description'
+        ]);
+        $this->crud->addField([
+            'name' => 'gallery', // db column name
+            'label' => 'Gallery', // field caption
+            'type' => 'dropzone', // voodoo magic
+            'prefix' => '/uploads/', // upload folder (should match the driver specified in the upload handler defined below)
+            'articleType' => 'products',
+            'upload-url' => 'dropzone-upload', // POST route to handle the individual file uploads
             'tab' => 'Description'
         ]);
         $this->crud->addField([
@@ -221,6 +231,9 @@ class ProductsController extends CrudController
 
     public function update(UpdateRequest $request)
     {
+        if (empty ($request->get('gallery'))) {
+            $this->crud->update(\Request::get($this->crud->model->getKeyName()), ['gallery' => '[]']);
+        }
         // your additional operations before save here
         $redirect_location = parent::updateCrud($request);
         // your additional operations after save here
@@ -245,5 +258,23 @@ class ProductsController extends CrudController
         $model->scores = $scores;
         $model->save();
 
+    }
+
+    public function handleDropzoneUpload(DropzoneRequest $request)
+    {
+        try
+        {
+            $path = uploadImage('products', $request->file('file'));
+
+            return response()->json(['success' => true, 'filename' => $path]);
+        }
+        catch (\Exception $e)
+        {
+            if (empty ($path)) {
+                return response('Not a valid image type', 412);
+            } else {
+                return response('Unknown error', 412);
+            }
+        }
     }
 }

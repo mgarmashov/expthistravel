@@ -26,7 +26,8 @@
 
 
 @push('after_styles')
-
+    <link rel="stylesheet" href="{{ asset('/vendor/lightslider/css/lightslider.css') }}">
+    <link rel="stylesheet" href="{{ asset('/vendor/lightgallery/css/lightgallery.css') }}">
 @endpush
 
 @section('content')
@@ -79,44 +80,23 @@
                 </div>
                 <div class="tour_head1 hotel-book-room">
                     <h3>Photo Gallery</h3>
-                    <div id="myCarousel1" class="carousel slide" data-ride="carousel">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators carousel-indicators-1">
-                            <li data-target="#myCarousel1" data-slide-to="0"><img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
-                            </li>
-                            {{--<li data-target="#myCarousel1" data-slide-to="1"><img src="images/gallery/t2.jpg" alt="Chania">--}}
-                            {{--</li>--}}
-                            {{--<li data-target="#myCarousel1" data-slide-to="2"><img src="images/gallery/t3.jpg" alt="Chania">--}}
-                            {{--</li>--}}
-                            {{--<li data-target="#myCarousel1" data-slide-to="3"><img src="images/gallery/t4.jpg" alt="Chania">--}}
-                            {{--</li>--}}
-                            {{--<li data-target="#myCarousel1" data-slide-to="4"><img src="images/gallery/t5.jpg" alt="Chania">--}}
-                            {{--</li>--}}
-                            {{--<li data-target="#myCarousel1" data-slide-to="5"><img src="images/gallery/s6.jpeg" alt="Chania">--}}
-                            {{--</li>--}}
-                            {{--<li data-target="#myCarousel1" data-slide-to="6"><img src="images/gallery/s7.jpeg" alt="Chania">--}}
-                            {{--</li>--}}
-                            {{--<li data-target="#myCarousel1" data-slide-to="7"><img src="images/gallery/s8.jpg" alt="Chania">--}}
-                            {{--</li>--}}
-                            {{--<li data-target="#myCarousel1" data-slide-to="8"><img src="images/gallery/s9.jpg" alt="Chania">--}}
-                            {{--</li>--}}
-                        </ol>
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner carousel-inner1" role="listbox">
-                            <div class="item active"> <img src="{{ asset($product->image) }}" alt="Chania" width="460" height="345"> </div>
-                            {{--<div class="item"> <img src="images/gallery/t2.jpg" alt="Chania" width="460" height="345"> </div>--}}
-                            {{--<div class="item"> <img src="images/gallery/t3.jpg" alt="Chania" width="460" height="345"> </div>--}}
-                            {{--<div class="item"> <img src="images/gallery/t4.jpg" alt="Chania" width="460" height="345"> </div>--}}
-                            {{--<div class="item"> <img src="images/gallery/t5.jpg" alt="Chania" width="460" height="345"> </div>--}}
-                            {{--<div class="item"> <img src="images/gallery/t6.jpg" alt="Chania" width="460" height="345"> </div>--}}
-                            {{--<div class="item"> <img src="images/gallery/t7.jpg" alt="Chania" width="460" height="345"> </div>--}}
-                            {{--<div class="item"> <img src="images/gallery/t8.jpg" alt="Chania" width="460" height="345"> </div>--}}
-                            {{--<div class="item"> <img src="images/gallery/t9.jpg" alt="Chania" width="460" height="345"> </div>--}}
-                        </div>
-                        <!-- Left and right controls -->
-                        <a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev"> <span><i class="fa fa-angle-left hotel-gal-arr" aria-hidden="true"></i></span> </a>
-                        <a class="right carousel-control" href="#myCarousel1" role="button" data-slide="next"> <span><i class="fa fa-angle-right hotel-gal-arr hotel-gal-arr1" aria-hidden="true"></i></span> </a>
+                    <div class="gallery-container">
+                        <ul id="imageGallery">
+                            @if($product->image)
+                                <li data-thumb="{{ asset(cropImage($product->image, 160, 90)) }}" data-src="{{ asset($product->image) }}">
+                                    <img src="{{ asset(cropImage($product->image, 460, 345)) }}" />
+                                </li>
+                            @endif
+
+                            @foreach($product->gallery as $path)
+                                <li data-thumb="{{ asset(cropImage($path, 160, 90)) }}" data-src="{{ asset($path) }}">
+                                    <img src="{{ asset(cropImage($path, 460, 345)) }}" />
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
+
+
                 </div>
 
                 {{--Country description--}}
@@ -172,6 +152,29 @@
 @endsection
 
 @push('after_scripts')
+    <script src="{{ asset('vendor/lightslider/js/lightslider.js') }}"></script>
+    <script src="{{ asset('vendor/lightgallery/js/lightgallery.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#imageGallery').lightSlider({
+                // selector: '#imageGallery > li > a',
+                gallery:true,
+                item:1,
+                loop:true,
+                thumbItem:9,
+                slideMargin:0,
+                enableDrag: true,
+                currentPagerPosition:'left',
+                onSliderLoad: function(el) {
+                    el.lightGallery({
+                        selector: 'li'
+                    });
+                },
+                // speed:500,
+                auto:true,
+            });
+        });
+    </script>
     <script>
         let buttons = document.getElementsByClassName('btn-book-product');
         for ( let button of buttons ) {
