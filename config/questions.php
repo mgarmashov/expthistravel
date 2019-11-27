@@ -48,8 +48,10 @@ return [
     'main' => 'The main attractions',
     'main-hidden' => 'Main attractions and hidden gems',
     'hidden' => 'Hidden gems'
-]
-
-
-
+    ],
+    'b_how_can_help' => [
+        'experiences' => 'Experiences',
+        'accom' =>'Accomodation',
+        'transport' => 'Transport'
+    ]
 ];

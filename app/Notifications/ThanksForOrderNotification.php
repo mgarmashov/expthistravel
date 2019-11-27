@@ -44,11 +44,10 @@ class ThanksForOrderNotification extends Notification
      */
     public function toMail($notifiable)
     {
-//        dd(request());
         return (new MailMessage)
             ->subject('"Experience this travel" - Thank you for your order!')
             ->view('mail.user-thanks-for-order', [
-                'order' => $this->order
+                'request' => request()
             ]);
     }
 

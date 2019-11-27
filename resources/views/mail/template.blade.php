@@ -96,6 +96,9 @@
             font-weight: 300;
             text-align: center;
             text-transform: capitalize; }
+        h2 {
+            text-align: center;
+        }
         p,
         ul,
         ol {
