@@ -136,6 +136,13 @@
 @push('after_scripts')
 
     <script>
+      var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      if(iOS === true) {
+        $('#b-field-dates-from').replaceWith('<input type="date" id="b-field-dates-from" name="b_field_dates_from" class="small-line">')
+        $('#b-field-dates-to').replaceWith('<input type="date" id="b-field-dates-to" name="b_field_dates_to" class="small-line">')
+      }
+    </script>
+    <script>
         //show/gide dates fields
         document.getElementById('b-dates-block').onclick = function () {
             if (document.getElementById('b-field-dates-yes').checked == true) {
@@ -152,40 +159,41 @@
     </script>
 
     <script>
+      if(iOS === false) {
+        $(function () {
+          var dateFormat = "M dd, yy", //Nov 29, 2019
+            from = $("#b-field-dates-from")
+              .datepicker({
+                minDate: new Date(),
+              })
+              .on("change", function () {
+                // console.log(this);
+                // console.log(this.value);
+                // console.log(getDate(this));
+                to.datepicker({minDate: getDate(this)});
+              }),
+            to = $("#b-field-dates-to").datepicker({
+              defaultDate: "+1w",
+              changeMonth: true,
+              minDate: new Date(),
+              numberOfMonths: 2
+            })
+              .on("change", function () {
+                from.datepicker({maxDate: getDate(this)});
+              });
 
-        $(function() {
-            var dateFormat = "M dd, yy", //Nov 29, 2019
-                from = $("#b-field-dates-from")
-                    .datepicker({
-                        minDate: new Date(),
-                    })
-                    .on("change", function() {
-                      // console.log(this);
-                      // console.log(this.value);
-                      // console.log(getDate(this));
-                        to.datepicker({minDate: getDate(this)});
-                    }),
-                to = $("#b-field-dates-to").datepicker({
-                    defaultDate: "+1w",
-                    changeMonth: true,
-                    minDate: new Date(),
-                    numberOfMonths: 2
-                })
-                    .on("change", function() {
-                        from.datepicker({maxDate: getDate(this)});
-                    });
-
-            function getDate(element) {
-                var date;
-                try {
-                    date = $.datepicker.parseDate(dateFormat, element.value);
-                } catch (error) {
-                    date = null;
-                }
-
-                return date;
+          function getDate(element) {
+            var date;
+            try {
+              date = $.datepicker.parseDate(dateFormat, element.value);
+            } catch (error) {
+              date = null;
             }
+
+            return date;
+          }
         });
+      }
     </script>
 
     <script>
