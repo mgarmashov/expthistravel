@@ -2,12 +2,13 @@
 
 @section('content')
     <section>
-        <div class="tourz-search" @include('frontend.components.randomBgStyle')>
+        {{--<div class="tourz-search" @include('frontend.components.randomBgStyle')>--}}
+        <div class="tourz-search" style="background-image: url({{ \Backpack\Settings\app\Models\Setting::get('home_banner_image') }}); background-size: cover; background-position: center;">
             <div class="dark-layout">
                 <div class="container">
                     <div class="row">
                         <div class="tourz-search-1">
-                            <h1>Travel experiences made for you</h1>
+                            <h1>{{ \Backpack\Settings\app\Models\Setting::get('home_banner_text') }}</h1>
                             {{--<p>Discover amazing travel experiences suited to you <br>--}}
                                 {{--–<br>--}}
                                 {{--Design your tailormade trip--}}
