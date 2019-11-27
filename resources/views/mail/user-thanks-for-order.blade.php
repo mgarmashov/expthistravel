@@ -31,7 +31,7 @@
         @if( count($request->b_products) == 1 )
             <tr>
                 <td>
-                    You're interested in next experience: <b>{{ \App\Models\Product::find($request->b_products[0])->name }}</b>
+                    You're interested in next experience: <b><a href="{{ route('product', ['id'=>\App\Models\Product::find($request->b_products[0])->slug]) }}">{{ \App\Models\Product::find($request->b_products[0])->name }}</a></b></td>
                 </td>
             </tr>
             <tr>
