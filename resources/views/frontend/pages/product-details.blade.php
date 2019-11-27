@@ -84,13 +84,13 @@
                         <ul id="imageGallery">
                             @if($product->image)
                                 <li data-thumb="{{ asset(cropImage($product->image, 160, 90)) }}" data-src="{{ asset($product->image) }}">
-                                    <img src="{{ asset(cropImage($product->image, 600, 400)) }}" />
+                                    <img src="{{ asset(cropImage($product->image, 800, 600)) }}" />
                                 </li>
                             @endif
                             @if($product->gallery)
                             @foreach($product->gallery as $path)
                                 <li data-thumb="{{ asset(cropImage($path, 160, 90)) }}" data-src="{{ asset($path) }}">
-                                    <img src="{{ asset(cropImage($path, 600, 400)) }}" />
+                                    <img src="{{ asset(cropImage($path, 800, 600)) }}" />
                                 </li>
                             @endforeach
                             @endif
@@ -158,15 +158,12 @@
     <script>
         $(document).ready(function() {
             $('#imageGallery').lightSlider({
-                // selector: '#imageGallery > li > a',
                 gallery:true,
                 item:1,
                 loop:true,
                 thumbItem:9,
                 slideMargin:0,
-                enableDrag: true,
-                autoWidth: true,
-                adaptiveHeight: true,
+                enableDrag: false,
                 currentPagerPosition:'left',
                 onSliderLoad: function(el) {
                     el.lightGallery({
@@ -176,6 +173,14 @@
                 speed:700,
                 pause: 7000,
                 auto:true,
+                responsive: [
+                    {
+                        breakpoint:400,
+                        settings: {
+                            enableDrag: true,
+                        }
+                    },
+                ]
             });
         });
     </script>

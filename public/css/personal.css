@@ -468,7 +468,11 @@ p.btn-added-to-order a {
 }
 
 .gallery-container {
-  max-width: 600px;
+  max-width: 800px;
+}
+
+.lslide img {
+  width: 100%;
 }
 
 .profile-btns {
