@@ -84,13 +84,13 @@
                         <ul id="imageGallery">
                             @if($product->image)
                                 <li data-thumb="{{ asset(cropImage($product->image, 160, 90)) }}" data-src="{{ asset($product->image) }}">
-                                    <img src="{{ asset(cropImage($product->image, 460, 345)) }}" />
+                                    <img src="{{ asset(cropImage($product->image, 600, 400)) }}" />
                                 </li>
                             @endif
                             @if($product->gallery)
                             @foreach($product->gallery as $path)
                                 <li data-thumb="{{ asset(cropImage($path, 160, 90)) }}" data-src="{{ asset($path) }}">
-                                    <img src="{{ asset(cropImage($path, 460, 345)) }}" />
+                                    <img src="{{ asset(cropImage($path, 600, 400)) }}" />
                                 </li>
                             @endforeach
                             @endif
@@ -165,13 +165,16 @@
                 thumbItem:9,
                 slideMargin:0,
                 enableDrag: true,
+                autoWidth: true,
+                adaptiveHeight: true,
                 currentPagerPosition:'left',
                 onSliderLoad: function(el) {
                     el.lightGallery({
                         selector: 'li'
                     });
                 },
-                // speed:500,
+                speed:700,
+                pause: 7000,
                 auto:true,
             });
         });
