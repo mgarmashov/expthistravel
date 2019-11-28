@@ -11,7 +11,7 @@
     <table border="0" cellpadding="0" cellspacing="0">
         <tr style="text-align: center">
             <td>
-                <h3>Hello {{ $request->b_name }}!</h3>
+                <h3>Hello {{ $request->b_name ?? '' }}!</h3>
                 <p>You made an order!</p>
             </td>
         </tr>
@@ -22,8 +22,8 @@
         <tr>
             <td>
 
-                Your name is <b>{{ $request->b_name }} {{ $request->b_surname }}</b><br />
-                We can call you at <b>{{ $request->b_phone }}</b>
+                Your name is <b>{{ $request->b_name }} {{ $request->b_surname ?? '' }}</b><br />
+                We can call you at <b>{{ $request->b_phone ?? '' }}</b>
             </td>
         </tr>
     </table>
@@ -31,7 +31,7 @@
         @if( count($request->b_products) == 1 )
             <tr>
                 <td>
-                    You're interested in next experience: <b><a href="{{ route('product', ['id'=>\App\Models\Product::find($request->b_products[0])->slug]) }}">{{ \App\Models\Product::find($request->b_products[0])->name }}</a></b></td>
+                    You're interested in next experience: <b><a href="{{ route('product', ['id'=>\App\Models\Product::find($request->b_products[0])->slug]) ?? '' }}">{{ \App\Models\Product::find($request->b_products[0])->name ?? '' }}</a></b></td>
                 </td>
             </tr>
             <tr>
@@ -51,7 +51,7 @@
                 @php($product = \App\Models\Product::find($productId))
                 <tr>
                     <td>
-                        <b><a href="{{ route('product', ['id'=>$product->slug]) }}">{{ $product->name }}</a></b></td>
+                        <b><a href="{{ route('product', ['id'=>$product->slug])  ?? ''}}">{{ $product->name  ?? ''}}</a></b></td>
                     <td>
                         <img style="width: 100%" src="{{ asset(cropImage($product->image, 370, 250)) }}" alt="">
                     </td>
@@ -65,7 +65,7 @@
                 @if($request->b_field_dates == 'no')
                     You are not sure about trip dates
                 @else
-                    Your trip dates are: <b>{{ $request->b_field_dates_from }} - {{ $request->b_field_dates_to }}</b>
+                    Your trip dates are: <b>{{ $request->b_field_dates_from  ?? ''}} - {{ $request->b_field_dates_to  ?? ''}}</b>
                 @endif
 
             </td>
@@ -75,7 +75,7 @@
                 <td>
                     You also want next services: <b>
                     @foreach($request->b_how_can_help as $key => $value)
-                        {{ config('questions.b_how_can_help')[$key] }}
+                        {{ config('questions.b_how_can_help')[$key]  ?? ''}}
                     @endforeach
                     </b>
                 </td>
@@ -83,7 +83,7 @@
         @endif
         <tr>
             <td>
-                Trip notes/ requests: <b>{{ $request->b_comment }}</b>    
+                Trip notes/ requests: <b>{{ $request->b_comment  ?? ''}}</b>
             </td>            
         </tr>
         <tr>

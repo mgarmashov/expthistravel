@@ -35,7 +35,7 @@
     @if($data->b_products)
     <ul>
         @foreach( $data->b_products as $productId)
-            <li><a href="{{ route('product', ['id' => $productId]) }}">{{ \App\Models\Product::find($productId)->name }}</a></li>
+            <li><a href="{{ route('product', ['id' => $productId]) }}">{{ \App\Models\Product::find($productId)->name ?? '' }}</a></li>
         @endforeach
     </ul>
     @endif
@@ -44,7 +44,7 @@
     <p>
         Do you have fixed dates for this trip?:
         @if($data->b_field_dates=='yes')
-            Yes, from <b>{{ $data-> b_field_dates_from}}</b> to <b>{{ $data-> b_field_dates_to}}</b>
+            Yes, from <b>{{ $data-> b_field_dates_from ?? ''}}</b> to <b>{{ $data-> b_field_dates_to ?? ''}}</b>
         @else
             No
         @endif
@@ -75,7 +75,7 @@
         @if($countriesArr)
             <li>Countries: <b>
             @foreach ($countriesArr as $key=>$value)
-                {{ \App\Models\Country::find($value)->name }},
+                {{ \App\Models\Country::find($value)->name ?? '' }},
             @endforeach
             </b>
             </li>
@@ -89,18 +89,18 @@
             </li>
         @endif
         @if($travelStyle)
-            <li>Travel Style: <b>{{ config('questions')['q_travel_style'][$travelStyle] }}</b></li>
+            <li>Travel Style: <b>{{ config('questions')['q_travel_style'][$travelStyle] ?? '' }}</b></li>
         @endif
         @if($howLongFrom)
             <li>Days: <b>{{ $howLongFrom }} - {{ $howLongTo }}</b></li>
         @endif
         @if($prefferedSight)
-            <li>Preffered Sight: <b>{{ config('questions')['q_preferred_sight'][$prefferedSight] }}</b></li>
+            <li>Preffered Sight: <b>{{ config('questions')['q_preferred_sight'][$prefferedSight] ?? '' }}</b></li>
         @endif
         @if($experiencesArr)
             <li><b>
                 @foreach ($experiencesArr as $value)
-                    {{ \App\Models\Experience::find($value)->name }},
+                    {{ \App\Models\Experience::find($value)->name ?? '' }},
                 @endforeach
                 </b>
             </li>
