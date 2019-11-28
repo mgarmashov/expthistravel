@@ -55,9 +55,9 @@
     <p>
         How can we help you book your trip?
         @if($data->b_how_can_help)
-            <b>{{ isset($data->b_how_can_help['experiences']) ? 'Experiences' : ''}}</b>
-            <b>{{ isset($data->b_how_can_help['accom']) ? 'Accomodation' : ''}}</b>
-            <b>{{ isset($data->b_how_can_help['transport']) ? 'Transport' : ''}}</b>
+            <b>{{ isset($data->b_how_can_help['experiences']) ? config('questions.b_how_can_help.experiences') : ''}}</b>
+            <b>{{ isset($data->b_how_can_help['accom']) ? config('questions.b_how_can_help.accom') : ''}}</b>
+            <b>{{ isset($data->b_how_can_help['transport']) ? config('questions.b_how_can_help.transport') : ''}}</b>
         @else
             Nothing
         @endif

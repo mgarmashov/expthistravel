@@ -81,7 +81,7 @@
                         </div>
                     </div>
 
-                    <div class="row margin40" id="b-how-can-help">
+                    <div class="row margin40" id="b-how-many-travellers">
                         <div class="col s12">
                             <label>How many people are travelling?</label>
                         </div>
@@ -233,7 +233,7 @@
         }
 
         function checkElements(clickedElement, container) {
-            let elements = document.getElementById(container).getElementsByTagName('input');
+            let elements = $('#'+container+' input:enabled');
             if (clickedElement.checked) {
                 for ( let el of elements) {
                     el.checked = true;
