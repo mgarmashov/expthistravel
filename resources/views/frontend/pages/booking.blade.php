@@ -65,10 +65,10 @@
                                 </label>
                                 <div class="booking-dates-fields hidden" id="dates-fields">
                                     <span>Departure date</span>
-                                    <input type="text" id="b-field-dates-from" name="b_field_dates_from" class="datepicker small-line">
+                                    <input type="text" id="b-field-dates-from" name="b_field_dates_from" class="small-line">
 
                                     <span>Return date</span>
-                                    <input type="text" id="b-field-dates-to" name="b_field_dates_to" class="datepicker small-line">
+                                    <input type="text" id="b-field-dates-to" name="b_field_dates_to" class="small-line">
                                 </div>
                             </div>
                             <div class="">
@@ -180,21 +180,24 @@
             from = $("#b-field-dates-from")
               .datepicker({
                 minDate: new Date(),
+                autoClose: true
               })
               .on("change", function () {
-                // console.log(this);
-                // console.log(this.value);
-                // console.log(getDate(this));
-                to.datepicker({minDate: getDate(this)});
+                to.datepicker({
+                  minDate: getDate(this),
+                  autoClose: true
+                });
               }),
             to = $("#b-field-dates-to").datepicker({
-              defaultDate: "+1w",
-              changeMonth: true,
               minDate: new Date(),
-              numberOfMonths: 2
+              autoClose: true
             })
               .on("change", function () {
-                from.datepicker({maxDate: getDate(this)});
+                from.datepicker({
+                  minDate: new Date(),
+                  autoClose: true,
+                  maxDate: getDate(this)
+                });
               });
 
           function getDate(element) {
