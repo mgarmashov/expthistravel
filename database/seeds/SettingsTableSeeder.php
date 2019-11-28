@@ -26,6 +26,15 @@ class SettingsTableSeeder extends Seeder
             'active'        => 1,
 
         ],
+        [
+            'key'           => 'home_banner_darkness',
+            'name'          => 'Level of dimming',
+            'description'   => 'please use percents: "100" - black. "0" - no dark',
+            'value'         => '60',
+            'field'         => '{"name":"value","label":"Value","type":"number"}',
+            'active'        => 1,
+
+        ],
     ];
 
     /**
@@ -36,6 +45,9 @@ class SettingsTableSeeder extends Seeder
     public function run()
     {
         foreach ($this->settings as $index => $setting) {
+            if ( count(DB::table('settings')->where('key',$setting['key'])->get()) ) {
+                continue;
+            }
             $result = DB::table('settings')->insert($setting);
 
             if (!$result) {

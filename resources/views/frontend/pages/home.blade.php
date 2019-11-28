@@ -2,9 +2,8 @@
 
 @section('content')
     <section>
-        {{--<div class="tourz-search" @include('frontend.components.randomBgStyle')>--}}
-        <div class="tourz-search" style="background-image: url({{ \Backpack\Settings\app\Models\Setting::get('home_banner_image') }}); background-size: cover; background-position: center;">
-            <div class="dark-layout">
+        <div class="tourz-search" style="background-image: url({{ Setting::get('home_banner_image') }}); background-size: cover; background-position: center;">
+            <div class="dark-layout" style="background: rgba(0,0,0,{{ Setting::get('home_banner_darkness') / 100 }})">
                 <div class="container">
                     <div class="row">
                         <div class="tourz-search-1">
