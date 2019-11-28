@@ -10,8 +10,8 @@
                     <form class="col s12" method="post" action="{{ route('login') }}" id="login-form">
                         <div class="row">
                             <div class="input-field col s12">
-                                <input type="text" name="email" class="validate" value="{{ old('email') }}">
-                                <label>Email</label>
+                                <input type="text" name="email" class="validate" value="{{ old('email') }}" id="email">
+                                <label for="email">Email</label>
                                 @if ($errors->has('email'))
                                     <span class="red-text" role="alert">
                             <strong>{{ $errors->first('email') }}</strong>
@@ -21,8 +21,8 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input type="password" name="password" class="validate">
-                                <label>Password</label>
+                                <input type="password" name="password" class="validate" id="password">
+                                <label for="password">Password</label>
                                 @if ($errors->has('password'))
                                     <span class="red-text" role="alert">
                             <strong>{{ $errors->first('password') }}</strong>

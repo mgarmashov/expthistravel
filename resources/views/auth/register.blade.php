@@ -10,8 +10,8 @@
                             <form class="col s12" method="post" action="{{ route('quiz-register') }}" id="register-form">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input type="email" class="validate" name="email" value="{{ old('email') }}" required>
-                                        <label>Email</label>
+                                        <input type="email" id="email" class="validate" name="email" value="{{ old('email') }}" required>
+                                        <label for="email">Email</label>
                                         @if ($errors->has('email'))
                                             <span class="red-text" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -21,8 +21,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input type="password" class="validate"  name="password">
-                                        <label>Password</label>
+                                        <input type="password" class="validate"  name="password" id="password">
+                                        <label for="password">Password</label>
                                         @if ($errors->has('password'))
                                             <span class="red-text" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -32,8 +32,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input type="password" class="validate" name="password_confirmation">
-                                        <label>Confirm Password</label>
+                                        <input type="password" class="validate" name="password_confirmation" id="password_confirmation">
+                                        <label for="password_confirmation">Confirm Password</label>
                                     </div>
                                 </div>
                                 @csrf

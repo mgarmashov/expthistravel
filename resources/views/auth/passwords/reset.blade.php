@@ -23,8 +23,8 @@
 
                         <div class="row">
                             <div class="input-field col s12">
-                                <input type="text" name="email" class="validate" value="{{ old('email') }}">
-                                <label>Email</label>
+                                <input id="email" type="text" name="email" class="validate" value="{{ old('email') }}">
+                                <label for="email">Email</label>
                                 @if ($errors->has('email'))
                                     <span class="red-text" role="alert">
                             <strong>{{ $errors->first('email') }}</strong>
@@ -36,8 +36,8 @@
 
                         <div class="row">
                             <div class="input-field col s12">
-                                <input type="password" name="password" class="validate" value="{{ old('password') }}">
-                                <label>Password</label>
+                                <input id="password" type="password" name="password" class="validate" value="{{ old('password') }}">
+                                <label for="password">Password</label>
                                 @if ($errors->has('password'))
                                     <span class="red-text" role="alert">
                             <strong>{{ $errors->first('password') }}</strong>
@@ -49,8 +49,8 @@
 
                         <div class="row">
                             <div class="input-field col s12">
-                                <input type="password" name="password_confirmation" class="validate" value="{{ old('password_confirmation') }}">
-                                <label>Confirm Password</label>
+                                <input id="password_confirmation" type="password" name="password_confirmation" class="validate" value="{{ old('password_confirmation') }}">
+                                <label for="password_confirmation">Confirm Password</label>
                                 @if ($errors->has('password_confirmation'))
                                     <span class="red-text" role="alert">
                             <strong>{{ $errors->first('password_confirmation') }}</strong>

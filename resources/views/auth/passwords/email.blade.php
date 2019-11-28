@@ -18,8 +18,8 @@
                     <form class="col s12" method="post" action="{{ route('password.email') }}" id="reset-form">
                         <div class="row">
                             <div class="input-field col s12">
-                                <input type="text" name="email" class="validate" value="{{ old('email') }}">
-                                <label>Email</label>
+                                <input id="email" type="text" name="email" class="validate" value="{{ old('email') }}">
+                                <label for="email">Email</label>
                                 @if ($errors->has('email'))
                                     <span class="red-text" role="alert">
                             <strong>{{ $errors->first('email') }}</strong>

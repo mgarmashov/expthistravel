@@ -21,8 +21,8 @@
                     <form class="col s12" method="post" action="{{ route('quiz-register') }}" id="register-form">
                         <div class="row">
                             <div class="input-field col s12">
-                                <input type="email" class="validate" name="email" value="{{ old('email') }}" required autofocus>
-                                <label>Email</label>
+                                <input id="email" type="email" class="validate" name="email" value="{{ old('email') }}" required autofocus>
+                                <label for="email">Email</label>
                                 @if ($errors->has('email'))
                                     <span class="red-text" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -32,8 +32,8 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input type="password" class="validate"  name="password">
-                                <label>Password</label>
+                                <input id="password" type="password" class="validate"  name="password">
+                                <label for="password">Password</label>
                                 @if ($errors->has('password'))
                                     <span class="red-text" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -43,8 +43,8 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input type="password" class="validate" name="password_confirmation">
-                                <label>Confirm Password</label>
+                                <input id="password_confirmation" type="password" class="validate" name="password_confirmation">
+                                <label for="password_confirmation">Confirm Password</label>
                             </div>
                         </div>
                         <input type="hidden" name="quiz-results" value="{{ $dataUrl ?? '' }}">
