@@ -70,15 +70,17 @@
 
             </td>
         </tr>
-        <tr>
-            <td>
-                You also want next services: <b>
-                @foreach($request->b_how_can_help as $key => $value)
-                    {{ config('questions.b_how_can_help')[$key] }}
-                @endforeach
-                </b>
-            </td>
-        </tr>
+        @if(count($request->b_how_can_help) > 0)
+            <tr>
+                <td>
+                    You also want next services: <b>
+                    @foreach($request->b_how_can_help as $key => $value)
+                        {{ config('questions.b_how_can_help')[$key] }}
+                    @endforeach
+                    </b>
+                </td>
+            </tr>
+        @endif
         <tr>
             <td>
                 Trip notes/ requests: <b>{{ $request->b_comment }}</b>    
