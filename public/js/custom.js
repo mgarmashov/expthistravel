@@ -210,8 +210,8 @@ function myFunction() {
 
 
 //Personal
-let buttonsToCart = document.getElementsByClassName('btn-book-product');
-for ( let button of buttonsToCart ) {
+var buttonsToCart = document.getElementsByClassName('btn-book-product');
+for ( var button of buttonsToCart ) {
     button.onclick = function() {
         event.preventDefault();
         var currentBtn = this;
@@ -230,9 +230,9 @@ for ( let button of buttonsToCart ) {
 
 
 
-        let orderCounter = document.getElementById('order-counter');
+        var orderCounter = document.getElementById('order-counter');
 
-        let newTotal = Number(orderCounter.dataset.total) + 1;
+        var newTotal = Number(orderCounter.dataset.total) + 1;
         console.log(newTotal);
         orderCounter.dataset.total = newTotal;
         orderCounter.innerHTML = newTotal;

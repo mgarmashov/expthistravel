@@ -81,7 +81,7 @@
 @push('after_scripts')
     <script>
         document.getElementById('submit-btn').onclick = function() {
-            let form = document.getElementById('reset-form');
+            var form = document.getElementById('reset-form');
             form.submit();
         }
     </script>

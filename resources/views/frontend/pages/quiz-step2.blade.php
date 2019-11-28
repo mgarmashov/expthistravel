@@ -62,7 +62,7 @@
 
     <script>
         //"check" all button
-        for (let id of ['q3', 'q-countries']) {
+        for (var id of ['q3', 'q-countries']) {
             document.getElementById(id+'-all').onclick = function() {
                 checkElements(this, id)
             }
@@ -70,13 +70,13 @@
 
 
         function checkElements(clickedElement, container) {
-            let elements = document.getElementById(container).getElementsByTagName('input');
+            var elements = document.getElementById(container).getElementsByTagName('input');
             if (clickedElement.checked) {
-                for ( let el of elements) {
+                for ( var el of elements) {
                     el.checked = true;
                 }
             } else {
-                for ( let el of elements) {
+                for ( var el of elements) {
                     el.checked = false;
                 }
             }
@@ -88,8 +88,8 @@
     <script>
         //Materialize Tooltip
       document.addEventListener('DOMContentLoaded', function() {
-        let elems = document.querySelectorAll('.tooltipped');
-        let instances = M.Tooltip.init(elems, {
+        var elems = document.querySelectorAll('.tooltipped');
+        var instances = M.Tooltip.init(elems, {
           exitDelay: 0,
           enterDelay: 200,
           margin: 5,

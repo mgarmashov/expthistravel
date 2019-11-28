@@ -13,7 +13,7 @@
     <script src="{{asset('vendor/noUiSlider/nouislider.min.js')}}?v={{ filemtime(public_path('vendor/noUiSlider/nouislider.min.js')) }}"></script>
     <script src="{{asset('vendor/wnumb/wNumb.min.js')}}?v={{ filemtime(public_path('vendor/wnumb/wNumb.min.js')) }}"></script>
     <script>
-      let slider = document.getElementById('q-how-long-visible-slider');
+      var slider = document.getElementById('q-how-long-visible-slider');
       noUiSlider.create(slider, {
         start: [7, 14],
         step: 1,

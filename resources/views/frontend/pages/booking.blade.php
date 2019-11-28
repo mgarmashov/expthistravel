@@ -10,7 +10,7 @@
             <div class="dark-layout">
                 <div class="application-layout col-md-10 col-md-offset-1 margin70">
                 <div class="spe-title">
-                    <h2>Let us plan your <span>trip</span></h2>
+                    <h2>var us plan your <span>trip</span></h2>
                     <div class="title-line">
                         <div class="tl-1"></div>
                         <div class="tl-2"></div>
@@ -214,8 +214,8 @@
     <script>
         //Materialize Tooltip
         document.addEventListener('DOMContentLoaded', function() {
-            let elems = document.querySelectorAll('.tooltipped');
-            let instances = M.Tooltip.init(elems, {
+            var elems = document.querySelectorAll('.tooltipped');
+            var instances = M.Tooltip.init(elems, {
                 exitDelay: 0,
                 enterDelay: 200,
                 margin: 5,
@@ -233,19 +233,19 @@
         }
 
         function checkElements(clickedElement, container) {
-            let elements = $('#'+container+' input:enabled');
+            var elements = $('#'+container+' input:enabled');
             if (clickedElement.checked) {
-                for ( let el of elements) {
+                for ( var el of elements) {
                     el.checked = true;
                 }
             } else {
-                for ( let el of elements) {
+                for ( var el of elements) {
                     el.checked = false;
                 }
             }
         }
 
-        for (let id of ['b-how-can-help-experiences','b-how-can-help-accom','b-how-can-help-transport']) {
+        for (var id of ['b-how-can-help-experiences','b-how-can-help-accom','b-how-can-help-transport']) {
             document.getElementById(id).onclick = function() {
                 document.getElementById('b-how-can-help-all').checked = false
             }

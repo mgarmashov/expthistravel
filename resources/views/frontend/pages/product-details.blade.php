@@ -185,8 +185,8 @@
         });
     </script>
     <script>
-        let buttons = document.getElementsByClassName('btn-book-product');
-        for ( let button of buttons ) {
+        var buttons = document.getElementsByClassName('btn-book-product');
+        for ( var button of buttons ) {
             button.onclick = function() {
                 event.preventDefault();
                 var currentBtn = this;

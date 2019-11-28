@@ -58,8 +58,8 @@
 
 @push('after_scripts')
     <script>
-      let activities = document.getElementsByClassName('b_packages--activity');
-      for ( let activity of activities ) {
+      var activities = document.getElementsByClassName('b_packages--activity');
+      for ( var activity of activities ) {
         activity.onclick = function() {
           this.classList.toggle('active');
         }
@@ -67,8 +67,8 @@
 
       document.getElementById('submit-btn').onclick = function() {
         event.preventDefault();
-        let actives = document.getElementsByClassName('active');
-        let likes = [];
+        var actives = document.getElementsByClassName('active');
+        var likes = [];
         for (active of actives ) {
           likes.push(active.dataset.activity);
         }

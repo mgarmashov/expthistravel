@@ -53,11 +53,11 @@
 @push('after_scripts')
     <script>
         document.getElementById('submit-btn').onclick = function() {
-            let form = document.getElementById('login-form');
-            let fields = [];
+            var form = document.getElementById('login-form');
+            var fields = [];
             fields.push(form.querySelector('input[name="email"]'));
             fields.push(form.querySelector('input[name="password"]'));
-            for ( let input of fields ) {
+            for ( var input of fields ) {
                 if (input.value == null || input.value == '' || input.value == 'NaN' || input.value == 'undefined') {
                     break;
                 }

@@ -78,8 +78,8 @@
 
 @push('after_scripts')
     <script>
-        let form = document.getElementById('contact_form');
-        let button = document.getElementById('send_button');
+        var form = document.getElementById('contact_form');
+        var button = document.getElementById('send_button');
         button.onclick = function() {
             event.preventDefault();
             $.ajax({

@@ -42,8 +42,8 @@
 
     @push('after_scripts')
         <script>
-            let deleteButtons = document.getElementsByClassName(' btn-delete-product');
-            for ( let button of deleteButtons ) {
+            var deleteButtons = document.getElementsByClassName(' btn-delete-product');
+            for ( var button of deleteButtons ) {
                 button.onclick = function() {
                     event.preventDefault();
                     var row = this.closest('tr');

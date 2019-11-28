@@ -74,7 +74,7 @@
     <script>
         document.getElementById('profile-save-btn').onclick = function() {
             event.preventDefault();
-            let form = document.getElementById('profile-form');
+            var form = document.getElementById('profile-form');
             form.submit();
         }
     </script>

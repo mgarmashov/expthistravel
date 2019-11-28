@@ -66,7 +66,7 @@
 @push('after_scripts')
 
     <script>
-        for (let inputId of ['applyScores', 'filter-countries', 'filter-month', 'filter-duration-from', 'filter-duration-to']) {
+        for (var inputId of ['applyScores', 'filter-countries', 'filter-month', 'filter-duration-from', 'filter-duration-to']) {
           if (document.getElementById(inputId) == null) { continue; } //applyScores can be absent
           document.getElementById(inputId).onchange = function() {
             if((inputId == 'filter-duration-from' || inputId == 'filter-duration-to') && parseInt(document.getElementById('filter-duration-from').value) > parseInt(document.getElementById('filter-duration-to').value)) {
