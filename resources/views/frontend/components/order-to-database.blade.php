@@ -50,6 +50,9 @@
         @endif
     </p>
     <p>
+        How many people are travelling? Adults: <b>{{ $data->b_how_many_adults ?? '_' }}</b> Childs: <b>{{ $data->b_how_many_child ?? '_' }}</b>
+    </p>
+    <p>
         How can we help you book your trip?
         @if($data->b_how_can_help)
             <b>{{ isset($data->b_how_can_help['experiences']) ? 'Experiences' : ''}}</b>

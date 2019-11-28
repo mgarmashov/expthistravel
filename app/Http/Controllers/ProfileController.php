@@ -72,10 +72,14 @@ class ProfileController extends Controller
             $months = $user->q3 ?? [];
             $selectedProducts = $user->products()->get();
             $place = count($selectedProducts) ? $selectedProducts[0]->place() : '';
+            $adults = $user->q_how_many_adults ?? session()->get('q_how_many_adults') ?? '2';
+            $childs = $user->q_how_many_child ?? session()->get('q_how_many_child') ?? '0';
         } else {
             $months = [];
             $selectedProducts = collect();
             $place = '';
+            $adults = session()->get('q_how_many_adults') ?? '2';
+            $childs = session()->get('q_how_many_child') ?? '0';
 
 
             if (session('q3')) {
@@ -90,7 +94,9 @@ class ProfileController extends Controller
         return view('frontend.pages.booking', [
             'oldMonths' => collect($months),
             'oldProductsIds' => $selectedProductsIds ?? [],
-            'oldCountryId' => $countryId ?? ''
+            'oldCountryId' => $countryId ?? '',
+            'oldAdults' => $adults,
+            'oldChilds' => $childs,
         ]);
     }
 

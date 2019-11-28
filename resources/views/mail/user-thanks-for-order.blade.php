@@ -70,6 +70,11 @@
 
             </td>
         </tr>
+        <tr>
+            <td>
+                Adults: <b>{{ $request->b_how_many_adults  ?? ''}}, Children: {{ $request->b_how_many_child  ?? ''}}</b>
+            </td>
+        </tr>
         @if(count($request->b_how_can_help) > 0)
             <tr>
                 <td>

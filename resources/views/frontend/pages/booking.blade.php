@@ -83,6 +83,20 @@
 
                     <div class="row margin40" id="b-how-can-help">
                         <div class="col s12">
+                            <label>How many people are travelling?</label>
+                        </div>
+                            <label for="b-how-many-adults" class="col-lg-2 col-sm-4 col-sm-6">
+                                <input name="b_how_many_adults" id="b-how-many-adults" class="small-line" type="number" min="0" max="10" value="{{ $oldAdults }}">
+                                <span>Adults</span>
+                            </label>
+                            <label for="b-how-many-child" class="col-lg-2 col-sm-4 col-sm-6">
+                                <input name="b_how_many_child" id="b-how-many-child" class="small-line" type="number" min="0" max="10" value="{{ $oldChilds }}">
+                                <span>Children (Aged 0-16)</span>
+                            </label>
+                    </div>
+
+                    <div class="row margin40" id="b-how-can-help">
+                        <div class="col s12">
                             <label>How can we help you book your trip?</label>
                         </div>
                         <div></div>
