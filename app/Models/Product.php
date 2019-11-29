@@ -37,14 +37,18 @@ class Product extends Model
         'minDuration',
         'maxDuration',
         'enabled',
-        'gallery'
+        'gallery',
+        'travel_styles',
+        'sights'
         ];
     // protected $hidden = [];
     // protected $dates = [];
     protected $casts = [
         'months' => 'array',
         'scores' => 'array',
-        'gallery' => 'array'
+        'gallery' => 'array',
+        'travel_styles' => 'array',
+        'sights' => 'array',
     ];
 
     public static $filteredProductsList;

@@ -178,6 +178,25 @@ class ProductsController extends CrudController
         ]);
 
         $this->crud->addField([
+            'name' => 'travel_styles',
+            'label' => "Travel styles",
+            'type' => 'select2_from_array',
+            'options' => config('questions.q_travel_style'),
+            'allows_null' => false,
+            'allows_multiple' => true,
+            'tab' => 'Description'
+        ]);
+        $this->crud->addField([
+            'name' => 'sights',
+            'label' => "Preferred sights",
+            'type' => 'select2_from_array',
+            'options' => config('questions.q_preferred_sight'),
+            'allows_null' => false,
+            'allows_multiple' => true,
+            'tab' => 'Description'
+        ]);
+
+        $this->crud->addField([
             'name' => 'scores',
             'label' => "Scores",
             'type' => 'scores',
