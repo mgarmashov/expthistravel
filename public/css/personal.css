@@ -484,9 +484,10 @@ h1.red-text {
 @media(max-width: 768px) {
   .container--products-list {
     padding: 10px 0; } }
-.booking-page input[type=text]:not(.browser-default), .booking-page input[type=email]:not(.browser-default) {
+.booking-page input[type=text]:not(.browser-default), .booking-page input[type=email]:not(.browser-default), .booking-page input[type=date]:not(.browser-default) {
   height: 2em;
-  line-height: 2em; }
+  line-height: 2em;
+  margin-bottom: 0; }
 
 .booking-dates-section .modal {
   bottom: auto; }

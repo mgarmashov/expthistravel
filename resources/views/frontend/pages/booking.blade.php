@@ -10,7 +10,7 @@
             <div class="dark-layout">
                 <div class="application-layout col-md-10 col-md-offset-1 margin70">
                 <div class="spe-title">
-                    <h2>var us plan your <span>trip</span></h2>
+                    <h2>Let us plan your <span>trip</span></h2>
                     <div class="title-line">
                         <div class="tl-1"></div>
                         <div class="tl-2"></div>
