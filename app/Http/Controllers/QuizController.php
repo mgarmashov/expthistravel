@@ -48,9 +48,11 @@ class QuizController extends Controller
 
     protected function writeAnswersToSession($request)
     {
+        $request->session()->forget('answers');
         $likes = $request->likes;
-        foreach ($likes as $activityId) {
-            $request->session()->put('answers.'.$activityId, 'like');
+        foreach (Activity::all() as $activity) {
+            $answer = in_array($activity->id, $likes) ? 'like' : 'dislike';
+            $request->session()->put('answers.'.$activity->id, $answer);
         }
 
     }
@@ -59,16 +61,16 @@ class QuizController extends Controller
     {
         $session = $request->session()->getId();
         $likes = $request->likes;
-        foreach ($likes as $activityId) {
 
-            $query['activity'] = $activityId;
+        foreach (Activity::all() as $activity) {
+            $answer = in_array($activity->id, $likes) ? 'like' : 'dislike';
+            $query['activity'] = $activity->id;
             Auth::check() ? $query['user'] = Auth::user()->id : $query['session'] = $session;
 
             $newRow = QuizHistory::firstOrCreate($query);
-            $newRow->answer = 'like';
+            $newRow->answer = $answer;
             $newRow->session = $session;
             $newRow->save();
-
         }
     }
 
@@ -94,7 +96,6 @@ class QuizController extends Controller
 //        if(!$request->session()->has('answers')) {
 //            return redirect()->route('quiz-step0');
 //        }
-
         $this->saveApplicationQuestionsToSession($request);
         $urlWithAttributes = $this->createUrlWithAttributes($request);
 

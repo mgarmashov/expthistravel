@@ -85,7 +85,7 @@
 
           beforeSend: function(){
             $('#preloader').delay(350).fadeIn('fast', function () {
-              return window.location = "{{route('quiz-step2')}}";
+              {{--return window.location = "{{route('quiz-step2')}}";--}}
             });
 
           },
