@@ -64,11 +64,16 @@
                                     <span>Yes</span>
                                 </label>
                                 <div class="booking-dates-fields hidden" id="dates-fields">
+                                    <div class="inline-block">
                                     <span>Departure date</span>
-                                    <input type="text" id="b-field-dates-from" name="b_field_dates_from" class="small-line">
-
-                                    <span>Return date</span>
-                                    <input type="text" id="b-field-dates-to" name="b_field_dates_to" class="small-line">
+                                    {{--<input type="text" id="b-field-dates-from" name="b_field_dates_from" class="small-line">--}}
+                                    <input type="date" id="b-field-dates-from" name="b_field_dates_from" class="small-line">
+                                    </div>
+                                    <div class="inline-block">
+                                    <span>Return date</span>&nbsp;
+                                    {{--<input type="text" id="b-field-dates-to" name="b_field_dates_to" class="small-line">--}}
+                                    <input type="date" id="b-field-dates-to" name="b_field_dates_to" class="small-line">
+                                    </div>
                                 </div>
                             </div>
                             <div class="">
@@ -152,9 +157,12 @@
 
     <script>
       var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-      if(iOS === true) {
-        $('#b-field-dates-from').replaceWith('<input type="date" id="b-field-dates-from" name="b_field_dates_from" class="small-line">')
-        $('#b-field-dates-to').replaceWith('<input type="date" id="b-field-dates-to" name="b_field_dates_to" class="small-line">')
+      var nonSupportDate = $('[type="date"]').prop('type') != 'date';
+      console.log('this is iOS? '+iOS);
+      console.log('browser doesn`t support input[date] (old Safarii): '+nonSupportDate);
+      if(nonSupportDate == true || iOS === false) {
+        $('#b-field-dates-from').replaceWith('<input type="text" id="b-field-dates-from" name="b_field_dates_from" class="small-line">')
+        $('#b-field-dates-to').replaceWith('<input type="text" id="b-field-dates-to" name="b_field_dates_to" class="small-line">')
       }
     </script>
     <script>
@@ -174,7 +182,7 @@
     </script>
 
     <script>
-      if(iOS === false) {
+      if(nonSupportDate == true || iOS === false) {
         $(function () {
           var dateFormat = "M dd, yy", //Nov 29, 2019
             from = $("#b-field-dates-from")

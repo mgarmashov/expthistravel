@@ -92,6 +92,8 @@ section.affix,section.affix-top
   text-overflow: initial !important
   white-space: normal !important
 
+.inline-block
+  display: inline-block
 
 .howItWorks
   &-container
@@ -598,6 +600,9 @@ h1.red-text
   display: inline-block
   margin-left: 30px
   height: 25px
+  @media(max-width: 767px)
+    margin-bottom: 20px
+    height: auto
 
   span
     display: inline

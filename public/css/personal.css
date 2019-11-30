@@ -89,6 +89,9 @@ h4 {
   text-overflow: initial !important;
   white-space: normal !important; }
 
+.inline-block {
+  display: inline-block; }
+
 .howItWorks-block {
   background: white;
   position: relative;
@@ -495,6 +498,10 @@ h1.red-text {
   display: inline-block;
   margin-left: 30px;
   height: 25px; }
+@media(max-width: 767px) {
+  .booking-dates-fields {
+    margin-bottom: 20px;
+    height: auto; } }
   .booking-dates-fields span {
     display: inline; }
   .booking-dates-fields input.small-line {
