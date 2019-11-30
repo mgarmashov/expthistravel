@@ -21,27 +21,22 @@
                         <tbody>
                             <tr>
                                 <td>Username / login</td>
-                                <td>:</td>
                                 <td>{{ $user->login ?? '-' }}</td>
                             </tr>
                             <tr>
                                 <td>First name</td>
-                                <td>:</td>
                                 <td>{{ $user->name ?? '-' }}</td>
                             </tr>
                             <tr>
                                 <td>Surname</td>
-                                <td>:</td>
                                 <td>{{ $user->surname ?? '-' }}</td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>:</td>
                                 <td>{{ $user->email }} {!! $user->email_verified_at ? '<span class="db-done">Verified</span>' : '<span class="db-not-done">Unverified</span>' !!}</td>
                             </tr>
                             <tr>
                                 <td>Phone</td>
-                                <td>:</td>
                                 <td>{{ $user->phone ?? '-' }}</td>
                             </tr>
                         </tbody>

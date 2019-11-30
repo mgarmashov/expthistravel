@@ -22,7 +22,6 @@
                             <tbody>
                             <tr>
                                 <td>Username / login</td>
-                                <td>:</td>
                                 <td>
                                     @if($user->login)
                                         {{ $user->login }}
@@ -33,22 +32,18 @@
                             </tr>
                             <tr>
                                 <td>First name</td>
-                                <td>:</td>
                                 <td><input type="text" name="name" value="{{ old('name') ?? $user->name ?? ''}}" placeholder="First name"></td>
                             </tr>
                             <tr>
                                 <td>Surname</td>
-                                <td>:</td>
                                 <td><input type="text" name="surname" value="{{ old('surname') ?? $user->surname ?? ''}}"  placeholder="Surname"></td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>:</td>
                                 <td>{{ $user->email }} {!! $user->email_verified_at ? '<span class="db-done">Verified</span>' : '<span class="db-not-done">Unverified</span>' !!}</td>
                             </tr>
                             <tr>
                                 <td>Phone</td>
-                                <td>:</td>
                                 <td><input type="text" name="phone" value="{{ old('phone') ?? $user->phone ?? ''}}"  placeholder="Phone"></td>
                             </tr>
                             </tbody>
