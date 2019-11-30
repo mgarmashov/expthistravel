@@ -18,7 +18,7 @@
                 <h4>Edit My Profile </h4>
                 <div class="db-2-main-com db-2-main-com-table">
                     <form action="{{ route('profile.save') }}" method="POST" id="profile-form">
-                        <table class="responsive-table">
+                        <table class="">
                             <tbody>
                             <tr>
                                 <td>Username / login</td>
@@ -34,12 +34,12 @@
                             <tr>
                                 <td>First name</td>
                                 <td>:</td>
-                                <td><input type="text" name="name" value="{{ old('name') ?? $user->name ?? ''}}"></td>
+                                <td><input type="text" name="name" value="{{ old('name') ?? $user->name ?? ''}}" placeholder="First name"></td>
                             </tr>
                             <tr>
                                 <td>Surname</td>
                                 <td>:</td>
-                                <td><input type="text" name="surname" value="{{ old('surname') ?? $user->surname ?? ''}}"></td>
+                                <td><input type="text" name="surname" value="{{ old('surname') ?? $user->surname ?? ''}}"  placeholder="Surname"></td>
                             </tr>
                             <tr>
                                 <td>Email</td>
@@ -49,7 +49,7 @@
                             <tr>
                                 <td>Phone</td>
                                 <td>:</td>
-                                <td><input type="text" name="phone" value="{{ old('phone') ?? $user->phone ?? ''}}"></td>
+                                <td><input type="text" name="phone" value="{{ old('phone') ?? $user->phone ?? ''}}"  placeholder="Phone"></td>
                             </tr>
                             </tbody>
                         </table>

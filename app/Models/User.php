@@ -62,7 +62,7 @@ class User extends Authenticatable
             $output .= $this->name;
         }
         if ($this->surname) {
-            $output .= $this->surname;
+            $output .= ' '.$this->surname;
         }
 
         return $output;

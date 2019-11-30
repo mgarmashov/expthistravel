@@ -1,13 +1,13 @@
 
     <div class="db-l-1">
         @if(Auth::user()->name())
-            <h3>{{ Auth::user()->name() }}</h3>
+            <p>{{ Auth::user()->name() }}</p>
         @endif
         @if(Auth::user()->email)
             <p><a href="">{{ Auth::user()->email }}</a></p>
         @endif
         @if(Auth::user()->phone)
-            <p>+790383933</p>
+            <p>{{ Auth::user()->phone }}</p>
         @endif
 
     </div>

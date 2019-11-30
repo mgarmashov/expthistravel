@@ -3,7 +3,7 @@
         <h4>Your trip</h4>
         <div class="db-2-main-com db-2-main-com-table">
             @if(count($products))
-                <table class="responsive-table">
+                <table class="">
                     <thead>
                     <tr>
                         <th>No</th>
