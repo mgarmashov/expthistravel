@@ -23,29 +23,29 @@
                     <div class="row">
                         <div class="col s12 m6">
                             <label for="b-field-name">First name</label>
-                            <input class="small-line" type="text" id="b-field-name" name="b_name" value="{{ Auth::user() && Auth::user()->name ? Auth::user()->name : ''  }}" required="" aria-required="true">
+                            <input class="small-line" type="text" id="b-field-name" name="b_name" value="{{ Auth::user() && Auth::user()->name ? Auth::user()->name : ''  }}"  aria-required="true">
                         </div>
                         <div class="col s12 m6">
                             <label for="b-field-surname">Surname</label>
-                            <input class="small-line" type="text" id="b-field-surname" name="b_surname" value="{{ Auth::user() && Auth::user()->surname ? Auth::user()->surname : ''  }}"  required="" aria-required="true">
+                            <input class="small-line" type="text" id="b-field-surname" name="b_surname" value="{{ Auth::user() && Auth::user()->surname ? Auth::user()->surname : ''  }}"   aria-required="true">
                         </div>
                     </div>
 
                     <div class="row margin20">
                         <div class="col s12 m6">
                             <label for="b-field-email">Email</label>
-                            <input class="small-line" type="email" id="b-field-email" name="b_email" value="{{ Auth::user() && Auth::user()->email ? Auth::user()->email : ''  }}"  required="" aria-required="true">
+                            <input class="small-line" type="email" id="b-field-email" name="b_email" value="{{ Auth::user() && Auth::user()->email ? Auth::user()->email : ''  }}"   aria-required="true">
                         </div>
                         <div class="col s12 m6">
                             <label for="b-field-phone">Phone number</label>
-                            <input class="small-line" type="text" id="b-field-phone" name="b_phone"  required="" aria-required="true">
+                            <input class="small-line" type="text" id="b-field-phone" name="b_phone"   aria-required="true">
                         </div>
                     </div>
 
                     <div class="row margin40">
                         <div class="col s12" id="b-products-block">
                             <label for="b-field-products">Select your experience</label>
-                            <select multiple name="b_products[]" id="b-field-products" required="" aria-required="true">
+                            <select multiple name="b_products[]" id="b-field-products"  aria-required="true">
                                 <option value="" disabled selected>Select your experience</option>
                                 @foreach(\App\Models\Product::all() as $product)
                                     <option value="{{ $product->id }}" @if($oldProductsIds->contains($product->id)) selected @endif>{{ $product->name }}</option>
@@ -60,7 +60,7 @@
                             <label>Do you have fixed dates for this trip?</label>
                             <div class="">
                                 <label for="b-field-dates-yes">
-                                    <input name="b_field_dates" id="b-field-dates-yes" class="with-gap" type="radio" value="yes" required="" aria-required="true">
+                                    <input name="b_field_dates" id="b-field-dates-yes" class="with-gap" type="radio" value="yes"  aria-required="true">
                                     <span>Yes</span>
                                 </label>
                                 <div class="booking-dates-fields hidden" id="dates-fields">
@@ -78,7 +78,7 @@
                             </div>
                             <div class="">
                                 <label for="b-field-dates-no">
-                                    <input name="b_field_dates" id="b-field-dates-no" class="with-gap" type="radio" value="no" required="" aria-required="true">
+                                    <input name="b_field_dates" id="b-field-dates-no" class="with-gap" type="radio" value="no"  aria-required="true">
                                     <span>No, I’m flexible</span>
                                 </label>
                             </div>
@@ -136,7 +136,7 @@
                     <div class="row margin40">
                         <div class="col s12">
                             <label for="comment">Trip notes/ requests</label>
-                            <textarea name="b_comment" id="b-comment" rows="20" required></textarea>
+                            <textarea name="b_comment" id="b-comment" rows="20"></textarea>
                         </div>
                     </div>
 

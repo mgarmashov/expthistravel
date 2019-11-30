@@ -22,8 +22,8 @@
         <tr>
             <td>
 
-                Your name is <b>{{ $request->b_name }} {{ $request->b_surname ?? '' }}</b><br />
-                We can call you at <b>{{ $request->b_phone ?? '' }}</b>
+                @if($request->b_name)Your name is <b>{{ $request->b_name }} {{ $request->b_surname ?? '' }}</b><br /> @endif
+                @if($request->b_phone) We can call you at <b>{{ $request->b_phone ?? '' }}</b> @endif
             </td>
         </tr>
     </table>
@@ -86,11 +86,13 @@
                 </td>
             </tr>
         @endif
-        <tr>
-            <td>
-                Trip notes/ requests: <b>{{ $request->b_comment  ?? ''}}</b>
-            </td>            
-        </tr>
+        @if($request->b_comment)
+            <tr>
+                <td>
+                    Trip notes/ requests: <b>{{ $request->b_comment  ?? ''}}</b>
+                </td>
+            </tr>
+        @endif
         <tr>
             <td style="text-align: center">
                 <br/>
