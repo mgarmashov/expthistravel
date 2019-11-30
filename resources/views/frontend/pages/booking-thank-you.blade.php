@@ -3,7 +3,7 @@
 @section('title')Booking successful | {{env('APP_NAME')}}@endsection
 
 @section('content')
-    <section>
+    <section class="booking-thanks">
         <div class="tr-register" @include('frontend.components.randomBgStyle')>
             <div class="dark-layout">
                 <div class="application-layout col-md-10 col-md-offset-1 margin70">
@@ -24,8 +24,8 @@
                     </h5>
                     <a href="{{ route('index') }}">Go to main page</a>
                 </div>
-
             </div>
+                <div class="clearfix"></div>
             </div>
         </div>
     </section>

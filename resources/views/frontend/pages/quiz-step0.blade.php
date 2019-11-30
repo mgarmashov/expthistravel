@@ -2,7 +2,7 @@
 
 @section('title')Quiz - part 2 | {{env('APP_NAME')}}@endsection
 @section('content')
-    <section>
+    <section class="step0">
         <div class="rows inn-page-bg com-colo">
             <div class="container-fluid inn-page-con-bg tb-space" id="inner-page-title">
 

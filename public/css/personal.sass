@@ -48,7 +48,8 @@ h4
   width: 30%
 
 section.affix,section.affix-top
-  ~ section.filter-section, ~ section.booking-page
+  //~ section.filter-section, ~ section.step0, ~ section.step1, ~ section.booking-page, ~ section.booking-thanks
+  + section
     @media (max-width: 992px)
       margin-top: 86px
 
@@ -227,7 +228,7 @@ section.affix,section.affix-top
   background: #fff
   padding: 45px 50px 50px 50px
   @media (max-width: 768px)
-    padding: 0
+    padding: 1em 0
   border-radius: 5px
   text-align: center
   position: relative

@@ -4,7 +4,7 @@
 
 @section('content')
     <!--====== PLACES ==========-->
-    <section>
+    <section class="step1">
         <div class="rows inn-page-bg com-colo">
             <div class="container-fluid inn-page-con-bg tb-space" id="inner-page-title">
                 <!-- TITLE & DESCRIPTION -->
