@@ -67,9 +67,6 @@
     <div class="rows inn-page-bg com-colo">
         <div class="container-fluid inn-page-con-bg tb-space">
             <div class="col-md-9">
-                <!--====== TOUR TITLE ==========-->
-                <div class="tour_head">
-                    <h2>{{ $product->name }}</h2> </div>
 
                 <div class="tour_head1">
                     <h3>Description</h3>
