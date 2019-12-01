@@ -1,41 +1,50 @@
 @extends('mail.template')
 
 @section('title')
-    You've got new order
+    Experience This Travel - Thanks for your booking enquiry
 @endsection
 
 @section('preheader')
-    You've got new order
+    Experience This Travel - Thanks for your booking enquiry
 @endsection
 
 
 @section('content')
-    <h1>Thank you for your enquiry.</h1>
-    <h2> We'll be in touch shortly</h2>
-    <table border="0" cellpadding="0" cellspacing="0">
-        <tr style="text-align: center">
+    <table class="welcome-part" border="0" cellpadding="0" cellspacing="0">
+        <tr>
             <td>
-                <h3>Hello {{ $request->b_name ?? '' }}!</h3>
-                <p>You made an order!</p>
+                <a href="#">
+                    <img src="{{ asset('images/logos/ExperienceThisTravel-Logo-Grey.png') }}" alt="Experience This Travel">
+                </a>
             </td>
         </tr>
         <tr>
-            <hr/>
-            <td>Please check that information is correct:</td>
+            <td>
+                <hr>
+            </td>
         </tr>
         <tr>
-            <td>
-
-                @if($request->b_name)Your name is <b>{{ $request->b_name }} {{ $request->b_surname ?? '' }}</b><br /> @endif
-                @if($request->b_phone) We can call you at <b>{{ $request->b_phone ?? '' }}</b> @endif
+            <td class="align-left">
+                <p>
+                    Hi {{ $request->b_name ?? '' }},
+                </p>
+                <p>
+                    Thanks for your booking enquiry.
+                </p>
+                <p>
+                    One of our destination experts will be in touch within 2 working days. Please check your spam folder if you haven’t heard from us by then.
+                </p>
+                <p>
+                    Here’s a copy of your enquiry. If any details are incorrect, missing or if you have any further requests, just let us know
+                    <a href="mailto: info@experiencethistravel.com">info@experiencethistravel.com</a>.
+                </p>
             </td>
         </tr>
     </table>
-    <table border="0" cellpadding="0" cellspacing="0">
-        @if( count($request->b_products) == 1 )
-            <tr>
-                <td>
-                    You're interested in next experience: <b><a href="{{ route('product', ['id'=>\App\Models\Product::find($request->b_products[0])->slug]) ?? '' }}">{{ \App\Models\Product::find($request->b_products[0])->name ?? '' }}</a></b></td>
+    @if( count($request->b_products) == 1 )
+        <table>
+            <tr><td>
+                    Your experience: <b><a href="{{ route('product', ['id'=>\App\Models\Product::find($request->b_products[0])->slug]) ?? '' }}">{{ \App\Models\Product::find($request->b_products[0])->name ?? '' }}</a></b>
                 </td>
             </tr>
             <tr>
@@ -43,14 +52,10 @@
                     <img src="{{ asset(cropImage(\App\Models\Product::find($request->b_products[0])->image, 550, 353)) }}" alt="">
                 </td>
             </tr>
-        @else
-            <tr>
-                <td colspan="2">
-                    You're interested by few experiences:
-                    <hr />
-                </td>
-
-            </tr>
+        </table>
+    @else
+        <table>
+            <tr><td colspan="2">Your experience:<hr/></td></tr>
             @foreach($request->b_products as $key => $productId)
                 @php($product = \App\Models\Product::find($productId))
                 <tr>
@@ -61,47 +66,42 @@
                     </td>
                 </tr>
             @endforeach
-        @endif
-    </table>
+        </table>
+    @endif
+
     <table border="0" cellpadding="0" cellspacing="0">
         <tr>
             <td>
-                @if($request->b_field_dates == 'no')
-                    You are not sure about trip dates
-                @else
-                    Your trip dates are: <b>{{ $request->b_field_dates_from  ?? ''}} - {{ $request->b_field_dates_to  ?? ''}}</b>
+                <hr>
+                <p>
+                    @if($request->b_field_dates == 'no')
+                        You are not sure about travel dates
+                    @else
+                        Your travel dates: <b>{{ $request->b_field_dates_from  ?? ''}} - {{ $request->b_field_dates_to  ?? ''}}</b>
+                    @endif
+                </p>
+                <p>
+                    Number of travellers:  Adults: <b>{{ $request->b_how_many_adults  ?? '0'}}</b> @if($request->b_how_many_child > 0),Children: <b>{{ $request->b_how_many_child  ?? '0'}}</b>@endif
+                </p>
+                @if(isset($request->b_how_can_help) && ($request->b_how_can_help > 0) )
+                <p>
+                    You want help with: <b>
+                        @foreach($request->b_how_can_help as $key => $value)
+                            {{ config('questions.b_how_can_help')[$key]  ?? ''}}
+                        @endforeach</b>
+                </p>
                 @endif
 
+                @if($request->b_comment)
+                <p>
+                    Trip notes: <b>{{ $request->b_comment  ?? ''}}</b>
+                </p>
+                @endif
             </td>
         </tr>
-        <tr>
-            <td>
-                Adults: <b>{{ $request->b_how_many_adults  ?? ''}}, Children: {{ $request->b_how_many_child  ?? ''}}</b>
-            </td>
-        </tr>
-        @if(isset($request->b_how_can_help) && ($request->b_how_can_help > 0) )
-            <tr>
-                <td>
-                    You also want next services: <b>
-                    @foreach($request->b_how_can_help as $key => $value)
-                        {{ config('questions.b_how_can_help')[$key]  ?? ''}}
-                    @endforeach
-                    </b>
-                </td>
-            </tr>
-        @endif
-        @if($request->b_comment)
-            <tr>
-                <td>
-                    Trip notes/ requests: <b>{{ $request->b_comment  ?? ''}}</b>
-                </td>
-            </tr>
-        @endif
         <tr>
             <td style="text-align: center">
-                <br/>
-                <hr>
-                <a href="{{ route('index') }}">Welcome back</a>
+                <p>We look forward to helping you put together your perfect trip</p>
             </td>
         </tr>
     </table>
