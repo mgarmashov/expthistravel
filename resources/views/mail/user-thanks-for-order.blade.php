@@ -1,5 +1,9 @@
 @extends('mail.template')
 
+@section('title')
+    You've got new order
+@endsection
+
 @section('preheader')
     You've got new order
 @endsection

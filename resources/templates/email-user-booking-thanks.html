@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Simple Transactional Email</title>
     <style>
         /* -------------------------------------
@@ -11,7 +11,9 @@
         img {
             border: none;
             -ms-interpolation-mode: bicubic;
-            max-width: 100%; }
+            max-width: 100%;
+        }
+
         body {
             background-color: #f6f6f6;
             font-family: sans-serif;
@@ -21,63 +23,109 @@
             margin: 0;
             padding: 0;
             -ms-text-size-adjust: 100%;
-            -webkit-text-size-adjust: 100%; }
+            -webkit-text-size-adjust: 100%;
+        }
+
         table {
             border-collapse: separate;
             mso-table-lspace: 0pt;
             mso-table-rspace: 0pt;
-            width: 100%; }
+            width: 100%;
+        }
+
         table td {
             font-family: sans-serif;
             font-size: 14px;
-            vertical-align: top; }
+            vertical-align: top;
+        }
+
         /* -------------------------------------
             BODY & CONTAINER
         ------------------------------------- */
         .body {
-            background-color: #f6f6f6;
-            width: 100%; }
+            background-color: #313131;
+            width: 100%;
+        }
+
         /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
         .container {
             display: block;
             Margin: 0 auto !important;
             /* makes it centered */
-            max-width: 580px;
+            max-width: 800px;
             padding: 10px;
-            width: 580px; }
+            width: 800px;
+        }
+
         /* This should also be a block element, so that it will fill 100% of the .container */
         .content {
             box-sizing: border-box;
             display: block;
             Margin: 0 auto;
-            max-width: 580px;
-            padding: 10px; }
+            max-width: 800px;
+            padding: 10px;
+        }
+
         /* -------------------------------------
             HEADER, FOOTER, MAIN
         ------------------------------------- */
         .main {
             background: #ffffff;
             border-radius: 3px;
-            width: 100%; }
+            width: 100%;
+        }
+
         .wrapper {
             box-sizing: border-box;
-            padding: 20px; }
+            padding: 20px;
+        }
+
         .content-block {
             padding-bottom: 10px;
             padding-top: 10px;
         }
+
+        .welcome-part {
+            text-align: center;
+        }
+
+        .welcome-part img {
+            width: 300px;
+        }
+
+        .welcome-part hr {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
         .footer {
             clear: both;
             Margin-top: 10px;
             text-align: center;
-            width: 100%; }
+            width: 100%;
+        }
+
         .footer td,
         .footer p,
         .footer span,
         .footer a {
             color: #999999;
             font-size: 12px;
-            text-align: center; }
+        }
+        .footer img {
+            display: inline-block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 400px;
+        }
+        .footer .socials a{
+            color: black;
+        }
+        .footer .socials img{
+            width: 24px;
+            padding-left: 5px;
+        }
+
         /* -------------------------------------
             TYPOGRAPHY
         ------------------------------------- */
@@ -90,15 +138,20 @@
             font-weight: 400;
             line-height: 1.4;
             margin: 0;
-            Margin-bottom: 30px; }
+            Margin-bottom: 30px;
+        }
+
         h1 {
             font-size: 35px;
             font-weight: 300;
             text-align: center;
-            text-transform: capitalize; }
+            text-transform: capitalize;
+        }
+
         h2 {
             text-align: center;
         }
+
         p,
         ul,
         ol {
@@ -106,29 +159,43 @@
             font-size: 14px;
             font-weight: normal;
             margin: 0;
-            Margin-bottom: 15px; }
+            Margin-bottom: 15px;
+        }
+
         p li,
         ul li,
         ol li {
             list-style-position: inside;
-            margin-left: 5px; }
+            margin-left: 5px;
+        }
+
         a {
             color: #3498db;
-            text-decoration: underline; }
+            text-decoration: underline;
+        }
+
         /* -------------------------------------
             BUTTONS
         ------------------------------------- */
         .btn {
             box-sizing: border-box;
-            width: 100%; }
+            width: 100%;
+        }
+
         .btn > tbody > tr > td {
-            padding-bottom: 15px; }
+            padding-bottom: 15px;
+        }
+
         .btn table {
-            width: auto; }
+            width: auto;
+        }
+
         .btn table td {
             background-color: #ffffff;
             border-radius: 5px;
-            text-align: center; }
+            text-align: center;
+        }
+
         .btn a {
             background-color: #ffffff;
             border: solid 1px #3498db;
@@ -142,32 +209,54 @@
             margin: 0;
             padding: 12px 25px;
             text-decoration: none;
-            text-transform: capitalize; }
+            text-transform: capitalize;
+        }
+
         .btn-primary table td {
-            background-color: #3498db; }
+            background-color: #3498db;
+        }
+
         .btn-primary a {
             background-color: #3498db;
             border-color: #3498db;
-            color: #ffffff; }
+            color: #ffffff;
+        }
+
         /* -------------------------------------
             OTHER STYLES THAT MIGHT BE USEFUL
         ------------------------------------- */
         .last {
-            margin-bottom: 0; }
+            margin-bottom: 0;
+        }
+
         .first {
-            margin-top: 0; }
+            margin-top: 0;
+        }
+
         .align-center {
-            text-align: center; }
+            text-align: center;
+        }
+
         .align-right {
-            text-align: right; }
+            text-align: right;
+        }
+
         .align-left {
-            text-align: left; }
+            text-align: left;
+        }
+
         .clear {
-            clear: both; }
+            clear: both;
+        }
+
         .mt0 {
-            margin-top: 0; }
+            margin-top: 0;
+        }
+
         .mb0 {
-            margin-bottom: 0; }
+            margin-bottom: 0;
+        }
+
         .preheader {
             color: transparent;
             display: none;
@@ -178,72 +267,112 @@
             overflow: hidden;
             mso-hide: all;
             visibility: hidden;
-            width: 0; }
+            width: 0;
+        }
+
         .powered-by a {
-            text-decoration: none; }
+            text-decoration: none;
+        }
+
         hr {
             border: 0;
             border-bottom: 1px solid #f6f6f6;
-            Margin: 20px 0; }
+            Margin: 20px 0;
+        }
+
         /* -------------------------------------
             RESPONSIVE AND MOBILE FRIENDLY STYLES
         ------------------------------------- */
-        @media  only screen and (max-width: 620px) {
+        @media only screen and (max-width: 840px) {
             table[class=body] h1 {
                 font-size: 28px !important;
-                margin-bottom: 10px !important; }
+                margin-bottom: 10px !important;
+            }
+
             table[class=body] p,
             table[class=body] ul,
             table[class=body] ol,
             table[class=body] td,
             table[class=body] span,
             table[class=body] a {
-                font-size: 16px !important; }
+                font-size: 16px !important;
+            }
+
             table[class=body] .wrapper,
             table[class=body] .article {
-                padding: 10px !important; }
+                padding: 10px !important;
+            }
+
             table[class=body] .content {
-                padding: 0 !important; }
+                padding: 0 !important;
+            }
+
             table[class=body] .container {
                 padding: 0 !important;
-                width: 100% !important; }
+                width: 100% !important;
+            }
+
             table[class=body] .main {
                 border-left-width: 0 !important;
                 border-radius: 0 !important;
-                border-right-width: 0 !important; }
+                border-right-width: 0 !important;
+            }
+
             table[class=body] .btn table {
-                width: 100% !important; }
+                width: 100% !important;
+            }
+
             table[class=body] .btn a {
-                width: 100% !important; }
+                width: 100% !important;
+            }
+
             table[class=body] .img-responsive {
                 height: auto !important;
                 max-width: 100% !important;
-                width: auto !important; }}
+                width: auto !important;
+            }
+
+            .image-cell img{
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+
         /* -------------------------------------
             PRESERVE THESE STYLES IN THE HEAD
         ------------------------------------- */
-        @media  all {
+        @media all {
             .ExternalClass {
-                width: 100%; }
+                width: 100%;
+            }
+
             .ExternalClass,
             .ExternalClass p,
             .ExternalClass span,
             .ExternalClass font,
             .ExternalClass td,
             .ExternalClass div {
-                line-height: 100%; }
+                line-height: 100%;
+            }
+
             .apple-link a {
                 color: inherit !important;
                 font-family: inherit !important;
                 font-size: inherit !important;
                 font-weight: inherit !important;
                 line-height: inherit !important;
-                text-decoration: none !important; }
+                text-decoration: none !important;
+            }
+
             .btn-primary table td:hover {
-                background-color: #34495e !important; }
+                background-color: #34495e !important;
+            }
+
             .btn-primary a:hover {
                 background-color: #34495e !important;
-                border-color: #34495e !important; } }
+                border-color: #34495e !important;
+            }
+        }
     </style>
 </head>
 <body class="">
@@ -261,80 +390,96 @@
                     <!-- START MAIN CONTENT AREA -->
                     <tr>
                         <td class="wrapper">
-                            <h1>Thank you for your enquiry.</h1>
-                            <h2> We'll be in touch shortly</h2>
-                            <table border="0" cellpadding="0" cellspacing="0">
-                                <tr style="text-align: center">
+                            <table class="welcome-part" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
                                     <td>
-                                        <h3>Hello rdg!</h3>
-                                        <p>You made an order!</p>
+                                        <a href="#">
+                                            <img src="http://expthistravel.test/images/logos/ExperienceThisTravel-Logo-Grey.png"
+                                                 alt="">
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <hr/>
-                                    <td>Please check that information is correct:</td>
+                                    <td>
+                                        <hr>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="align-left">
+                                        <p>
+                                            Hi Mikhail,
+                                        </p>
+                                        <p>
+                                            Thanks for your booking enquiry.
+                                        </p>
+                                        <p>
+                                            One of our destination experts will be in touch within 2 working days.
+                                            Please check your spam folder if you haven’t heard from us by then.
+                                        </p>
+                                        <p>
+                                            Here’s a copy of your enquiry. If any details are incorrect, missing or if
+                                            you have any further requests, just let us know
+                                            <a href="mailto: info@experiencethistravel.com">info@experiencethistravel.com</a>.
+                                        </p>
 
-                                        Your name is <b>rdg fdg</b><br />
-                                        We can call you at <b>lkfd;l;lfd</b>
+
                                     </td>
                                 </tr>
                             </table>
-                            <table border="0" cellpadding="0" cellspacing="0">
+
+                            <table>
                                 <tr>
                                     <td colspan="2">
                                         You're interested by few experiences:
-                                        <hr />
+                                        <hr/>
                                     </td>
 
                                 </tr>
                                 <tr>
                                     <td>
-                                        <b><a href="http://expthistravel.test/experience/trekking-in-northern-thailand">Trekking in Northern Thailand</a></b></td>
-                                    <td>
-                                        <img style="width: 100%" src="http://expthistravel.test/storage/products/ecfcd7faf32e016934a55f62e567d740-370_250.jpg" alt="">
+                                        <b><a href="http://expthistravel.test/experience/trekking-in-northern-thailand">Trekking
+                                            in Northern Thailand</a></b></td>
+                                    <td class="image-cell">
+                                        <img
+                                             src="http://expthistravel.test/storage/products/ecfcd7faf32e016934a55f62e567d740-370_250.jpg"
+                                             alt="">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <b><a href="http://expthistravel.test/experience/abseiling-and-canyoning">Abseiling and Canyoning</a></b></td>
+                                        <b><a href="http://expthistravel.test/experience/abseiling-and-canyoning">Abseiling
+                                            and Canyoning</a></b></td>
                                     <td>
-                                        <img style="width: 100%" src="http://expthistravel.test/storage/products/c3331b43f2e62d9abb188b8ec2209fb4-370_250.jpg" alt="">
+                                        <img class="image-cell"
+                                             src="http://expthistravel.test/storage/products/c3331b43f2e62d9abb188b8ec2209fb4-370_250.jpg"
+                                             alt="">
                                     </td>
                                 </tr>
                             </table>
+
                             <table border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        Your trip dates are: <b>Nov 30, 2019 - Dec 11, 2019</b>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Adults: <b>5, Children: 9</b>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        You also want next services: <b>
-                                        Experiences
-                                        Accomodation
-                                    </b>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Trip notes/ requests: <b>gfdg</b>
-                                    </td>
-                                </tr>
+                                        <hr>
+                                        <p>
+                                            Your travel dates: <b>Nov 30, 2019 - Dec 11, 2019</b>
+                                        </p>
+                                        <p>
+                                            Number of travellers: Adults: <b>5</b>, <b>Children: 9</b>
+                                        </p>
+                                        <p>
+                                            You want help with: <b>Experiences, Accomodation</b>
+                                        </p>
+                                        <p>
+                                            Trip notes: <b>gfdg</b>
+                                        </p>
                                 <tr>
                                     <td style="text-align: center">
-                                        <br/>
-                                        <hr>
-                                        <a href="http://expthistravel.test">Welcome back</a>
+                                        <p>We look forward to helping you put together your perfect trip</p>
+                                        <p>
+                                            <a href="#"></a>
+                                        </p>
+
                                     </td>
                                 </tr>
                             </table>
@@ -349,13 +494,26 @@
                     <table border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <td class="content-block">
-                                <span class="apple-link"><a href="http://expthistravel.test">Experience This Travel</a></span>
+                                <span class="apple-link">
+                                    <a href="http://expthistravel.test"><img src="http://expthistravel.test/images/logos/ExperienceThisTravel-Logo-White.png" alt=""></a>
+                                </span>
+                            </td>
+                            <td class="align-right">
+                                <p>FOLLOW US</p>
+                                <p>Get inspiration on your feed and share your travel experiences with us <b>#ExperienceThis</b></p>
+                                <div class="socials">
+                                    <a href="https://www.facebook.com/ExperienceThisTravel">
+                                        <img src="http://expthistravel.test/images/icon/email-fb.png" alt="">
+                                    </a>
+                                    <a href="https://www.instagram.com/experience_this_travel">
+                                        <img src="http://expthistravel.test/images/icon/email-instagram.png" alt="">
+                                    </a>
+                                    <a href="https://twitter.com/expthistravel">
+                                        <img src="http://expthistravel.test/images/icon/email-twitter.png" alt="">
+                                    </a>
+                                </div>
                             </td>
                         </tr>
-
-
-
-
 
                     </table>
                 </div>
