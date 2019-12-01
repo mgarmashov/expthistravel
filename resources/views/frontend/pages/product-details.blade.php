@@ -33,7 +33,11 @@
 @section('content')
 <!--====== BANNER ==========-->
 <section>
+    @if($product->image_background)
+    <div class="rows inner_banner inner_banner_4" style="background-image: url({{ asset($product->image_background) }}); background-size: cover; background-position: center;">
+    @else
     <div class="rows inner_banner inner_banner_4" @include('frontend.components.randomBgStyle')>
+    @endif
         <div class="container">
             <h1 class="red-text">| {{ $h1 }}</h1>
             <ul>
@@ -54,8 +58,8 @@
             <div class="banner_book_1">
                 <ul>
                     <li class="dl1">Destination : {{ $product->place() }}</li>
-                    <li class="dl2">Duration : {{ $product->duration() }}</li>
-                    <li class="dl3">&nbsp;</li>
+                    <li class="dl2">{!! $product->price ? 'From: £'.$product->price : '&nbsp;' !!}</li>
+                    <li class="dl3">Duration : {{ $product->duration() }}</li>
                     <li class="dl4"><a class="btn-book-product" href="#">Book Now</a> </li>
                 </ul>
             </div>
@@ -93,9 +97,18 @@
                             @endif
                         </ul>
                     </div>
-
-
                 </div>
+
+                @if($product->highlightsArray())
+                <div class="tour_head1 hot-ameni">
+                    <h3>Highlights</h3>
+                    <ul>
+                        @foreach($product->highlightsArray() as $highlight)
+                            <li><i class="fa fa-check" aria-hidden="true"></i> {{ $highlight }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
 
                 {{--Country description--}}
                 @if( count($product->countries()->get()) )
