@@ -1,6 +1,7 @@
 <!-- This file is used to store sidebar items, starting with Backpack\Base 0.9.0 -->
 <li><a href="{{ backpack_url('dashboard') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
 
+<li><a href="{{  backpack_url('itineraries') }}"><i class="fa fa-shopping-bag"></i> <span>Itineraries</span></a></li>
 <li><a href="{{  backpack_url('products') }}"><i class="fa fa-shopping-bag"></i> <span>Products</span></a></li>
 <li><a href="{{  backpack_url('activities') }}"><i class="fa fa-bar-chart"></i> <span>Activities</span></a></li>
 <li><a href="{{  backpack_url('orders') }}"><i class="fa fa-handshake-o"></i> <span>Orders</span></a></li>
