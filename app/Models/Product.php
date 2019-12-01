@@ -32,6 +32,7 @@ class Product extends Model
         'country',
         'city',
         'image',
+        'image_background',
         'index',
         'scores',
         'minDuration',
@@ -39,7 +40,9 @@ class Product extends Model
         'enabled',
         'gallery',
         'travel_styles',
-        'sights'
+        'sights',
+        'price',
+        'highlights',
         ];
     // protected $hidden = [];
     // protected $dates = [];
@@ -262,7 +265,10 @@ class Product extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-
+    public function highlightsArray()
+    {
+        return empty($this->highlights) ? null : array_filter(array_map('trim', explode(';', $this->highlights)));
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
@@ -270,7 +276,24 @@ class Product extends Model
     */
     public function setImageAttribute($value)
     {
-        $attribute_name = "image";
+        $this->uploadImageNormally('image', $value);
+    }
+
+    public function setImageBackgroundAttribute($value)
+    {
+        $this->uploadImageNormally('image_background', $value);
+    }
+
+    public function setSlugAttribute($value) {
+        $this->attributes['slug'] = $value ?? str_slug(request()->input('name'));
+        $products = Product::where('slug', $this->attributes['slug'])->where('id','!=',request()->id ?? 0)->get();
+
+        if (count($products)>0) {
+            $this->attributes['slug'] = $this->attributes['slug'].'-2';
+        }
+    }
+
+    protected function uploadImageNormally($attribute_name, $value) {
 
         // if the image was erased
         if ($value==null) {
@@ -283,15 +306,6 @@ class Product extends Model
         {
             $path = uploadImage("products", $value);
             $this->attributes[$attribute_name] = $path;
-        }
-    }
-
-    public function setSlugAttribute($value) {
-        $this->attributes['slug'] = $value ?? str_slug(request()->input('name'));
-        $products = Product::where('slug', $this->attributes['slug'])->where('id','!=',request()->id ?? 0)->get();
-
-        if (count($products)>0) {
-            $this->attributes['slug'] = $this->attributes['slug'].'-2';
         }
     }
 }

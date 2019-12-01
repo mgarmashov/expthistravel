@@ -97,15 +97,31 @@ class ProductsController extends CrudController
             'name' => "enabled",
             'type' => 'checkbox',
             'tab' => 'Description'
-
         ]);
         $this->crud->addField([
-            'label' => "Image",
+            'label' => "Price",
+            'name' => "price",
+            'type' => 'number',
+             'attributes' => ["step" => "any"], // allow decimals
+             'prefix' => "£",
+//             'suffix' => ".00",
+            'tab' => 'Description'
+        ]);
+        $this->crud->addField([
+            'label' => "Main Image",
             'name' => "image",
             'type' => 'image',
             'upload' => false,
             'aspect_ratio' => 1,
-            'tab' => 'Description'
+            'tab' => 'Images'
+        ]);
+        $this->crud->addField([
+            'label' => "Image for Background",
+            'name' => "image_background",
+            'type' => 'image',
+            'upload' => false,
+            'aspect_ratio' => 1,
+            'tab' => 'Images'
         ]);
         $this->crud->addField([
             'name' => 'gallery', // db column name
@@ -114,7 +130,7 @@ class ProductsController extends CrudController
             'prefix' => '/uploads/', // upload folder (should match the driver specified in the upload handler defined below)
             'articleType' => 'products',
             'upload-url' => 'dropzone-upload', // POST route to handle the individual file uploads
-            'tab' => 'Description'
+            'tab' => 'Images'
         ]);
         $this->crud->addField([
             'name' => 'description_short',
@@ -138,6 +154,12 @@ class ProductsController extends CrudController
             'tab' => 'Description'
         ]);
         $this->crud->addField([
+            'name' => 'city',
+            'label' => "City",
+            'type' => 'text',
+            'tab' => 'Description'
+        ]);
+        $this->crud->addField([
             'name' => 'experiences',
             'entity' => 'experiences',
             'label' => "Experiences",
@@ -147,8 +169,8 @@ class ProductsController extends CrudController
             'tab' => 'Description'
         ]);
         $this->crud->addField([
-            'name' => 'city',
-            'label' => "City",
+            'label' => "Highlights",
+            'name' => "highlights",
             'type' => 'text',
             'tab' => 'Description'
         ]);

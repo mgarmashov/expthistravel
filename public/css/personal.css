@@ -532,4 +532,8 @@ h1.red-text {
 #b-products-block.invalid .select-dropdown, #b-products-block.invalid .select-dropdown:focus {
   border-bottom-color: #f4364f; }
 
+.tour_head1 h3 {
+  background: none;
+  padding-left: 0; }
+
 /*# sourceMappingURL=personal.css.map */
