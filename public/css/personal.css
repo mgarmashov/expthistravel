@@ -45,6 +45,8 @@ h4 {
 
 .wed-logo {
   width: 30%; }
+  .wed-logo a img {
+    width: 257px; }
 
 @media (max-width: 992px) {
   section.affix + section, section.affix-top + section {
@@ -62,6 +64,11 @@ h4 {
     margin: 0 -10%;
     padding: 0 10%;
     border: none; }
+
+.footer .logo {
+  text-align: center; }
+  .footer .logo img {
+    width: 90px; }
 
 @media (max-width: 992px) {
   .tourz-search-1 {

@@ -17,12 +17,12 @@
     <meta property="og:locale" content="{{ app()->getLocale() }}"/>
     <meta property="og:title" content="@yield('title',  env('APP_NAME') )" />
     <meta property="og:url" content="{{ url()->full() }}"/>
-    <meta property="og:image" content="@yield('og-image', asset('images/favicon2.png'))"/>
-    <meta property="og:image:secure_url" itemprop="image" content="@yield('og-image', asset('images/favicon2.png'))" />
+    <meta property="og:image" content="@yield('og-image', asset('images/logos/fav256.png'))"/>
+    <meta property="og:image:secure_url" itemprop="image" content="@yield('og-image', asset('images/logos/fav256.png'))" />
     <meta property="fb:admins" content="373637163058493"/>
 
     {{--<!-- FAV ICON -->--}}
-    <link rel="shortcut icon" href="{{asset('images/favicon2.png')}}">
+    <link rel="shortcut icon" href="{{asset('images/logos/fav64.png')}}">
     {{--<!-- GOOGLE FONTS -->--}}
     <link href="https://fonts.googleapis.com/css?family=Poppins%7CQuicksand:400,500,700" rel="stylesheet">
     {{--<!-- FONT-AWESOME ICON CSS -->--}}
@@ -67,6 +67,9 @@
                             <div class="col-sm-4 foot-spec foot-com">
                                 <h4><span>Experience</span> This Travel</h4>
                                 <p>Travel Experiences Made For You.</p>
+                                <div class="logo">
+                                    {{--<img src="{{ asset('images/logos/ExperienceThisTravel-Logo-White-Icon.svg') }}" alt="">--}}
+                                </div>
                             </div>
                             <div class="col-sm-4 foot-spec foot-com">
                                 <h4><span>SUPPORT</span> & HELP</h4>
