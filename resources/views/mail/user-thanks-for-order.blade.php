@@ -1,11 +1,11 @@
 @extends('mail.template')
 
 @section('title')
-    Experience This Travel - Thanks for your booking enquiry
+    Thanks for your booking enquiry
 @endsection
 
 @section('preheader')
-    Experience This Travel - Thanks for your booking enquiry
+    Thanks for your booking enquiry
 @endsection
 
 
