@@ -23,7 +23,7 @@ class CreateItinerariesTable extends Migration
             $table->decimal('price')->nullable();
             $table->text('description_short')->nullable();
             $table->text('description_long')->nullable();
-            $table->string('map_url')->nullable();
+            $table->longText('map_url')->nullable();
             $table->string('image_main')->nullable();
             $table->string('image_map')->nullable();
             $table->string('image_background')->nullable();

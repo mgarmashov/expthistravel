@@ -278,7 +278,10 @@ class Itinerary extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-
+    public function highlightsArray()
+    {
+        return empty($this->highlights) ? null : array_filter(array_map('trim', explode(';', $this->highlights)));
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
