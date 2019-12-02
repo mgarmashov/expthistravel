@@ -102,7 +102,7 @@ class ProductsController extends CrudController
             'label' => "Price",
             'name' => "price",
             'type' => 'number',
-             'attributes' => ["step" => "any"], // allow decimals
+//             'attributes' => ["step" => "any"], // allow decimals
              'prefix' => "£",
 //             'suffix' => ".00",
             'tab' => 'Description'

@@ -1,11 +1,11 @@
 @extends('mail.template')
 
 @section('title')
-    Experience This Travel - Thanks for your booking enquiry
+    Thanks for your booking enquiry
 @endsection
 
 @section('preheader')
-    Experience This Travel - Thanks for your booking enquiry
+    Thanks for your booking enquiry
 @endsection
 
 
@@ -81,7 +81,7 @@
                     @endif
                 </p>
                 <p>
-                    Number of travellers:  Adults: <b>{{ $request->b_how_many_adults  ?? '0'}}</b> @if($request->b_how_many_child > 0),Children: <b>{{ $request->b_how_many_child  ?? '0'}}</b>@endif
+                    Number of travellers:  Adults: <b>{{ $request->b_how_many_adults  ?? '0'}}</b> @if($request->b_how_many_child > 0), Children: <b>{{ $request->b_how_many_child  ?? '0'}}</b>@endif
                 </p>
                 @if(isset($request->b_how_can_help) && ($request->b_how_can_help > 0) )
                 <p>

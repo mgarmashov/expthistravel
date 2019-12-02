@@ -45,7 +45,7 @@ class ThanksForOrderNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('"Experience this travel" - Your travel plan')
+            ->subject('Your travel plan')
             ->view('mail.user-thanks-for-order', [
                 'request' => request()
             ]);

@@ -15,7 +15,7 @@ class AddHighLightsColumnToProductsTable extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->string('highlights')->after('sights')->nullable();
-            $table->decimal('price')->after('name')->nullable();
+            $table->float('price')->after('name')->nullable();
         });
     }
 
