@@ -374,7 +374,16 @@ p.btn-added-to-order {
 .long-description-block img {
   max-width: 100%;
   height: auto !important; }
-
+@media(max-width: 575px) {
+  .long-description-block .table-section {
+    overflow-x: scroll;
+    margin: 0 -30px; }
+    .long-description-block .table-section table {
+      min-width: 400px; }
+      .long-description-block .table-section table td {
+        font-size: 13px;
+        padding: 5px 2px;
+        line-height: 15px; } }
 .gallery-container {
   max-width: 800px; }
 
@@ -535,5 +544,30 @@ h1.red-text {
 .tour_head1 h3 {
   background: none;
   padding-left: 0; }
+
+.l-info-pack-days ul li {
+  padding-bottom: 25px; }
+  .l-info-pack-days ul li h4 {
+    margin: 0; }
+
+.l-info-pack-plac a.experience-image {
+  display: inline-block;
+  float: left;
+  width: 30%;
+  max-width: 250px;
+  margin-right: 1em;
+  border: 2px solid #b18013;
+  overflow: hidden; }
+@media(max-width: 575px) {
+  .l-info-pack-plac a.experience-image {
+    float: none;
+    width: 100%; } }
+  .l-info-pack-plac a.experience-image img {
+    width: 100%;
+    -webkit-transition: 0.4s ease;
+    transition: 0.4s ease; }
+    .l-info-pack-plac a.experience-image img:hover {
+      -webkit-transform: scale(1.08);
+      transform: scale(1.08); }
 
 /*# sourceMappingURL=personal.css.map */

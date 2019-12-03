@@ -44,7 +44,7 @@
                 <li><a href="#inner-page-title">Home</a>
                 </li>
                 <li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>
-                <li><a href="{{ route('experiences') }}" class="bread-acti">Experiences</a>
+                <li><a href="{{ route('itineraries') }}" class="bread-acti">Itineraries</a>
                 </li>
             </ul>
             <p>| {{ $itinerary->description_short ?? '' }}</p>
@@ -82,7 +82,7 @@
                 @if($itinerary->image_map)
                 <div class="tour_head1">
                     <div class="long-description-block">
-                        <img src="{{ asset($itinerary->image_map) }}" alt="">
+                        <img class="materialboxed" src="{{ asset($itinerary->image_map) }}" alt="">
                     </div>
                 </div>
                 @endif
@@ -127,37 +127,30 @@
                 </div>
                 @endif
 
-                @if($itinerary->transport)
-                    <div class="tour_head1">
-                        <h3>Transport</h3>
-                        <div class="long-description-block">
-                            {!! $itinerary->transport !!}
-                        </div>
+                @if(count($itinerary->products()->get()) >0 )
+                    <div class="tour_head1 l-info-pack-days days">
+                        <h3>Itinerary contains</h3>
+                        <ul>
+                            @foreach($itinerary->products()->get() as $product)
+                                <li class="l-info-pack-plac"> <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                    <h4><a href="{{ route('product', ['id' => $product->slug]) }}">{{ $product->name }}</a></h4>
+                                    <a class="experience-image" href="{{ route('product', ['id' => $product->slug]) }}">
+                                        <img src="{{ asset(cropImage($product->image, 550, 353)) }}" alt="" />
+                                    </a>
+                                    <p> {{ $product->description_short }}</p>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                 @endif
-                @if(count($itinerary->products()->get()) >0 )
-                    <div class="tour_head1 hot-ameni">
-                        <h3>Experiences</h3>
-                        <div class="row">
-                        @foreach($itinerary->products()->get() as $product)
-                        <div class="col-md-3">
-                            <div class="long-description-block">
-                                <a href="{{ route('product', ['id' => $product->slug]) }}">
-                                    <img src="{{ asset(cropImage($product->image, 550, 353)) }}" alt="" />
-                                </a>
-                            </div>
-                            <div>
-                                <a href="{{ route('product', ['id' => $product->slug]) }}"><h3>{{ $product->name }}</h3></a>
-                                <p>{{ $product->description_short }}</p>
-                            </div>
 
-                            <div class="p2_book">
-                                <ul>
-                                    <li><a href="{{ route('product', ['id' => $product->slug]) }}" class="link-btn">Find out more</a> </li>
-                                </ul>
+                @if($itinerary->transport)
+                    <div class="">
+                        <h3>Transport</h3>
+                        <div class="long-description-block">
+                            <div class="table-section">
+                                {!! $itinerary->transport !!}
                             </div>
-                        </div>
-                        @endforeach
                         </div>
                     </div>
                 @endif
