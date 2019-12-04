@@ -256,6 +256,23 @@ h4 {
   padding: 10px; }
 .filter-section .application-layout {
   padding: 0; }
+  .filter-section .application-layout form {
+    padding: 0; }
+  .filter-section .application-layout .container {
+    padding-right: 0; }
+    @media (max-width: 767px) {
+      .filter-section .application-layout .container {
+        padding-left: 0;
+        padding-bottom: 0; } }
+.filter-section .select-wrapper input.select-dropdown {
+  height: 2rem;
+  line-height: 2rem; }
+.filter-section .additional-questions-block {
+  background: rgba(100, 100, 100, 0.1); }
+  @media (max-width: 767px) {
+    .filter-section .additional-questions-block {
+      margin-bottom: -5px;
+      padding-bottom: 5px; } }
 
 .filter-checkbox label {
   font-size: 1em;
@@ -267,10 +284,7 @@ h4 {
   display: inline-block;
   width: 60px;
   margin: 0 15px; }
-@media(max-width: 870px) and (min-width: 692px) {
-  .filter-duration .filter-duration-field {
-    margin: 0 5px;
-    width: 40px; } }
+@media(max-width: 870px) and (min-width: 692px) {}
 .filter-duration.invalid span {
   color: #f4364f; }
 .filter-duration.invalid .select-dropdown, .filter-duration.invalid .select-dropdown:focus {

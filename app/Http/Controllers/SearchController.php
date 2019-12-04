@@ -22,7 +22,9 @@ class SearchController extends Controller
                 'applyScores' => $applyScores,
                 'country' => $request->country ?? null,
                 'month' => $request->month ?? null,
-                'duration' => $request->duration ?? null
+                'duration' => $request->duration ?? null,
+                'travel_styles' => $request->travel_styles ?? null,
+                'sights' => $request->sights ?? null,
             ],
         ]);
     }
@@ -48,6 +50,14 @@ class SearchController extends Controller
 
         if (isset($request->filter_duration_from) || isset($request->filter_duration_to)) {
             $products = Product::filterByDuration([$request->filter_duration_from ?? 1, $request->filter_duration_to ?? 29]);
+        }
+
+        if ($request->sights) {
+            $products = Product::filterBySights($request->sights);
+        }
+
+        if ($request->travel_styles) {
+            $products = Product::filterByTravelStyle($request->travel_styles);
         }
 
         return $products;
