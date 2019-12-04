@@ -185,6 +185,18 @@
                         <li>Destination : {{ $itinerary->place() }}</li>
                         <li>Duration: {{ $itinerary->duration() }}</li>
                         <li>Time of year: {{ $itinerary->months() }}</li>
+                        @if(count($itinerary->travel_styles) == 1)
+                            <li>Style: {{ config('questions.q_travel_style')[$itinerary->travel_styles[0]] }}</li>
+                        @endif
+                        @if(count($itinerary->travel_styles) > 1)
+                            <li>Styles: @foreach($itinerary->travel_styles as $style) {{ config('questions.q_travel_style')[$style] ?? '' }}; @endforeach</li>
+                        @endif
+                        @if(count($itinerary->sights) == 1)
+                            <li>Style: {{ config('questions.q_preferred_sight')[$itinerary->sights[0]] }}</li>
+                        @endif
+                        @if(count($itinerary->sights) > 1)
+                            <li>Sights: @foreach($itinerary->sights as $sight) {{ config('questions.q_preferred_sight')[$sight] ?? '' }}; @endforeach</li>
+                        @endif
                     </ul>
                 </div>
 
