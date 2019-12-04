@@ -328,7 +328,25 @@ section.affix,section.affix-top
     padding: 10px
   .application-layout
     padding: 0
-    //background: linear-gradient(to bottom,#f2f9ff,#e1e4e8)
+    form
+      padding: 0
+    .container
+      padding-right: 0
+      @media (max-width: 767px)
+        padding-left: 0
+        padding-bottom: 0
+  .select-wrapper input.select-dropdown
+    height: 2rem
+    line-height: 2rem
+  .additional-questions-block
+    background: rgba(100,100,100,0.1)
+    @media (max-width: 767px)
+      margin-bottom: -5px
+      padding-bottom: 5px
+
+
+
+//background: linear-gradient(to bottom,#f2f9ff,#e1e4e8)
 
 .filter-checkbox
   label
@@ -343,8 +361,8 @@ section.affix,section.affix-top
     width: 60px
     margin: 0 15px
     @media(max-width: 870px) and (min-width: 692px)
-      margin: 0 5px
-      width: 40px
+      //margin: 0 5px
+      //width: 40px
   //rewrite materialize selectbox styles
   &.invalid
     span

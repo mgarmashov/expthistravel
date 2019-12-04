@@ -140,6 +140,18 @@
                         <li>Destination : {{ $product->place() }}</li>
                         <li>Duration: {{ $product->duration() }}</li>
                         <li>Time of year: {{ $product->months() }}</li>
+                        @if($product->travel_styles && count($product->travel_styles) == 1)
+                            <li>Travel Style: {{ config('questions.q_travel_style')[$product->travel_styles[0]] ?? '' }}</li>
+                        @endif
+                        @if( $product->travel_styles && count($product->travel_styles) > 1)
+                            <li>Travel styles: @foreach($product->travel_styles as $style) {{ config('questions.q_travel_style')[$style] ?? '' }}; @endforeach</li>
+                        @endif
+                        @if($product->sights && count($product->sights) == 1)
+                            <li>Style: {{ config('questions.q_preferred_sight')[$product->sights[0]] }}</li>
+                        @endif
+                        @if($product->sights && count($product->sights) > 1)
+                            <li>Sights: @foreach($product->sights as $sight) {{ config('questions.q_preferred_sight')[$sight] ?? '' }}; @endforeach</li>
+                        @endif
                     </ul>
                 </div>
 

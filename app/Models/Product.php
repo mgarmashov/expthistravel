@@ -231,6 +231,54 @@ class Product extends Model
         return self::$filteredProductsList;
     }
 
+    public static function filterBySights($sightsIdsArray)
+    {
+        if (!self::$filteredProductsList) {self::$filteredProductsList = self::with('countries')->get();}
+
+        if (empty($sightsIdsArray)) {
+            return self::$filteredProductsList;
+        }
+
+        self::$filteredProductsList = self::$filteredProductsList->filter(function($product) use ($sightsIdsArray) {
+            if(!$product->sights or empty($product->sights)) {
+                return false;
+            }
+
+            foreach ($product->sights as $sightId) {
+                if (in_array($sightId, $sightsIdsArray)) {
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        return self::$filteredProductsList;
+    }
+
+    public static function filterByTravelStyle($stylesIdsArray)
+    {
+        if (!self::$filteredProductsList) {self::$filteredProductsList = self::with('countries')->get();}
+
+        if (empty($stylesIdsArray)) {
+            return self::$filteredProductsList;
+        }
+
+        self::$filteredProductsList = self::$filteredProductsList->filter(function($product) use ($stylesIdsArray) {
+            if(!$product->travel_styles or empty($product->travel_styles)) {
+                return false;
+            }
+
+            foreach ($product->travel_styles as $styleId) {
+                if (in_array($styleId, $stylesIdsArray)) {
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        return self::$filteredProductsList;
+    }
+
 
         /*
         |--------------------------------------------------------------------------
