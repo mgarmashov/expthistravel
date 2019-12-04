@@ -2,7 +2,7 @@
     <div class="container form-with-labels">
     @auth
         @if(\Illuminate\Support\Facades\Auth::user()->scores())
-        <div class="col-xs-12">
+        <div class="col-xs-12 grey-bottom-line">
             <div class="text-left font-light filter-checkbox">
 
                 <label for="applyScores">
@@ -60,13 +60,14 @@
                 </div>
             </div>
         </div>
+        {{--{{ dd($filter) }}--}}
         <div class="col-sm-3 additional-questions-block">
             <div class="col-sm-12">
                 <label for="filter-travel-styles">Travel style</label>
                 <select id="filter-travel-styles" multiple name="travel_styles[]">
     {{--                    <option value="all" {{ isset($filter['country']) && in_array('all', $filter['country']) ? 'selected' : '' }} selected>Travel style</option>--}}
                     @foreach(config('questions.q_travel_style') as $alias => $name)
-                        <option value="{{$alias}}" {{ isset($filter['travel_styles']) && !in_array('all', $filter['travel_styles']) && in_array($country->id, $filter['travel_styles']) ? 'selected' : '' }}>{{ $name }}</option>
+                        <option value="{{$alias}}" {{ (isset($filter['travel_styles']) && $filter['travel_styles'] == $alias) ? 'selected' : '' }}>{{ $name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -75,7 +76,7 @@
                 <select id="filter-sights" multiple name="sights[]">
                     {{--                <option value="all" {{ isset($filter['month']) && in_array('all', $filter['month']) ? 'selected' : '' }}>Any</option>--}}
                     @foreach(config('questions.q_preferred_sight') as $alias => $name)
-                        <option value="{{ $alias }}" {{ isset($filter['sights']) && !in_array('all', $filter['sights']) && in_array($key, $filter['sights']) ? 'selected' : '' }}>{{ $name }}</option>
+                        <option value="{{ $alias }}" {{ (isset($filter['sights']) && $filter['sights'] == $alias) ? 'selected' : '' }}>{{ $name }}</option>
                     @endforeach
                 </select>
             </div>

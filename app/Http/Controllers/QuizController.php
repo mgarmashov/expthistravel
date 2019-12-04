@@ -205,6 +205,13 @@ class QuizController extends Controller
             Product::filterByMonth($allAnswersAsArray['q3']);
         }
 
+        if ($allAnswersAsArray['q_preferred_sight']) {
+            Product::filterBySights([$allAnswersAsArray['q_preferred_sight']]);
+        }
+        if ($allAnswersAsArray['q_travel_style']) {
+            Product::filterByTravelStyle([$allAnswersAsArray['q_travel_style']]);
+        }
+
 
         $bestProducts = Product::findBestProducts($scoresForView);
 
@@ -217,7 +224,8 @@ class QuizController extends Controller
                 'month' => $allAnswersAsArray['q3'] ?? null,
                 'q_how_long_from' => $allAnswersAsArray['q_how_long_from'] ?? null,
                 'q_how_long_to' => $allAnswersAsArray['q_how_long_to'] ?? null,
-
+                'travel_styles' => $allAnswersAsArray['q_travel_style'] ?? null,
+                'sights' => $allAnswersAsArray['q_preferred_sight'] ?? null,
             ]
         ]);
     }
