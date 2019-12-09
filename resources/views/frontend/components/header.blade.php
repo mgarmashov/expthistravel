@@ -69,6 +69,7 @@
                             <li><a href="{{ route('index') }}">Home</a></li>
                             <li class="btn-get-started"><a href="{{route('quiz-step0')}}">Get started</a></li>
                             <li><a href="{{route('experiences')}}">Experiences</a></li>
+                            <li><a href="{{route('itineraries')}}">Itineraries</a></li>
                             <li><a href="{{route('contacts')}}">Contact</a></li>
                             @if($page = \App\Models\Page::getPage('about'))
                                 <li><a href="{{route('index') .'/'. $page->slug }}">{{ $page->name }}</a></li>

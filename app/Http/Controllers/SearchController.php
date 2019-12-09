@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Itinerary;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,16 @@ class SearchController extends Controller
                 'travel_styles' => $request->travel_styles ?? null,
                 'sights' => $request->sights ?? null,
             ],
+        ]);
+    }
+
+    public function showItinerariesPage(Request $request)
+    {
+
+        $itineraries = Itinerary::all();
+
+        return view('frontend.pages.Itineraries', [
+            'itineraries' => $itineraries
         ]);
     }
 
