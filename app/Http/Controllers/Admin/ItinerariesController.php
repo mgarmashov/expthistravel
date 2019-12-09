@@ -100,6 +100,13 @@ class ItinerariesController extends CrudController
 
         ]);
         $this->crud->addField([
+            'label' => "Price",
+            'name' => "price",
+            'type' => 'number',
+            'prefix' => "£",
+            'tab' => 'General'
+        ]);
+        $this->crud->addField([
             'label' => "Main image",
             'name' => "image_main",
             'type' => 'image',
