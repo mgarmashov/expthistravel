@@ -395,7 +395,7 @@ p.btn-added-to-order {
 @media(max-width: 575px) {
   .long-description-block .table-section {
     overflow-x: scroll;
-    margin: 0 -30px; }
+    margin: 0 -15px; }
     .long-description-block .table-section table {
       min-width: 400px; }
       .long-description-block .table-section table td {
