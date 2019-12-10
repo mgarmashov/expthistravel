@@ -87,16 +87,6 @@
                 </div>
                 @endif
 
-                @if($itinerary->map_url)
-                <div class="tour_head1">
-                    <h3>Map</h3>
-                    <div class="long-description-block">
-                        <iframe src="{{ $itinerary->map_url }}"  width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-                    </div>
-                </div>
-                @endif
-
-                <div class="tour_head1 hotel-book-room">
                     <div class="gallery-container">
                         <ul id="imageGallery">
                             @if($itinerary->image_main)
@@ -143,8 +133,17 @@
                 </div>
                 @endif
 
+                @if($itinerary->map_url)
+                    <div class="tour_head1">
+                        <h3>Map</h3>
+                        <div class="long-description-block">
+                            <iframe src="{{ $itinerary->map_url }}"  width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                @endif
+
                 @if($itinerary->transport)
-                    <div class="">
+                    <div class="tour_head1">
                         <h3>Your Transport</h3>
                         <div class="long-description-block">
                             <div class="table-section">
