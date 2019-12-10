@@ -20,7 +20,7 @@ class CreateItinerariesTable extends Migration
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
 
-            $table->decimal('price')->nullable();
+            $table->float('price')->nullable();
             $table->text('description_short')->nullable();
             $table->text('description_long')->nullable();
             $table->longText('map_url')->nullable();

@@ -73,7 +73,7 @@
             <div class="col-md-9">
 
                 <div class="tour_head1">
-                    <h3>Description</h3>
+                    <h3>About your trip</h3>
                     <div class="long-description-block">
                         {!! $itinerary->description_long !!}
                     </div>
@@ -82,7 +82,7 @@
                 @if($itinerary->image_map)
                 <div class="tour_head1">
                     <div class="long-description-block">
-                        <img class="materialboxed" src="{{ asset($itinerary->image_map) }}" alt="">
+                        <img class="materialboxed" src="{{ asset(cropImage($itinerary->image_map, 960, 720)) }}" alt="">
                     </div>
                 </div>
                 @endif
@@ -97,18 +97,17 @@
                 @endif
 
                 <div class="tour_head1 hotel-book-room">
-                    <h3>Photo Gallery</h3>
                     <div class="gallery-container">
                         <ul id="imageGallery">
                             @if($itinerary->image_main)
                                 <li data-thumb="{{ asset(cropImage($itinerary->image_main, 160, 90)) }}" data-src="{{ asset($itinerary->image_main) }}">
-                                    <img src="{{ asset(cropImage($itinerary->image_main, 800, 600)) }}" />
+                                    <img src="{{ asset(cropImage($itinerary->image_main, 960, 720)) }}" />
                                 </li>
                             @endif
                             @if($itinerary->gallery)
                             @foreach($itinerary->gallery as $path)
                                 <li data-thumb="{{ asset(cropImage($path, 160, 90)) }}" data-src="{{ asset($path) }}">
-                                    <img src="{{ asset(cropImage($path, 800, 600)) }}" />
+                                    <img src="{{ asset(cropImage($path, 960, 720)) }}" />
                                 </li>
                             @endforeach
                             @endif
@@ -116,20 +115,9 @@
                     </div>
                 </div>
 
-                @if($itinerary->highlightsArray())
-                <div class="tour_head1 hot-ameni">
-                    <h3>Highlights</h3>
-                    <ul>
-                        @foreach($itinerary->highlightsArray() as $highlight)
-                            <li><i class="fa fa-check" aria-hidden="true"></i> {{ $highlight }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
-
                 @if(count($itinerary->products()->get()) >0 )
                     <div class="tour_head1 l-info-pack-days days">
-                        <h3>Itinerary contains</h3>
+                        <h3>Your Experiences</h3>
                         <ul>
                             @foreach($itinerary->products()->get() as $product)
                                 <li class="l-info-pack-plac"> <i class="fa fa-location-arrow" aria-hidden="true"></i>
@@ -144,9 +132,20 @@
                     </div>
                 @endif
 
+                @if($itinerary->highlightsArray())
+                <div class="tour_head1 hot-ameni">
+                    <h3>What’s Included?</h3>
+                    <ul>
+                        @foreach($itinerary->highlightsArray() as $highlight)
+                            <li><i class="fa fa-check" aria-hidden="true"></i> {{ $highlight }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
                 @if($itinerary->transport)
                     <div class="">
-                        <h3>Transport</h3>
+                        <h3>Your Transport</h3>
                         <div class="long-description-block">
                             <div class="table-section">
                                 {!! $itinerary->transport !!}
@@ -184,17 +183,20 @@
                     <ul>
                         <li>Destination : {{ $itinerary->place() }}</li>
                         <li>Duration: {{ $itinerary->duration() }}</li>
+                        @if($itinerary->price)
+                            <li>From: £{{$itinerary->price}}</li>
+                        @endif
                         <li>Time of year: {{ $itinerary->months() }}</li>
-                        @if(count($itinerary->travel_styles) == 1)
+                        @if($itinerary->travel_styles && count($itinerary->travel_styles) == 1)
                             <li>Style: {{ config('questions.q_travel_style')[$itinerary->travel_styles[0]] }}</li>
                         @endif
-                        @if(count($itinerary->travel_styles) > 1)
+                        @if($itinerary->travel_styles && count($itinerary->travel_styles) > 1)
                             <li>Styles: @foreach($itinerary->travel_styles as $style) {{ config('questions.q_travel_style')[$style] ?? '' }}; @endforeach</li>
                         @endif
-                        @if(count($itinerary->sights) == 1)
-                            <li>Style: {{ config('questions.q_preferred_sight')[$itinerary->sights[0]] }}</li>
+                        @if($itinerary->sights && count($itinerary->sights) == 1)
+                            <li>Sights: {{ config('questions.q_preferred_sight')[$itinerary->sights[0]] }}</li>
                         @endif
-                        @if(count($itinerary->sights) > 1)
+                        @if($itinerary->sights && count($itinerary->sights) > 1)
                             <li>Sights: @foreach($itinerary->sights as $sight) {{ config('questions.q_preferred_sight')[$sight] ?? '' }}; @endforeach</li>
                         @endif
                     </ul>

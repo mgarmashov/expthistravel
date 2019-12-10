@@ -5,6 +5,7 @@ if (! function_exists('cropImage')) {
     {
         //get relative path
         if (stripos($src, 'torage/')) {
+            $src = str_replace('/storage/', '', $src);
             $src = str_replace('storage/', '', $src);
         }
 
@@ -27,7 +28,7 @@ if (! function_exists('cropImage')) {
 
             return 'storage/'.$newSrc;
         } catch (Exception $e) {
-            return '';
+            return $src;
         }
     }
 }
@@ -94,7 +95,7 @@ if (! function_exists('uploadImage')) {
 
             \Storage::disk('public')->put($destination_path.'/'.$filename, $image->stream());
 
-            return '/storage/'.$destination_path . '/' . $filename;
+            return 'storage/'.$destination_path . '/' . $filename;
         }
         catch (\Exception $e)
         {
