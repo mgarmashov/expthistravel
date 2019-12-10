@@ -103,7 +103,6 @@
                             @endif
                         </ul>
                     </div>
-                </div>
 
                 @if(count($itinerary->products()->get()) >0 )
                     <div class="tour_head1 l-info-pack-days days">
