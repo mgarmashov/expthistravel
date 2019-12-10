@@ -166,8 +166,10 @@
                                     <img class="materialboxed image-full-width" src="{{ asset($country->image) }}" alt="">
                                 @endif
                             </div>
-                            <div class="col m6">
-                                {!! $country->description_long !!}
+                            <div class="col m6 long-description-block">
+                                <div class="table-section">
+                                    {!! $country->description_long !!}
+                                </div>
                             </div>
                         </div>
                     </div>
