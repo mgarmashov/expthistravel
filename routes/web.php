@@ -18,6 +18,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
     CRUD::resource('categories', 'CategoriesController');
     CRUD::resource('experiences', 'ExperiencesController');
     CRUD::resource('products', 'ProductsController');
+    CRUD::resource('itineraries', 'ItinerariesController');
     CRUD::resource('activities', 'ActivitiesController');
     CRUD::resource('countries', 'CountriesController');
     CRUD::resource('orders', 'OrdersController');
@@ -34,6 +35,7 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::get('/', 'HomepageController@showPage')->name('index');
     Route::get('/experiences', 'SearchController@showPage')->name('experiences');
+    Route::get('/Itineraries', 'SearchController@showItinerariesPage')->name('itineraries');
     Route::get('/travelinsights', 'BlogArticlesController@showList')->name('blog');
     Route::get('/travelinsights/{slug}', 'BlogArticlesController@showArticle')->name('article');
 
@@ -49,6 +51,7 @@ Route::group(['middleware' => ['web']], function() {
 
 
     Route::get('/experience/{id}', 'ProductController@showPage')->name('product'); //actually it's used Slug or Id
+    Route::get('/itinerary/{id}', 'ItineraryController@showPage')->name('itinerary'); //actually it's used Slug or Id
     Route::get('/toOrder/{id?}', 'ProductController@toOrder')->name('productToOrder');
     Route::get('/fromOrder/{id?}', 'ProductController@deleteFromOrder')->name('productDeleteFromOrder');
 
