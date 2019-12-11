@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\DropzoneRequest;
+use App\Models\Product;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
@@ -160,15 +161,14 @@ class ItinerariesController extends CrudController
             'pivot' => true,
             'tab' => 'General'
         ]);
+
         $this->crud->addField([
-            'name' => 'products',
-            'entity' => 'products',
-            'label' => "Experiences",
-            'type' => 'select2_multiple',
-            'attribute' => 'name',
-            'pivot' => true,
-            'tab' => 'Additional'
-        ]);
+        'name' => 'products',
+        'label' => "Experiences",
+        'type' => 'select_and_order',
+        'options'   => Product::where('enabled', 1)->get()->pluck('name','id')->toArray(),
+        'tab' => 'Additional'
+    ]);
         $this->crud->addField([
             'name' => 'highlights',
             'label' => 'Highlights',
