@@ -7,6 +7,7 @@ use App\Scopes\EnabledScope;
 use App\Traits\SeoTrait;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
+use Illuminate\Support\Facades\DB;
 
 class Itinerary extends Model
 {
@@ -45,7 +46,8 @@ class Itinerary extends Model
         'sights',
         'minDuration',
         'maxDuration',
-        'scores'
+        'scores',
+        'products'
         ];
     // protected $hidden = [];
     // protected $dates = [];
@@ -55,6 +57,7 @@ class Itinerary extends Model
         'gallery' => 'array',
         'travel_styles' => 'array',
         'sights' => 'array',
+        'products' => 'array',
     ];
 
     public static $filteredItinerariesList;
@@ -247,12 +250,7 @@ class Itinerary extends Model
 
     public function experiences()
     {
-        return $this->belongsToMany('App\Models\Experience', 'experiences_itineraries');
-    }
-
-    public function products()
-    {
-        return $this->belongsToMany('App\Models\Product', 'itineraries_products');
+        return $this->belongsToMany('App\Models\Experience', 'experiences_itineraries')->where('enabled', true);
     }
 
     public function orders()
@@ -282,6 +280,16 @@ class Itinerary extends Model
     {
         return empty($this->highlights) ? null : array_filter(array_map('trim', explode(';', $this->highlights)));
     }
+
+    public function products()
+    {
+        if(empty($this->products)) {
+            return Product::where('id',0);
+        }
+        $ids_ordered = implode(',', $this->products);
+        return  Product::whereIn('id', $this->products)
+            ->orderByRaw(DB::raw("FIELD(id, $ids_ordered)"));
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
@@ -290,15 +298,15 @@ class Itinerary extends Model
     public function setImageMainAttribute($value)
     {
         $attribute_name = "image_main";
-        $this->saveImageNormally($attribute_name, $value);        
+        $this->saveImageNormally($attribute_name, $value);
     }
-    
+
     public function setImageMapAttribute($value)
     {
         $attribute_name = "image_map";
         $this->saveImageNormally($attribute_name, $value);
     }
-    
+
     public function setImageBackgroundAttribute($value)
     {
         $attribute_name = "image_background";
@@ -313,7 +321,7 @@ class Itinerary extends Model
             $this->attributes['slug'] = $this->attributes['slug'].'-2';
         }
     }
-    
+
     protected function saveImageNormally($attribute_name, $value) {
         // if the image was erased
         if ($value==null) {

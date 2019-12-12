@@ -87,16 +87,6 @@
                 </div>
                 @endif
 
-                @if($itinerary->map_url)
-                <div class="tour_head1">
-                    <h3>Map</h3>
-                    <div class="long-description-block">
-                        <iframe src="{{ $itinerary->map_url }}"  width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-                    </div>
-                </div>
-                @endif
-
-                <div class="tour_head1 hotel-book-room">
                     <div class="gallery-container">
                         <ul id="imageGallery">
                             @if($itinerary->image_main)
@@ -113,7 +103,6 @@
                             @endif
                         </ul>
                     </div>
-                </div>
 
                 @if(count($itinerary->products()->get()) >0 )
                     <div class="tour_head1 l-info-pack-days days">
@@ -143,8 +132,17 @@
                 </div>
                 @endif
 
+                @if($itinerary->map_url)
+                    <div class="tour_head1">
+                        <h3>Map</h3>
+                        <div class="long-description-block">
+                            <iframe src="{{ $itinerary->map_url }}"  width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                @endif
+
                 @if($itinerary->transport)
-                    <div class="">
+                    <div class="tour_head1">
                         <h3>Your Transport</h3>
                         <div class="long-description-block">
                             <div class="table-section">
@@ -167,8 +165,10 @@
                                     <img class="materialboxed image-full-width" src="{{ asset($country->image) }}" alt="">
                                 @endif
                             </div>
-                            <div class="col m6">
-                                {!! $country->description_long !!}
+                            <div class="col m6 long-description-block">
+                                <div class="table-section">
+                                    {!! $country->description_long !!}
+                                </div>
                             </div>
                         </div>
                     </div>
