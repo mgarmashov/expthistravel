@@ -54,7 +54,14 @@ class ItinerariesController extends CrudController
             'height' => '100px'
         ]);
         $this->crud->addColumn('name');
-        $this->crud->addColumn('slug');
+        $this->crud->addColumn([
+            'label' => 'URL',
+            'type' => 'url',
+            'name' => 'slug',
+            'options' => [
+                'slug_path' => 'itinerary'
+            ]
+        ]);
 
 
         $this->crud->addColumn([
@@ -91,6 +98,9 @@ class ItinerariesController extends CrudController
             'label' => "Slug",
             'name' => "slug",
             'type' => 'slug',
+            'options' => [
+                'slug_path' => 'itinerary'
+            ],
             'tab' => 'General'
         ]);
         $this->crud->addField([

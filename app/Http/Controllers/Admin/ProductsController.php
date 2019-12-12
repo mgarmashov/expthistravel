@@ -53,7 +53,14 @@ class ProductsController extends CrudController
             'height' => '100px'
         ]);
         $this->crud->addColumn('name');
-        $this->crud->addColumn('slug');
+        $this->crud->addColumn([
+            'label' => 'URL',
+            'type' => 'url',
+            'name' => 'slug',
+            'options' => [
+                'slug_path' => 'experience'
+            ]
+        ]);
 
 
         $this->crud->addColumn([
@@ -90,6 +97,9 @@ class ProductsController extends CrudController
             'label' => "Slug",
             'name' => "slug",
             'type' => 'slug',
+            'options' => [
+                'slug_path' => 'experience'
+            ],
             'tab' => 'Description'
         ]);
         $this->crud->addField([

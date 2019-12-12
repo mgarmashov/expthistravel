@@ -6,7 +6,7 @@
     @if(isset($field['prefix']) || isset($field['suffix'])) <div class="input-group"> @endif
         @if(isset($field['prefix'])) <div class="input-group-addon">{!! $field['prefix'] !!}</div> @endif
         <div>
-            <span>{{ config('app.url') }}/</span>
+            <span>{{ config('app.url') }}/@if(isset($field['options']['slug_path'])){{ $field['options']['slug_path'] }}/ @endif</span>
             <input
                     type="text"
                     name="{{ $field['name'] }}"
