@@ -49,7 +49,8 @@ class ItinerariesController extends CrudController
         */
 
         $this->crud->addColumn([
-            'name' => 'image',
+            'name' => 'image_main',
+            'label' => 'Main image',
             'type' => 'image',
             'height' => '100px'
         ]);
@@ -146,7 +147,7 @@ class ItinerariesController extends CrudController
             'label' => 'Gallery', // field caption
             'type' => 'dropzone', // voodoo magic
             'prefix' => '/uploads/', // upload folder (should match the driver specified in the upload handler defined below)
-            'articleType' => 'itineraries',
+            'entityType' => 'itineraries',
             'upload-url' => 'dropzone-upload', // POST route to handle the individual file uploads
             'tab' => 'Images'
         ]);
@@ -340,21 +341,4 @@ class ItinerariesController extends CrudController
 
     }
 
-    public function handleDropzoneUpload(DropzoneRequest $request)
-    {
-        try
-        {
-            $path = uploadImage('itineraries', $request->file('file'));
-
-            return response()->json(['success' => true, 'filename' => $path]);
-        }
-        catch (\Exception $e)
-        {
-            if (empty ($path)) {
-                return response('Not a valid image type', 412);
-            } else {
-                return response('Unknown error', 412);
-            }
-        }
-    }
 }

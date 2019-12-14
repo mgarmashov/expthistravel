@@ -27,7 +27,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
 
     Route::get('/quiz-statistics', 'QuizHistoryController@showList')->name('admin.quiz-statistic');
 
-    Route::post('media-dropzone', ['uses' => 'ProductsController@handleDropzoneUpload'])->name('dropzone-upload');
+    Route::post('media-dropzone/{entityType}', ['uses' => 'ProductsController@handleDropzoneUpload'])->name('dropzone-upload');
 
 });
 
