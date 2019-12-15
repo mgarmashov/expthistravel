@@ -213,7 +213,11 @@ class Itinerary extends Model
         $userDurationMax = intval($periodsArray[1]) ?? 29;
 
         self::$filteredItinerariesList = self::$filteredItinerariesList->filter(function ($itinerary, $key) use ($userDurationMin, $userDurationMax) {
-            return (($userDurationMin >= $itinerary->minDuration && $userDurationMin <= $itinerary->maxDuration) || ($userDurationMax <= $itinerary->maxDuration && $userDurationMax >= $itinerary->maxDuration));
+            return (
+                ($userDurationMin >= $itinerary->minDuration && $userDurationMin <= $itinerary->maxDuration)
+                || ($userDurationMax <= $itinerary->maxDuration && $userDurationMax >= $itinerary->maxDuration)
+                || ($userDurationMin <= $itinerary->minDuration && $userDurationMax >= $itinerary->minDuration)
+            );
         });
 
         return self::$filteredItinerariesList;

@@ -207,7 +207,11 @@ class Product extends Model
         $userDurationMax = intval($periodsArray[1]) ?? 29;
 
         self::$filteredProductsList = self::$filteredProductsList->filter(function ($product, $key) use ($userDurationMin, $userDurationMax) {
-            return (($userDurationMin >= $product->minDuration && $userDurationMin <= $product->maxDuration) || ($userDurationMax <= $product->maxDuration && $userDurationMax >= $product->maxDuration));
+            return (
+                ($userDurationMin >= $product->minDuration && $userDurationMin <= $product->maxDuration)
+                || ($userDurationMax <= $product->maxDuration && $userDurationMax >= $product->maxDuration)
+                || ($userDurationMin <= $product->minDuration && $userDurationMax >= $product->minDuration)
+            );
         });
 
         return self::$filteredProductsList;
