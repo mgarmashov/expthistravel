@@ -16,7 +16,7 @@
                         <h4>{{ $itinerary->place() }}</h4>
 
                         <ul>
-                            <li>{{ $itinerary->duration() }}</li>highlightsArray
+                            <li>{{ $itinerary->duration() }}</li>
                         </ul>
                         <ul>
                             <li>{{ $itinerary->months() }}</li>
