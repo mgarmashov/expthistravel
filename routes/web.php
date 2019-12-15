@@ -56,7 +56,6 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('/fromOrder/{id?}', 'ProductController@deleteFromOrder')->name('productDeleteFromOrder');
 
 
-    Route::get('/experiencefinder', 'QuizController@showStep0')->name('quiz-step0');
     Route::any('/experiencefinder/step1', 'QuizController@showStep1')->name('quiz-step1');
     Route::post('/experiencefinder/save-answers', 'QuizController@saveAnswers')->name('saveAnswers');
     Route::get('/experiencefinder/step2', 'QuizController@showStep2')->name('quiz-step2');

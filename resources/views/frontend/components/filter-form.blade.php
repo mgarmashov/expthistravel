@@ -12,7 +12,7 @@
             </div>
         </div>
             @else
-            <p>Get personalised travel inspiration here - <a class="link-large" href="{{ route('quiz-step0') }}">Get Started</a></p>
+            <p>Get personalised travel inspiration here - <a class="link-large" href="{{ route('quiz-step1') }}">Get Started</a></p>
             @endif
     @endauth
 
