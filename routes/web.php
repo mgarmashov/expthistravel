@@ -27,7 +27,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
 
     Route::get('/quiz-statistics', 'QuizHistoryController@showList')->name('admin.quiz-statistic');
 
-    Route::post('media-dropzone', ['uses' => 'ProductsController@handleDropzoneUpload'])->name('dropzone-upload');
+    Route::post('media-dropzone/{entityType}', ['uses' => 'ProductsController@handleDropzoneUpload'])->name('dropzone-upload');
 
 });
 
@@ -35,7 +35,7 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::get('/', 'HomepageController@showPage')->name('index');
     Route::get('/experiences', 'SearchController@showPage')->name('experiences');
-    Route::get('/Itineraries', 'SearchController@showItinerariesPage')->name('itineraries');
+    Route::get('/itineraries', 'SearchController@showItinerariesPage')->name('itineraries');
     Route::get('/travelinsights', 'BlogArticlesController@showList')->name('blog');
     Route::get('/travelinsights/{slug}', 'BlogArticlesController@showArticle')->name('article');
 

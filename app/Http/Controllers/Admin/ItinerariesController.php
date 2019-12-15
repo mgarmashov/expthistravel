@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\DropzoneRequest;
+use App\Models\Product;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
@@ -48,12 +49,20 @@ class ItinerariesController extends CrudController
         */
 
         $this->crud->addColumn([
-            'name' => 'image',
+            'name' => 'image_main',
+            'label' => 'Main image',
             'type' => 'image',
             'height' => '100px'
         ]);
         $this->crud->addColumn('name');
-        $this->crud->addColumn('slug');
+        $this->crud->addColumn([
+            'label' => 'URL',
+            'type' => 'url',
+            'name' => 'slug',
+            'options' => [
+                'slug_path' => 'itinerary'
+            ]
+        ]);
 
 
         $this->crud->addColumn([
@@ -90,6 +99,9 @@ class ItinerariesController extends CrudController
             'label' => "Slug",
             'name' => "slug",
             'type' => 'slug',
+            'options' => [
+                'slug_path' => 'itinerary'
+            ],
             'tab' => 'General'
         ]);
         $this->crud->addField([
@@ -135,7 +147,7 @@ class ItinerariesController extends CrudController
             'label' => 'Gallery', // field caption
             'type' => 'dropzone', // voodoo magic
             'prefix' => '/uploads/', // upload folder (should match the driver specified in the upload handler defined below)
-            'articleType' => 'itineraries',
+            'entityType' => 'itineraries',
             'upload-url' => 'dropzone-upload', // POST route to handle the individual file uploads
             'tab' => 'Images'
         ]);
@@ -160,15 +172,14 @@ class ItinerariesController extends CrudController
             'pivot' => true,
             'tab' => 'General'
         ]);
+
         $this->crud->addField([
-            'name' => 'products',
-            'entity' => 'products',
-            'label' => "Experiences",
-            'type' => 'select2_multiple',
-            'attribute' => 'name',
-            'pivot' => true,
-            'tab' => 'Additional'
-        ]);
+        'name' => 'products',
+        'label' => "Experiences",
+        'type' => 'select_and_order',
+        'options'   => Product::where('enabled', 1)->get()->pluck('name','id')->toArray(),
+        'tab' => 'Additional'
+    ]);
         $this->crud->addField([
             'name' => 'highlights',
             'label' => 'Highlights',
@@ -330,21 +341,4 @@ class ItinerariesController extends CrudController
 
     }
 
-    public function handleDropzoneUpload(DropzoneRequest $request)
-    {
-        try
-        {
-            $path = uploadImage('itineraries', $request->file('file'));
-
-            return response()->json(['success' => true, 'filename' => $path]);
-        }
-        catch (\Exception $e)
-        {
-            if (empty ($path)) {
-                return response('Not a valid image type', 412);
-            } else {
-                return response('Unknown error', 412);
-            }
-        }
-    }
 }
