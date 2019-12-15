@@ -85,7 +85,22 @@
 </form>
 
 @push('after_scripts')
+    <script>
+      $(document).ready(function() {
+        if(isExperienceTab()) {
+            $('.nav-tabs [href="#experiences-list-container"]').trigger('click');
+        }
+      });
 
+      $('.nav-tabs [href="#experiences-list-container"]').click(function(){
+        //todo change query for t=2
+      });
+
+      function isExperienceTab(){
+        // return window.location.href.search("[?&]t=2") != -1;
+        return window.location.href.search("experiences") != -1;
+      }
+    </script>
     <script>
         for (var inputId of ['applyScores', 'filter-countries', 'filter-month', 'filter-duration-from', 'filter-duration-to', 'filter-travel-styles', 'filter-sights']) {
           if (document.getElementById(inputId) == null) { continue; } //applyScores can be absent
@@ -113,13 +128,18 @@
             beforeSend: function(){
               $('#product-list').height($('#product-list').height());
               $('#product-list').html('');
+
+              $('#itineraries-list').height($('#itineraries-list-list').height());
+              $('#itineraries-list').html('');
             },
 
             success: function(data) {
-              $('#product-list').replaceWith(data);
+              $('#product-list').replaceWith(data.products);
+              $('#itineraries-list').replaceWith(data.itineraries);
             },
             error: function() {
               $('#product-list').html('Something wrong... Please update page');
+              $('#itineraries-list').html('Something wrong... Please update page');
             }
           })
         }

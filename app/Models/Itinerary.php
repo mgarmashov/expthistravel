@@ -237,6 +237,54 @@ class Itinerary extends Model
         return self::$filteredItinerariesList;
     }
 
+    public static function filterBySights($sightsIdsArray)
+    {
+        if (!self::$filteredItinerariesList) {self::$filteredItinerariesList = self::with('countries')->get();}
+
+        if (empty($sightsIdsArray)) {
+            return self::$filteredItinerariesList;
+        }
+
+        self::$filteredItinerariesList = self::$filteredItinerariesList->filter(function($itinerary) use ($sightsIdsArray) {
+            if(!$itinerary->sights or empty($itinerary->sights)) {
+                return false;
+            }
+
+            foreach ($itinerary->sights as $sightId) {
+                if (in_array($sightId, $sightsIdsArray)) {
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        return self::$filteredItinerariesList;
+    }
+
+    public static function filterByTravelStyle($stylesIdsArray)
+    {
+        if (!self::$filteredItinerariesList) {self::$filteredItinerariesList = self::with('countries')->get();}
+
+        if (empty($stylesIdsArray)) {
+            return self::$filteredItinerariesList;
+        }
+
+        self::$filteredItinerariesList = self::$filteredItinerariesList->filter(function($itinerary) use ($stylesIdsArray) {
+            if(!$itinerary->travel_styles or empty($itinerary->travel_styles)) {
+                return false;
+            }
+
+            foreach ($itinerary->travel_styles as $styleId) {
+                if (in_array($styleId, $stylesIdsArray)) {
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        return self::$filteredItinerariesList;
+    }
+
 
         /*
         |--------------------------------------------------------------------------

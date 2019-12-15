@@ -1,4 +1,4 @@
-<div id="product-list">
+<div id="itineraries-list">
     @if(count($itineraries) > 0)
         @foreach($itineraries as $itinerary)
 
@@ -31,7 +31,7 @@
         @endforeach
     @else
         <div class="container text-center">
-            <h3>Sorry, no experiences match your search. Edit your selections and try again.</h3>
+            <h6>Sorry, no trips match your search. Edit your selections and try again.</h6>
         </div>
     @endif
 

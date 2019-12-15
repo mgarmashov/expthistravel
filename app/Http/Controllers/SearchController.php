@@ -15,7 +15,7 @@ class SearchController extends Controller
 
         $results = $this->applyFilter($request);
         $products = $results['products'];
-        $itineraries = Itinerary::all();
+        $itineraries = $results['itineraries'];
         $applyScores = $results['applyScores'];
 
         return view('frontend.pages.search-results', [
@@ -32,53 +32,23 @@ class SearchController extends Controller
         ]);
     }
 
-    public function showItinerariesPage(Request $request)
-    {
-
-        $itineraries = Itinerary::all();
-
-        return view('frontend.pages.search-results', [
-            'itineraries' => $itineraries
-        ]);
-    }
-
-    public function showList(Request $request)
+    public function updateListByAjax(Request $request)
     {
         $products = $this->applyFilter($request)['products'];
+        $itineraries = $this->applyFilter($request)['itineraries'];
 
-        return view("frontend.components.list-products",compact('products'));
+        return [
+            'products' => view("frontend.components.list-products",compact('products'))->render(),
+            'itineraries' => view("frontend.components.list-itineraries",compact('itineraries'))->render(),
+        ];
     }
 
-    protected function foundProducts($request)
-    {
-        $products = Product::all();
 
-        if ($request->country && !in_array('all', $request->country)) {
-            $products = Product::filterByCountry($request->country);
-        }
-
-        if ($request->month && !in_array('all', $request->month)) {
-            $products = Product::filterByMonth($request->month);
-        }
-
-        if (isset($request->filter_duration_from) || isset($request->filter_duration_to)) {
-            $products = Product::filterByDuration([$request->filter_duration_from ?? 1, $request->filter_duration_to ?? 29]);
-        }
-
-        if ($request->sights) {
-            $products = Product::filterBySights($request->sights);
-        }
-
-        if ($request->travel_styles) {
-            $products = Product::filterByTravelStyle($request->travel_styles);
-        }
-
-        return $products;
-    }
 
     protected function applyFilter($request)
     {
-        $products = $this->foundProducts($request);
+        $products = $this->findItems($request, 'App\Models\Product');
+        $itineraries = $this->findItems($request, 'App\Models\Itinerary');
         $applyScores = 'no';
         if (Auth::check() && Auth::user()->totalScores && $request->applyScores) {
             $scoresOfUser = Auth::user()->scores();
@@ -88,6 +58,33 @@ class SearchController extends Controller
         if (Auth::check() && ! Auth::user()->totalScores) {
             $applyScores = 'takeQuiz';
         }
-        return ['applyScores' => $applyScores, 'products' => $products];
+        return ['applyScores' => $applyScores, 'products' => $products, 'itineraries' => $itineraries];
+    }
+
+    protected function findItems($request, $model)
+    {
+        $output = $model::all();
+
+        if ($request->country && !in_array('all', $request->country)) {
+            $output = $model::filterByCountry($request->country);
+        }
+
+        if ($request->month && !in_array('all', $request->month)) {
+            $output = $model::filterByMonth($request->month);
+        }
+
+        if (isset($request->filter_duration_from) || isset($request->filter_duration_to)) {
+            $output = $model::filterByDuration([$request->filter_duration_from ?? 1, $request->filter_duration_to ?? 29]);
+        }
+
+        if ($request->sights) {
+            $output = $model::filterBySights($request->sights);
+        }
+
+        if ($request->travel_styles) {
+            $output = $model::filterByTravelStyle($request->travel_styles);
+        }
+
+        return $output;
     }
 }

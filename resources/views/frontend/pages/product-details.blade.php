@@ -44,7 +44,7 @@
                 <li><a href="#inner-page-title">Home</a>
                 </li>
                 <li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>
-                <li><a href="{{ route('experiences') }}" class="bread-acti">Experiences</a>
+                <li><a href="{{route('experiences')}}" class="bread-acti">Experiences</a>
                 </li>
             </ul>
             <p>| {{ $product->description_short ?? '' }}</p>

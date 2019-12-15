@@ -35,7 +35,7 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::get('/', 'HomepageController@showPage')->name('index');
     Route::get('/experiences', 'SearchController@showPage')->name('experiences');
-    Route::get('/itineraries', 'SearchController@showItinerariesPage')->name('itineraries');
+    Route::get('/itineraries', 'SearchController@showPage')->name('itineraries');
     Route::get('/travelinsights', 'BlogArticlesController@showList')->name('blog');
     Route::get('/travelinsights/{slug}', 'BlogArticlesController@showArticle')->name('article');
 
@@ -43,7 +43,7 @@ Route::group(['middleware' => ['web']], function() {
     Route::post('/contacts/send', 'HomepageController@sendContacts')->name('contacts.send');
 
     Route::get('/search', 'SearchController@showPage')->name('search');
-    Route::get('/updateResults', 'SearchController@showList')->name('updateResults');
+    Route::get('/updateResults', 'SearchController@updateListByAjax')->name('updateResults');
     Route::get('/order', 'ProfileController@orderPage')->name('orderPage');
     Route::get('/booking', 'ProfileController@bookingPage')->name('bookingPage');
     Route::post('/booking/send', 'ProfileController@createOrder')->name('sendBooking');
