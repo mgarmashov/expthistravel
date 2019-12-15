@@ -252,27 +252,27 @@ h4 {
   border-radius: 1em;
   color: white; }
 
-.filter-section .dark-layout {
+.filter-section {
   padding: 10px; }
-.filter-section .application-layout {
-  padding: 0; }
-  .filter-section .application-layout form {
+  .filter-section .application-layout {
     padding: 0; }
-  .filter-section .application-layout .container {
-    padding-right: 0; }
+    .filter-section .application-layout form {
+      padding: 0; }
+    .filter-section .application-layout .container {
+      padding-right: 0; }
+      @media (max-width: 767px) {
+        .filter-section .application-layout .container {
+          padding-left: 0;
+          padding-bottom: 0; } }
+  .filter-section .select-wrapper input.select-dropdown {
+    height: 2rem;
+    line-height: 2rem; }
+  .filter-section .additional-questions-block {
+    background: rgba(100, 100, 100, 0.1); }
     @media (max-width: 767px) {
-      .filter-section .application-layout .container {
-        padding-left: 0;
-        padding-bottom: 0; } }
-.filter-section .select-wrapper input.select-dropdown {
-  height: 2rem;
-  line-height: 2rem; }
-.filter-section .additional-questions-block {
-  background: rgba(100, 100, 100, 0.1); }
-  @media (max-width: 767px) {
-    .filter-section .additional-questions-block {
-      margin-bottom: -5px;
-      padding-bottom: 5px; } }
+      .filter-section .additional-questions-block {
+        margin-bottom: -5px;
+        padding-bottom: 5px; } }
 
 .grey-bottom-line {
   border-bottom: 2px solid rgba(100, 100, 100, 0.1);
@@ -287,13 +287,31 @@ h4 {
 .filter-duration .filter-duration-field {
   display: inline-block;
   width: 60px;
-  margin: 0 15px; }
-@media(max-width: 870px) and (min-width: 692px) {}
+  margin: 0 15px;
+  @media(max-width: 870px) and (min-width: 692px); }
 .filter-duration.invalid span {
   color: #f4364f; }
 .filter-duration.invalid .select-dropdown, .filter-duration.invalid .select-dropdown:focus {
   border-bottom-color: #f4364f;
   color: #f4364f; }
+
+.search-results-section {
+  padding-top: 30px; }
+
+.search-tabs-container {
+  padding: 0; }
+
+.book-tab-inn ul.nav li {
+  margin-right: 4px; }
+  .book-tab-inn ul.nav li a {
+    font-size: 22px;
+    background: #e6e6e6;
+    padding-left: 2em;
+    padding-right: 2em; }
+
+.book-tab-body {
+  padding-bottom: 100px;
+  border-radius: 0; }
 
 .b_packages {
   margin-bottom: 10px; }
@@ -513,11 +531,6 @@ h1.red-text {
   font-size: 1.3em;
   line-height: normal; }
 
-.container--products-list {
-  padding: 100px 0; }
-@media(max-width: 768px) {
-  .container--products-list {
-    padding: 10px 0; } }
 .booking-page input[type=text]:not(.browser-default), .booking-page input[type=email]:not(.browser-default), .booking-page input[type=date]:not(.browser-default) {
   height: 2em;
   line-height: 2em;

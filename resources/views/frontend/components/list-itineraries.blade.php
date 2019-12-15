@@ -23,9 +23,7 @@
                         </ul>
                     </div>
                     <div class="p2_book">
-                        <ul>
-                            <li><a href="{{ route('product', ['id' => $itinerary->slug]) }}" class="link-btn">Find out more</a> </li>
-                        </ul>
+                        <a href="{{ route('product', ['id' => $itinerary->slug]) }}" class="link-btn">Find out more</a>
                     </div>
                 </div>
             </div>

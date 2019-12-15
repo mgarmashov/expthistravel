@@ -15,10 +15,12 @@ class SearchController extends Controller
 
         $results = $this->applyFilter($request);
         $products = $results['products'];
+        $itineraries = Itinerary::all();
         $applyScores = $results['applyScores'];
 
-        return view('frontend.pages.products', [
+        return view('frontend.pages.search-results', [
             'products' => $products,
+            'itineraries' => $itineraries,
             'filter' =>[
                 'applyScores' => $applyScores,
                 'country' => $request->country ?? null,
@@ -35,7 +37,7 @@ class SearchController extends Controller
 
         $itineraries = Itinerary::all();
 
-        return view('frontend.pages.Itineraries', [
+        return view('frontend.pages.search-results', [
             'itineraries' => $itineraries
         ]);
     }

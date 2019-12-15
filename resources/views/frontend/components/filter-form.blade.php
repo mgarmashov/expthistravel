@@ -16,7 +16,7 @@
             @endif
     @endauth
 
-        <div class="col-sm-9">
+        <div class="col-sm-12">
             <div class="col-sm-6 col-md-3">
                 <label for="filter-countries">Select country</label>
                 <select id="filter-countries" multiple name="country[]">
@@ -36,7 +36,7 @@
                 </select>
             </div>
 
-            <div class="col-sm-6 col-md-6 filter-duration">
+            <div class="col-sm-12 col-md-6 filter-duration">
                 <label for="" class="block">Select duration (days)</label>
                 <span>From:</span>
                 <div class="filter-duration-field">
@@ -59,19 +59,18 @@
                     </select>
                 </div>
             </div>
-        </div>
-        {{--{{ dd($filter) }}--}}
-        <div class="col-sm-3 additional-questions-block">
-            <div class="col-sm-12">
+
+            <div class="col-sm-6 col-md-3">
                 <label for="filter-travel-styles">Travel style</label>
                 <select id="filter-travel-styles" multiple name="travel_styles[]">
-    {{--                    <option value="all" {{ isset($filter['country']) && in_array('all', $filter['country']) ? 'selected' : '' }} selected>Travel style</option>--}}
+                    {{--                    <option value="all" {{ isset($filter['country']) && in_array('all', $filter['country']) ? 'selected' : '' }} selected>Travel style</option>--}}
                     @foreach(config('questions.q_travel_style') as $alias => $name)
                         <option value="{{$alias}}" {{ (isset($filter['travel_styles']) && $filter['travel_styles'] == $alias) ? 'selected' : '' }}>{{ $name }}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="col-sm-12">
+
+            <div class="col-sm-6 col-md-3">
                 <label for="filter-sights">Preferred Sights</label>
                 <select id="filter-sights" multiple name="sights[]">
                     {{--                <option value="all" {{ isset($filter['month']) && in_array('all', $filter['month']) ? 'selected' : '' }}>Any</option>--}}
@@ -81,6 +80,7 @@
                 </select>
             </div>
         </div>
+
     </div>
     </div>
 </form>

@@ -2,8 +2,8 @@
 
 @endphp
 
-<section class="background-image filter-section" @include('frontend.components.randomBgStyle')>
-    <div class="dark-layout">
+<section class="filter-section">
+{{--    <div class="dark-layout">--}}
     <div class="container application-layout">
         {{--<div class="application-layout">--}}
 
@@ -38,5 +38,5 @@
 
         {{--</div>--}}
     </div>
-    </div>
+{{--    </div>--}}
 </section>
