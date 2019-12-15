@@ -105,7 +105,7 @@
         for (var inputId of ['applyScores', 'filter-countries', 'filter-month', 'filter-duration-from', 'filter-duration-to', 'filter-travel-styles', 'filter-sights']) {
           if (document.getElementById(inputId) == null) { continue; } //applyScores can be absent
           document.getElementById(inputId).onchange = function() {
-            if((inputId == 'filter-duration-from' || inputId == 'filter-duration-to') && parseInt(document.getElementById('filter-duration-from').value) > parseInt(document.getElementById('filter-duration-to').value)) {
+           if((this.getAttribute('id') == 'filter-duration-from' || this.getAttribute('id') == 'filter-duration-to') && parseInt(document.getElementById('filter-duration-from').value) > parseInt(document.getElementById('filter-duration-to').value)) {
               document.getElementsByClassName('filter-duration')[0].classList.add('invalid');
               return
             }
