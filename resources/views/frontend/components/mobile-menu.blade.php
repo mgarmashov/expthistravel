@@ -43,7 +43,7 @@
                                 <li class="with-counter">
                                     <a class="bright" href="{{ route('orderPage') }}">&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;
                                     </a>
-                                    <span id="order-counter" data-total="{{ count(Auth::user()->products()->get()) }}">{{ count(Auth::user()->products()->get()) }}</span>
+                                    <span id="order-counter" data-total="{{ count(Auth::user()->products()->get()) + count(Auth::user()->itineraries()->get()) }}">{{ count(Auth::user()->products()->get()) + count(Auth::user()->itineraries()->get()) }}</span>
                                 </li>
                                 <li>
                                     <a class="medium" href="{{ route('profile.products') }}">{{Auth::user()->name ?? Auth::user()->email}} - Profile</a>

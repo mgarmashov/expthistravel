@@ -136,6 +136,7 @@
 <script src="{{asset('js/materialize.min.js')}}?v={{ filemtime(public_path('js/materialize.min.js')) }}"></script>
 <script>
     const productToOrder = "{{ route('productToOrder')}}";
+    const itineraryToOrder = "{{ route('itineraryToOrder')}}";
     const orderPage = "{{ route('orderPage')}}";
 </script>
 <script src="{{asset('js/custom.js')}}?v={{ filemtime(public_path('js/custom.js')) }}"></script>

@@ -591,9 +591,9 @@ h1.red-text {
     width: 190px;
     color: #b18013; }
 
-#b-products-block.invalid label {
+#b-products-block.invalid label, #b-itineraries-block.invalid label {
   color: #f4364f; }
-#b-products-block.invalid .select-dropdown, #b-products-block.invalid .select-dropdown:focus {
+#b-products-block.invalid .select-dropdown, #b-products-block.invalid .select-dropdown:focus, #b-itineraries-block.invalid .select-dropdown, #b-itineraries-block.invalid .select-dropdown:focus {
   border-bottom-color: #f4364f; }
 
 .tour_head1 h3 {

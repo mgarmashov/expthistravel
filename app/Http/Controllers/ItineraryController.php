@@ -43,10 +43,10 @@ class ItineraryController extends Controller
             return response()->json("Itinerary $request->id is added to PROFILE cart of current user");
 
         } else {
-            $cart = $request->session()->get('cart') ?? [];
+            $cart = $request->session()->get('cart.itineraries') ?? [];
             $cart[] = $request->id;
             $cart = array_unique($cart);
-            $request->session()->put('cart', $cart);
+            $request->session()->put('cart.itineraries', $cart);
 
             return response()->json("Itinerary $request->id is added to SESSION cart");
         }
@@ -62,13 +62,13 @@ class ItineraryController extends Controller
             return response()->json("Itinerary $request->id is deleted from PROFILE cart of current user");
 
         } else {
-            $cart = $request->session()->get('cart') ?? [];
+            $cart = $request->session()->get('cart.itineraries') ?? [];
 
             if (($key = array_search($request->id, $cart)) !== false) {
                 unset($cart[$key]);
             }
 
-            $request->session()->put('cart', $cart);
+            $request->session()->put('cart.itineraries', $cart);
 
             return response()->json("Itinerary $request->id is deleted from SESSION cart");
         }

@@ -261,7 +261,7 @@
                 var currentBtn = this;
                 $.ajax({
                     type: "get",
-                    url: '{{ route('productToOrder', ['id' => $itinerary->id]) }}',
+                    url: '{{ route('itineraryToOrder', ['id' => $itinerary->id]) }}',
 
                     success: function () {
                         window.location.href = '{{ route('orderPage') }}';

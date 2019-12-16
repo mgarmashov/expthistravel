@@ -52,8 +52,10 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::get('/experience/{id}', 'ProductController@showPage')->name('product'); //actually it's used Slug or Id
     Route::get('/itinerary/{id}', 'ItineraryController@showPage')->name('itinerary'); //actually it's used Slug or Id
-    Route::get('/toOrder/{id?}', 'ProductController@toOrder')->name('productToOrder');
+    Route::get('/toOrder/product/{id?}', 'ProductController@toOrder')->name('productToOrder');
+    Route::get('/toOrder/itinerary/{id?}', 'ItineraryController@toOrder')->name('itineraryToOrder');
     Route::get('/fromOrder/{id?}', 'ProductController@deleteFromOrder')->name('productDeleteFromOrder');
+    Route::get('/fromOrder/itinerary/{id?}', 'ItineraryController@deleteFromOrder')->name('itineraryDeleteFromOrder');
 
 
     Route::any('/experiencefinder/step1', 'QuizController@showStep1')->name('quiz-step1');

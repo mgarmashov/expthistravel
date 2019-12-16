@@ -98,4 +98,10 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Product', 'users_products', 'user_id', 'product_id')
             ->withPivot('status')->withTimestamps();
     }
+
+    public function itineraries()
+    {
+        return $this->belongsToMany('App\Models\Itinerary', 'users_itineraries', 'user_id', 'itinerary_id')
+            ->withPivot('status')->withTimestamps();
+    }
 }
