@@ -11,19 +11,16 @@
                                 <li class="with-counter">
                                     <a class="bright" href="{{ route('orderPage') }}">&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;
                                     </a>
-                                    <span id="order-counter" data-total="{{session('cart') ? count(session('cart.products'))+count(session('cart.itineraries')) : 0 }}">{{ session('cart') ? count(session('cart.products'))+count(session('cart.itineraries')) : 0 }}</span>
+                                    <span id="order-counter" data-total="{{ $cartCount }}">{{ $cartCount }}</span>
                                 </li>
                                 <li>
                                     <a class="medium" href="{{ route('login') }}">Sign In / Register</a>
                                 </li>
-                                {{--<li>--}}
-                                    {{--<a class="nav-link dark" href="{{ route('register') }}">Sign Up</a>--}}
-                                {{--</li>--}}
                             @else
                                 <li class="with-counter">
                                     <a class="bright" href="{{ route('orderPage') }}">&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;
                                     </a>
-                                    <span id="order-counter" data-total="{{ count(Auth::user()->products()->get()) + count(Auth::user()->itineraries()->get()) }}">{{ count(Auth::user()->products()->get()) + count(Auth::user()->itineraries()->get()) }}</span>
+                                    <span id="order-counter" data-total="{{ $cartCount }}">{{ $cartCount }}</span>
                                 </li>
                                 <li>
                                     <a class="medium" href="{{ route('profile.products') }}">{{Auth::user()->name ?? Auth::user()->email}} - Profile</a>

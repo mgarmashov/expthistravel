@@ -49,9 +49,23 @@
 <body>
 @include('frontend.components.preloader')
 
-@include('frontend.components.mobile-menu')
+@php
+    $cartCount = 0;
+    if(\Illuminate\Support\Facades\Auth::check()) {
+        $cartCount += count(Auth::user()->products()->get());
+        $cartCount += count(Auth::user()->itineraries()->get());
+    } else {
+        if(session('cart.products')) {
+            $cartCount += count(session('cart.products'));
+        }
+        if(session('cart.itineraries')) {
+            $cartCount += count(session('cart.itineraries'));
+        }
+    }
+@endphp
+@include('frontend.components.mobile-menu', ['cartCount' => $cartCount])
 
-@include('frontend.components.header')
+@include('frontend.components.header', ['cartCount' => $cartCount])
 
 @yield('content')
 
