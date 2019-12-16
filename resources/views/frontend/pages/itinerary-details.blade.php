@@ -60,7 +60,7 @@
                     <li class="dl1">Destination : {{ $itinerary->place() }}</li>
                     <li class="dl2">{!! $itinerary->price ? 'From: £'.$itinerary->price : '&nbsp;' !!}</li>
                     <li class="dl3">Duration : {{ $itinerary->duration() }}</li>
-                    <li class="dl4"><a class="btn-book-product" href="#">Book Now</a> </li>
+                    <li class="dl4"><a class="btn-book-product" href="#">Request a quote</a> </li>
                 </ul>
             </div>
         </div>

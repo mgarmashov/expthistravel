@@ -60,7 +60,7 @@
                     <li class="dl1">Destination : {{ $product->place() }}</li>
                     <li class="dl2">{!! $product->price ? 'From: £'.$product->price : '&nbsp;' !!}</li>
                     <li class="dl3">Duration : {{ $product->duration() }}</li>
-                    <li class="dl4"><a class="btn-book-product" href="#">Book Now</a> </li>
+                    <li class="dl4"><a class="btn-book-product" href="#">Add to my trip</a> </li>
                 </ul>
             </div>
         </div>
