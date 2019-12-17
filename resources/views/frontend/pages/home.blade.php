@@ -28,7 +28,9 @@
             <div class="pla1 p-home container">
                 <!-- TITLE & DESCRIPTION -->
                 <div class="spe-title spe-title-1">
-                    <h2>How it <span>works</span></h2>
+                    <p class="preheader">Looking for inspiration? Try our Experience Finder.</p>
+                    <h2>How it <span>works</span>:</h2>
+
                 </div>
                 <div class="howItWorks-container">
                     <div class="col-md-3 col-sm-6">
@@ -36,7 +38,7 @@
                             <div class="number">1</div>
                             {{--<i class="fa fa-check"></i>--}}
                             <img src="{{ asset('images/icon-tick.png') }}" alt="">
-                            <h5>Tell us your travel preferences</h5>
+                            <h5>Tell us what you’re looking for</h5>
                             <p>Answer a few questions to help us find your ideal trip</p>
                         </div>
                     </div>
@@ -47,7 +49,7 @@
                             {{--<i class="fa fa-thumbs-up" aria-hidden="true"></i>--}}
                             <img src="{{ asset('images/icon-thumb-up.png') }}" alt="">
                             <h5>Get personalised travel recommendations</h5>
-                            <p>Discover amazing travel experiences tailored to you and your interests</p>
+                            <p>Discover trip inspiration tailored to your interests</p>
                         </div>
                     </div>
 
@@ -56,8 +58,8 @@
                             <div class="number">3</div>
                             {{--<i class="fa fa-map-signs" aria-hidden="true"></i>--}}
                             <img src="{{ asset('images/icon-trip.png') }}" alt="">
-                            <h5>Create your bespoke travel plan </h5>
-                            <p>Add experiences to your tailormade trip and submit your trip enquiry</p>
+                            <h5>Decide where to go and what to do</h5>
+                            <p>Select a ready-made <b>itinerary</b> or pick and mix <b>experiences</b> to create a custom trip</p>
                         </div>
                     </div>
 
@@ -66,10 +68,34 @@
                             <div class="number">4</div>
                             {{--<i class="fa fa-ticket" aria-hidden="true"></i>--}}
                             <img src="{{ asset('images/icon-ticket.png') }}" alt="">
-                            <h5>Your entire trip organised for you </h5>
-                            <p>We’ll create your customised travel itinerary and book your entire trip for you</p>
+                            <h5>Get your tailormade travel plan</h5>
+                            <p>Request a quote and receive a personalised travel plan with your entire trip taken care of.</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="rows pla pad-bot-redu tb-space">
+            <div class="pla1 p-home container">
+                <!-- TITLE & DESCRIPTION -->
+                <div class="spe-title spe-title-1">
+                    <a href="{{ route('itineraries') }}"><h2>Itineraries</h2></a>
+                    <div class="title-line">
+                        <div class="tl-1"></div>
+                        <div class="tl-2"></div>
+                        <div class="tl-3"></div>
+                    </div>
+                    <p>Choose from our collection of expertly crafted itineraries, complete with incredible travel experiences</p>
+                    <p><a href="{{ route('itineraries') }}">View all Itineraries</a></p>
+                </div>
+                @include('frontend.components.section-popularItineraries')
+                <div class="popu-places-home">
+                    <p class="center">
+                        <a class="link-btn col-sm-6 col-sm-offset-3" href="{{ route('itineraries') }}">View all Itineraries</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -87,8 +113,14 @@
                         <div class="tl-3"></div>
                     </div>
                     <p>Discover our incredible range of travel experiences:</p>
+                    <p><a href="{{ route('experiences') }}">View all Experiences</a></p>
                 </div>
                 @include('frontend.components.section-popularTravelExperiences')
+            </div>
+            <div class="popu-places-home">
+                <p class="center">
+                    <a class="link-btn col-sm-6 col-sm-offset-3" href="{{ route('experiences') }}">View all Experiences</a>
+                </p>
             </div>
         </div>
     </section>
@@ -105,9 +137,9 @@
                                 <img src="{{ asset('images/icon-holiday.png') }}" alt="">
                             </div>
                             <h5>Personalised inspiration, bespoke packages</h5>
-                            <p>- Inspiring travel experiences to match your interests</p>
+                            <p>- Inspiring travel ideas to match your interests</p>
                             <p>- Tailormade, unique trips</p>
-                            <p>- Satisfaction guaranteed - more rewarding, fulfilling travel experiences</p>
+                            <p>- Travel with freedom and flexibility</p>
                         </div>
                     </div>
 
@@ -116,9 +148,10 @@
                             <div class="img-container">
                                 <img src="{{ asset('images/icon-expert.png') }}" alt="">
                             </div>
-                            <h5>Trusted, tried and tested</h5>
-                            <p>- Expert destination knowledge and insights</p>
-                            <p>- A handpicked selection of highly-regarded, socially responsible suppliers</p>
+                            <h5>Unique and unforgettable travel experiences</h5>
+                            <p>- Only the best experiences your destination has to offer</p>
+                            <p>- Expertly curated travel itineraries</p>
+                            <p>- Rewarding and fulfilling trips. Satisfaction guaranteed</p>
                         </div>
                     </div>
 
@@ -127,9 +160,10 @@
                             <div class="img-container">
                                 <img src="{{ asset('images/icon-itinerary.png') }}" alt="">
                             </div>
-                            <h5>Organised and booked for you</h5>
-                            <p>- We do the legwork. Saving you valuable time researching and planning your trip.</p>
-                            <p>- All your documents easily accessible, when you need them</p>
+                            <h5>Complete convenience and peace of mind</h5>
+                            <p>- Semealess travel planning and booking</p>
+                            <p>- Service you can rely on from our network of tried and tested local suppliers</p>
+                            <p>- Support and assistance before, during and after your trip</p>
                         </div>
                     </div>
 
