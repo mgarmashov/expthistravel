@@ -22,35 +22,36 @@
                             <div id="itineraries-list-container" class="tab-pane fade active in">
                                 <div class="book-tab-tit">
                                     @if(isset($filter['applyScores']) && $filter['applyScores'] == 'yes')
-                                        <h3>Your itineraries</h3>
-                                        <p>Based on your interests and preferences. Handpicked for you</p>
+                                        <h3>Your Itineraries</h3>
+                                        <p>Handpicked for you</p>
                                     @else
-                                        <h3>All itineraries</h3>
-
+                                        <h3>All Itineraries</h3>
+                                        <p>Choose from our ready-made itineraries with incredible travel experiences included</p>
                                         @if(!Auth::check() || !Auth::user()->totalScores)
-                                            <p>Discover our incredible range of travel experiences.</p>
                                             <p>Get personalised travel inspiration here - <a class="link-large" href="{{ route('quiz-step1') }}">Get Started</a></p>
                                         @endif
                                     @endif
 
                                 </div>
+                                <div class="margin20 clearfix"></div>
                                 @include('frontend.components.list-itineraries')
 
                             </div>
                             <div id="experiences-list-container" class="tab-pane fade">
                                 <div class="book-tab-tit">
                                     @if(isset($filter['applyScores']) && $filter['applyScores'] == 'yes')
-                                        <h3>Your experiences</h3>
-                                        <p>Based on your interests and preferences. Handpicked for you</p>
+                                        <h3>Your Experiences</h3>
+                                        <p>Handpicked for you</p>
                                     @else
-                                        <h3>All experiences</h3>
+                                        <h3>All Experiences</h3>
+                                        <p>Choose your experiences to create your own unique trip</p>
 
                                         @if(!Auth::check() || !Auth::user()->totalScores)
-                                            <p>Discover our incredible range of travel experiences.</p>
                                             <p>Get personalised travel inspiration here - <a class="link-large" href="{{ route('quiz-step1') }}">Get Started</a></p>
                                         @endif
                                     @endif
                                 </div>
+                                <div class="margin20 clearfix"></div>
 
                                 @include('frontend.components.list-products')
                             </div>
