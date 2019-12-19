@@ -42,7 +42,36 @@
                         </div>
                     </div>
 
-                    <div class="row margin40">
+                    @php($productsDisabled = count($oldItinerariesIds) || count($oldProductsIds) ? true : false)
+                    @if($productsDisabled)
+                        <div class="row margin40">
+                            @if(count($oldItinerariesIds))
+                            <div class="col s12 m6">
+                                <label>Your Itineraries</label>
+                                <table>
+                                    @foreach($oldItinerariesIds as $id)
+                                    <tr>
+                                        <td>{{$loop->index + 1}}. <a href="{{ route('itinerary', ['id'=>$id]) }}">{{ \App\Models\Itinerary::find($id)->name }}</a></td>
+                                    </tr>
+                                    @endforeach
+                                </table>
+                            </div>
+                            @endif
+                            @if(count($oldProductsIds))
+                                <div class="col s12 m6">
+                                    <label>Your Experiences</label>
+                                    <table>
+                                        @foreach($oldProductsIds as $id)
+                                            <tr>
+                                                <td>{{$loop->index + 1}}. <a href="{{ route('product', ['id'=>$id]) }}">{{ \App\Models\Product::find($id)->name }}</a></td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
+                                </div>
+                            @endif
+                        </div>
+                    @endif
+                    <div class="row margin40 @if($productsDisabled) hidden @endif">
                         <div class="col s12" id="b-itineraries-block">
                             <label for="b-field-itineraries">Select your itineraries</label>
                             <select multiple name="b_itineraries[]" id="b-field-itineraries">
@@ -51,11 +80,11 @@
                                     <option value="{{ $itinerary->id }}" @if($oldItinerariesIds->contains($itinerary->id)) selected @endif>{{ $itinerary->name }}</option>
                                 @endforeach
                             </select>
-                            <span class="small brown-text"><i>Want to request changes to your route or activities? Just add these to notes section below</i></span>
+                            <span class="small brown-text"><i>Ready-made itineraries including recommended experiences. Want to request changes to your route or activities? Just add these to notes section below.</i></span>
                         </div>
                     </div>
 
-                    <div class="row margin40">
+                    <div class="row margin40 @if($productsDisabled) hidden @endif">
                         <div class="col s12" id="b-products-block">
                             <label for="b-field-products">Select your experience</label>
                             <select multiple name="b_products[]" id="b-field-products">
@@ -64,7 +93,7 @@
                                     <option value="{{ $product->id }}" @if($oldProductsIds->contains($product->id)) selected @endif>{{ $product->name }}</option>
                                 @endforeach
                             </select>
-                            <span class="small brown-text"><i>Want to request changes to your route or activities? Just add these to notes section below</i></span>
+                            <span class="small brown-text"><i>We’ll create your unique trip based on your choice of experiences. Special requests? Just add these to notes section below.</i></span>
                         </div>
                     </div>
 
