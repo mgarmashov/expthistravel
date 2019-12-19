@@ -61,7 +61,7 @@
             </div>
 
             <div class="col-sm-6 col-md-3">
-                <label for="filter-travel-styles">Travel style</label>
+                <label for="filter-travel-styles">Travel style &nbsp;<span><small><i class="brown-text">(Just Itineraries)</i></small></span></label>
                 <select id="filter-travel-styles" multiple name="travel_styles[]">
                     {{--                    <option value="all" {{ isset($filter['country']) && in_array('all', $filter['country']) ? 'selected' : '' }} selected>Travel style</option>--}}
                     @foreach(config('questions.q_travel_style') as $alias => $name)

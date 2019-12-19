@@ -262,25 +262,27 @@ class Product extends Model
     public static function filterByTravelStyle($stylesIdsArray)
     {
         if (!self::$filteredProductsList) {self::$filteredProductsList = self::with('countries')->get();}
-
-        if (empty($stylesIdsArray)) {
-            return self::$filteredProductsList;
-        }
-
-        self::$filteredProductsList = self::$filteredProductsList->filter(function($product) use ($stylesIdsArray) {
-            if(!$product->travel_styles or empty($product->travel_styles)) {
-                return false;
-            }
-
-            foreach ($product->travel_styles as $styleId) {
-                if (in_array($styleId, $stylesIdsArray)) {
-                    return true;
-                }
-            }
-            return false;
-        });
-
         return self::$filteredProductsList;
+        //we decided that this filter shouldn't work for Products
+        /*
+                if (empty($stylesIdsArray)) {
+                    return self::$filteredProductsList;
+                }
+
+                self::$filteredProductsList = self::$filteredProductsList->filter(function($product) use ($stylesIdsArray) {
+                    if(!$product->travel_styles or empty($product->travel_styles)) {
+                        return false;
+                    }
+
+                    foreach ($product->travel_styles as $styleId) {
+                        if (in_array($styleId, $stylesIdsArray)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                });
+
+                return self::$filteredProductsList;*/
     }
 
 
