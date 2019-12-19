@@ -24,10 +24,10 @@
     </section>
 
     <section>
-        <div class="rows pla pad-bot-redu tb-space">
+        <div class="rows pla">
             <div class="pla1 p-home container">
                 <!-- TITLE & DESCRIPTION -->
-                <div class="spe-title spe-title-1">
+                <div class="spe-title spe-title-1 margin50">
                     <p class="preheader">Looking for inspiration? Try our Experience Finder.</p>
                     <h2>How it <span>works</span>:</h2>
 
@@ -72,6 +72,9 @@
                             <p>Request a quote and receive a personalised travel plan with your entire trip taken care of.</p>
                         </div>
                     </div>
+                    <div class="col-sm-12 margin40 center-align">
+                        <a href="{{ route('quiz-step1') }}" class=" link-btn dark-button col-sm-6 col-sm-offset-3">Experience Finder</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -94,7 +97,7 @@
                 @include('frontend.components.section-popularItineraries')
                 <div class="popu-places-home">
                     <p class="center">
-                        <a class="link-btn col-sm-6 col-sm-offset-3" href="{{ route('itineraries') }}">View all Itineraries</a>
+                        <a class="link-btn col-sm-6 col-sm-offset-3 dark-button" href="{{ route('itineraries') }}">View all Itineraries</a>
                     </p>
                 </div>
             </div>
@@ -106,21 +109,21 @@
             <div class="pla1 p-home container">
                 <!-- TITLE & DESCRIPTION -->
                 <div class="spe-title spe-title-1">
-                    <h2>Popular travel <span>experiences</span></h2>
+                    <a href="{{ route('experiences') }}"><h2>Experiences</h2></a>
                     <div class="title-line">
                         <div class="tl-1"></div>
                         <div class="tl-2"></div>
                         <div class="tl-3"></div>
                     </div>
-                    <p>Discover our incredible range of travel experiences:</p>
+                    <p>Discover incredible travel experiences and create your own unique trip</p>
                     <p><a href="{{ route('experiences') }}">View all Experiences</a></p>
                 </div>
                 @include('frontend.components.section-popularTravelExperiences')
-            </div>
-            <div class="popu-places-home">
-                <p class="center">
-                    <a class="link-btn col-sm-6 col-sm-offset-3" href="{{ route('experiences') }}">View all Experiences</a>
-                </p>
+                <div class="popu-places-home">
+                    <p class="center">
+                        <a class="link-btn col-sm-6 col-sm-offset-3 dark-button" href="{{ route('experiences') }}">View all Experiences</a>
+                    </p>
+                </div>
             </div>
         </div>
     </section>

@@ -20,6 +20,16 @@ h4 {
 .tour_right ul {
   padding: 15px; }
 
+.dark-button {
+  color: white;
+  background: #2d5d73;
+  padding: 0.5em 2em;
+  display: inline-block;
+  transition-duration: 500ms; }
+  .dark-button:hover, .dark-button:active {
+    color: white;
+    background: rgba(45, 93, 115, 0.8); }
+
 .background-image {
   background-image: url(../images/home-large-image/asia3.jpg);
   position: relative;

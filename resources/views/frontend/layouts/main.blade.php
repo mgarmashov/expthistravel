@@ -90,6 +90,7 @@
                                 <ul class="one-column">
                                     <li> <a href="{{ route('quiz-step1') }}">Inspire Me</a> </li>
                                     <li> <a href="{{ route('experiences') }}">Experiences </a></li>
+                                    <li> <a href="{{ route('itineraries') }}">Itineraries </a></li>
                                     <li> <a href="{{ route('bookingPage') }}">Plan My Trip</a></li>
                                     <li> <a href="{{ route('blog') }}">Travel Insights</a></li>
                                     @foreach (\App\Models\Page::orderBy('updated_at', 'desc')->get() as $page)
