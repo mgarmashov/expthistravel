@@ -20,7 +20,7 @@
 
     {{-- HINT --}}
     @if (isset($field['hint']))
-        <p class="help-block">{!! $field['hint'] !!}</p>
+        <p class="help-block">{!! $field['hint'] !!}</p>Handpicked for you
     @endif
 </div>
 

@@ -24,6 +24,7 @@
                                     @if(isset($filter['applyScores']) && $filter['applyScores'] == 'yes')
                                         <h3>Your Itineraries</h3>
                                         <p>Handpicked for you</p>
+                                        <p>Choose from our ready-made itineraries with incredible travel experiences included</p>
                                     @else
                                         <h3>All Itineraries</h3>
                                         <p>Choose from our ready-made itineraries with incredible travel experiences included</p>
@@ -42,6 +43,7 @@
                                     @if(isset($filter['applyScores']) && $filter['applyScores'] == 'yes')
                                         <h3>Your Experiences</h3>
                                         <p>Handpicked for you</p>
+                                        <p>Choose your experiences to create your own unique trip</p>
                                     @else
                                         <h3>All Experiences</h3>
                                         <p>Choose your experiences to create your own unique trip</p>
