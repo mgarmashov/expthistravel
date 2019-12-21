@@ -138,7 +138,7 @@ class ProductsController extends CrudController
             'label' => 'Gallery', // field caption
             'type' => 'dropzone', // voodoo magic
             'prefix' => '/uploads/', // upload folder (should match the driver specified in the upload handler defined below)
-            'articleType' => 'products',
+            'entityType' => 'products',
             'upload-url' => 'dropzone-upload', // POST route to handle the individual file uploads
             'tab' => 'Images'
         ]);
@@ -315,7 +315,7 @@ class ProductsController extends CrudController
     {
         try
         {
-            $path = uploadImage('products', $request->file('file'));
+            $path = uploadImage($request->entityType, $request->file('file'));
 
             return response()->json(['success' => true, 'filename' => $path]);
         }

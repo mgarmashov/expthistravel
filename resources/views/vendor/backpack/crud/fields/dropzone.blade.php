@@ -75,7 +75,7 @@
 <script src="{{asset('vendor/Sortable.min.js')}}"></script>
 <script>
     $("div#{{ $field['name'] }}-dropzone").dropzone({
-        url: "{{ route($field['upload-url']) }}",
+        url: "{{ route($field['upload-url'], ['entityType' => $field['entityType']]) }}",
         headers: {
             'X-CSRF-Token': '{{ csrf_token() }}'
         },
