@@ -169,15 +169,7 @@ class ProductsController extends CrudController
             'type' => 'text',
             'tab' => 'Description'
         ]);
-        $this->crud->addField([
-            'name' => 'experiences',
-            'entity' => 'experiences',
-            'label' => "Experiences",
-            'type' => 'select2_multiple',
-            'attribute' => 'name',
-            'pivot' => true,
-            'tab' => 'Description'
-        ]);
+
         $this->crud->addField([
             'label' => "Highlights",
             'name' => "highlights",
@@ -209,15 +201,6 @@ class ProductsController extends CrudController
             'tab' => 'Description'
         ]);
 
-        $this->crud->addField([
-            'name' => 'travel_styles',
-            'label' => "Travel styles",
-            'type' => 'select2_from_array',
-            'options' => config('questions.q_travel_style'),
-            'allows_null' => false,
-            'allows_multiple' => true,
-            'tab' => 'Description'
-        ]);
         $this->crud->addField([
             'name' => 'sights',
             'label' => "Preferred sights",

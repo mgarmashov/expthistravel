@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductRequest extends FormRequest
+class ItineraryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,9 +29,10 @@ class ProductRequest extends FormRequest
             'name' => 'required|min:2|max:255',
             'months' => 'required',
             'countries' => 'required',
+            'sights' => 'required',
             'minDuration' => 'required|numeric',
             'maxDuration' => 'required|numeric',
-            'sights' => 'required'
+            'travel_styles' => 'required'
         ];
     }
 

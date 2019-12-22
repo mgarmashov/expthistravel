@@ -7,11 +7,11 @@ use App\Models\Product;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\ProductRequest as StoreRequest;
-use App\Http\Requests\ProductRequest as UpdateRequest;
+use App\Http\Requests\ItineraryRequest as StoreRequest;
+use App\Http\Requests\ItineraryRequest as UpdateRequest;
 
 /**
- * Class ProductCrudController
+ * Class ItineraryCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
@@ -192,15 +192,7 @@ class ItinerariesController extends CrudController
             'type' => 'wysiwyg',
             'tab' => 'Additional'
         ]);
-        $this->crud->addField([
-            'name' => 'experiences',
-            'entity' => 'experiences',
-            'label' => "Experiences",
-            'type' => 'select2_multiple',
-            'attribute' => 'name',
-            'pivot' => true,
-            'tab' => 'General'
-        ]);
+
         $this->crud->addField([
             'name' => 'city',
             'label' => "City",
@@ -295,7 +287,7 @@ class ItinerariesController extends CrudController
         ]);
 
 
-        // add asterisk for fields that are required in ProductRequest
+        // add asterisk for fields that are required in ItineraryRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }
