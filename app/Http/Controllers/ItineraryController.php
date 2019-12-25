@@ -19,7 +19,7 @@ class ItineraryController extends Controller
 
         $popularPackages = Itinerary::whereHas('countries', function($q) use ($countriesIds) {
             $q->whereIn('countries.id', $countriesIds);
-        })->inRandomOrder()->limit(3)->get();
+        })->where('id', '!=', $itinerary->id)->inRandomOrder()->limit(3)->get();
 
 
         return view('frontend.pages.itinerary-details', ['itinerary' => $itinerary, 'popularPackages' => $popularPackages]);
