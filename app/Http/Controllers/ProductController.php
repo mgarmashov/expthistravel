@@ -19,7 +19,7 @@ class ProductController extends Controller
 
         $popularPackages = Product::whereHas('countries', function($q) use ($countriesIds) {
             $q->whereIn('countries.id', $countriesIds);
-        })->inRandomOrder()->limit(3)->get();
+        })->where('id', '!=', $product->id)->inRandomOrder()->limit(3)->get();
 
 
         return view('frontend.pages.product-details', ['product' => $product, 'popularPackages' => $popularPackages]);
