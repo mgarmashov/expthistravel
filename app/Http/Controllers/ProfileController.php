@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\NewOrderEvent;
+use App\Models\Itinerary;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -14,8 +15,9 @@ class ProfileController extends Controller
     {
 
         $productsInCart = Auth::user()->products()->get();
+        $itinerariesInCart = Auth::user()->itineraries()->get();
 
-        return view('frontend.pages.profile.products', ['products' => $productsInCart]);
+        return view('frontend.pages.profile.products', ['products' => $productsInCart, 'itineraries' => $itinerariesInCart]);
     }
 
     public function showProfilePage(Request $request)
@@ -58,11 +60,13 @@ class ProfileController extends Controller
             return redirect()->route('profile.products');
         }
 
-        $productIds = session('cart') ?? [];
+        $productIds = session('cart.products') ?? [];
+        $itinerariesIds = session('cart.itineraries') ?? [];
 
         $productsInCart = Product::whereIn('id', $productIds)->get();
+        $itinerariesInCart = Itinerary::whereIn('id', $itinerariesIds)->get();
 
-        return view('frontend.pages.cart-page', ['products' => $productsInCart]);
+        return view('frontend.pages.cart-page', ['products' => $productsInCart, 'itineraries' => $itinerariesInCart]);
     }
 
     public function bookingPage()
@@ -71,12 +75,14 @@ class ProfileController extends Controller
             $user = Auth::user();
             $months = $user->q3 ?? [];
             $selectedProducts = $user->products()->get();
+            $selectedItineraries = $user->itineraries()->get();
             $place = count($selectedProducts) ? $selectedProducts[0]->place() : '';
             $adults = $user->q_how_many_adults ?? session()->get('q_how_many_adults') ?? '2';
             $childs = $user->q_how_many_child ?? session()->get('q_how_many_child') ?? '0';
         } else {
             $months = [];
             $selectedProducts = collect();
+            $selectedItineraries = collect();
             $place = '';
             $adults = session()->get('q_how_many_adults') ?? '2';
             $childs = session()->get('q_how_many_child') ?? '0';
@@ -85,15 +91,21 @@ class ProfileController extends Controller
             if (session('q3')) {
                 $months = array_keys(session('q3')) ?? [];
             }
-            if (session('cart')) {
-                $selectedProducts = Product::whereIn('id', session('cart'))->get();
+            if (session('cart.products')) {
+                $selectedProducts = Product::whereIn('id', session('cart.products'))->get();
                 $countryId = $selectedProducts[0]->country->id ?? '';
+            }
+            if (session('cart.itineraries')) {
+                $selectedItineraries = Itinerary::whereIn('id', session('cart.itineraries'))->get();
+                $countryId = $selectedItineraries[0]->country->id ?? '';
             }
         }
         $selectedProductsIds = $selectedProducts->pluck('id');
+        $selectedItinerariesIds = $selectedItineraries->pluck('id');
         return view('frontend.pages.booking', [
             'oldMonths' => collect($months),
             'oldProductsIds' => $selectedProductsIds ?? [],
+            'oldItinerariesIds' => $selectedItinerariesIds ?? [],
             'oldCountryId' => $countryId ?? '',
             'oldAdults' => $adults,
             'oldChilds' => $childs,
@@ -117,9 +129,17 @@ class ProfileController extends Controller
                 $order->products()->attach($productId);
             }
         }
+        if(isset($request->itineraries)) {
+            foreach ($request->itineraries as $itineraryId) {
+                $order->products()->attach($itineraryId);
+            }
+        }
 
         if (isset($user)) {
             $user->products()->detach();
+        }
+        if (isset($user)) {
+            $user->itineraries()->detach();
         }
 
         event(new NewOrderEvent($order));

@@ -23,35 +23,77 @@
                     <div class="row">
                         <div class="col s12 m6">
                             <label for="b-field-name">First name</label>
-                            <input class="small-line" type="text" id="b-field-name" name="b_name" value="{{ Auth::user() && Auth::user()->name ? Auth::user()->name : ''  }}"  aria-required="true">
+                            <input class="small-line" type="text" id="b-field-name" name="b_name" value="{{ Auth::user() && Auth::user()->name ? Auth::user()->name : ''  }}"  aria-required="true" required>
                         </div>
                         <div class="col s12 m6">
                             <label for="b-field-surname">Surname</label>
-                            <input class="small-line" type="text" id="b-field-surname" name="b_surname" value="{{ Auth::user() && Auth::user()->surname ? Auth::user()->surname : ''  }}"   aria-required="true">
+                            <input class="small-line" type="text" id="b-field-surname" name="b_surname" value="{{ Auth::user() && Auth::user()->surname ? Auth::user()->surname : ''  }}"   aria-required="true"  required>
                         </div>
                     </div>
 
                     <div class="row margin20">
                         <div class="col s12 m6">
                             <label for="b-field-email">Email</label>
-                            <input class="small-line" type="email" id="b-field-email" name="b_email" value="{{ Auth::user() && Auth::user()->email ? Auth::user()->email : ''  }}"   aria-required="true">
+                            <input class="small-line" type="email" id="b-field-email" name="b_email" value="{{ Auth::user() && Auth::user()->email ? Auth::user()->email : ''  }}"   aria-required="true"  required>
                         </div>
                         <div class="col s12 m6">
                             <label for="b-field-phone">Phone number</label>
-                            <input class="small-line" type="text" id="b-field-phone" name="b_phone"   aria-required="true">
+                            <input class="small-line" type="text" id="b-field-phone" name="b_phone"   aria-required="true"  required>
                         </div>
                     </div>
 
-                    <div class="row margin40">
+                    @php($productsDisabled = count($oldItinerariesIds) || count($oldProductsIds) ? true : false)
+                    @if($productsDisabled)
+                        <div class="row margin40">
+                            @if(count($oldItinerariesIds))
+                            <div class="col s12 m6">
+                                <label>Your Itineraries</label>
+                                <table>
+                                    @foreach($oldItinerariesIds as $id)
+                                    <tr>
+                                        <td>{{$loop->index + 1}}. <a href="{{ route('itinerary', ['id'=>$id]) }}">{{ \App\Models\Itinerary::find($id)->name }}</a></td>
+                                    </tr>
+                                    @endforeach
+                                </table>
+                            </div>
+                            @endif
+                            @if(count($oldProductsIds))
+                                <div class="col s12 m6">
+                                    <label>Your Experiences</label>
+                                    <table>
+                                        @foreach($oldProductsIds as $id)
+                                            <tr>
+                                                <td>{{$loop->index + 1}}. <a href="{{ route('product', ['id'=>$id]) }}">{{ \App\Models\Product::find($id)->name }}</a></td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
+                                </div>
+                            @endif
+                        </div>
+                    @endif
+                    <div class="row margin40 @if($productsDisabled) hidden @endif">
+                        <div class="col s12" id="b-itineraries-block">
+                            <label for="b-field-itineraries">Select your itineraries</label>
+                            <select multiple name="b_itineraries[]" id="b-field-itineraries">
+{{--                                <option value="" disabled selected>Select your experience</option>--}}
+                                @foreach(\App\Models\Itinerary::all() as $itinerary)
+                                    <option value="{{ $itinerary->id }}" @if($oldItinerariesIds->contains($itinerary->id)) selected @endif>{{ $itinerary->name }}</option>
+                                @endforeach
+                            </select>
+                            <span class="small brown-text"><i>Ready-made itineraries including recommended experiences. Want to request changes to your route or activities? Just add these to notes section below.</i></span>
+                        </div>
+                    </div>
+
+                    <div class="row margin40 @if($productsDisabled) hidden @endif">
                         <div class="col s12" id="b-products-block">
                             <label for="b-field-products">Select your experience</label>
-                            <select multiple name="b_products[]" id="b-field-products"  aria-required="true">
-                                <option value="" disabled selected>Select your experience</option>
+                            <select multiple name="b_products[]" id="b-field-products">
+{{--                                <option value="" disabled selected>Select your experience</option>--}}
                                 @foreach(\App\Models\Product::all() as $product)
                                     <option value="{{ $product->id }}" @if($oldProductsIds->contains($product->id)) selected @endif>{{ $product->name }}</option>
                                 @endforeach
                             </select>
-                            <span class="small brown-text"><i>Want to request changes to your route or activities? Just add these to notes section below</i></span>
+                            <span class="small brown-text"><i>We’ll create your unique trip based on your choice of experiences. Special requests? Just add these to notes section below.</i></span>
                         </div>
                     </div>
 
@@ -266,20 +308,28 @@
 
     <script>
         $('input[type="submit"]').click(function() {
-            if($('#b-field-products').val().length == 0) {
-               $('#b-products-block').addClass('invalid');
+              if (requiredValidation()) {
                 event.preventDefault();
-            } else {
-                $('#b-products-block').removeClass('invalid');
-            }
+              }
         });
         $('#b-field-products').change(function(){
-            if($('#b-field-products').val().length == 0) {
-                $('#b-products-block').addClass('invalid');
-            } else {
-                $('#b-products-block').removeClass('invalid');
-            }
+          requiredValidation()
         });
+        $('#b-field-itineraries').change(function(){
+          requiredValidation()
+        });
+
+        function requiredValidation() {
+          if($('#b-field-products').val().length == 0 && $('#b-field-itineraries').val().length == 0) {
+            $('#b-products-block').addClass('invalid');
+            $('#b-itineraries-block').addClass('invalid');
+            return true;
+          } else {
+            $('#b-products-block').removeClass('invalid');
+            $('#b-itineraries-block').removeClass('invalid');
+            return false;
+          }
+        }
 
     </script>
 @endpush

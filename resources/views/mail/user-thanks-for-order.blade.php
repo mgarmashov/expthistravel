@@ -41,21 +41,45 @@
             </td>
         </tr>
     </table>
-    @if( count($request->b_products) == 1 )
+    @if( count($request->b_products) + count($request->b_itineraries) == 1 )
         <table>
-            <tr><td>
-                    Your experience: <b><a href="{{ route('product', ['id'=>\App\Models\Product::find($request->b_products[0])->slug]) ?? '' }}">{{ \App\Models\Product::find($request->b_products[0])->name ?? '' }}</a></b>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: center">
-                    <img src="{{ asset(cropImage(\App\Models\Product::find($request->b_products[0])->image, 550, 353)) }}" alt="">
-                </td>
-            </tr>
+            @if( count($request->b_itinerary) == 1 )
+                <tr>
+                    <td>
+                        Your experience: <b><a href="{{ route('itinerary', ['id'=>\App\Models\Itinerary::find($request->b_itinerary[0])->slug]) ?? '' }}">{{ \App\Models\Itinerary::find($request->b_itinerary[0])->name ?? '' }}</a></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center">
+                        <img src="{{ asset(cropImage(\App\Models\Itinerary::find($request->b_itinerary[0])->image_main, 550, 353)) }}" alt="">
+                    </td>
+                </tr>
+            @else
+                <tr>
+                    <td>
+                        Your experience: <b><a href="{{ route('product', ['id'=>\App\Models\Product::find($request->b_products[0])->slug]) ?? '' }}">{{ \App\Models\Product::find($request->b_products[0])->name ?? '' }}</a></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center">
+                        <img src="{{ asset(cropImage(\App\Models\Product::find($request->b_products[0])->image, 550, 353)) }}" alt="">
+                    </td>
+                </tr>
+            @endif
         </table>
     @else
         <table>
             <tr><td colspan="2">Your experience:<hr/></td></tr>
+            @foreach($request->b_itineraries as $key => $itineraryId)
+                @php($itinerary = \App\Models\Itinerary::find($itineraryId))
+                <tr>
+                    <td>
+                        <b><a href="{{ route('itinerary', ['id'=>$itinerary->slug])  ?? ''}}">{{ $itinerary->name  ?? ''}}</a></b></td>
+                    <td>
+                        <img style="width: 100%" src="{{ asset(cropImage($itinerary->image_main, 370, 250)) }}" alt="">
+                    </td>
+                </tr>
+            @endforeach
             @foreach($request->b_products as $key => $productId)
                 @php($product = \App\Models\Product::find($productId))
                 <tr>

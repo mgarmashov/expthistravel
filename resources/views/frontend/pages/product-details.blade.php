@@ -44,7 +44,7 @@
                 <li><a href="#inner-page-title">Home</a>
                 </li>
                 <li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>
-                <li><a href="{{ route('experiences') }}" class="bread-acti">Experiences</a>
+                <li><a href="{{route('experiences')}}" class="bread-acti">Experiences</a>
                 </li>
             </ul>
             <p>| {{ $product->description_short ?? '' }}</p>
@@ -60,7 +60,7 @@
                     <li class="dl1">Destination : {{ $product->place() }}</li>
                     <li class="dl2">{!! $product->price ? 'From: £'.$product->price : '&nbsp;' !!}</li>
                     <li class="dl3">Duration : {{ $product->duration() }}</li>
-                    <li class="dl4"><a class="btn-book-product" href="#">Book Now</a> </li>
+                    <li class="dl4"><a class="btn-book-product" href="#">Add to my trip</a> </li>
                 </ul>
             </div>
         </div>
@@ -69,11 +69,11 @@
 <!--====== TOUR DETAILS ==========-->
 <section>
     <div class="rows inn-page-bg com-colo">
-        <div class="container-fluid inn-page-con-bg tb-space">
+        <div class="container-fluid inn-page-con-bg">
             <div class="col-md-9">
 
                 <div class="tour_head1">
-                    <h3>Description</h3>
+                    <h3>About this experience</h3>
                     <div class="long-description-block">
                         {!! $product->description_long !!}
                     </div>
@@ -132,7 +132,7 @@
 
             </div>
 
-            <div class="col-md-3 tour_r">
+            <div class="col-md-3 tour_r margin50">
                 <!--====== TRIP INFORMATION ==========-->
                 <div class="tour_right tour_incl tour-ri-com">
                     <h3>Trip Information</h3>
@@ -161,7 +161,7 @@
 
                 <!--====== PUPULAR TOUR PACKAGES ==========-->
                 <div class="tour_right tour_rela tour-ri-com">
-                    <h3>View similar itineraries</h3>
+                    <h3>View similar experiences</h3>
                     @foreach($popularPackages as $pp)
                         <div class="tour_rela_1">
                             <img src="{{ asset(cropImage($pp->image, 424, 340)) }}" alt="" />

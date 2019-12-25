@@ -1,20 +1,20 @@
 $(document).ready(function() {
-	"use strict";	
-	//MEGA MENU	
+	"use strict";
+	//MEGA MENU
     $(".about-menu").hover(function() {
         $(".about-mm").fadeIn();
     });
     $(".about-menu").mouseleave(function() {
         $(".about-mm").fadeOut();
     });
-    //MEGA MENU	
+    //MEGA MENU
     $(".admi-menu").hover(function() {
         $(".admi-mm").fadeIn();
     });
     $(".admi-menu").mouseleave(function() {
         $(".admi-mm").fadeOut();
     });
-    //MEGA MENU	
+    //MEGA MENU
     $(".cour-menu").hover(function() {
         $(".cour-mm").fadeIn();
     });
@@ -47,7 +47,7 @@ $(document).ready(function() {
     });
     $('.sdb-btn-edit').mouseleave(function() {
         $(this).text("edit my profile");
-    }); 
+    });
     //MOBILE MENU OPEN
     $(".ed-micon").on('click', function() {
         $(".ed-mm-inn").addClass("ed-mm-act");
@@ -215,9 +215,15 @@ for ( var button of buttonsToCart ) {
     button.onclick = function() {
         event.preventDefault();
         var currentBtn = this;
+        var url;
+        if (currentBtn.dataset.product) {
+            url = productToOrder+'/'+currentBtn.dataset.product
+        } else {
+            url = itineraryToOrder+'/'+currentBtn.dataset.itinerary
+        }
         $.ajax({
             type: "get",
-            url: productToOrder+'/'+currentBtn.dataset.product,
+            url: url,
 
             success: function () {
             },

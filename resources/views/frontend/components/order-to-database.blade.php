@@ -31,6 +31,17 @@
     Phone number: <b>{{ $data->b_phone ?? '' }}</b>
 </p>
 <p>
+    Select your itineraries:
+@if($data->b_itineraries)
+    <ul>
+        @foreach( $data->b_itineraries as $itineraryId)
+            <li><a href="{{ route('itinerary', ['id' => $itineraryId]) }}">{{ \App\Models\Itinerary::find($itineraryId)->name ?? '' }}</a></li>
+        @endforeach
+    </ul>
+    @endif
+    </p>
+
+<p>
     Select your experience:
     @if($data->b_products)
     <ul>
@@ -40,6 +51,7 @@
     </ul>
     @endif
     </p>
+
 
     <p>
         Do you have fixed dates for this trip?:

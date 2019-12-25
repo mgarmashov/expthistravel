@@ -49,9 +49,23 @@
 <body>
 @include('frontend.components.preloader')
 
-@include('frontend.components.mobile-menu')
+@php
+    $cartCount = 0;
+    if(\Illuminate\Support\Facades\Auth::check()) {
+        $cartCount += count(Auth::user()->products()->get());
+        $cartCount += count(Auth::user()->itineraries()->get());
+    } else {
+        if(session('cart.products')) {
+            $cartCount += count(session('cart.products'));
+        }
+        if(session('cart.itineraries')) {
+            $cartCount += count(session('cart.itineraries'));
+        }
+    }
+@endphp
+@include('frontend.components.mobile-menu', ['cartCount' => $cartCount])
 
-@include('frontend.components.header')
+@include('frontend.components.header', ['cartCount' => $cartCount])
 
 @yield('content')
 
@@ -74,8 +88,9 @@
                             <div class="col-sm-4 foot-spec foot-com">
                                 <h4><span>SUPPORT</span> & HELP</h4>
                                 <ul class="one-column">
-                                    <li> <a href="{{ route('quiz-step0') }}">Inspire Me</a> </li>
+                                    <li> <a href="{{ route('quiz-step1') }}">Inspire Me</a> </li>
                                     <li> <a href="{{ route('experiences') }}">Experiences </a></li>
+                                    <li> <a href="{{ route('itineraries') }}">Itineraries </a></li>
                                     <li> <a href="{{ route('bookingPage') }}">Plan My Trip</a></li>
                                     <li> <a href="{{ route('blog') }}">Travel Insights</a></li>
                                     @foreach (\App\Models\Page::orderBy('updated_at', 'desc')->get() as $page)
@@ -136,6 +151,7 @@
 <script src="{{asset('js/materialize.min.js')}}?v={{ filemtime(public_path('js/materialize.min.js')) }}"></script>
 <script>
     const productToOrder = "{{ route('productToOrder')}}";
+    const itineraryToOrder = "{{ route('itineraryToOrder')}}";
     const orderPage = "{{ route('orderPage')}}";
 </script>
 <script src="{{asset('js/custom.js')}}?v={{ filemtime(public_path('js/custom.js')) }}"></script>

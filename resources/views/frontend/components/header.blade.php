@@ -11,19 +11,16 @@
                                 <li class="with-counter">
                                     <a class="bright" href="{{ route('orderPage') }}">&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;
                                     </a>
-                                    <span id="order-counter" data-total="{{session('cart') ? count(session('cart')) : 0 }}">{{ session('cart') ? count(session('cart')) : 0 }}</span>
+                                    <span id="order-counter" data-total="{{ $cartCount }}">{{ $cartCount }}</span>
                                 </li>
                                 <li>
                                     <a class="medium" href="{{ route('login') }}">Sign In / Register</a>
                                 </li>
-                                {{--<li>--}}
-                                    {{--<a class="nav-link dark" href="{{ route('register') }}">Sign Up</a>--}}
-                                {{--</li>--}}
                             @else
                                 <li class="with-counter">
                                     <a class="bright" href="{{ route('orderPage') }}">&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;
                                     </a>
-                                    <span id="order-counter" data-total="{{ count(Auth::user()->products()->get()) }}">{{ count(Auth::user()->products()->get()) }}</span>
+                                    <span id="order-counter" data-total="{{ $cartCount }}">{{ $cartCount }}</span>
                                 </li>
                                 <li>
                                     <a class="medium" href="{{ route('profile.products') }}">{{Auth::user()->name ?? Auth::user()->email}} - Profile</a>
@@ -67,9 +64,9 @@
                     <div class="main-menu">
                         <ul>
                             <li><a href="{{ route('index') }}">Home</a></li>
-                            <li class="btn-get-started"><a href="{{route('quiz-step0')}}">Get started</a></li>
+                            <li class="btn-get-started"><a href="{{route('quiz-step1')}}">Get started</a></li>
                             <li><a href="{{route('experiences')}}">Experiences</a></li>
-{{--                            <li><a href="{{route('itineraries')}}">Itineraries</a></li>--}}
+                            <li><a href="{{route('itineraries')}}">Itineraries</a></li>
                             <li><a href="{{route('contacts')}}">Contact</a></li>
                             @if($page = \App\Models\Page::getPage('about'))
                                 <li><a href="{{route('index') .'/'. $page->slug }}">{{ $page->name }}</a></li>

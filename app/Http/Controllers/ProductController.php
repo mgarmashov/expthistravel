@@ -43,10 +43,10 @@ class ProductController extends Controller
             return response()->json("Product $request->id is added to PROFILE cart of current user");
 
         } else {
-            $cart = $request->session()->get('cart') ?? [];
+            $cart = $request->session()->get('cart.products') ?? [];
             $cart[] = $request->id;
             $cart = array_unique($cart);
-            $request->session()->put('cart', $cart);
+            $request->session()->put('cart.products', $cart);
 
             return response()->json("Product $request->id is added to SESSION cart");
         }
@@ -62,13 +62,13 @@ class ProductController extends Controller
             return response()->json("Product $request->id is deleted from PROFILE cart of current user");
 
         } else {
-            $cart = $request->session()->get('cart') ?? [];
+            $cart = $request->session()->get('cart.products') ?? [];
 
             if (($key = array_search($request->id, $cart)) !== false) {
                 unset($cart[$key]);
             }
 
-            $request->session()->put('cart', $cart);
+            $request->session()->put('cart.products', $cart);
 
             return response()->json("Product $request->id is deleted from SESSION cart");
         }

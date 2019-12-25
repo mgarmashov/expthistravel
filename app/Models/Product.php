@@ -207,7 +207,11 @@ class Product extends Model
         $userDurationMax = intval($periodsArray[1]) ?? 29;
 
         self::$filteredProductsList = self::$filteredProductsList->filter(function ($product, $key) use ($userDurationMin, $userDurationMax) {
-            return (($userDurationMin >= $product->minDuration && $userDurationMin <= $product->maxDuration) || ($userDurationMax <= $product->maxDuration && $userDurationMax >= $product->maxDuration));
+            return (
+                ($userDurationMin >= $product->minDuration && $userDurationMin <= $product->maxDuration)
+                || ($userDurationMax <= $product->maxDuration && $userDurationMax >= $product->maxDuration)
+                || ($userDurationMin <= $product->minDuration && $userDurationMax >= $product->minDuration)
+            );
         });
 
         return self::$filteredProductsList;
@@ -258,25 +262,27 @@ class Product extends Model
     public static function filterByTravelStyle($stylesIdsArray)
     {
         if (!self::$filteredProductsList) {self::$filteredProductsList = self::with('countries')->get();}
-
-        if (empty($stylesIdsArray)) {
-            return self::$filteredProductsList;
-        }
-
-        self::$filteredProductsList = self::$filteredProductsList->filter(function($product) use ($stylesIdsArray) {
-            if(!$product->travel_styles or empty($product->travel_styles)) {
-                return false;
-            }
-
-            foreach ($product->travel_styles as $styleId) {
-                if (in_array($styleId, $stylesIdsArray)) {
-                    return true;
-                }
-            }
-            return false;
-        });
-
         return self::$filteredProductsList;
+        //we decided that this filter shouldn't work for Products
+        /*
+                if (empty($stylesIdsArray)) {
+                    return self::$filteredProductsList;
+                }
+
+                self::$filteredProductsList = self::$filteredProductsList->filter(function($product) use ($stylesIdsArray) {
+                    if(!$product->travel_styles or empty($product->travel_styles)) {
+                        return false;
+                    }
+
+                    foreach ($product->travel_styles as $styleId) {
+                        if (in_array($styleId, $stylesIdsArray)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                });
+
+                return self::$filteredProductsList;*/
     }
 
 

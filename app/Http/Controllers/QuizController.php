@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Itinerary;
 use App\Models\Product;
 use App\Models\QuizHistory;
 use Illuminate\Http\Request;
@@ -14,14 +15,10 @@ class QuizController extends Controller
     private $arrayAttributes = ['q3', 'q_countries'];
     private $nonArrayAttributes = ['q_who_travels', 'q_how_many_adults', 'q_how_many_child', 'q_how_long_from', 'q_how_long_to', 'q_how_many_age', 'q_travel_style', 'q_how_long', 'q_preferred_sight'];
 
-    public function showStep0()
-    {
-        return view('frontend.pages.quiz-step0');
-    }
 
     public function showStep1(Request $request)
     {
-        if (isset($request->experience)) {
+        /*if (isset($request->experience)) {
             $request->session()->put('experience', $request->experience);
             if ($request->experience == 0) {
                 $request->session()->forget('q_experiences');
@@ -32,10 +29,11 @@ class QuizController extends Controller
         }
 
         if (!$request->session()->has('experience')) {
-            return redirect()->route('quiz-step0');
+            return redirect()->route('quiz-step1');
         }
 
-        return redirect()->route('quiz-step2');
+        return redirect()->route('quiz-step2');*/
+        return view('frontend.pages.quiz-step1');
     }
 
 
@@ -93,9 +91,9 @@ class QuizController extends Controller
     public function showStep3(Request $request)
     {
 
-//        if(!$request->session()->has('answers')) {
-//            return redirect()->route('quiz-step0');
-//        }
+        if(!$request->session()->has('answers')) {
+            return redirect()->route('quiz-step1');
+        }
         $this->saveApplicationQuestionsToSession($request);
         $urlWithAttributes = $this->createUrlWithAttributes($request);
 
@@ -171,7 +169,7 @@ class QuizController extends Controller
     protected function showResultsPage($userAnswers)
     {
         if (empty($userAnswers)) {
-            return redirect()->route('quiz-step0');
+            return redirect()->route('quiz-step1');
         }
 
         $allAnswersAsArray = [];
@@ -190,34 +188,17 @@ class QuizController extends Controller
 
         $scoresForView = self::transformScoresForView($totalScoresOfCategories);
 
-        if (request()->session()->has('experience') && request()->session()->get('experience') != '0') {
-            Product::filterByExperience(request()->session()->get('q_experiences'));
-        }
 
-        if (isset($allAnswersAsArray['q_countries'])) {
-            Product::filterByCountry($allAnswersAsArray['q_countries'] ?? '');
-        }
-        if (isset($allAnswersAsArray['q_how_long_from']) || isset($allAnswersAsArray['q_how_long_to'])) {
-            Product::filterByDuration([$allAnswersAsArray['q_how_long_from'] ?? 1, $allAnswersAsArray['q_how_long_to'] ?? 29]);
-        }
-
-        if (isset($allAnswersAsArray['q3'])) {
-            Product::filterByMonth($allAnswersAsArray['q3']);
-        }
-
-        if ($allAnswersAsArray['q_preferred_sight']) {
-            Product::filterBySights([$allAnswersAsArray['q_preferred_sight']]);
-        }
-        if ($allAnswersAsArray['q_travel_style']) {
-            Product::filterByTravelStyle([$allAnswersAsArray['q_travel_style']]);
-        }
-
+        $this->filterRows($allAnswersAsArray, 'App\Models\Product');
+        $this->filterRows($allAnswersAsArray, 'App\Models\Itinerary');
 
         $bestProducts = Product::findBestProducts($scoresForView);
+        $bestItineraries = Itinerary::findBestItineraries($scoresForView);
 
 
-        return view('frontend.pages.quiz-results', [
+        return view('frontend.pages.search-results', [
             'products' => $bestProducts,
+            'itineraries' => $bestItineraries,
             'filter' =>[
                 'applyScores' => 'yes',
                 'country' => $allAnswersAsArray['q_countries'] ?? null,
@@ -230,6 +211,29 @@ class QuizController extends Controller
         ]);
     }
 
+    protected function filterRows ($allAnswersAsArray, $model) {
+        if (request()->session()->has('experience') && request()->session()->get('experience') != '0') {
+            $model::filterByExperience(request()->session()->get('q_experiences'));
+        }
+
+        if (isset($allAnswersAsArray['q_countries'])) {
+            $model::filterByCountry($allAnswersAsArray['q_countries'] ?? '');
+        }
+        if (isset($allAnswersAsArray['q_how_long_from']) || isset($allAnswersAsArray['q_how_long_to'])) {
+            $model::filterByDuration([$allAnswersAsArray['q_how_long_from'] ?? 1, $allAnswersAsArray['q_how_long_to'] ?? 29]);
+        }
+
+        if (isset($allAnswersAsArray['q3'])) {
+            $model::filterByMonth($allAnswersAsArray['q3']);
+        }
+
+        if (isset($allAnswersAsArray['q_preferred_sight'])) {
+            $model::filterBySights([$allAnswersAsArray['q_preferred_sight']]);
+        }
+        if (isset($allAnswersAsArray['q_travel_style'])) {
+            $model::filterByTravelStyle([$allAnswersAsArray['q_travel_style']]);
+        }
+    }
 
 
     protected function countTotalScores ($answersActivitiesAsArray)

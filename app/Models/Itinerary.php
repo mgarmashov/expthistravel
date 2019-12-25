@@ -213,7 +213,11 @@ class Itinerary extends Model
         $userDurationMax = intval($periodsArray[1]) ?? 29;
 
         self::$filteredItinerariesList = self::$filteredItinerariesList->filter(function ($itinerary, $key) use ($userDurationMin, $userDurationMax) {
-            return (($userDurationMin >= $itinerary->minDuration && $userDurationMin <= $itinerary->maxDuration) || ($userDurationMax <= $itinerary->maxDuration && $userDurationMax >= $itinerary->maxDuration));
+            return (
+                ($userDurationMin >= $itinerary->minDuration && $userDurationMin <= $itinerary->maxDuration)
+                || ($userDurationMax <= $itinerary->maxDuration && $userDurationMax >= $itinerary->maxDuration)
+                || ($userDurationMin <= $itinerary->minDuration && $userDurationMax >= $itinerary->minDuration)
+            );
         });
 
         return self::$filteredItinerariesList;
@@ -228,6 +232,54 @@ class Itinerary extends Model
         self::$filteredItinerariesList = self::$filteredItinerariesList->filter(function($itinerary) use ($experiencesIds) {
             foreach ($itinerary->experiences as $exp) {
                 if (in_array($exp->id, $experiencesIds)) {
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        return self::$filteredItinerariesList;
+    }
+
+    public static function filterBySights($sightsIdsArray)
+    {
+        if (!self::$filteredItinerariesList) {self::$filteredItinerariesList = self::with('countries')->get();}
+
+        if (empty($sightsIdsArray)) {
+            return self::$filteredItinerariesList;
+        }
+
+        self::$filteredItinerariesList = self::$filteredItinerariesList->filter(function($itinerary) use ($sightsIdsArray) {
+            if(!$itinerary->sights or empty($itinerary->sights)) {
+                return false;
+            }
+
+            foreach ($itinerary->sights as $sightId) {
+                if (in_array($sightId, $sightsIdsArray)) {
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        return self::$filteredItinerariesList;
+    }
+
+    public static function filterByTravelStyle($stylesIdsArray)
+    {
+        if (!self::$filteredItinerariesList) {self::$filteredItinerariesList = self::with('countries')->get();}
+
+        if (empty($stylesIdsArray)) {
+            return self::$filteredItinerariesList;
+        }
+
+        self::$filteredItinerariesList = self::$filteredItinerariesList->filter(function($itinerary) use ($stylesIdsArray) {
+            if(!$itinerary->travel_styles or empty($itinerary->travel_styles)) {
+                return false;
+            }
+
+            foreach ($itinerary->travel_styles as $styleId) {
+                if (in_array($styleId, $stylesIdsArray)) {
                     return true;
                 }
             }

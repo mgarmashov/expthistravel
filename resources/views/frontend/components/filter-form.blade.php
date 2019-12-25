@@ -12,9 +12,20 @@
             </div>
         </div>
             @else
-            <p>Get personalised travel inspiration here - <a class="link-large" href="{{ route('quiz-step0') }}">Get Started</a></p>
+                <div class="col-sm-12">
+                    <div class="col-sm-12 margin20">
+                        <p>Get personalised travel inspiration here - <a class="link-large" href="{{ route('quiz-step1') }}">Get Started</a></p>
+                    </div>
+                </div>
             @endif
     @endauth
+    @guest
+            <div class="col-sm-12">
+                <div class="col-sm-12 margin20">
+                    <p>Get personalised travel inspiration here - <a class="link-large" href="{{ route('quiz-step1') }}">Get Started</a></p>
+                </div>
+            </div>
+    @endguest
 
         <div class="col-sm-12">
             <div class="col-sm-6 col-md-3">
@@ -61,7 +72,7 @@
             </div>
 
             <div class="col-sm-6 col-md-3">
-                <label for="filter-travel-styles">Travel style</label>
+                <label for="filter-travel-styles">Travel style &nbsp;<span><small><i class="brown-text">(Just Itineraries)</i></small></span></label>
                 <select id="filter-travel-styles" multiple name="travel_styles[]">
                     {{--                    <option value="all" {{ isset($filter['country']) && in_array('all', $filter['country']) ? 'selected' : '' }} selected>Travel style</option>--}}
                     @foreach(config('questions.q_travel_style') as $alias => $name)
@@ -82,16 +93,30 @@
         </div>
 
     </div>
-    </div>
 </form>
 
 @push('after_scripts')
+    <script>
+      $(document).ready(function() {
+        if(isExperienceTab()) {
+            $('.nav-tabs [href="#experiences-list-container"]').trigger('click');
+        }
+      });
 
+      $('.nav-tabs [href="#experiences-list-container"]').click(function(){
+        //todo change query for t=2
+      });
+
+      function isExperienceTab(){
+        // return window.location.href.search("[?&]t=2") != -1;
+        return window.location.href.search("experiences") != -1;
+      }
+    </script>
     <script>
         for (var inputId of ['applyScores', 'filter-countries', 'filter-month', 'filter-duration-from', 'filter-duration-to', 'filter-travel-styles', 'filter-sights']) {
           if (document.getElementById(inputId) == null) { continue; } //applyScores can be absent
           document.getElementById(inputId).onchange = function() {
-            if((inputId == 'filter-duration-from' || inputId == 'filter-duration-to') && parseInt(document.getElementById('filter-duration-from').value) > parseInt(document.getElementById('filter-duration-to').value)) {
+           if((this.getAttribute('id') == 'filter-duration-from' || this.getAttribute('id') == 'filter-duration-to') && parseInt(document.getElementById('filter-duration-from').value) > parseInt(document.getElementById('filter-duration-to').value)) {
               document.getElementsByClassName('filter-duration')[0].classList.add('invalid');
               return
             }
@@ -114,13 +139,18 @@
             beforeSend: function(){
               $('#product-list').height($('#product-list').height());
               $('#product-list').html('');
+
+              $('#itineraries-list').height($('#itineraries-list-list').height());
+              $('#itineraries-list').html('');
             },
 
             success: function(data) {
-              $('#product-list').replaceWith(data);
+              $('#product-list').replaceWith(data.products);
+              $('#itineraries-list').replaceWith(data.itineraries);
             },
             error: function() {
               $('#product-list').html('Something wrong... Please update page');
+              $('#itineraries-list').html('Something wrong... Please update page');
             }
           })
         }

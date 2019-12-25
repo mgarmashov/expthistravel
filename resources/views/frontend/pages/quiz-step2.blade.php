@@ -62,10 +62,11 @@
 
     <script>
         //"check" all button
-        for (var id of ['q3', 'q-countries']) {
-            document.getElementById(id+'-all').onclick = function() {
-                checkElements(this, id)
-            }
+        document.getElementById('q3-all').onclick = function() {
+            checkElements(this, 'q3')
+        }
+        document.getElementById('q-countries-all').onclick = function() {
+            checkElements(this, 'q-countries')
         }
 
 

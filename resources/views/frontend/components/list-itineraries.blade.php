@@ -1,4 +1,4 @@
-<div id="product-list">
+<div id="itineraries-list">
     @if(count($itineraries) > 0)
         @foreach($itineraries as $itinerary)
 
@@ -16,16 +16,14 @@
                         <h4>{{ $itinerary->place() }}</h4>
 
                         <ul>
-                            <li>{{ $itinerary->duration() }}</li>highlightsArray
+                            <li>{{ $itinerary->duration() }}</li>
                         </ul>
                         <ul>
                             <li>{{ $itinerary->months() }}</li>
                         </ul>
                     </div>
                     <div class="p2_book">
-                        <ul>
-                            <li><a href="{{ route('product', ['id' => $itinerary->slug]) }}" class="link-btn">Find out more</a> </li>
-                        </ul>
+                        <a href="{{ route('itinerary', ['id' => $itinerary->slug]) }}" class="link-btn">Find out more</a>
                     </div>
                 </div>
             </div>
@@ -33,7 +31,7 @@
         @endforeach
     @else
         <div class="container text-center">
-            <h3>Sorry, no experiences match your search. Edit your selections and try again.</h3>
+            <h6>Sorry, no trips match your search. Edit your selections and try again.</h6>
         </div>
     @endif
 

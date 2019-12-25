@@ -1,185 +1,224 @@
 $red: #f4364f
 $brown: #b18013
+$blue: #2d5d73
 
 //Restore some styles after migration to materialize 1.0.0
 html
-  font-size: 15px
+    font-size: 15px
 
 .container
-  width: 100%
+    width: 100%
 
 h1, h2, h3, h4, h5
-  font-family: 'Quicksand', sans-serif
-  font-weight: 700
+    font-family: 'Quicksand', sans-serif
+    font-weight: 700
 
 h4
-  font-size: 18px
+    font-size: 18px
+
 .brown-text
-  color: $brown !important
+    color: $brown !important
+
 .row
-  margin-bottom: 0
+    margin-bottom: 0
 
 .tour_right ul
-  padding: 15px
+    padding: 15px
+
+.dark-button
+    color: white
+    background: rgb(45, 93, 115)
+    padding: 0.5em 2em
+    display: inline-block
+    transition-duration: 500ms
+    &:hover, &:active
+        color: white
+        background: rgba(45, 93, 115, 0.8)
 
 //sections at home page
 .background-image
-  background-image: url(../images/home-large-image/asia3.jpg)
-  position: relative
-  background-size: cover
+    background-image: url(../images/home-large-image/asia3.jpg)
+    position: relative
+    background-size: cover
 
 .dark-layout
-  background: rgba(0,0,0,0.6)
-  width: 100%
-  height: 100%
+    background: rgba(0, 0, 0, 0.6)
+    width: 100%
+    height: 100%
 
 .light-layout
-  background: rgba(255,255,255,0.8)
-  width: 100%
-  height: 100%
+    background: rgba(255, 255, 255, 0.8)
+    width: 100%
+    height: 100%
+
 .image-full-width
-  width: 100%
-  max-width: 100%
-  height: auto
+    width: 100%
+    max-width: 100%
+    height: auto
 //width of menu
 .main-menu
-  width: 70%
-.wed-logo
-  width: 30%
-  a
-    img
-      width: 257px
+    width: 70%
 
-section.affix,section.affix-top
-  //~ section.filter-section, ~ section.step0, ~ section.step1, ~ section.booking-page, ~ section.booking-thanks
-  + section
-    @media (max-width: 992px)
-      margin-top: 86px
+.wed-logo
+    width: 30%
+
+    a
+        img
+            width: 257px
+
+section.affix, section.affix-top
+    //~ section.filter-section, ~ section.step0, ~ section.step1, ~ section.booking-page, ~ section.booking-thanks
+    + section
+        @media (max-width: 992px)
+            margin-top: 86px
 
 .affix
-  height: 111px
-  @media (max-width: 992px)
-    display: none
+    height: 111px
+    @media (max-width: 992px)
+        display: none
 
 .btn-get-started
-  color: yellow
-  &-mobile
-    margin: 0 -10%
-    padding: 0 10%
-    border: none
+    color: yellow
+
+    &-mobile
+        margin: 0 -10%
+        padding: 0 10%
+        border: none
 
 .footer
-  .logo
-    text-align: center
-    img
-      width: 90px
+    .logo
+        text-align: center
+
+        img
+            width: 90px
 
 
 .tourz-search-1
-  @media (max-width: 992px)
-    width: 100%
-  @media(max-width: 575px)
-    height: 100vh
-    padding-top: 33vh
-  h1
-    font-size: 46px
-    @media (max-width: 800px)
-      font-size: 30px
-    margin-bottom: 20px
-    line-height: 1.5em
+    @media (max-width: 992px)
+        width: 100%
+    @media(max-width: 575px)
+        height: 100vh
+        padding-top: 33vh
+
+    h1
+        font-size: 46px
+        @media (max-width: 800px)
+            font-size: 30px
+        margin-bottom: 20px
+        line-height: 1.5em
 
 
 .place
-  h3
-    line-height: inherit
-    padding-bottom: 1em
+    h3
+        line-height: inherit
+        padding-bottom: 1em
 
 .b_pack
-  margin-bottom: 5px
+    margin-bottom: 5px
 
 .full-text
-  text-overflow: initial !important
-  white-space: normal !important
+    text-overflow: initial !important
+    white-space: normal !important
 
 .inline-block
-  display: inline-block
+    display: inline-block
 
+
+.spe-title-1 p.preheader
+    font-size: 30px
+    margin-bottom: 50px
 .howItWorks
-  &-container
-  &-block
-    background: white
-    position: relative
-    padding: 30px 5px 100px 5px
-    border-radius: 10px
-    border: 2px solid #d2a032
-    box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.3)
+    &-container
 
-    @media(max-width: 768px)
-      height: auto
-    margin-top: 30px
-    img
-      width: 100px
-      position: absolute
-      right: 10px
-      margin-left: -25px
-      bottom: 6px
-    i
-      //position: absolute
-      //display: block
-      //width: 100%
-      //height: 100%
-      //left: 0
-      //top: 0
-      //background: rgba(210,160,50,0.1)
-      //color: white
-      //font-size: 17em
+    &-block
+        background: white
+        position: relative
+        padding: 30px 5px 100px 5px
+        border-radius: 10px
+        border: 2px solid #d2a032
+        box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.3)
 
-      position: absolute
-      left: 50%
-      margin-left: -25px
-      bottom: 3px
-      font-size: 50px
-      color: $red
-    .number
-      text-align: center
-      position: absolute
-      width: 50px
-      height: 50px
-      border-radius: 25px
-      top: -25px
-      left: 50%
-      margin-left: -25px
-      background: linear-gradient(to bottom, #d2a032, #b18013)
-      color: white
-      font-size: 30px
-      line-height: 50px
-    h5
-      display: block
-      text-align: center
-      font-size: 26px
-      @media (max-width: 1200px) and (min-width: 993px)
-        font-size: 20px
+        @media(max-width: 768px)
+            height: auto
+        margin-top: 30px
+
+        img
+            width: 100px
+            position: absolute
+            right: 10px
+            margin-left: -25px
+            bottom: 6px
+
+        i
+            //position: absolute
+            //display: block
+            //width: 100%
+            //height: 100%
+            //left: 0
+            //top: 0
+            //background: rgba(210,160,50,0.1)
+            //color: white
+            //font-size: 17em
+
+            position: absolute
+            left: 50%
+            margin-left: -25px
+            bottom: 3px
+            font-size: 50px
+            color: $red
+
+        .number
+            text-align: center
+            position: absolute
+            width: 50px
+            height: 50px
+            border-radius: 25px
+            top: -25px
+            left: 50%
+            margin-left: -25px
+            background: linear-gradient(to bottom, #d2a032, #b18013)
+            color: white
+            font-size: 30px
+            line-height: 50px
+
+        h5
+            display: block
+            text-align: center
+            font-size: 26px
+            @media (max-width: 1200px) and (min-width: 993px)
+                font-size: 20px
+
+.popu-places-home
+    .b_pack
+        h4
+            text-overflow: unset
+            white-space: normal
+            height: 5em
 
 .home-why
-  &-container
-  &-block
-    position: relative
-    padding-left: 120px
-    margin: 2em auto
-    .img-container
-      position: absolute
-      left: 0
-      top: 0
-      width: 90px
-      background: white
-      border-radius: 10px
-      padding: 5px
-      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.8)
-      img
-        width: 100%
+    &-container
+
+    &-block
+        position: relative
+        padding-left: 120px
+        margin: 2em auto
+
+        .img-container
+            position: absolute
+            left: 0
+            top: 0
+            width: 90px
+            background: white
+            border-radius: 10px
+            padding: 5px
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.8)
+
+            img
+                width: 100%
+
 .wysiwyg-content
-  text-align: left
-  font-size: 14px
+    text-align: left
+    font-size: 14px
 //  quiz
 //.quiz-question
 //  position: relative
@@ -210,500 +249,591 @@ section.affix,section.affix-top
 
 //quiz 1
 .b_packages--activity
-  cursor: pointer
-  .v_place_img
-    img
-      filter: brightness(50%)
-  &.active
-    .v_place_img
-      img
-        filter: none
-    .b_pack
-      background: #2ca324
-      color: white
-  &:hover
-    .v_place_img
-      img
-        filter: none
+    cursor: pointer
 
+    .v_place_img
+        img
+            filter: brightness(50%)
 
+    &.active
+        .v_place_img
+            img
+                filter: none
+
+        .b_pack
+            background: #2ca324
+            color: white
+
+    &:hover
+        .v_place_img
+            img
+                filter: none
 
 
 //part 2
 .application-layout
-  //margin: 0 auto
-  //width: 50%
-  background: #fff
-  padding: 45px 50px 50px 50px
-  @media (max-width: 768px)
-    padding: 1em 0
-  border-radius: 5px
-  text-align: center
-  position: relative
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.8)
-  p
-    font-size: 18px
-    margin-bottom: 0px
-  form
+    //margin: 0 auto
+    //width: 50%
+    background: #fff
+    padding: 45px 50px 50px 50px
+    @media (max-width: 768px)
+        padding: 1em 0
+    border-radius: 5px
+    text-align: center
     position: relative
-    padding: 20px
-  input
-    padding: 10px 10px 10px
-    border: 1px solid #c9c9c9
-  textarea
-    padding: 10px 10px 10px 22px
-    border: 1px solid #c9c9c9
-    height: 100px
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.8)
 
-  input[type="submit"]
-    padding: 0px
-    font-size: 18px !important
+    p
+        font-size: 18px
+        margin-bottom: 0px
 
-  label
-    .tooltipped
-      &.material-icons
-        font-size: 1.5em
-        vertical-align: middle
-        padding-left: 8px
+    form
+        position: relative
+        padding: 20px
+
+    input
+        padding: 10px 10px 10px
+        border: 1px solid #c9c9c9
+
+    textarea
+        padding: 10px 10px 10px 22px
+        border: 1px solid #c9c9c9
+        height: 100px
+
+    input[type="submit"]
+        padding: 0px
+        font-size: 18px !important
+
+    label
+        .tooltipped
+            &.material-icons
+                font-size: 1.5em
+                vertical-align: middle
+                padding-left: 8px
 
 //materialize tooltip
 .material-tooltip
-  background: linear-gradient(to bottom, #d2a032, #b18013)
-  //background: #253d52
-  .backdrop
+    background: linear-gradient(to bottom, #d2a032, #b18013)
+    //background: #253d52
+    .backdrop
 
 
 .step2-form
-  text-align: left
-  h4
-    background: #e6e6e6
-    color: #343c42
-    padding: 10px 15px
-    text-transform: uppercase
-    font-size: 15px
-    margin-top: 0px
-    margin-bottom: 0px
-    text-overflow: ellipsis
-    white-space: pre
-    overflow: hidden
+    text-align: left
 
-  label
-    span
-      color: #343c42
-      font-weight: 600
+    h4
+        background: #e6e6e6
+        color: #343c42
+        padding: 10px 15px
+        text-transform: uppercase
+        font-size: 15px
+        margin-top: 0px
+        margin-bottom: 0px
+        text-overflow: ellipsis
+        white-space: pre
+        overflow: hidden
+
+    label
+        span
+            color: #343c42
+            font-weight: 600
 
 .q-how-long-visible-slider.noUi-target
-  margin: 20px 0 60px 0
-  .noUi-connect
-    background: linear-gradient(to bottom, #d2a032, #b18013)
+    margin: 20px 0 60px 0
+
+    .noUi-connect
+        background: linear-gradient(to bottom, #d2a032, #b18013)
 
 .m-t-0
-  margin-top: 0 !important
+    margin-top: 0 !important
 
 
-  //results
+//results
 .charts-section
-  padding: 2em 0
-  background: rgba(22,127,209,0.7)
+    padding: 2em 0
+    background: rgba(22, 127, 209, 0.7)
+
 .charts-block
 
 .label-column
-  @media(min-width: 769px)
-    text-align: right
+    @media(min-width: 769px)
+        text-align: right
 
 .chart-label
-  height: 2em
+    height: 2em
 
 .chart-column
-  //width: 50%
+//width: 50%
 .chart-line
-  height: 1.7em
-  margin-bottom: 1em
-  background: linear-gradient(to bottom,$red,#dc2039)
-  border-radius: 1em
-  color: white
+    height: 1.7em
+    margin-bottom: 1em
+    background: linear-gradient(to bottom, $red, #dc2039)
+    border-radius: 1em
+    color: white
 
 .filter-section
-  .dark-layout
     padding: 10px
-  .application-layout
-    padding: 0
-    form
-      padding: 0
-    .container
-      padding-right: 0
-      @media (max-width: 767px)
-        padding-left: 0
-        padding-bottom: 0
-  .select-wrapper input.select-dropdown
-    height: 2rem
-    line-height: 2rem
-  .additional-questions-block
-    background: rgba(100,100,100,0.1)
-    @media (max-width: 767px)
-      margin-bottom: -5px
-      padding-bottom: 5px
+    .dark-layout
+
+
+    .application-layout
+        padding: 0
+
+        form
+            padding: 0
+
+        .container
+            padding-right: 0
+            @media (max-width: 767px)
+                padding-left: 0
+                padding-bottom: 0
+
+    .select-wrapper input.select-dropdown
+        height: 2rem
+        line-height: 2rem
+
+    .additional-questions-block
+        background: rgba(100, 100, 100, 0.1)
+        @media (max-width: 767px)
+            margin-bottom: -5px
+            padding-bottom: 5px
 
 .grey-bottom-line
-  border-bottom: 2px solid rgba(100,100,100,0.1)
-  padding-bottom: 5px
+    border-bottom: 2px solid rgba(100, 100, 100, 0.1)
+    padding-bottom: 5px
 
 //background: linear-gradient(to bottom,#f2f9ff,#e1e4e8)
 
 .filter-checkbox
-  label
-    font-size: 1em
-    font-weight: normal
+    label
+        font-size: 1em
+        font-weight: normal
 
 .filter-duration
-  label
-    display: block
-  .filter-duration-field
-    display: inline-block
-    width: 60px
-    margin: 0 15px
-    @media(max-width: 870px) and (min-width: 692px)
-      //margin: 0 5px
-      //width: 40px
-  //rewrite materialize selectbox styles
-  &.invalid
-    span
-      color: $red
-    .select-dropdown, .select-dropdown:focus
-      border-bottom-color: $red
-      color: $red
+    label
+        display: block
+
+    .filter-duration-field
+        display: inline-block
+        width: 60px
+        margin: 0 15px
+        @media(max-width: 870px) and (min-width: 692px)
+    //margin: 0 5px
+    //width: 40px
+    //rewrite materialize selectbox styles
+    &.invalid
+        span
+            color: $red
+
+        .select-dropdown, .select-dropdown:focus
+            border-bottom-color: $red
+            color: $red
+
+
+//Search results
+
+.search-results-section
+    //background: #0b58a2
+    padding-top: 30px
+.search-tabs-container
+    padding: 0
+    .tab-content
+        background: #f2f1f1
+.book-tab-inn
+    ul.nav-tabs
+        li
+            margin-right: 4px
+            a
+                font-size: 22px
+                color: #fff
+                background: $blue
+                padding-left: 2em
+                padding-right: 2em
+                &:hover
+                    background: #f2f1f1
+                    border-color: #f2f1f1
+                    color: rgb(85, 85, 85)
+
+
+            &.active
+                a
+                    background: #f2f1f1
+                    border-color: #f2f1f1
+                    color: rgb(85, 85, 85)
+                    &:focus
+                        color: rgb(85, 85, 85)
+                        background: #f2f1f1
+                        border-color: #f2f1f1
 
 
 
+
+.book-tab-body
+    padding-bottom: 100px
+    border-radius: 0
 .b_packages
-  margin-bottom: 10px
+    margin-bottom: 10px
 
 h4.product-list-name
-  //overflow: auto
-  white-space: normal
-  height: 4em
-  a
-    line-height: 0.9em
-  span
-    padding: 0
-    text-transform: capitalize
-    color: #6C6C6C
-    font-weight: 500
+    //overflow: auto
+    white-space: normal
+    height: 4em
+
+    a
+        line-height: 0.9em
+
+    span
+        padding: 0
+        text-transform: capitalize
+        color: #6C6C6C
+        font-weight: 500
 
 p.btn-added-to-order
-  font-weight: 700
-  padding: 6px 15px
-  border-radius: 2px
-  font-family: 'Quicksand', sans-serif
-  text-decoration: none
-  //color: #fff !important
-  //background: linear-gradient(to bottom,#f4364f,#dc2039)
-  background: none
-  border: 1px solid #868686
-  font-size: 13px
-  margin-bottom: 0
-  color: #868686
-  a
-    display: inline-block !important
-    text-decoration: underline
-    //color: #fff
+    font-weight: 700
+    padding: 6px 15px
+    border-radius: 2px
+    font-family: 'Quicksand', sans-serif
+    text-decoration: none
+    //color: #fff !important
+    //background: linear-gradient(to bottom,#f4364f,#dc2039)
+    background: none
+    border: 1px solid #868686
+    font-size: 13px
+    margin-bottom: 0
+    color: #868686
+
+    a
+        display: inline-block !important
+        text-decoration: underline
+//color: #fff
 .p2_book ul li a
-  display: inline-block
+    display: inline-block
 
 .link-large
-  font-size: 1em
-  text-decoration: underline
+    font-size: 1em
+    text-decoration: underline
 
 .margin5
-  margin-top: 5px
-  margin-bottom: 5px
+    margin-top: 5px
+    margin-bottom: 5px
 
 .margin10
-  margin-top: 10px
-  margin-bottom: 10px
+    margin-top: 10px
+    margin-bottom: 10px
 
 .margin20
-  margin-top: 20px
-  margin-bottom: 20px
+    margin-top: 20px
+    margin-bottom: 20px
 
 .margin30
-  margin-top: 30px
-  margin-bottom: 30px
+    margin-top: 30px
+    margin-bottom: 30px
 
 .margin40
-  margin-top: 40px
-  margin-bottom: 40px
+    margin-top: 40px
+    margin-bottom: 40px
 
 .margin50
-  margin-top: 50px
-  margin-bottom: 50px
+    margin-top: 50px
+    margin-bottom: 50px
+
 .margin70
-  margin-top: 70px
-  margin-bottom: 70px
+    margin-top: 70px
+    margin-bottom: 70px
 
 .product-scores
-  ul
-    padding-left: 0px
-  li
-    list-style: none
-    position: relative
+    ul
+        padding-left: 0px
 
-    .name
-      //width: 130px
-      display: inline-block
-      position: absolute
-      left: 0
-    .line
-      margin-left: 130px
-      display: inline-block
-      background: #a2dd2f
-      height: 1em
-      border-radius: 0 10px 10px 0
+    li
+        list-style: none
+        position: relative
+
+        .name
+            //width: 130px
+            display: inline-block
+            position: absolute
+            left: 0
+
+        .line
+            margin-left: 130px
+            display: inline-block
+            background: #a2dd2f
+            height: 1em
+            border-radius: 0 10px 10px 0
 
 .products-list-scores
-  ul
-    padding-left: 0px
-  li
-    margin-bottom: 3px
-    color: #253d52
-    .line
-      background: #a2dd2f
-      height: 22px
-      border-radius: 0 10px 10px 0
-      padding: 0 15px
-      overflow: hidden
-    .number
-      float: right
+    ul
+        padding-left: 0px
+
+    li
+        margin-bottom: 3px
+        color: #253d52
+
+        .line
+            background: #a2dd2f
+            height: 22px
+            border-radius: 0 10px 10px 0
+            padding: 0 15px
+            overflow: hidden
+
+        .number
+            float: right
+
+.hot-page2-alp-ri-p2
+    .place
+        font-weight: bold
+        color: #343c42
+        font-size: 15px
+        margin: 30px 0 0 0
+    .description-short
+        margin-bottom: 8px
+        font-size: 14px
+    .months
 
 .long-description-block
-  img
-    max-width: 100%
-    height: auto !important
-  .table-section
-    @media(max-width: 575px)
-      overflow-x: scroll
-      margin: 0 -15px
-      table
-        min-width: 400px
-        td
-          font-size: 13px
-          padding: 5px 2px
-          line-height: 15px
+    img
+        max-width: 100%
+        height: auto !important
+
+    .table-section
+        @media(max-width: 575px)
+            overflow-x: scroll
+            margin: 0 -15px
+            table
+                min-width: 400px
+
+                td
+                    font-size: 13px
+                    padding: 5px 2px
+                    line-height: 15px
 
 .gallery-container
-  max-width: 960px
+    max-width: 960px
+
 .lslide
-  img
-    width: 100%
+    img
+        width: 100%
 
 .profile-btns
-  float: right
-  li
-    float: left
-    display: inline-block
-    a
-      color: #fff
-      //color: #253d52
-      padding: 7px 12px
-      line-height: 30px
-      font-size: 12px
-      &.bright
-        background: linear-gradient(to bottom,$red,#dc2039)
-        //background: none
-      &.medium
-        background: linear-gradient(to bottom, #d2a032, #b18013)
-        //background: none
-      &.dark
-        background: #2d5d73
-        //background: none
+    float: right
+
+    li
+        float: left
+        display: inline-block
+
+        a
+            color: #fff
+            //color: #253d52
+            padding: 7px 12px
+            line-height: 30px
+            font-size: 12px
+
+            &.bright
+                background: linear-gradient(to bottom, $red, #dc2039)
+            //background: none
+            &.medium
+                background: linear-gradient(to bottom, #d2a032, #b18013)
+            //background: none
+            &.dark
+                background: #2d5d73
+//background: none
 .with-counter
-  position: relative
-  span
-    position: absolute
-    right: -2px
-    bottom: -4px
-    background: #a2dd2f
-    color: white
-    font-size: 12px
-    padding: 2px
-    width: 16px
-    height: 16px
-    line-height: 14px
-    border-radius: 50%
-    text-align: center
-    @media (max-width: 992px)
-      left: 4em
-      top: 1em
+    position: relative
+
+    span
+        position: absolute
+        right: -2px
+        bottom: -4px
+        background: #a2dd2f
+        color: white
+        font-size: 12px
+        padding: 2px
+        width: 16px
+        height: 16px
+        line-height: 14px
+        border-radius: 50%
+        text-align: center
+        @media (max-width: 992px)
+            left: 4em
+            top: 1em
 
 .db
-  @media (max-width: 767px)
-    padding-left: 0px
-    padding-right: 0px
+    @media (max-width: 767px)
+        padding-left: 0px
+        padding-right: 0px
 
 .db-2-main-com-table
-  @media (max-width: 767px)
-    padding: 2px
-    font-size: 12px
-    td
-      font-size: 12px
-      line-height: 1em
-  @media (max-width: 500px)
-    td, th
-      font-size: 10px
-      &:nth-child(1)
-        display: none
-    a
-      white-space: normal
+    @media (max-width: 767px)
+        padding: 2px
+        font-size: 12px
+        td
+            font-size: 12px
+            line-height: 1em
+    @media (max-width: 500px)
+        td, th
+            font-size: 10px
+
+            &:nth-child(1)
+                display: none
+        a
+            white-space: normal
+
 .db-l-1
-  padding: 20px
+    padding: 20px
 
 
 a.btn-delete-product
-  background: linear-gradient(to bottom,$red,#dc2039)
+    background: linear-gradient(to bottom, $red, #dc2039)
 
 .form-with-labels
-  text-align: left
-  label
-    margin-top: 0.7em
-    font-size: 1em
-    color: #253d52
+    text-align: left
 
+    label
+        margin-top: 0.7em
+        font-size: 1em
+        color: #253d52
 
 
 // Magnific Pop up
 .mfp-content
-  max-width: 630px
+    max-width: 630px
+
 .popup
-  background: white
-  padding: 1em 0
-  margin: 0 auto
-  text-align: center
+    background: white
+    padding: 1em 0
+    margin: 0 auto
+    text-align: center
 
 .popup-btn-footer
-  color: #616161
+    color: #616161
 
 h2 span.red-text
-  color: $red
-  font-size: inherit
-  font-weight: 600
-  font-family: 'Quicksand', sans-serif
+    color: $red
+    font-size: inherit
+    font-weight: 600
+    font-family: 'Quicksand', sans-serif
 
 h1.red-text
-  color: $red !important
-  font-size: 32px
-  display: inline-block
-  font-weight: 600
+    color: $red !important
+    font-size: 32px
+    display: inline-block
+    font-weight: 600
 
 .article-image
-  @media (min-width: 501px)
-    float: left
-    width: 50%
-    margin: 0 20px 20px 0
+    @media (min-width: 501px)
+        float: left
+        width: 50%
+        margin: 0 20px 20px 0
 
 .article-paragraph
-  p
-    margin-bottom: 1em
-    font-size: 1.3em
-    line-height: normal
+    p
+        margin-bottom: 1em
+        font-size: 1.3em
+        line-height: normal
 
 
 //Products List
-.container--products-list
-  padding: 100px 0
-  @media(max-width: 768px)
-    padding: 10px 0
-
+//.container--products-list
+//    padding: 100px 0
+//    @media(max-width: 768px)
+//        padding: 10px 0
 
 
 //booking page
 .booking-page
-  input[type=text]:not(.browser-default), input[type=email]:not(.browser-default), input[type=date]:not(.browser-default)
-    height: 2em
-    line-height: 2em
-    margin-bottom: 0
+    input[type=text]:not(.browser-default), input[type=email]:not(.browser-default), input[type=date]:not(.browser-default)
+        height: 2em
+        line-height: 2em
+        margin-bottom: 0
 
 .booking-dates-section
-  //try rewrite bootstrap .modal by materialize .modal attributes
-  .modal
-    bottom: auto
-    @media(max-width: 400px)
-      width: 95%
-      max-width: inherit
-    //input
-    //  display: inherit
-    //  width: inherit !important
-    //  padding-left: inherit !important
-    //  margin-right: inherit !important
+    //try rewrite bootstrap .modal by materialize .modal attributes
+    .modal
+        bottom: auto
+        @media(max-width: 400px)
+            width: 95%
+            max-width: inherit
+//input
+//  display: inherit
+//  width: inherit !important
+//  padding-left: inherit !important
+//  margin-right: inherit !important
 
 
 
 .booking-dates-fields
-  display: inline-block
-  margin-left: 30px
-  height: 25px
-  @media(max-width: 767px)
-    margin-bottom: 20px
-    height: auto
+    display: inline-block
+    margin-left: 30px
+    height: 25px
+    @media(max-width: 767px)
+        margin-bottom: 20px
+        height: auto
 
-  span
-    display: inline
-  input.small-line
-    display: inline
-    width: 120px !important
-    padding-left: 10px !important
-    margin-right: 10px !important
+    span
+        display: inline
+
+    input.small-line
+        display: inline
+        width: 120px !important
+        padding-left: 10px !important
+        margin-right: 10px !important
 
 
 .label-with-info
-  position: relative
-  .small
-    position: absolute
-    left: 34px
-    top: 17px
-    width: 190px
-    color: $brown
+    position: relative
 
-#b-products-block.invalid
-  label
-    color: $red
-  .select-dropdown, .select-dropdown:focus
-    border-bottom-color: $red
+    .small
+        position: absolute
+        left: 34px
+        top: 17px
+        width: 190px
+        color: $brown
+
+#b-products-block.invalid, #b-itineraries-block.invalid
+    label
+        color: $red
+
+    .select-dropdown, .select-dropdown:focus
+        border-bottom-color: $red
 
 
-
-
-    //Products page
+//Products page
 .tour_head1
-  h3
-    background: none
-    padding-left: 0
-
+    h3
+        background: none
+        padding-left: 0
 
 
 //itineraries
 .l-info-pack-days
-  ul
-    li
-      padding-bottom: 25px
-      h4
-        margin: 0
+    ul
+        li
+            padding-bottom: 25px
+
+            h4
+                margin: 0
+
 .l-info-pack-plac
-  p
-  a.experience-image
-    display: inline-block
-    float: left
-    width: 30%
-    max-width: 250px
-    margin-right: 1em
-    border: 2px solid $brown
-    overflow: hidden
-    @media(max-width: 575px)
-      float: none
-      width: 100%
-    img
-      width: 100%
-      -webkit-transition: 0.4s ease
-      transition: 0.4s ease
-      &:hover
-        -webkit-transform: scale(1.08)
-        transform: scale(1.08)
+    p
+
+    a.experience-image
+        display: inline-block
+        float: left
+        width: 30%
+        max-width: 250px
+        margin-right: 1em
+        border: 2px solid $brown
+        overflow: hidden
+        @media(max-width: 575px)
+            float: none
+            width: 100%
+
+        img
+            width: 100%
+            -webkit-transition: 0.4s ease
+            transition: 0.4s ease
+
+            &:hover
+                -webkit-transform: scale(1.08)
+                transform: scale(1.08)
