@@ -41,17 +41,17 @@
             </td>
         </tr>
     </table>
-    @if( count($request->b_products) + count($request->b_itineraries) == 1 )
+    @if( (isset($request->b_products) ? count($request->b_products) : 0) + (isset($request->b_itineraries) ? count($request->b_itineraries) : 0) == 1 )
         <table>
-            @if( count($request->b_itinerary) == 1 )
+            @if( isset($request->b_itineraries) && count($request->b_itineraries) == 1 )
                 <tr>
                     <td>
-                        Your experience: <b><a href="{{ route('itinerary', ['id'=>\App\Models\Itinerary::find($request->b_itinerary[0])->slug]) ?? '' }}">{{ \App\Models\Itinerary::find($request->b_itinerary[0])->name ?? '' }}</a></b>
+                        Your experience: <b><a href="{{ route('itinerary', ['id'=>\App\Models\Itinerary::find($request->b_itineraries[0])->slug]) ?? '' }}">{{ \App\Models\Itinerary::find($request->b_itineraries[0])->name ?? '' }}</a></b>
                     </td>
                 </tr>
                 <tr>
                     <td style="text-align: center">
-                        <img src="{{ asset(cropImage(\App\Models\Itinerary::find($request->b_itinerary[0])->image_main, 550, 353)) }}" alt="">
+                        <img src="{{ asset(cropImage(\App\Models\Itinerary::find($request->b_itineraries[0])->image_main, 550, 353)) }}" alt="">
                     </td>
                 </tr>
             @else

@@ -5,12 +5,14 @@ One of our destination experts will be in touch within 2 working days. Please ch
 Here’s a copy of your enquiry. If any details are incorrect, missing or if you have any further requests, just let us know
 info@experiencethistravel.com
 
-@if( count($request->b_products) == 1 )
-Your experience: {{ \App\Models\Product::find($request->b_products[0])->name ?? '' }}
-@else
-    @foreach($request->b_products as $key => $productId)
-    - {{\App\Models\Product::find($productId)->name ?? ''}}
-    @endforeach
+@if(isset($request->b_products))
+    @if( count($request->b_products) == 1 )
+    Your experience: {{ \App\Models\Product::find($request->b_products[0])->name ?? '' }}
+    @else
+        @foreach($request->b_products as $key => $productId)
+        - {{\App\Models\Product::find($productId)->name ?? ''}}
+        @endforeach
+    @endif
 @endif
 
 @if($request->b_field_dates == 'no')
