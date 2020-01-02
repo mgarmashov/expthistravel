@@ -65,7 +65,7 @@ class Handler extends ExceptionHandler
             $handler = new \Symfony\Component\Debug\ExceptionHandler();
             $html = $handler->getHtml($e);
 
-            Mail::to(env('LOGS_TO_EMAIL') ?? 'mikhail@garmashov.com')->send(new ExceptionOccured($html));
+            Mail::to(env('EXCEPTIONS_TO_EMAIL') ?? 'mikhail@garmashov.com')->send(new ExceptionOccured($html));
         } catch (Exception $ex) {
             dd($ex);
         }
