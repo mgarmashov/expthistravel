@@ -47,7 +47,7 @@ class QuizController extends Controller
     protected function writeAnswersToSession($request)
     {
         $request->session()->forget('answers');
-        $likes = $request->likes;
+        $likes = $request->likes ?? [];
         foreach (Activity::all() as $activity) {
             $answer = in_array($activity->id, $likes) ? 'like' : 'dislike';
             $request->session()->put('answers.'.$activity->id, $answer);
@@ -58,7 +58,7 @@ class QuizController extends Controller
     protected function writeQuizHistory($request)
     {
         $session = $request->session()->getId();
-        $likes = $request->likes;
+        $likes = $request->likes ?? [];
 
         foreach (Activity::all() as $activity) {
             $answer = in_array($activity->id, $likes) ? 'like' : 'dislike';
@@ -76,10 +76,8 @@ class QuizController extends Controller
 
     public function showStep2(Request $request)
     {
-        if(isset($request->answers)) {
             $this->writeAnswersToSession($request);
             $this->writeQuizHistory($request);
-        }
 
         if(!$request->session()->has('answers') && !$request->session()->has('experience')) {
             return redirect()->route('quiz-step1');
