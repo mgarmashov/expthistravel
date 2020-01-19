@@ -164,7 +164,7 @@
                                 <img src="{{ asset('images/icon-itinerary.png') }}" alt="">
                             </div>
                             <h5>Complete convenience and peace of mind</h5>
-                            <p>- Semealess travel planning and booking</p>
+                            <p>- Seamless travel planning and booking</p>
                             <p>- Service you can rely on from our network of tried and tested local suppliers</p>
                             <p>- Support and assistance before, during and after your trip</p>
                         </div>
