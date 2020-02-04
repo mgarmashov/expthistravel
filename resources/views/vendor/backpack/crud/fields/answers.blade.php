@@ -63,7 +63,7 @@
                                 @if($user && $user->q_countries)
                                     @foreach ($user->q_countries as $value)
                                         <ul>
-                                            <li>{{ \App\Models\Country::find($value)->name }}</li>
+                                            <li>{{ \App\Models\Country::find($value)->name ?? 'All' }}</li>
                                         </ul>
                                     @endforeach
                                 @endif
