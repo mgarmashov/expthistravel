@@ -75,7 +75,7 @@
         </tr>
         <tr>
             <td>
-                <a href="{{ route('crud.users.show', ['user' => $user->id]) }}">Watch at the system</a>
+                <a href="{{ route('crud.users.edit', ['user' => $user->id]) }}">Watch at the system</a>
             </td>
         </tr>
     </table>

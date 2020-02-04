@@ -24,7 +24,7 @@
         </tr>
         <tr>
             <td>
-                <a href="{{ route('crud.orders.show', ['order' => $order->id]) }}">Watch at the system</a>
+                <a href="{{ route('crud.orders.edit', ['order' => $order->id]) }}">Watch at the system</a>
             </td>
         </tr>
     </table>
