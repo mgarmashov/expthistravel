@@ -76,8 +76,6 @@ class QuizController extends Controller
 
     public function showStep2(Request $request)
     {
-            $this->writeAnswersToSession($request);
-            $this->writeQuizHistory($request);
 
         if(!$request->session()->has('answers') && !$request->session()->has('experience')) {
             return redirect()->route('quiz-step1');
