@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Notifications\NewUserRegisteredNotification;
 use App\Services\AdminNotifications;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -110,7 +111,11 @@ class RegisterController extends Controller
         //user's info still empty. we need take data fron session.
         $attribures = [];
         parse_str($this->quizResults, $attribures);
-        AdminNotifications::AdminNotify(new NewUserRegisteredNotification($newUser, $this->activityAnswers, $attribures));
+        try {
+            AdminNotifications::AdminNotify(new NewUserRegisteredNotification($newUser, $this->activityAnswers,
+                $attribures));
+        } catch (Exception $exception) {
 
+        }
     }
 }

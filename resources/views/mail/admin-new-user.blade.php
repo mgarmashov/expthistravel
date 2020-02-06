@@ -14,26 +14,17 @@
             </td>
             <tr>
             <td>
-                People:
-                @if(isset($quizResults['q1']))
-                    <ul>
-                        @foreach($quizResults['q1'] as $id)
-                            <li>{{ config('questions.q1.'.$id) }}</li>
-                        @endforeach
-                    </ul>
-                @endif
+                People: {{ 111config('questions')['q_who_travels'][$quizResults['q_who_travels']] ?? '' }}
+                <ul>
+                    @if(isset($quizResults['q_how_many_adults'])) <li>Adults: {{ $quizResults['q_how_many_adults'] }}</li> @endif
+                    @if(isset($quizResults['q_how_many_child'])) <li>Child: {{ $quizResults['q_how_many_child'] }}</li> @endif
+                </ul>
             </td>
         </tr>
         <tr>
             <td>
-                Duration:
-                @if(isset($quizResults['q2']))
-                <ul>
-                    @foreach($quizResults['q2'] as $id)
-                        <li>{{ config('questions.q2.'.$id) }}</li>
-                    @endforeach
-                </ul>
-                @endif
+                Duration: {{intval($quizResults['q_how_long_from']) ?? ''}} - {{ intval($quizResults['q_how_long_to']) == 29 ? '28+' : intval($quizResults['q_how_long_to']) }}
+
             </td>
         </tr>
         <tr>
