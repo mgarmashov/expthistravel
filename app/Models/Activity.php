@@ -6,6 +6,17 @@ use App\Scopes\EnabledScope;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
+/**
+ * App\Models\Activity
+ *
+ * @property string $name
+ * @property string $description
+ * @property string $image
+ * @property int $index
+ * @property bool $enabled
+ * @property array $scores
+ */
+
 class Activity extends Model
 {
     use CrudTrait;

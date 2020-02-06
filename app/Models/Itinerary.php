@@ -7,7 +7,48 @@ use App\Scopes\EnabledScope;
 use App\Traits\SeoTrait;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\Types\Collection;
+
+/**
+ * App\Models\Itinerary
+ *
+ * @property string $name
+ * @property string $slug
+ * @property float $price
+ * @property string $description_short
+ * @property string $description_long
+ * @property string $map_url
+ * @property string $image_main
+ * @property string $image_map
+ * @property string $image_background
+ * @property array $gallery
+ * @property array $months
+ * @property string $country
+ * @property string $city
+ * @property string $highlights
+ * @property string $transport
+ * @property array $travel_styles
+ * @property array $sights
+ * @property int $minDuration
+ * @property int $maxDuration
+ * @property array $products
+ * @property int $index
+ * @property bool $enabled
+ * @property array $scores
+ *
+
+ * @property-read \App\Models\Product $product
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $relatedProducts
+ * @property-read \App\Models\User $user
+ * @method static Builder|Itinerary whereDuration($value)
+ * @method static Builder|Itinerary wherePlace($value)
+ * @method static Builder|Itinerary whereMonths($value)
+ * @method static Builder|Itinerary whereScores($value)
+ * @mixin \Eloquent
+ */
 
 class Itinerary extends Model
 {
@@ -68,6 +109,11 @@ class Itinerary extends Model
     |--------------------------------------------------------------------------
     */
 
+    /**
+     * Create string value of period
+     *
+     * @return string
+     */
     public function duration()
     {
         if ($this->minDuration == 0 && $this->maxDuration == 0) return '1+ days';
@@ -80,6 +126,11 @@ class Itinerary extends Model
 
     }
 
+    /**
+     * Create string value of place: country and city
+     *
+     * @return string
+     */
     public function place()
     {
         $countries = [];
@@ -94,6 +145,11 @@ class Itinerary extends Model
         return $place;
     }
 
+    /**
+     * Create string list of months when itinerary is available
+     *
+     * @return string
+     */
     public function months()
     {
         $input = $this->months;
@@ -111,6 +167,11 @@ class Itinerary extends Model
         return $output;
     }
 
+    /**
+     * Returns array od Itinerary scores
+     *
+     * @return string
+     */
     public function scores()
     {
         $outputScores = [];
@@ -125,6 +186,12 @@ class Itinerary extends Model
         return $outputScores;
     }
 
+    /**
+     * Get user scores and find best itineraries for him
+     *
+     * @param $scoresOfUser
+     * @return Itinerary[]|\Illuminate\Database\Eloquent\Collection|Builder[]|\Illuminate\Support\Collection
+     */
     public static function findBestItineraries($scoresOfUser)
     {
         if (!self::$filteredItinerariesList) {self::$filteredItinerariesList = self::with('countries')->get();}
@@ -156,6 +223,12 @@ class Itinerary extends Model
         return $output;
     }
 
+    /**
+     * Returns itineraries related with countries that user sets
+     *
+     * @param $countriesIdsArray
+     * @return Itinerary[]|\Illuminate\Database\Eloquent\Collection|Builder[]|\Illuminate\Support\Collection
+     */
     public static function filterByCountry($countriesIdsArray)
     {
         if (!self::$filteredItinerariesList) {self::$filteredItinerariesList = self::with('countries')->get();}
@@ -179,6 +252,12 @@ class Itinerary extends Model
         return self::$filteredItinerariesList;
     }
 
+    /**
+     * Returns itineraries that are available in months that user sets
+     *
+     * @param $monthIdsArray
+     * @return Itinerary[]|\Illuminate\Database\Eloquent\Collection|Builder[]|\Illuminate\Support\Collection
+     */
     public static function filterByMonth($monthIdsArray)
     {
         if (!self::$filteredItinerariesList) {self::$filteredItinerariesList = self::with('countries')->get();}
@@ -205,6 +284,12 @@ class Itinerary extends Model
         return self::$filteredItinerariesList;
     }
 
+    /**
+     * Returns itineraries that are available in months that user sets
+     *
+     * @param $monthIdsArray
+     * @return Itinerary[]|\Illuminate\Database\Eloquent\Collection|Builder[]|\Illuminate\Support\Collection
+     */
     public static function filterByDuration($periodsArray)
     {
         if (!self::$filteredItinerariesList) {self::$filteredItinerariesList = self::with('countries')->get();}
@@ -223,6 +308,12 @@ class Itinerary extends Model
         return self::$filteredItinerariesList;
     }
 
+    /**
+     * Returns itineraries that are filtered by experience
+     * @param $experiencesIds
+     * @return Itinerary[]|\Illuminate\Database\Eloquent\Collection|Builder[]|\Illuminate\Support\Collection
+     *@deprecated
+     */
     public static function filterByExperience($experiencesIds)
     {
         if (!self::$filteredItinerariesList) {
@@ -241,6 +332,12 @@ class Itinerary extends Model
         return self::$filteredItinerariesList;
     }
 
+    /**
+     * Returns itineraries that are includes some sights
+     *
+     * @param $sightsIdsArray
+     * @return Itinerary[]|\Illuminate\Database\Eloquent\Collection|Builder[]|\Illuminate\Support\Collection
+     */
     public static function filterBySights($sightsIdsArray)
     {
         if (!self::$filteredItinerariesList) {self::$filteredItinerariesList = self::with('countries')->get();}
@@ -265,6 +362,12 @@ class Itinerary extends Model
         return self::$filteredItinerariesList;
     }
 
+    /**
+     * Returns itineraries that related with specific Travel Style
+     *
+     * @param $stylesIdsArray
+     * @return Itinerary[]|\Illuminate\Database\Eloquent\Collection|Builder[]|\Illuminate\Support\Collection
+     */
     public static function filterByTravelStyle($stylesIdsArray)
     {
         if (!self::$filteredItinerariesList) {self::$filteredItinerariesList = self::with('countries')->get();}
@@ -295,16 +398,32 @@ class Itinerary extends Model
         | RELATIONS
         |--------------------------------------------------------------------------
         */
+
+    /**
+     * Countries
+     *
+     * @return BelongsToMany
+     */
     public function countries()
     {
         return $this->belongsToMany('App\Models\Country', 'countries_itineraries');
     }
 
+    /**
+     * Experiences
+     * @deprecated
+     * @return BelongsToMany
+     */
     public function experiences()
     {
         return $this->belongsToMany('App\Models\Experience', 'experiences_itineraries')->where('enabled', true);
     }
 
+    /**
+     * Orders
+     *
+     * @return BelongsToMany
+     */
     public function orders()
     {
         return $this->belongsToMany('App\Models\Order', 'itineraries_orders');
@@ -328,11 +447,22 @@ class Itinerary extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
+
+    /**
+     * Returns trimmed highlights string to Array
+     *
+     * @return array
+     */
     public function highlightsArray()
     {
         return empty($this->highlights) ? null : array_filter(array_map('trim', explode(';', $this->highlights)));
     }
 
+    /**
+     * Returns  products of currect itinerary
+     *
+     * @return Product[]|\Illuminate\Database\Eloquent\Collection|Builder[]|\Illuminate\Support\Collection
+     */
     public function products()
     {
         if(empty($this->products)) {
