@@ -38,6 +38,7 @@ class CountriesController extends CrudController
             'type' => 'image',
             'height' => '100px'
         ]);
+        $this->crud->addColumn('index');
         $this->crud->addColumn('name');
         $this->crud->addColumn('description_short');
 
@@ -59,6 +60,11 @@ class CountriesController extends CrudController
             'label' => "Enabled",
             'name' => "enabled",
             'type' => 'checkbox'
+        ]);
+        $this->crud->addField([
+            'label' => "Index",
+            'name' => "index",
+            'type' => 'number'
         ]);
         $this->crud->addField([
             'label' => "Image",

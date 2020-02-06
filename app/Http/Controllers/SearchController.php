@@ -60,10 +60,10 @@ class SearchController extends Controller
             $applyScores = 'yes';
         } else {
             $products = $products->sortBy(function($product){
-                return $product->countries();
+                return $product->countries()->first()->index;
             });
             $itineraries = $itineraries->sortBy(function($itinerary){
-                return $itinerary->countries();
+                return $itinerary->countries()->first()->index;
             });
         }
 
