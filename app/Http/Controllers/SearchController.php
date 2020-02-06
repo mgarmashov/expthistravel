@@ -50,14 +50,23 @@ class SearchController extends Controller
         $products = $this->findItems($request, 'App\Models\Product');
         $itineraries = $this->findItems($request, 'App\Models\Itinerary');
         $applyScores = 'no';
-        if (Auth::check() && Auth::user()->totalScores && $request->applyScores) {
-            $scoresOfUser = Auth::user()->scores();
-            $products = Product::findBestProducts($scoresOfUser);
-            $applyScores = 'yes';
-        }
         if (Auth::check() && ! Auth::user()->totalScores) {
             $applyScores = 'takeQuiz';
         }
+        if (Auth::check() && Auth::user()->totalScores && $request->applyScores) {
+            $scoresOfUser = Auth::user()->scores();
+            $products = Product::findBestProducts($scoresOfUser);
+            $itineraries = Itinerary::findBestItineraries($scoresOfUser);
+            $applyScores = 'yes';
+        } else {
+            $products = $products->sortBy(function($product){
+                return $product->countries();
+            });
+            $itineraries = $itineraries->sortBy(function($itinerary){
+                return $itinerary->countries();
+            });
+        }
+
         return ['applyScores' => $applyScores, 'products' => $products, 'itineraries' => $itineraries];
     }
 
