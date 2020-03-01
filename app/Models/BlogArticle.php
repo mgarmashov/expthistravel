@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Scopes\EnabledScope;
 use App\Traits\SeoTrait;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
@@ -102,7 +103,7 @@ class BlogArticle extends Model
     }
 
     public function setDatetimeAttribute($value) {
-        $this->attributes['datetime'] = \Date::parse($value);
+        $this->attributes['datetime'] = Carbon::parse($value);
     }
 
     public function setSlugAttribute($value) {
